@@ -1,4 +1,5 @@
 <Alloy>
+	<NavigationWindow id="navGroupWin">
 	<Window class="container">
 		<Label id="label" class="getRippedText">Ready To Get Ripped? Give us some info</Label>
 		<TextField id="txtAge" class="demographicText" hintText="Age" top="80dp"></TextField>
@@ -8,4 +9,5 @@
 		<TextField id="txtWeight" class="demographicText" hintText="Weight(in Lb)" top="260dp"></TextField>
 		<Button id="btnSubmit" class="getRippedBtn" title="Get Ripped" onClick="showWorkout"></Button>
 	</Window>
+	 </NavigationWindow>
 </Alloy>

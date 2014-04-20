@@ -1,11 +1,10 @@
-".container": {
-	backgroundColor:"white",
+".container[platform=ios]": {
 	title : "GetRipped",
 	backgroundColor : "grey",
-	fullScreen: false,
+	//fullScreen: false,
 	exitOnClose: true,
-	navBarHidden: false,
-	tabBarHidden: true,
+	//navBarHidden: false,
+	//tabBarHidden: true,
 	font: {
 		fontsize: "32dp",
 		fontWeight: "bold"

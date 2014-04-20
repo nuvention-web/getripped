@@ -14,13 +14,23 @@ function Controller() {
         id: "__alloyId0"
     });
     $.__views.Workouts.add($.__views.__alloyId0);
-    $.__views.__alloyId1 = Ti.UI.createLabel({
-        text: "test",
-        id: "__alloyId1"
+    $.__views.workoutsTable = Ti.UI.createTableView({
+        title: "Workouts",
+        top: 0,
+        height: Ti.UI.FILL,
+        backgroundColor: "grey",
+        id: "workoutsTable"
     });
-    $.__views.__alloyId0.add($.__views.__alloyId1);
+    $.__views.__alloyId0.add($.__views.workoutsTable);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var workoutTitles = [];
+    workoutTitles = Alloy.Globals.eName;
+    var data = [];
+    for (var i = 0; workoutTitles.length > i; i++) data.push(Alloy.createController("row", {
+        name: workoutTitles[i]
+    }).getView());
+    $.workoutsTable.setData(data);
     _.extend($, exports);
 }
 

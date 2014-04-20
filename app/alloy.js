@@ -9,3 +9,43 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+var url = "https://getripped.herokuapp.com/exercise";
+var jsonObj;
+var exerciseName;
+var exerciseDescription;
+var reps;
+var sets;
+Alloy.Globals.eName = [];
+var xhr = Ti.Network.createHTTPClient({
+    onload: function(e) {
+    	//alert(e);
+		// this function is called when data is returned from the server and available for use
+        // this.responseText holds the raw text return of the message (used for text/JSON)
+        // this.responseXML holds any returned XML (including SOAP)
+        // this.responseData holds any returned binary data
+        //Ti.API.debug(this.responseText);
+        jsonObj = JSON.parse(this.responseText);
+       // var nm = json[0].name;
+       for (var i = 0; i < jsonObj.length; i++) { 
+ 		 exerciseName = jsonObj[i].name;
+ 		 exerciseDescription = jsonObj[i].description;
+ 		 reps = jsonObj[i].reps;
+ 		 sets = jsonObj[i].sets;
+ 		 //alert(jsonObj[i].name);
+ 		 Alloy.Globals.eName[i] = exerciseName;
+ 		 //alert(Alloy.Globals.eName[i]);
+		}
+        //alert(jsonObj.);
+        
+        //alert(eName);
+        alert('success');
+    },
+    onerror: function(e) {
+		// this function is called when an error occurs, including a timeout
+        Ti.API.debug(e.error);
+        alert('error');
+    },
+    timeout:5000  /* in milliseconds */
+});
+xhr.open("GET", url);
+xhr.send();  // request is actually sent with this statement

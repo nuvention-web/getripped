@@ -1,11 +1,16 @@
 function showWorkout(){
-    var workouts = Alloy.createController("Workouts",{}).getView();
+    var workoutsWin = Alloy.createController("Workouts",{}).getView();
     if (OS_IOS) {
-        $.navGroupWin.openWindow(workouts);
+        $.navGroupWin.openWindow(workoutsWin);
     }
     if (OS_ANDROID) {
         workouts.open();
     }
 }
 
-$.index.open();
+if(OS_IOS) { 
+   $.navGroupWin.open();
+} 
+if (OS_ANDROID) { 
+   $.index.open(); 
+}
