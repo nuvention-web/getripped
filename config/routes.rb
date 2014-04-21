@@ -4,6 +4,9 @@ Getripped::Application.routes.draw do
 
   resources :exercise, only: [:index, :show]
 
+  resources :session, only: [:new, :create, :destroy]
+
+  get 'session/signout' => 'session#signout', as: :signout
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
