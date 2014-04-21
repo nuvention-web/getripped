@@ -12,7 +12,8 @@ CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |
 			:name => row[:name],
 			:reps => row[:reps],
 			:sets => row[:sets],
-			:rest => row[:rest]
+			:rest => row[:rest],
+			:description => row[:description]
 		)
 end
 

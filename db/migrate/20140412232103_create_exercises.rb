@@ -2,7 +2,7 @@ class CreateExercises < ActiveRecord::Migration
   def change
     create_table :exercises do |t|
     	t.string :name
-    	t.string :description
+    	t.text :description
     	t.string :image
     	t.integer :reps
     	t.integer :sets
