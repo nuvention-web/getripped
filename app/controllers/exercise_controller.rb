@@ -6,7 +6,12 @@ class ExerciseController < ApplicationController
 	def index		
 		@exercises = Exercise.all
 
-		render json: @exercises
+		 success_response = {
+        logged: true,
+      }
+
+		# render json: @exercises
+		render json: success_response
 	end
 
 	def show
