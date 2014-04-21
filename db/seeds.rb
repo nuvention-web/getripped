@@ -7,13 +7,19 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'csv'
 
+images = [
+"dumbellpress.jpg"
+]
+
+
 CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |row|
 		Exercise.create(
 			:name => row[:name],
 			:reps => row[:reps],
 			:sets => row[:sets],
 			:rest => row[:rest],
-			:description => row[:description]
+			:description => row[:description],
+			:image => images.slice!(0)
 		)
 end
 
