@@ -1,5 +1,16 @@
 function Controller() {
     function showWorkout() {
+        var loginReq = Titanium.Network.createHTTPClient();
+        loginReq.open("POST", "http://getripped.herokuapp.com/session");
+        var user = {
+            password: "1234",
+            email: "pri1229@gmail.com"
+        };
+        loginReq.send(user);
+        loginReq.onload = function() {
+            var json = this.responseText;
+            JSON.parse(json);
+        };
         var workoutsWin = Alloy.createController("exercise", {}).getView();
         $.navGroupWin.openWindow(workoutsWin);
     }
@@ -13,6 +24,7 @@ function Controller() {
     var __defers = {};
     $.__views.__alloyId7 = Ti.UI.createWindow({
         backgroundColor: "#bcbcbc",
+        backgroundImage: "gym.jpg",
         title: "Swole Trainer",
         id: "__alloyId7"
     });
@@ -26,6 +38,7 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtUsername",
         top: "10",
+        opacity: "1",
         hintText: "Username"
     });
     $.__views.__alloyId7.add($.__views.txtUsername);
@@ -39,6 +52,7 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtPassword",
         top: "60",
+        opacity: "1",
         passwordMask: "true",
         hintText: "Password"
     });
@@ -56,7 +70,8 @@ function Controller() {
             fontSize: 14
         },
         id: "btnSubmit",
-        title: "Login"
+        title: "Login",
+        opacity: "1"
     });
     $.__views.__alloyId7.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;

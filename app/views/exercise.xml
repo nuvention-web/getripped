@@ -1,14 +1,22 @@
 <Alloy>
 	<NavigationWindow id="exNavWin">
 	<Window id="exWin" backgroundColor="#bcbcbc">
-		<View id="viewId">
-		<Label id="workoutTitle" top="10" font="20"> </Label>
-		<Label id="eName" top="40" left="10"></Label>
-		<Label id="eDesc" top="60" font="30"></Label>
-		<Button id="btnPrev" class="nextBtn" left="20" bottom="10" title="Previous" onClick="showPrev" visible="false"></Button>
-		<Button id="btnNext" class="nextBtn" right="20" bottom="10" title="Next" onClick="showNext"></Button>
-		<Button id="btnFinish" class="nextBtn" right="20" bottom="10" title="Finish" onClick="showAckView" visible="false"></Button>
+		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true" >
+		
+		<!--View id="viewId" layout="vertical" top="20" height="auto"-->
+		<Label id="workoutTitle" font="20" top="10"> </Label>
+		<Label id="eName" left="5" top="40"></Label>
+		<Label id="eDesc" font="30"top="60" ></Label>
+		<!--/View-->
+		<!--View id="viewId2" layout="horizontal" height="auto">
+		<Label left="10" >Weight </Label><Label left="50" color="white" backgroundColor="red">40</Label>
+		</View-->
+		<View id="buttonView">
+			<Button id="btnPrev" class="nextBtn" left="20" bottom="20" title="Previous" onClick="showPrev" visible="false"></Button>
+			<Button id="btnNext" class="nextBtn" right="20" bottom="20" title="Next" onClick="showNext"></Button>
+			<Button id="btnFinish" class="nextBtn" right="20" bottom="20" title="Finish" onClick="showAckView" visible="false"></Button>
 		</View>
+		</ScrollView>
 	</Window>
 	</NavigationWindow>
 </Alloy>

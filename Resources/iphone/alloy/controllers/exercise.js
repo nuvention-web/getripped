@@ -34,54 +34,60 @@ function Controller() {
         id: "exWin",
         backgroundColor: "#bcbcbc"
     });
-    $.__views.viewId = Ti.UI.createView({
-        id: "viewId"
+    $.__views.scrollviewId = Ti.UI.createScrollView({
+        id: "scrollviewId",
+        scrollingEnabled: "true",
+        showVerticalScrollIndicator: "true"
     });
-    $.__views.exWin.add($.__views.viewId);
+    $.__views.exWin.add($.__views.scrollviewId);
     $.__views.workoutTitle = Ti.UI.createLabel({
         text: "",
         id: "workoutTitle",
-        top: "10",
-        font: "20"
+        font: "20",
+        top: "10"
     });
-    $.__views.viewId.add($.__views.workoutTitle);
+    $.__views.scrollviewId.add($.__views.workoutTitle);
     $.__views.eName = Ti.UI.createLabel({
         id: "eName",
-        top: "40",
-        left: "10"
+        left: "5",
+        top: "40"
     });
-    $.__views.viewId.add($.__views.eName);
+    $.__views.scrollviewId.add($.__views.eName);
     $.__views.eDesc = Ti.UI.createLabel({
         id: "eDesc",
-        top: "60",
-        font: "30"
+        font: "30",
+        top: "60"
     });
-    $.__views.viewId.add($.__views.eDesc);
+    $.__views.scrollviewId.add($.__views.eDesc);
+    $.__views.buttonView = Ti.UI.createView({
+        id: "buttonView"
+    });
+    $.__views.scrollviewId.add($.__views.buttonView);
     $.__views.btnPrev = Ti.UI.createButton({
         id: "btnPrev",
         left: "20",
-        bottom: "10",
+        bottom: "20",
         title: "Previous",
         visible: "false"
     });
-    $.__views.viewId.add($.__views.btnPrev);
+    $.__views.buttonView.add($.__views.btnPrev);
     showPrev ? $.__views.btnPrev.addEventListener("click", showPrev) : __defers["$.__views.btnPrev!click!showPrev"] = true;
     $.__views.btnNext = Ti.UI.createButton({
         id: "btnNext",
         right: "20",
-        bottom: "10",
+        bottom: "20",
         title: "Next"
     });
-    $.__views.viewId.add($.__views.btnNext);
+    $.__views.buttonView.add($.__views.btnNext);
     showNext ? $.__views.btnNext.addEventListener("click", showNext) : __defers["$.__views.btnNext!click!showNext"] = true;
     $.__views.btnFinish = Ti.UI.createButton({
         id: "btnFinish",
         right: "20",
-        bottom: "10",
+        bottom: "20",
         title: "Finish",
         visible: "false"
     });
-    $.__views.viewId.add($.__views.btnFinish);
+    $.__views.buttonView.add($.__views.btnFinish);
     showAckView ? $.__views.btnFinish.addEventListener("click", showAckView) : __defers["$.__views.btnFinish!click!showAckView"] = true;
     $.__views.exNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.exWin,
@@ -92,15 +98,18 @@ function Controller() {
     _.extend($, $.__views);
     var eNames = [];
     var eDesc = [];
+    var imgurl = [];
     var index = Alloy.Globals.exCount;
+    imgurl = Alloy.Globals.images;
     eNames = Alloy.Globals.eName;
     eDesc = Alloy.Globals.eDescription;
     $.eName.text = eNames[index];
     $.eDesc.text = "Instructions: " + eDesc[index];
     var exNum = index + 1;
-    $.workoutTitle.text = "Upper Body workout " + exNum + " of " + eNames.length;
+    $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
+    alert(imgurl);
     $.btnPrev.visible = index > 0 ? true : false;
-    if (exNum == eNames.length) {
+    if (8 == exNum) {
         $.btnFinish.visible = true;
         $.btnNext.visible = false;
     } else {

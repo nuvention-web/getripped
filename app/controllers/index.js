@@ -1,8 +1,8 @@
 function showWorkout(){
-	/*var loginReq = Titanium.Network.createHTTPClient();
+	var loginReq = Titanium.Network.createHTTPClient();
         loginReq.open("POST","http://getripped.herokuapp.com/session");
         var user = {
-            password: "123456",
+            password: "1234",
             email: "pri1229@gmail.com"
          };
          
@@ -10,10 +10,10 @@ function showWorkout(){
         
      loginReq.onload = function()
 	{
-    	//var json = this.responseText;
-    	//var response = JSON.parse(json);
-    	//alert(response.logged);
-	}; */
+    	var json = this.responseText;
+    	var response = JSON.parse(json);
+    	//alert(response.message);
+	}; 
 	
 	
     var workoutsWin = Alloy.createController("exercise",{}).getView();
