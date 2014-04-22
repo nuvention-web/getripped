@@ -41,17 +41,20 @@ function Controller() {
     $.__views.workoutTitle = Ti.UI.createLabel({
         text: "",
         id: "workoutTitle",
-        top: "10"
+        top: "10",
+        font: "20"
     });
     $.__views.viewId.add($.__views.workoutTitle);
     $.__views.eName = Ti.UI.createLabel({
         id: "eName",
-        top: "30"
+        top: "40",
+        left: "10"
     });
     $.__views.viewId.add($.__views.eName);
     $.__views.eDesc = Ti.UI.createLabel({
         id: "eDesc",
-        top: "50"
+        top: "60",
+        font: "30"
     });
     $.__views.viewId.add($.__views.eDesc);
     $.__views.btnPrev = Ti.UI.createButton({

@@ -2,7 +2,7 @@
 	<NavigationWindow id="compNavWin">
 	<Window id="exWin" backgroundColor="#bcbcbc">
 		<View id="viewId">
-		<Label top="30" font="50dp">Congratulations! </Label>
+		<Label top="20">Congratulations! </Label>
 		<Label top="60">You've completed today's</Label>
 		<Label top="80">weight training</Label>
 		<Label top="100" left="30">Two things left to do: </Label>
