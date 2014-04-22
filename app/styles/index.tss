@@ -1,0 +1,46 @@
+".container": {
+	backgroundColor:"white",
+	title : "GetRipped",
+	backgroundColor : "grey",
+	fullScreen: false,
+	exitOnClose: true,
+	navBarHidden: false,
+	tabBarHidden: true,
+	font: {
+		fontsize: "32dp",
+		fontWeight: "bold"
+	}
+},
+
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000"
+}, 
+
+".getRippedText": {
+	color: "#000",
+		//height: "30dp",
+		//width: "auto",
+		top: "10dp",
+		font: {
+			fontsize: 16,
+			fontWeight: "bold"
+		}
+},
+
+".demographicText": {
+	width: "150dp",
+	height: "35dp",
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	backgroundColor: "white",
+	color: "black"
+},
+
+".getRippedBtn" : {
+	width: "150dp",
+	top: "340dp",
+	height: "35dp",
+	backgroundColor: "red",
+	color: "white",
+}
