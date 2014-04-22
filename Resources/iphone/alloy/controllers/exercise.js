@@ -9,6 +9,10 @@ function Controller() {
         var workoutsWin = Alloy.createController("exercise", {}).getView();
         $.exNavWin.openWindow(workoutsWin);
     }
+    function showAckView() {
+        var completionWin = Alloy.createController("completion", {}).getView();
+        $.exNavWin.openWindow(completionWin);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "exercise";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -67,6 +71,15 @@ function Controller() {
     });
     $.__views.viewId.add($.__views.btnNext);
     showNext ? $.__views.btnNext.addEventListener("click", showNext) : __defers["$.__views.btnNext!click!showNext"] = true;
+    $.__views.btnFinish = Ti.UI.createButton({
+        id: "btnFinish",
+        right: "20",
+        bottom: "10",
+        title: "Finish",
+        visible: "false"
+    });
+    $.__views.viewId.add($.__views.btnFinish);
+    showAckView ? $.__views.btnFinish.addEventListener("click", showAckView) : __defers["$.__views.btnFinish!click!showAckView"] = true;
     $.__views.exNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.exWin,
         id: "exNavWin"
@@ -84,8 +97,16 @@ function Controller() {
     var exNum = index + 1;
     $.workoutTitle.text = "Upper Body workout " + exNum + " of " + eNames.length;
     $.btnPrev.visible = index > 0 ? true : false;
+    if (exNum == eNames.length) {
+        $.btnFinish.visible = true;
+        $.btnNext.visible = false;
+    } else {
+        $.btnNext.visible = true;
+        $.btnFinish.visible = false;
+    }
     __defers["$.__views.btnPrev!click!showPrev"] && $.__views.btnPrev.addEventListener("click", showPrev);
     __defers["$.__views.btnNext!click!showNext"] && $.__views.btnNext.addEventListener("click", showNext);
+    __defers["$.__views.btnFinish!click!showAckView"] && $.__views.btnFinish.addEventListener("click", showAckView);
     _.extend($, exports);
 }
 

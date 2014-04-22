@@ -7,7 +7,7 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.__alloyId2 = Ti.UI.createWindow({
+    $.__views.__alloyId8 = Ti.UI.createWindow({
         title: "GetRipped",
         backgroundColor: "grey",
         exitOnClose: true,
@@ -15,7 +15,7 @@ function Controller() {
             fontsize: "32dp",
             fontWeight: "bold"
         },
-        id: "__alloyId2"
+        id: "__alloyId8"
     });
     $.__views.label = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
@@ -29,7 +29,7 @@ function Controller() {
         text: "Ready To Get Ripped? Give us some info",
         id: "label"
     });
-    $.__views.__alloyId2.add($.__views.label);
+    $.__views.__alloyId8.add($.__views.label);
     $.__views.txtAge = Ti.UI.createTextField({
         width: "150dp",
         height: "35dp",
@@ -40,7 +40,7 @@ function Controller() {
         hintText: "Age",
         top: "80dp"
     });
-    $.__views.__alloyId2.add($.__views.txtAge);
+    $.__views.__alloyId8.add($.__views.txtAge);
     $.__views.txtGender = Ti.UI.createTextField({
         width: "150dp",
         height: "35dp",
@@ -51,7 +51,7 @@ function Controller() {
         hintText: "Gender(M or F)",
         top: "150dp"
     });
-    $.__views.__alloyId2.add($.__views.txtGender);
+    $.__views.__alloyId8.add($.__views.txtGender);
     $.__views.txtGender = Ti.UI.createTextField({
         width: "150dp",
         height: "35dp",
@@ -62,7 +62,7 @@ function Controller() {
         hintText: "Gender(M or F)",
         top: "150dp"
     });
-    $.__views.__alloyId2.add($.__views.txtGender);
+    $.__views.__alloyId8.add($.__views.txtGender);
     $.__views.txtHeight = Ti.UI.createTextField({
         width: "150dp",
         height: "35dp",
@@ -73,7 +73,7 @@ function Controller() {
         hintText: "Height(e.g 6.4 feet)",
         top: "200dp"
     });
-    $.__views.__alloyId2.add($.__views.txtHeight);
+    $.__views.__alloyId8.add($.__views.txtHeight);
     $.__views.txtWeight = Ti.UI.createTextField({
         width: "150dp",
         height: "35dp",
@@ -84,7 +84,7 @@ function Controller() {
         hintText: "Weight(in Lb)",
         top: "260dp"
     });
-    $.__views.__alloyId2.add($.__views.txtWeight);
+    $.__views.__alloyId8.add($.__views.txtWeight);
     $.__views.btnSubmit = Ti.UI.createButton({
         width: "150dp",
         top: "340dp",
@@ -94,10 +94,10 @@ function Controller() {
         id: "btnSubmit",
         title: "Get Ripped"
     });
-    $.__views.__alloyId2.add($.__views.btnSubmit);
+    $.__views.__alloyId8.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.__alloyId2,
+        window: $.__views.__alloyId8,
         id: "navGroupWin"
     });
     $.__views.navGroupWin && $.addTopLevelView($.__views.navGroupWin);

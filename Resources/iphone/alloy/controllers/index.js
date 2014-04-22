@@ -11,10 +11,10 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.__alloyId1 = Ti.UI.createWindow({
+    $.__views.__alloyId7 = Ti.UI.createWindow({
         backgroundColor: "#bcbcbc",
         title: "Swole Trainer",
-        id: "__alloyId1"
+        id: "__alloyId7"
     });
     $.__views.txtUsername = Ti.UI.createTextField({
         color: "#336699",
@@ -28,7 +28,7 @@ function Controller() {
         top: "10",
         hintText: "Username"
     });
-    $.__views.__alloyId1.add($.__views.txtUsername);
+    $.__views.__alloyId7.add($.__views.txtUsername);
     $.__views.txtPassword = Ti.UI.createTextField({
         color: "#336699",
         left: 10,
@@ -42,7 +42,7 @@ function Controller() {
         passwordMask: "true",
         hintText: "Password"
     });
-    $.__views.__alloyId1.add($.__views.txtPassword);
+    $.__views.__alloyId7.add($.__views.txtPassword);
     $.__views.btnSubmit = Ti.UI.createButton({
         top: 110,
         width: 90,
@@ -58,10 +58,10 @@ function Controller() {
         id: "btnSubmit",
         title: "Login"
     });
-    $.__views.__alloyId1.add($.__views.btnSubmit);
+    $.__views.__alloyId7.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.__alloyId1,
+        window: $.__views.__alloyId7,
         id: "navGroupWin"
     });
     $.__views.navGroupWin && $.addTopLevelView($.__views.navGroupWin);

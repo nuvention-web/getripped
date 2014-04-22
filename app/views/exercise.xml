@@ -7,7 +7,7 @@
 		<Label id="eDesc" top="50"></Label>
 		<Button id="btnPrev" class="nextBtn" left="20" bottom="10" title="Previous" onClick="showPrev" visible="false"></Button>
 		<Button id="btnNext" class="nextBtn" right="20" bottom="10" title="Next" onClick="showNext"></Button>
-		
+		<Button id="btnFinish" class="nextBtn" right="20" bottom="10" title="Finish" onClick="showAckView" visible="false"></Button>
 		</View>
 	</Window>
 	</NavigationWindow>
