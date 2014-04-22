@@ -1,0 +1,10 @@
+<Alloy>
+	<NavigationWindow id="dashBoardNavWin">
+	<Window id="exWin" backgroundColor="#bcbcbc">
+		<View id="viewId">
+		<Label id="workoutTitle" top="10">Dashboard </Label>
+		<Label id="eName" top="30"> Under Construction!</Label>
+		</View>
+	</Window>
+	</NavigationWindow>
+</Alloy>
