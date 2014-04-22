@@ -1,0 +1,1 @@
+module.exports = [{"isId":true,"priority":100000.0005,"key":"exWin","style":{title:"Trainer",fullScreen:false,exitOnClose:true,navBarHidden:true,tabBarHidden:true,font:{fontsize:"32dp",fontWeight:"bold",},}}];
