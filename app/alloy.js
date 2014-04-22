@@ -13,9 +13,12 @@ var url = "https://getripped.herokuapp.com/exercise";
 var jsonObj;
 var exerciseName;
 var exerciseDescription;
-var reps;
-var sets;
+Alloy.Globals.reps = [];
+Alloy.Globals.sets = [];
 Alloy.Globals.eName = [];
+Alloy.Globals.images = [];
+Alloy.Globals.eDescription = [];
+Alloy.Globals.exCount = 0;
 var xhr = Ti.Network.createHTTPClient({
     onload: function(e) {
     	//alert(e);
@@ -27,18 +30,20 @@ var xhr = Ti.Network.createHTTPClient({
         jsonObj = JSON.parse(this.responseText);
        // var nm = json[0].name;
        for (var i = 0; i < jsonObj.length; i++) { 
- 		 exerciseName = jsonObj[i].name;
- 		 exerciseDescription = jsonObj[i].description;
- 		 reps = jsonObj[i].reps;
- 		 sets = jsonObj[i].sets;
+ 		// exerciseName = jsonObj[i].name;
+ 	//	 exerciseDescription = jsonObj[i].description;
+ 		 Alloy.Globals.reps = jsonObj[i].reps;
+ 		 Alloy.Globals.sets = jsonObj[i].sets;
  		 //alert(jsonObj[i].name);
- 		 Alloy.Globals.eName[i] = exerciseName;
- 		 //alert(Alloy.Globals.eName[i]);
+ 		 Alloy.Globals.eName[i] = jsonObj[i].name;
+ 		 Alloy.Globals.images[i] = 'image' + jsonObj[i].image;
+ 		 
+ 		 Alloy.Globals.eDescription[i] = jsonObj[i].description;//alert(Alloy.Globals.eName[i]);
 		}
         //alert(jsonObj.);
         
         //alert(eName);
-        alert('success');
+        //alert('success');
     },
     onerror: function(e) {
 		// this function is called when an error occurs, including a timeout

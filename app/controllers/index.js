@@ -1,5 +1,22 @@
 function showWorkout(){
-    var workoutsWin = Alloy.createController("Workouts",{}).getView();
+	/*var loginReq = Titanium.Network.createHTTPClient();
+        loginReq.open("POST","http://getripped.herokuapp.com/session");
+        var user = {
+            password: "123456",
+            email: "pri1229@gmail.com"
+         };
+         
+        loginReq.send(user);
+        
+     loginReq.onload = function()
+	{
+    	//var json = this.responseText;
+    	//var response = JSON.parse(json);
+    	//alert(response.logged);
+	}; */
+	
+	
+    var workoutsWin = Alloy.createController("exercise",{}).getView();
     if (OS_IOS) {
         $.navGroupWin.openWindow(workoutsWin);
     }

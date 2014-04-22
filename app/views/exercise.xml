@@ -1,0 +1,14 @@
+<Alloy>
+	<NavigationWindow id="exNavWin">
+	<Window id="exWin" backgroundColor="#bcbcbc">
+		<View id="viewId">
+		<Label id="workoutTitle" top="10"> </Label>
+		<Label id="eName" top="30"></Label>
+		<Label id="eDesc" top="50"></Label>
+		<Button id="btnPrev" class="nextBtn" left="20" bottom="10" title="Previous" onClick="showPrev" visible="false"></Button>
+		<Button id="btnNext" class="nextBtn" right="20" bottom="10" title="Next" onClick="showNext"></Button>
+		
+		</View>
+	</Window>
+	</NavigationWindow>
+</Alloy>

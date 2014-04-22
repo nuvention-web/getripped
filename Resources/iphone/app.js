@@ -8,23 +8,28 @@ var exerciseName;
 
 var exerciseDescription;
 
-var reps;
+Alloy.Globals.reps = [];
 
-var sets;
+Alloy.Globals.sets = [];
 
 Alloy.Globals.eName = [];
+
+Alloy.Globals.images = [];
+
+Alloy.Globals.eDescription = [];
+
+Alloy.Globals.exCount = 0;
 
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
         jsonObj = JSON.parse(this.responseText);
         for (var i = 0; jsonObj.length > i; i++) {
-            exerciseName = jsonObj[i].name;
-            exerciseDescription = jsonObj[i].description;
-            reps = jsonObj[i].reps;
-            sets = jsonObj[i].sets;
-            Alloy.Globals.eName[i] = exerciseName;
+            Alloy.Globals.reps = jsonObj[i].reps;
+            Alloy.Globals.sets = jsonObj[i].sets;
+            Alloy.Globals.eName[i] = jsonObj[i].name;
+            Alloy.Globals.images[i] = "image" + jsonObj[i].image;
+            Alloy.Globals.eDescription[i] = jsonObj[i].description;
         }
-        alert("success");
     },
     onerror: function(e) {
         Ti.API.debug(e.error);
