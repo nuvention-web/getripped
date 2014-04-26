@@ -1,17 +1,24 @@
 function Controller() {
-    function showWorkout() {
+    function signupUser() {
+        var fname = $.txtFirstName.value;
+        var lname = $.txtLastName.value;
+        var email_id = $.txtEmail.value;
+        var pass = $.txtPassword.value;
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
-        loginReq.open("POST", "http://getripped.herokuapp.com/session");
+        loginReq.open("POST", "http://localhost:3000/user");
         var user = {
-            password: "1234",
-            email: "pri1229@gmail.com"
+            first_name: fname,
+            last_name: lname,
+            password: pass,
+            email: email_id
         };
+        alert(user);
         loginReq.send(user);
         loginReq.onload = function() {
             var json = this.responseText;
-            JSON.parse(json);
-            alert(Titanium.App.sessionId);
+            var response = JSON.parse(json);
+            alert(response.message);
         };
         var workoutsWin = Alloy.createController("exercise", {}).getView();
         $.navGroupWin.openWindow(workoutsWin);
@@ -25,12 +32,45 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.__alloyId22 = Ti.UI.createWindow({
-        backgroundColor: "#bcbcbc",
-        backgroundImage: "gym.jpg",
-        title: "Swole Trainer",
+        title: "SwoleTrain",
+        fullScreen: false,
+        exitOnClose: true,
+        navBarHidden: false,
+        tabBarHidden: true,
+        font: {
+            fontsize: "32dp",
+            fontWeight: "bold"
+        },
+        backgroundColor: "white",
         id: "__alloyId22"
     });
-    $.__views.txtUsername = Ti.UI.createTextField({
+    $.__views.mainView = Ti.UI.createScrollView({
+        id: "mainView",
+        layout: "vertical",
+        scrollingEnabled: "true",
+        showVerticalScrollIndicator: "true"
+    });
+    $.__views.__alloyId22.add($.__views.mainView);
+    $.__views.label = Ti.UI.createLabel({
+        width: Ti.UI.SIZE,
+        height: Ti.UI.SIZE,
+        color: "#000",
+        top: "10dp",
+        font: {
+            fontsize: 16,
+            fontWeight: "bold"
+        },
+        text: "Ready To Get swole? Give us some info",
+        id: "label"
+    });
+    $.__views.mainView.add($.__views.label);
+    $.__views.view1 = Ti.UI.createView({
+        id: "view1",
+        layout: "vertical",
+        height: "SIZE"
+    });
+    $.__views.mainView.add($.__views.view1);
+    $.__views.txtFirstName = Ti.UI.createTextField({
         color: "#336699",
         left: 10,
         width: 300,
@@ -38,12 +78,37 @@ function Controller() {
         keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "txtUsername",
+        id: "txtFirstName",
         top: "10",
-        opacity: "1",
-        hintText: "Username"
+        hintText: "First Name"
     });
-    $.__views.__alloyId22.add($.__views.txtUsername);
+    $.__views.view1.add($.__views.txtFirstName);
+    $.__views.txtLastName = Ti.UI.createTextField({
+        color: "#336699",
+        left: 10,
+        width: 300,
+        height: 40,
+        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+        returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
+        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+        id: "txtLastName",
+        top: "10",
+        hintText: "Last Name"
+    });
+    $.__views.view1.add($.__views.txtLastName);
+    $.__views.txtEmail = Ti.UI.createTextField({
+        color: "#336699",
+        left: 10,
+        width: 300,
+        height: 40,
+        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+        returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
+        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+        id: "txtEmail",
+        top: "10",
+        hintText: "Email"
+    });
+    $.__views.view1.add($.__views.txtEmail);
     $.__views.txtPassword = Ti.UI.createTextField({
         color: "#336699",
         left: 10,
@@ -53,30 +118,97 @@ function Controller() {
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtPassword",
-        top: "60",
-        opacity: "1",
+        top: "10",
         passwordMask: "true",
         hintText: "Password"
     });
-    $.__views.__alloyId22.add($.__views.txtPassword);
-    $.__views.btnSubmit = Ti.UI.createButton({
-        top: 110,
-        width: 90,
-        height: 35,
-        borderRadius: 1,
-        backgroundColor: "blue",
-        color: "white",
-        font: {
-            fontFamily: "Arial",
-            fontWeight: "bold",
-            fontSize: 14
-        },
-        id: "btnSubmit",
-        title: "Login",
-        opacity: "1"
+    $.__views.view1.add($.__views.txtPassword);
+    $.__views.view2 = Ti.UI.createView({
+        id: "view2",
+        layout: "horizontal",
+        height: "SIZE",
+        top: "10"
     });
-    $.__views.__alloyId22.add($.__views.btnSubmit);
-    showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
+    $.__views.mainView.add($.__views.view2);
+    $.__views.txtAge = Ti.UI.createTextField({
+        width: "120dp",
+        height: "35dp",
+        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+        backgroundColor: "white",
+        color: "black",
+        id: "txtAge",
+        left: "30",
+        hintText: "Age"
+    });
+    $.__views.view2.add($.__views.txtAge);
+    $.__views.txtGender = Ti.UI.createTextField({
+        width: "120dp",
+        height: "35dp",
+        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+        backgroundColor: "white",
+        color: "black",
+        id: "txtGender",
+        left: "10",
+        hintText: "Gender(M/F)"
+    });
+    $.__views.view2.add($.__views.txtGender);
+    $.__views.view3 = Ti.UI.createView({
+        id: "view3",
+        layout: "horizontal",
+        height: "SIZE",
+        top: "10"
+    });
+    $.__views.mainView.add($.__views.view3);
+    $.__views.txtHeight = Ti.UI.createTextField({
+        width: "120dp",
+        height: "35dp",
+        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+        backgroundColor: "white",
+        color: "black",
+        id: "txtHeight",
+        left: "30",
+        hintText: "Height"
+    });
+    $.__views.view3.add($.__views.txtHeight);
+    $.__views.txtWeight = Ti.UI.createTextField({
+        width: "120dp",
+        height: "35dp",
+        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+        backgroundColor: "white",
+        color: "black",
+        id: "txtWeight",
+        left: "10",
+        hintText: "Weight"
+    });
+    $.__views.view3.add($.__views.txtWeight);
+    $.__views.view4 = Ti.UI.createView({
+        id: "view4",
+        height: "SIZE",
+        top: "20"
+    });
+    $.__views.mainView.add($.__views.view4);
+    $.__views.btnSubmit = Ti.UI.createButton({
+        width: "150dp",
+        height: "35dp",
+        backgroundColor: "red",
+        color: "white",
+        id: "btnSubmit",
+        verticalAlign: "center",
+        title: "SignUp"
+    });
+    $.__views.view4.add($.__views.btnSubmit);
+    signupUser ? $.__views.btnSubmit.addEventListener("click", signupUser) : __defers["$.__views.btnSubmit!click!signupUser"] = true;
+    $.__views.view5 = Ti.UI.createView({
+        id: "view5",
+        height: "SIZE",
+        top: "20"
+    });
+    $.__views.mainView.add($.__views.view5);
+    $.__views.btnUser = Ti.UI.createButton({
+        id: "btnUser",
+        title: "Already a user? Sign in here."
+    });
+    $.__views.view5.add($.__views.btnUser);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.__alloyId22,
         id: "navGroupWin"
@@ -85,7 +217,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.navGroupWin.open();
-    __defers["$.__views.btnSubmit!click!showWorkout"] && $.__views.btnSubmit.addEventListener("click", showWorkout);
+    __defers["$.__views.btnSubmit!click!signupUser"] && $.__views.btnSubmit.addEventListener("click", signupUser);
     _.extend($, exports);
 }
 

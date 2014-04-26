@@ -1,10 +1,29 @@
 <Alloy>
 	<NavigationWindow id="navGroupWin">
-	<Window backgroundColor="#bcbcbc" backgroundImage="gym.jpg"  title="Swole Trainer">
-		<TextField id="txtUsername" class="txtFieldLogin" top="10" opacity="1" hintText="Username"></TextField>
-		<TextField id="txtPassword" class="txtFieldLogin" top="60" opacity="1" passwordMask="true"  hintText="Password"></TextField>
-	
-		<Button id="btnSubmit" class="loginBtn" title="Login" opacity="1" onClick="showWorkout"></Button>
+	<Window class="container" backgroundColor="white">
+		<ScrollView id="mainView" layout="vertical" scrollingEnabled="true" showVerticalScrollIndicator="true">
+		<Label id="label" class="getRippedText">Ready To Get swole? Give us some info</Label>
+		<View id="view1" layout="vertical" height="SIZE">
+			<TextField id="txtFirstName" class="txtFieldLogin" top="10" hintText="First Name"></TextField>
+			<TextField id="txtLastName" class="txtFieldLogin" top="10" hintText="Last Name"></TextField>
+			<TextField id="txtEmail" class="txtFieldLogin" top="10" hintText="Email"></TextField>
+			<TextField id="txtPassword" class="txtFieldLogin" top="10" passwordMask="true"  hintText="Password"></TextField>
+		</View>
+		<View id="view2" layout="horizontal" height="SIZE" top="10">
+			<TextField id="txtAge" class="demographicText" left="30" hintText="Age" ></TextField>
+			<TextField id="txtGender" class="demographicText" left="10" hintText="Gender(M/F)" ></TextField>
+		</View>
+		<View id="view3" layout="horizontal" height="SIZE" top="10">
+		<TextField id="txtHeight" class="demographicText" left="30" hintText="Height"></TextField>
+		<TextField id="txtWeight" class="demographicText" left="10" hintText="Weight"></TextField>
+		</View>
+		<View id="view4" height="SIZE" top="20">
+		<Button id="btnSubmit" class="getRippedBtn" verticalAlign="center" title="SignUp" onClick="signupUser"></Button>
+		</View>
+		<View id="view5" height="SIZE" top="20">
+		<Button id="btnUser" title="Already a user? Sign in here."></Button>
+		</View>
+		</ScrollView>
 	</Window>
 	 </NavigationWindow>
 </Alloy>

@@ -1,19 +1,26 @@
-function showWorkout(){
-	var loginReq = Titanium.Network.createHTTPClient();
+function signupUser(){
+
+	var fname = $.txtFirstName.value;
+	var lname = $.txtLastName.value;
+	var email_id = $.txtEmail.value;
+	var pass = $.txtPassword.value;
+	var loginReq = Titanium.Network.createHTTPClient();	
         loginReq.withCredentials = true;	
-        loginReq.open("POST","http://getripped.herokuapp.com/session");
-        var user = {
-            password: "1234",
-            email: "pri1229@gmail.com"
+        loginReq.open("POST","http://getripped.herokuapp.com/user");
+        var user = { 
+        	first_name: fname,
+        	last_name: lname,     	 		
+            password: pass,
+            email: email_id
          };
-         
+         alert(user);
         loginReq.send(user);
         
      loginReq.onload = function()
 	{
     	var json = this.responseText;
     	var response = JSON.parse(json);
-    	alert(Titanium.App.sessionId);
+    	alert(response.message);
 	}; 
 	
 	
