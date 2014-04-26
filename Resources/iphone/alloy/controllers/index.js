@@ -1,6 +1,7 @@
 function Controller() {
     function showWorkout() {
         var loginReq = Titanium.Network.createHTTPClient();
+        loginReq.withCredentials = true;
         loginReq.open("POST", "http://getripped.herokuapp.com/session");
         var user = {
             password: "1234",
@@ -10,6 +11,7 @@ function Controller() {
         loginReq.onload = function() {
             var json = this.responseText;
             JSON.parse(json);
+            alert(Titanium.App.sessionId);
         };
         var workoutsWin = Alloy.createController("exercise", {}).getView();
         $.navGroupWin.openWindow(workoutsWin);
@@ -22,11 +24,11 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.__alloyId7 = Ti.UI.createWindow({
+    $.__views.__alloyId22 = Ti.UI.createWindow({
         backgroundColor: "#bcbcbc",
         backgroundImage: "gym.jpg",
         title: "Swole Trainer",
-        id: "__alloyId7"
+        id: "__alloyId22"
     });
     $.__views.txtUsername = Ti.UI.createTextField({
         color: "#336699",
@@ -41,7 +43,7 @@ function Controller() {
         opacity: "1",
         hintText: "Username"
     });
-    $.__views.__alloyId7.add($.__views.txtUsername);
+    $.__views.__alloyId22.add($.__views.txtUsername);
     $.__views.txtPassword = Ti.UI.createTextField({
         color: "#336699",
         left: 10,
@@ -56,7 +58,7 @@ function Controller() {
         passwordMask: "true",
         hintText: "Password"
     });
-    $.__views.__alloyId7.add($.__views.txtPassword);
+    $.__views.__alloyId22.add($.__views.txtPassword);
     $.__views.btnSubmit = Ti.UI.createButton({
         top: 110,
         width: 90,
@@ -73,10 +75,10 @@ function Controller() {
         title: "Login",
         opacity: "1"
     });
-    $.__views.__alloyId7.add($.__views.btnSubmit);
+    $.__views.__alloyId22.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.__alloyId7,
+        window: $.__views.__alloyId22,
         id: "navGroupWin"
     });
     $.__views.navGroupWin && $.addTopLevelView($.__views.navGroupWin);

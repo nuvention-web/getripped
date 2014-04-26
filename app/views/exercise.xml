@@ -2,19 +2,42 @@
 	<NavigationWindow id="exNavWin">
 	<Window id="exWin" backgroundColor="#bcbcbc">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true" >
-		
-		<!--View id="viewId" layout="vertical" top="20" height="auto"-->
-		<Label id="workoutTitle" font="20" top="10"> </Label>
-		<Label id="eName" left="5" top="40"></Label>
-		<Label id="eDesc" font="30"top="60" ></Label>
-		<!--/View-->
-		<!--View id="viewId2" layout="horizontal" height="auto">
-		<Label left="10" >Weight </Label><Label left="50" color="white" backgroundColor="red">40</Label>
-		</View-->
-		<View id="buttonView">
-			<Button id="btnPrev" class="nextBtn" left="20" bottom="20" title="Previous" onClick="showPrev" visible="false"></Button>
-			<Button id="btnNext" class="nextBtn" right="20" bottom="20" title="Next" onClick="showNext"></Button>
-			<Button id="btnFinish" class="nextBtn" right="20" bottom="20" title="Finish" onClick="showAckView" visible="false"></Button>
+		<View id="mainView" layout="vertical">
+			<View id="viewId" layout="vertical" height="SIZE">
+				<Label id="workoutTitle" font="20" top="10"> </Label>
+				<Label id="eName" left="5" top="40"></Label>
+				<Label id="eDesc" font="30" top="60" ></Label>
+			</View>
+			<View id="viewId2" layout="horizontal" height="SIZE">
+				<Label left="10" >Weight </Label>
+				<TextField class="txtClass" left="50" color="red" value="40"></TextField>
+			</View>
+			<View id="viewId3" layout="horizontal" height="SIZE">
+				<Label left="20">Recommended</Label><Label left="80">Reps</Label>
+			</View>
+			<View id="viewId4" layout="horizontal" height="SIZE">
+				<Label left="30">Reps</Label><Label left="70">Completed</Label>
+			</View>
+			<View id="viewId5" layout="horizontal" height="SIZE">
+				<Label left="30">Set 1</Label>
+				<Label class="txtClass" left="40" text="12"></Label>
+				<TextField class="txtClass" left="80"></TextField>
+			</View>
+			<View id="viewId6" layout="horizontal" height="SIZE">
+				<Label left="30">Set 1</Label>
+				<Label class="txtClass" left="40" text="12"></Label>
+				<TextField class="txtClass" left="80"></TextField>
+			</View>
+			<View id="viewId7" layout="horizontal" height="SIZE">
+				<Label left="30">Set 1</Label>
+				<Label class="txtClass" left="40" text="12"></Label>
+				<TextField class="txtClass" left="80"></TextField>
+			</View>
+			<View id="buttonView" layout="horizontal" backgroundColor="yellow" bottom="20">
+				<Button id="btnPrev" class="nextBtn" left="20" bottom="20" title="Previous" onClick="showPrev" visible="false"></Button>
+				<Button id="btnNext" class="nextBtn" right="20" bottom="20" title="Next" onClick="showNext"></Button>
+				<Button id="btnFinish" class="nextBtn" right="20" bottom="20" title="Finish" onClick="showAckView" visible="false"></Button>
+			</View>
 		</View>
 		</ScrollView>
 	</Window>

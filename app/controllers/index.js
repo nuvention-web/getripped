@@ -1,5 +1,6 @@
 function showWorkout(){
 	var loginReq = Titanium.Network.createHTTPClient();
+        loginReq.withCredentials = true;	
         loginReq.open("POST","http://getripped.herokuapp.com/session");
         var user = {
             password: "1234",
@@ -12,7 +13,7 @@ function showWorkout(){
 	{
     	var json = this.responseText;
     	var response = JSON.parse(json);
-    	//alert(response.message);
+    	alert(Titanium.App.sessionId);
 	}; 
 	
 	

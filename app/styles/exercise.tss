@@ -9,3 +9,16 @@
 		fontWeight: "bold"
 	}
 }
+
+".txtClass": {
+	//backgroundColor:'red',
+    width:50,
+    height:40,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+    font: {
+		fontWeight: "bold",
+	},
+    borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+    color:'red'
+    
+}
