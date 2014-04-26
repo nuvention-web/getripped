@@ -11,6 +11,7 @@ images = [
 "dumbellpress.jpg"
 ]
 
+weights = [20, 30, 40, 50, 60]
 
 CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |row|
 		Exercise.create(
@@ -23,3 +24,12 @@ CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |
 		)
 end
 
+10.times do 
+	Attempt.create(
+		user: User.first,
+		exercise: Exercise.all.sample,
+		weight: weights.sample,
+		reps1: rand(8) + 1,
+		reps2: rand(8) + 1,
+		reps3: rand(8) + 1)
+end
