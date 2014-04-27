@@ -1,4 +1,5 @@
 class AttemptController < ApplicationController
+skip_before_filter :verify_authenticity_token
 
 	def create
 		attempt = Attempt.new(user_id: params[:user_id], 
@@ -9,10 +10,10 @@ class AttemptController < ApplicationController
 			          reps3: params[:reps3])
 		if attempt
 			attempt.save
-			result = {message: "creation success"}
+			result = {message: "succeeded"}
 			render json: result
 		else
-			result = {message: "creation failure"}
+			result = {message: "failed"}
 			render json: result
 		end
 	end
@@ -22,9 +23,9 @@ class AttemptController < ApplicationController
 		last_attempt = exercise.attempts.last
 		if last_attempt
 			response = {weight: last_attempt.weight,
-								reps1: last_attempt.reps1,
-								reps2: last_attempt.reps2,
-								reps3: last_attempt.reps3}
+									reps1: last_attempt.reps1,
+									reps2: last_attempt.reps2,
+									reps3: last_attempt.reps3}
 			render json: response
 		else
 			response = {message: "No attempts."}

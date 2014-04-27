@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+skip_before_filter :verify_authenticity_token
 
 	def create
 		user = User.new(first_name: params[:first_name], 
@@ -8,10 +9,10 @@ class UserController < ApplicationController
 											 )
 		if user
 			user.save
-			result = {message: "creation success"}
+			result = {message: "succeeded"}
 			render json: result
 		else
-			result = {message: "creation failure"}
+			result = {message: "failed"}
 			render json: result
 		end
 	end
