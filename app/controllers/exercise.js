@@ -8,10 +8,11 @@ eNames = Alloy.Globals.eName;
 eDesc = Alloy.Globals.eDescription;
 $.eName.text = eNames[index];
 $.eDesc.text = "Instructions: " + eDesc[index];
+$.imgId.image = imgurl[index];
 var exNum = index + 1;
 $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
 
-//alert(imgurl);
+alert(imgurl[index]);
 if (index > 0) {
 	$.btnPrev.visible = true;
 }
@@ -34,6 +35,32 @@ else {
 //}
 function showNext(){
 	//alert(Alloy.Globals.exCount);
+	var exId = exNum;
+	var userId = 1;
+	var weightText = $.txtWeight.value;
+	var set1Text = $.txtSet1.value;
+	var set2Text = $.txtSet2.value;
+	var set3Text = $.txtSet3.value;
+	
+	var exAttempt = Titanium.Network.createHTTPClient();		
+        exAttempt.open("POST","http://getripped.herokuapp.com/exercise/"+exId+"/attempt");
+        var userEx = { 
+        	user_id: userId,
+			weight: weightText,
+			reps1: set1Text,
+			reps2: set2Text,
+			reps3: set3Text 
+         };
+         alert(userEx);
+        exAttempt.send(userEx);
+        
+     exAttempt.onload = function()
+	{
+    	var json = this.responseText;
+    	var response = JSON.parse(json);
+    	alert(response.message);
+	};
+	
 	Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
 	var workoutsWin = Alloy.createController("exercise",{}).getView();
     if (OS_IOS) {

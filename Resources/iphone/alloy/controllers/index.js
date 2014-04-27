@@ -23,6 +23,10 @@ function Controller() {
         var workoutsWin = Alloy.createController("exercise", {}).getView();
         $.navGroupWin.openWindow(workoutsWin);
     }
+    function openLogin() {
+        var loginWin = Alloy.createController("signIn", {}).getView();
+        $.navGroupWin.openWindow(loginWin);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -31,7 +35,7 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.__alloyId22 = Ti.UI.createWindow({
+    $.__views.__alloyId18 = Ti.UI.createWindow({
         title: "SwoleTrain",
         fullScreen: false,
         exitOnClose: true,
@@ -42,7 +46,7 @@ function Controller() {
             fontWeight: "bold"
         },
         backgroundColor: "white",
-        id: "__alloyId22"
+        id: "__alloyId18"
     });
     $.__views.mainView = Ti.UI.createScrollView({
         id: "mainView",
@@ -50,7 +54,7 @@ function Controller() {
         scrollingEnabled: "true",
         showVerticalScrollIndicator: "true"
     });
-    $.__views.__alloyId22.add($.__views.mainView);
+    $.__views.__alloyId18.add($.__views.mainView);
     $.__views.label = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -209,8 +213,9 @@ function Controller() {
         title: "Already a user? Sign in here."
     });
     $.__views.view5.add($.__views.btnUser);
+    openLogin ? $.__views.btnUser.addEventListener("click", openLogin) : __defers["$.__views.btnUser!click!openLogin"] = true;
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.__alloyId22,
+        window: $.__views.__alloyId18,
         id: "navGroupWin"
     });
     $.__views.navGroupWin && $.addTopLevelView($.__views.navGroupWin);
@@ -218,6 +223,7 @@ function Controller() {
     _.extend($, $.__views);
     $.navGroupWin.open();
     __defers["$.__views.btnSubmit!click!signupUser"] && $.__views.btnSubmit.addEventListener("click", signupUser);
+    __defers["$.__views.btnUser!click!openLogin"] && $.__views.btnUser.addEventListener("click", openLogin);
     _.extend($, exports);
 }
 

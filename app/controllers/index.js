@@ -6,7 +6,7 @@ function signupUser(){
 	var pass = $.txtPassword.value;
 	var loginReq = Titanium.Network.createHTTPClient();	
         loginReq.withCredentials = true;	
-        loginReq.open("POST","http://getripped.herokuapp.com/user");
+        loginReq.open("POST","http://localhost:3000/user");
         var user = { 
         	first_name: fname,
         	last_name: lname,     	 		
@@ -30,6 +30,16 @@ function signupUser(){
     }
     if (OS_ANDROID) {
         workouts.open();
+    }
+}
+
+function openLogin() {
+	var loginWin = Alloy.createController("signIn",{}).getView();
+    if (OS_IOS) {
+        $.navGroupWin.openWindow(loginWin);
+    }
+    if (OS_ANDROID) {
+        loginWin.open();
     }
 }
 
