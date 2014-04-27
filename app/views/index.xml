@@ -1,29 +1,37 @@
 <Alloy>
-	<NavigationWindow id="navGroupWin">
-	<Window class="container" backgroundColor="white">
-		<ScrollView id="mainView" layout="vertical" scrollingEnabled="true" showVerticalScrollIndicator="true">
-		<Label id="label" class="getRippedText">Ready To Get swole? Give us some info</Label>
-		<View id="view1" layout="vertical" height="SIZE">
-			<TextField id="txtFirstName" class="txtFieldLogin" top="10" hintText="First Name"></TextField>
-			<TextField id="txtLastName" class="txtFieldLogin" top="10" hintText="Last Name"></TextField>
-			<TextField id="txtEmail" class="txtFieldLogin" top="10" hintText="Email"></TextField>
-			<TextField id="txtPassword" class="txtFieldLogin" top="10" passwordMask="true"  hintText="Password"></TextField>
+	<!--NavigationWindow id="navGroupWin"-->
+	<Window id="indexWin" class="container" backgroundColor="white"  backgroundImage="texture.jpg">
+		
+		<ScrollView layout="vertical">
+			<Toolbar platform="ios" top="15" borderTop="true" borderBottom="true">
+
+            <!-- The Items tag sets the Toolbar.items property. -->
+            <Items>
+                <Label id="titleLabel" class="titleLabel" verticalAlign="center">SwoleTrain</Label>
+            </Items>
+
+            <!-- Place additional views for the Toolbar here. -->
+
+        </Toolbar>
+		<ScrollableView id="mainView" height="70%" width="100%"  showPagingControl="true" top="15">
+		<View id="view1" height="100%" width="100%">
+			<ImageView image="img1.png"></ImageView>
 		</View>
-		<View id="view2" layout="horizontal" height="SIZE" top="10">
-			<TextField id="txtAge" class="demographicText" left="30" hintText="Age" ></TextField>
-			<TextField id="txtGender" class="demographicText" left="10" hintText="Gender(M/F)" ></TextField>
+		<View id="view2" height="100%" width="100%" >
+			<ImageView image="img2.png"></ImageView>
 		</View>
-		<View id="view3" layout="horizontal" height="SIZE" top="10">
-		<TextField id="txtHeight" class="demographicText" left="30" hintText="Height"></TextField>
-		<TextField id="txtWeight" class="demographicText" left="10" hintText="Weight"></TextField>
+		<View id="view3"  height="100%" width="100%">
+		<ImageView image="img3.png"></ImageView>
 		</View>
-		<View id="view4" height="SIZE" top="20">
+		</ScrollableView>
+		<View id="view4" height="SIZE" top="5">
 		<Button id="btnSubmit" class="getRippedBtn" verticalAlign="center" title="SignUp" onClick="signupUser"></Button>
 		</View>
-		<View id="view5" height="SIZE" top="20">
+		<View id="view5" height="SIZE" top="5">
 		<Button id="btnUser" title="Already a user? Sign in here." onClick="openLogin"></Button>
-		</View>
+		</View>		
 		</ScrollView>
+		   
 	</Window>
-	 </NavigationWindow>
+	 <!--/NavigationWindow-->
 </Alloy>

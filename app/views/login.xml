@@ -1,0 +1,10 @@
+<Alloy>
+	<NavigationWindow id="navGroupWin">
+	<Window id="loginWin" backgroundColor="#bcbcbc" backgroundImage="texture.jpg" title="Login">
+		<TextField id="txtUsername" class="txtFieldLogin" top="10" opacity="1" hintText="Username"></TextField>
+		<TextField id="txtPassword" class="txtFieldLogin" top="60" opacity="1" passwordMask="true"  hintText="Password"></TextField>
+	
+		<Button id="btnSubmit" class="loginBtn" title="Login" opacity="1" onClick="showWorkout"></Button>
+	</Window>
+	 </NavigationWindow>
+</Alloy>

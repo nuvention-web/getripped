@@ -27,7 +27,7 @@ var xhr = Ti.Network.createHTTPClient({
             Alloy.Globals.reps = jsonObj[i].reps;
             Alloy.Globals.sets = jsonObj[i].sets;
             Alloy.Globals.eName[i] = jsonObj[i].name;
-            Alloy.Globals.images[i] = "images" + jsonObj[i].image;
+            Alloy.Globals.images[i] = "images/" + jsonObj[i].image;
             Alloy.Globals.eDescription[i] = jsonObj[i].description;
         }
     },

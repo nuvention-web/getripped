@@ -1,50 +1,25 @@
+//alert($.titleLabel.text);
+//$.indexWin.setTitle = $.titleLabel.text;
+
 function signupUser(){
 
-	var fname = $.txtFirstName.value;
-	var lname = $.txtLastName.value;
-	var email_id = $.txtEmail.value;
-	var pass = $.txtPassword.value;
-	var loginReq = Titanium.Network.createHTTPClient();	
-        loginReq.withCredentials = true;	
-        loginReq.open("POST","http://localhost:3000/user");
-        var user = { 
-        	first_name: fname,
-        	last_name: lname,     	 		
-            password: pass,
-            email: email_id
-         };
-         alert(user);
-        loginReq.send(user);
-        
-     loginReq.onload = function()
-	{
-    	var json = this.responseText;
-    	var response = JSON.parse(json);
-    	alert(response.message);
-	}; 
-	
-	
-    var workoutsWin = Alloy.createController("exercise",{}).getView();
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(workoutsWin);
-    }
-    if (OS_ANDROID) {
-        workouts.open();
-    }
+    var signUp = Alloy.createController("signup",{}).getView();
+    signUp.open();
 }
 
 function openLogin() {
-	var loginWin = Alloy.createController("signIn",{}).getView();
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(loginWin);
+	var loginWin = Alloy.createController("login",{}).getView();
+	loginWin.open();
+    /*if (OS_IOS) {
+        $.indexWin.openWindow(loginWin);
     }
     if (OS_ANDROID) {
         loginWin.open();
-    }
+    }*/
 }
 
 if(OS_IOS) { 
-   $.navGroupWin.open();
+   $.indexWin.open();
 } 
 if (OS_ANDROID) { 
    $.index.open(); 

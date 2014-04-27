@@ -1,31 +1,11 @@
 function Controller() {
     function signupUser() {
-        var fname = $.txtFirstName.value;
-        var lname = $.txtLastName.value;
-        var email_id = $.txtEmail.value;
-        var pass = $.txtPassword.value;
-        var loginReq = Titanium.Network.createHTTPClient();
-        loginReq.withCredentials = true;
-        loginReq.open("POST", "http://localhost:3000/user");
-        var user = {
-            first_name: fname,
-            last_name: lname,
-            password: pass,
-            email: email_id
-        };
-        alert(user);
-        loginReq.send(user);
-        loginReq.onload = function() {
-            var json = this.responseText;
-            var response = JSON.parse(json);
-            alert(response.message);
-        };
-        var workoutsWin = Alloy.createController("exercise", {}).getView();
-        $.navGroupWin.openWindow(workoutsWin);
+        var signUp = Alloy.createController("signup", {}).getView();
+        signUp.open();
     }
     function openLogin() {
-        var loginWin = Alloy.createController("signIn", {}).getView();
-        $.navGroupWin.openWindow(loginWin);
+        var loginWin = Alloy.createController("login", {}).getView();
+        loginWin.open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
@@ -35,162 +15,105 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.__alloyId18 = Ti.UI.createWindow({
-        title: "SwoleTrain",
+    $.__views.indexWin = Ti.UI.createWindow({
         fullScreen: false,
         exitOnClose: true,
-        navBarHidden: false,
+        navBarHidden: true,
         tabBarHidden: true,
         font: {
-            fontsize: "32dp",
+            fontsize: "48dp",
             fontWeight: "bold"
         },
+        color: "red",
+        id: "indexWin",
         backgroundColor: "white",
+        backgroundImage: "texture.jpg"
+    });
+    $.__views.indexWin && $.addTopLevelView($.__views.indexWin);
+    $.__views.__alloyId18 = Ti.UI.createScrollView({
+        layout: "vertical",
         id: "__alloyId18"
     });
-    $.__views.mainView = Ti.UI.createScrollView({
-        id: "mainView",
-        layout: "vertical",
-        scrollingEnabled: "true",
-        showVerticalScrollIndicator: "true"
-    });
-    $.__views.__alloyId18.add($.__views.mainView);
-    $.__views.label = Ti.UI.createLabel({
+    $.__views.indexWin.add($.__views.__alloyId18);
+    var __alloyId21 = [];
+    $.__views.titleLabel = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
-        top: "10dp",
+        top: 10,
+        textAlign: "center",
         font: {
-            fontsize: 16,
+            fontFamily: "Trebuchet MS",
+            fontSize: 20,
             fontWeight: "bold"
         },
-        text: "Ready To Get swole? Give us some info",
-        id: "label"
+        shadowColor: "#eee",
+        shadowOffset: {
+            x: 0,
+            y: 1
+        },
+        text: "SwoleTrain",
+        id: "titleLabel",
+        verticalAlign: "center"
     });
-    $.__views.mainView.add($.__views.label);
+    __alloyId21.push($.__views.titleLabel);
+    $.__views.__alloyId19 = Ti.UI.iOS.createToolbar({
+        items: __alloyId21,
+        top: "15",
+        borderTop: "true",
+        borderBottom: "true",
+        id: "__alloyId19"
+    });
+    $.__views.__alloyId18.add($.__views.__alloyId19);
+    var __alloyId22 = [];
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
-        layout: "vertical",
-        height: "SIZE"
+        height: "100%",
+        width: "100%"
     });
-    $.__views.mainView.add($.__views.view1);
-    $.__views.txtFirstName = Ti.UI.createTextField({
-        color: "#336699",
-        left: 10,
-        width: 300,
-        height: 40,
-        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
-        returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "txtFirstName",
-        top: "10",
-        hintText: "First Name"
+    __alloyId22.push($.__views.view1);
+    $.__views.__alloyId23 = Ti.UI.createImageView({
+        image: "img1.png",
+        id: "__alloyId23"
     });
-    $.__views.view1.add($.__views.txtFirstName);
-    $.__views.txtLastName = Ti.UI.createTextField({
-        color: "#336699",
-        left: 10,
-        width: 300,
-        height: 40,
-        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
-        returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "txtLastName",
-        top: "10",
-        hintText: "Last Name"
-    });
-    $.__views.view1.add($.__views.txtLastName);
-    $.__views.txtEmail = Ti.UI.createTextField({
-        color: "#336699",
-        left: 10,
-        width: 300,
-        height: 40,
-        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
-        returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "txtEmail",
-        top: "10",
-        hintText: "Email"
-    });
-    $.__views.view1.add($.__views.txtEmail);
-    $.__views.txtPassword = Ti.UI.createTextField({
-        color: "#336699",
-        left: 10,
-        width: 300,
-        height: 40,
-        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
-        returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "txtPassword",
-        top: "10",
-        passwordMask: "true",
-        hintText: "Password"
-    });
-    $.__views.view1.add($.__views.txtPassword);
+    $.__views.view1.add($.__views.__alloyId23);
     $.__views.view2 = Ti.UI.createView({
         id: "view2",
-        layout: "horizontal",
-        height: "SIZE",
-        top: "10"
+        height: "100%",
+        width: "100%"
     });
-    $.__views.mainView.add($.__views.view2);
-    $.__views.txtAge = Ti.UI.createTextField({
-        width: "120dp",
-        height: "35dp",
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        backgroundColor: "white",
-        color: "black",
-        id: "txtAge",
-        left: "30",
-        hintText: "Age"
+    __alloyId22.push($.__views.view2);
+    $.__views.__alloyId24 = Ti.UI.createImageView({
+        image: "img2.png",
+        id: "__alloyId24"
     });
-    $.__views.view2.add($.__views.txtAge);
-    $.__views.txtGender = Ti.UI.createTextField({
-        width: "120dp",
-        height: "35dp",
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        backgroundColor: "white",
-        color: "black",
-        id: "txtGender",
-        left: "10",
-        hintText: "Gender(M/F)"
-    });
-    $.__views.view2.add($.__views.txtGender);
+    $.__views.view2.add($.__views.__alloyId24);
     $.__views.view3 = Ti.UI.createView({
         id: "view3",
-        layout: "horizontal",
-        height: "SIZE",
-        top: "10"
+        height: "100%",
+        width: "100%"
     });
-    $.__views.mainView.add($.__views.view3);
-    $.__views.txtHeight = Ti.UI.createTextField({
-        width: "120dp",
-        height: "35dp",
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        backgroundColor: "white",
-        color: "black",
-        id: "txtHeight",
-        left: "30",
-        hintText: "Height"
+    __alloyId22.push($.__views.view3);
+    $.__views.__alloyId25 = Ti.UI.createImageView({
+        image: "img3.png",
+        id: "__alloyId25"
     });
-    $.__views.view3.add($.__views.txtHeight);
-    $.__views.txtWeight = Ti.UI.createTextField({
-        width: "120dp",
-        height: "35dp",
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        backgroundColor: "white",
-        color: "black",
-        id: "txtWeight",
-        left: "10",
-        hintText: "Weight"
+    $.__views.view3.add($.__views.__alloyId25);
+    $.__views.mainView = Ti.UI.createScrollableView({
+        views: __alloyId22,
+        id: "mainView",
+        height: "70%",
+        width: "100%",
+        showPagingControl: "true",
+        top: "15"
     });
-    $.__views.view3.add($.__views.txtWeight);
+    $.__views.__alloyId18.add($.__views.mainView);
     $.__views.view4 = Ti.UI.createView({
         id: "view4",
         height: "SIZE",
-        top: "20"
+        top: "5"
     });
-    $.__views.mainView.add($.__views.view4);
+    $.__views.__alloyId18.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
         width: "150dp",
         height: "35dp",
@@ -205,23 +128,18 @@ function Controller() {
     $.__views.view5 = Ti.UI.createView({
         id: "view5",
         height: "SIZE",
-        top: "20"
+        top: "5"
     });
-    $.__views.mainView.add($.__views.view5);
+    $.__views.__alloyId18.add($.__views.view5);
     $.__views.btnUser = Ti.UI.createButton({
         id: "btnUser",
         title: "Already a user? Sign in here."
     });
     $.__views.view5.add($.__views.btnUser);
     openLogin ? $.__views.btnUser.addEventListener("click", openLogin) : __defers["$.__views.btnUser!click!openLogin"] = true;
-    $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.__alloyId18,
-        id: "navGroupWin"
-    });
-    $.__views.navGroupWin && $.addTopLevelView($.__views.navGroupWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.navGroupWin.open();
+    $.indexWin.open();
     __defers["$.__views.btnSubmit!click!signupUser"] && $.__views.btnSubmit.addEventListener("click", signupUser);
     __defers["$.__views.btnUser!click!openLogin"] && $.__views.btnUser.addEventListener("click", openLogin);
     _.extend($, exports);
