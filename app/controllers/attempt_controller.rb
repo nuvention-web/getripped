@@ -22,9 +22,9 @@ skip_before_filter :verify_authenticity_token
 	def last
 		password = params[:password]
 		user = User.find(params[:user_id])
-		last_attempt = user.exercises.find(:exercise_id).attempts.last
+		last_attempt = user.exercises.find(params[:exercise_id]).attempts.last
 
-		if last_attempt & password == "gotraingo"
+		if last_attempt && password == "gotraingo"
 			response = {weight: last_attempt.weight,
 									reps1: last_attempt.reps1,
 									reps2: last_attempt.reps2,
