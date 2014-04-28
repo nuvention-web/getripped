@@ -13,6 +13,7 @@ skip_before_filter :verify_authenticity_token
       session[:id] = user.id  
       success_response = {
         message: "succeeded"
+        user_id: user.id
       }
       render json: success_response 
       # redirect_to :controller => "exercise_controller", :action =>"show", :id => 1
