@@ -2,7 +2,8 @@ class AttemptController < ApplicationController
 skip_before_filter :verify_authenticity_token
 
 	def create
-		attempt = Attempt.new(user_id: params[:user_id], 
+		attempt = Attempt.new(
+								user_id: params[:user_id], 
 			          exercise_id: params[:id],
 			          weight: params[:weight],
 			          reps1: params[:reps1],
@@ -19,9 +20,11 @@ skip_before_filter :verify_authenticity_token
 	end
 
 	def last
-		exercise = Exercise.find(params[:id])
-		last_attempt = exercise.attempts.last
-		if last_attempt
+		password = params[:password]
+		user = User.find(params[:user_id])
+		last_attempt = user.exercises.find(:exercise_id).attempts.last
+
+		if last_attempt & password == "gotraingo"
 			response = {weight: last_attempt.weight,
 									reps1: last_attempt.reps1,
 									reps2: last_attempt.reps2,
