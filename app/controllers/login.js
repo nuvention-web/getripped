@@ -20,6 +20,8 @@ bkBtn.addEventListener("click", function(e){
 function showWorkout(){
 	var pass = $.txtPassword.value;
 	var uname = $.txtUsername.value;
+	//alert(uname);
+	//alert(pass);
 	var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;	
         loginReq.open("POST","http://getripped.herokuapp.com/session");

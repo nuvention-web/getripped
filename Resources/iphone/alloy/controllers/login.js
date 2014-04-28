@@ -28,7 +28,6 @@ function Controller() {
     var __defers = {};
     $.__views.loginWin = Ti.UI.createWindow({
         id: "loginWin",
-        backgroundColor: "#bcbcbc",
         backgroundImage: "texture.jpg",
         title: "Login"
     });

@@ -8,11 +8,12 @@ eNames = Alloy.Globals.eName;
 eDesc = Alloy.Globals.eDescription;
 $.eName.text = eNames[index];
 $.eDesc.text = "Instructions: " + eDesc[index];
-$.imgId.image = imgurl[index];
 var exNum = index + 1;
+var imgName = exNum + ".JPG";
+$.exImage.image = imgName;
 $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
 
-alert(imgurl[index]);
+//alert(imgurl[index]);
 if (index > 0) {
 	$.btnPrev.visible = true;
 }
@@ -51,20 +52,20 @@ function showNext(){
 			reps2: set2Text,
 			reps3: set3Text 
          };
-         alert(userEx);
+         //alert(userEx);
         exAttempt.send(userEx);
         
      exAttempt.onload = function()
 	{
     	var json = this.responseText;
     	var response = JSON.parse(json);
-    	alert(response.message);
+    	//alert(response.message);
 	};
 	
 	Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
 	var workoutsWin = Alloy.createController("exercise",{}).getView();
     if (OS_IOS) {
-        $.exNavWin.openWindow(workoutsWin);
+        workoutsWin.open();
     }
     if (OS_ANDROID) {
         workouts.open();
@@ -75,7 +76,7 @@ function showPrev() {
 	Alloy.Globals.exCount = Alloy.Globals.exCount - 1;
 	var workoutsWin = Alloy.createController("exercise",{}).getView();
     if (OS_IOS) {
-        $.exNavWin.openWindow(workoutsWin);
+        workoutsWin.open();
     }
     if (OS_ANDROID) {
         workoutsWin.open();
@@ -85,9 +86,30 @@ function showPrev() {
 function showAckView() {
 	var completionWin = Alloy.createController("completion",{}).getView();
     if (OS_IOS) {
-        $.exNavWin.openWindow(completionWin);
+        completionWin.open();
     }
     if (OS_ANDROID) {
         completionWin.open();
     }
+}
+
+function openExDetails(){
+	var completionWin = Alloy.createController("exDetails",{}).getView();
+    if (OS_IOS) {
+        completionWin.open();
+    }
+    if (OS_ANDROID) {
+        completionWin.open();
+    }
+}
+
+function openLogin(){
+	var completionWin = Alloy.createController("login",{}).getView();
+    if (OS_IOS) {
+        completionWin.open();
+    }
+    if (OS_ANDROID) {
+        completionWin.open();
+    }
+	
 }

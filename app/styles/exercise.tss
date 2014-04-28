@@ -10,6 +10,26 @@
 	}
 }
 
+".showExCount": {
+	font: {
+		fontSize:10
+	}
+}
+
+".clickBtn": {
+	width: "75%",
+	font: {
+		fontSize:10
+	}
+}
+
+"#eName": {
+	font: {
+		fontSize: 20,
+		fontWeight:"bold"
+	}
+}
+
 ".txtClass": {
 	//backgroundColor:'red',
     width:50,
