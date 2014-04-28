@@ -12,7 +12,7 @@ skip_before_filter :verify_authenticity_token
       flash[:login] = "Welcome"
       session[:id] = user.id  
       success_response = {
-        message: "succeeded"
+        message: "succeeded",
         user_id: user.id
       }
       render json: success_response 
