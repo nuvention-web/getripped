@@ -3,7 +3,7 @@ skip_before_filter :verify_authenticity_token
 
 	def create
 		attempt = Attempt.new(user_id: params[:user_id], 
-			          exercise_id: params[:exercise_id],
+			          exercise_id: params[:id],
 			          weight: params[:weight],
 			          reps1: params[:reps1],
 			          reps2: params[:reps2],
