@@ -22,30 +22,26 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.scrollviewId.add($.__views.mainView);
-    $.__views.viewId = Ti.UI.createView({
-        id: "viewId",
-        layout: "vertical",
-        height: "SIZE"
-    });
-    $.__views.mainView.add($.__views.viewId);
     $.__views.eName = Ti.UI.createLabel({
         id: "eName",
-        top: "20"
+        top: "10"
     });
-    $.__views.viewId.add($.__views.eName);
+    $.__views.mainView.add($.__views.eName);
     $.__views.exImage = Ti.UI.createImageView({
         id: "exImage",
-        top: "20",
+        top: "10",
         height: "60%",
         width: "80%"
     });
-    $.__views.viewId.add($.__views.exImage);
+    $.__views.mainView.add($.__views.exImage);
     $.__views.exDescription = Ti.UI.createLabel({
         id: "exDescription",
+        top: "20",
         font: "30",
-        top: "20"
+        width: "90%",
+        backgroundColor: "yellow"
     });
-    $.__views.viewId.add($.__views.exDescription);
+    $.__views.mainView.add($.__views.exDescription);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.exDetailsWin,
         id: "navGroupWin"
@@ -74,6 +70,7 @@ function Controller() {
     $.eName.text = exName;
     $.exImage.image = imageName;
     $.exDescription.text = "Instructions: " + exDesc;
+    alert(exDesc);
     _.extend($, exports);
 }
 

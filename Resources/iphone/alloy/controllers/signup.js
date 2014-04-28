@@ -11,6 +11,7 @@ function Controller() {
             first_name: fname,
             last_name: lname,
             password: pass,
+            password_confirmation: pass,
             email: email_id
         };
         alert(user);

@@ -2,13 +2,12 @@
 	<!--NavigationWindow id="exNavWin"-->
 	<Window id="exWin" backgroundImage="texture.jpg">
 		<Toolbar platform="ios" top="15" borderTop="true" borderBottom="true">
-
             <!-- The Items tag sets the Toolbar.items property. -->
-            <Items>
-            	<Button backgroundImage="back.png" height="25" width="50" onClick="openLogin"></Button> <FlexSpace/>
-                <Label id="titleLabel" class="titleLabel" verticalAlign="center">SwoleTrain</Label><FlexSpace/>
-                <Button backgroundImage="Logout.png" height="25" width="70"></Button>
-            </Items>
+            <!--Items>
+            
+                <!--Label id="titleLabel" class="titleLabel" left="200"  verticalAlign="center">SwoleTrain</Label>
+            
+          </Items-->
 
             <!-- Place additional views for the Toolbar here. -->
 
@@ -16,43 +15,48 @@
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true" top="30">
 			
 		<View id="mainView" layout="vertical">
+		<View id="toolbarView" layout="horizontal"  height="SIZE">
+			<Button id="bkbtn" backgroundImage="back.png" height="25" width="50" left="10" onClick="openLogin"></Button>
+			<Label id="windowTitle" left="20%">Workout</Label>
+		</View>
+		
 			<View id="viewId" layout="vertical" height="SIZE">
-				<Label id="workoutTitle" class="showExCount" top="10"> </Label>
-				<Label id="eName" top="20"></Label>
-				<ImageView id="exImage"  top="30" height="120" width="50%"></ImageView>
-				<Button id="detailsBtn" class="clickBtn" title="Click here to see full sized image and instructions" onClick="openExDetails" ></Button>
 				
-				<Label id="eDesc" font="30" top="60" ></Label>
+				<Label id="workoutTitle" class="showExCount" top="10"> </Label>
+				<Label id="eName" top="10"></Label>
+				<ImageView id="exImage"  top="10" height="120" width="50%"></ImageView>
+				<Button id="detailsBtn" class="clickBtn" title="Click here to see full sized image and instructions" onClick="openExDetails" ></Button>
+			
 			</View>
 			<View id="viewId2" layout="horizontal" height="SIZE">
-				<Label left="10" >Weight </Label>
-				<TextField id="txtWeight" class="txtClass" left="50" color="red" value="40"></TextField>
+				<Label left="10%" >Weight </Label>
+				<TextField id="txtWeight" class="txtClass" left="10%" color="red" value="40"></TextField>
 			</View>
-			<View id="viewId3" layout="horizontal" height="SIZE">
-				<Label left="20">Recommended</Label><Label left="80">Reps</Label>
+			<View id="viewId3" layout="horizontal" height="SIZE" top="10">
+				<Label left="30%" class="showExCount">Recommended</Label><Label class="showExCount" left="10%">Reps</Label>
 			</View>
 			<View id="viewId4" layout="horizontal" height="SIZE">
-				<Label left="30">Reps</Label><Label left="70">Completed</Label>
+				<Label left="40%" class="showExCount">Reps</Label><Label class="showExCount" left="12%">Completed</Label>
 			</View>
 			<View id="viewId5" layout="horizontal" height="SIZE">
 				<Label left="30">Set 1</Label>
-				<Label class="txtClass" left="40" text="12"></Label>
-				<TextField id="txtSet1" class="txtClass" left="80"></TextField>
+				<Label class="txtClass" left="14%" text="12"></Label>
+				<TextField id="txtSet1" class="txtClass" left="12%"></TextField>
 			</View>
-			<View id="viewId6" layout="horizontal" height="SIZE" backgroundColor="green">
+			<View id="viewId6" layout="horizontal" height="SIZE">
 				<Label left="30">Set 2</Label>
-				<Label class="txtClass" left="40" text="12"></Label>
-				<TextField  id="txtSet2" class="txtClass" left="80"></TextField>
+				<Label class="txtClass" left="14%" text="12"></Label>
+				<TextField  id="txtSet2" class="txtClass" left="12%" ></TextField>
 			</View>
-			<View id="viewId7" layout="horizontal" height="SIZE" backgroundColor="yellow">
+			<View id="viewId7" layout="horizontal" height="SIZE">
 				<Label left="30">Set 3</Label>
-				<Label class="txtClass" left="40" text="12"></Label>
-				<TextField id="txtSet3" class="txtClass" left="80"></TextField>
+				<Label class="txtClass" left="14%" text="12"></Label>
+				<TextField id="txtSet3" class="txtClass" left="12%"></TextField>
 			</View>
-			<View id="buttonView" layout="horizontal" backgroundColor="yellow" bottom="20">
-				<Button id="btnPrev" class="nextBtn" left="20" bottom="20" title="Previous" onClick="showPrev" visible="false"></Button>
-				<Button id="btnNext" class="nextBtn" right="20" bottom="20" title="Next" onClick="showNext"></Button>
-				<Button id="btnFinish" class="nextBtn" right="20" bottom="20" title="Finish" onClick="showAckView" visible="false"></Button>
+			<View id="buttonView" layout="horizontal" height="SIZE" top="10">
+				<Button id="btnPrev" class="bottomBtn" left="70" width="70" title="Previous" onClick="showPrev" visible="false"></Button>
+				<Button id="btnNext" class="bottomBtn" left="40" title="Next"  onClick="showNext"></Button>
+				<Button id="btnFinish" class="bottomBtn" left="10" title="Finish" onClick="showAckView" visible="false"></Button>
 			</View>
 		</View>
 		</ScrollView>

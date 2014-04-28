@@ -12,7 +12,7 @@
 
 ".showExCount": {
 	font: {
-		fontSize:10
+		fontSize:12
 	}
 }
 
@@ -30,15 +30,32 @@
 	}
 }
 
+"#windowTitle": {
+	font: {
+		fontSize: 20,
+		fontWeight:"bold"
+	}
+}
+
 ".txtClass": {
 	//backgroundColor:'red',
     width:50,
-    height:40,
+    height:30,
     textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
     font: {
+    	fontSize: 14,
 		fontWeight: "bold",
 	},
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
     color:'red'
     
+}
+
+".bottomBtn": {
+    width:60,
+    height:30,
+    borderRadius:1,
+    backgroundColor: "#3B74F5",
+	color: "white",
+    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
 }

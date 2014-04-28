@@ -2,13 +2,11 @@
 	<NavigationWindow id="navGroupWin">
 	<Window id="exDetailsWin" backgroundImage="texture.jpg" title="Exercise Details">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
-		<View id="mainView" layout="vertical">
-			<View id="viewId" layout="vertical" height="SIZE">
-				<Label id="eName" top="20"></Label>
-				<ImageView id="exImage" top="20" height="60%" width="80%"></ImageView>
-				<Label id="exDescription" font="30" top="20" ></Label>	
+		<View id="mainView" layout="vertical" >
+				<Label id="eName" top="10"></Label>
+				<ImageView id="exImage" top="10" height="60%" width="80%"></ImageView>
+				<Label id="exDescription" top="20" font="30" width="90%"></Label>	
 			</View>		
-		</View>
 		</ScrollView>
 	</Window>
 	</NavigationWindow>

@@ -1,4 +1,24 @@
 //\nvar args = arguments[0] || {};
+var bkBtn = Titanium.UI.createButton({
+height: 25,
+font:{size:9, fontWeight:'bold'},
+width: 50,
+backgroundImage: 'back.png',
+});
+$.exWin.setLeftNavButton(bkBtn);
+//$.loginWin.setTitleAttributes(color:'blue',font: {fontFamily:'Snell Roundhand', fontSize:36},shadow:{color:'gray', offset:{width:1,height:1}});
+
+bkBtn.addEventListener("click", function(e){
+		 var workoutsWin = Alloy.createController("index",{}).getView();
+    if (OS_IOS) {
+        $.navGroupWin.openWindow(workoutsWin);
+    }
+    if (OS_ANDROID) {
+        workouts.open();
+    }
+	});
+
+
 var eNames = [];
 var eDesc = [];
 var imgurl = [];
@@ -7,7 +27,7 @@ imgurl = Alloy.Globals.images;
 eNames = Alloy.Globals.eName;
 eDesc = Alloy.Globals.eDescription;
 $.eName.text = eNames[index];
-$.eDesc.text = "Instructions: " + eDesc[index];
+//$.eDesc.text = "Instructions: " + eDesc[index];
 var exNum = index + 1;
 var imgName = exNum + ".JPG";
 $.exImage.image = imgName;
@@ -104,6 +124,7 @@ function openExDetails(){
 }
 
 function openLogin(){
+	//alert("test");
 	var completionWin = Alloy.createController("login",{}).getView();
     if (OS_IOS) {
         completionWin.open();
