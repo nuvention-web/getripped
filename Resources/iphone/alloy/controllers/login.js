@@ -105,6 +105,14 @@ function Controller() {
     });
     $.__views.view1.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
+    $.__views.__alloyId34 = Ti.UI.createImageView({
+        image: "SwoleTrainLogo.png",
+        top: "20",
+        width: "50%",
+        height: "35%",
+        id: "__alloyId34"
+    });
+    $.__views.view1.add($.__views.__alloyId34);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.loginWin,
         id: "navGroupWin"

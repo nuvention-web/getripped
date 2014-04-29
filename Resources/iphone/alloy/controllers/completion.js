@@ -106,7 +106,7 @@ function Controller() {
         },
         id: "btnDashboard",
         top: "20",
-        title: "Start a new workout"
+        title: "Start over"
     });
     $.__views.mainView.add($.__views.btnDashboard);
     showDashboard ? $.__views.btnDashboard.addEventListener("click", showDashboard) : __defers["$.__views.btnDashboard!click!showDashboard"] = true;

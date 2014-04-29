@@ -35,7 +35,6 @@ var xhr = Ti.Network.createHTTPClient({
     },
     onerror: function(e) {
         Ti.API.debug(e.error);
-        alert("error");
     },
     timeout: 5e3
 });

@@ -49,7 +49,7 @@ var xhr = Ti.Network.createHTTPClient({
     onerror: function(e) {
 		// this function is called when an error occurs, including a timeout
         Ti.API.debug(e.error);
-        alert('error');
+        //alert('error');
     },
     timeout:5000  /* in milliseconds */
 });

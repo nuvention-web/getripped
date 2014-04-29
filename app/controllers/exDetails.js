@@ -24,4 +24,4 @@ var exDesc = Alloy.Globals.eDescription[Alloy.Globals.exCount];
 $.eName.text = exName;
 $.exImage.image = imageName;
 $.exDescription.text = "Instructions: " + exDesc;
-alert(exDesc);
+//alert(exDesc);

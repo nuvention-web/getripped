@@ -5,7 +5,7 @@ font:{size:9, fontWeight:'bold'},
 width: 50,
 backgroundImage: 'back.png',
 });
-$.exWin.setLeftNavButton(bkBtn);
+//$.exWin.setLeftNavButton(bkBtn);
 //$.loginWin.setTitleAttributes(color:'blue',font: {fontFamily:'Snell Roundhand', fontSize:36},shadow:{color:'gray', offset:{width:1,height:1}});
 
 bkBtn.addEventListener("click", function(e){
@@ -67,15 +67,19 @@ else {
 }
 if(exNum == 8)
 {
-	$.btnFinish.visible = true;
-	$.btnNext.visible = false;
+	//$.btnFinish.visible = true;
+	$.btnNext.title = "Finish";
 }
 else {
-	$.btnNext.visible = true;
-	$.btnFinish.visible = false;
+	$.btnNext.title = "Next";
+	//$.btnFinish.visible = false;
 }
 
 function showNext(){
+	if(exNum == 8) {
+		showAckView();
+	}
+	else {
 	var exId = exNum;
 	var uId = Alloy.Globals.userId;
 	var weightText = $.txtWeight.value;
@@ -130,6 +134,7 @@ function showNext(){
     if (OS_ANDROID) {
         workouts.open();
     }
+   }
 }
 
 function showPrev() {

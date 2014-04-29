@@ -84,7 +84,7 @@ function Controller() {
             fontsize: 18,
             fontWeight: "bold"
         },
-        text: "Ready To Get swole? Give us some info",
+        text: "Ready to get swole? Give us some info.",
         id: "label"
     });
     $.__views.mainView.add($.__views.label);
@@ -151,7 +151,8 @@ function Controller() {
     $.__views.view4 = Ti.UI.createView({
         id: "view4",
         height: "SIZE",
-        top: "20"
+        top: "20",
+        layout: "vertical"
     });
     $.__views.mainView.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
@@ -161,10 +162,18 @@ function Controller() {
         color: "white",
         id: "btnSubmit",
         verticalAlign: "center",
-        title: "SignUp"
+        title: "Get Swole"
     });
     $.__views.view4.add($.__views.btnSubmit);
     signupUser ? $.__views.btnSubmit.addEventListener("click", signupUser) : __defers["$.__views.btnSubmit!click!signupUser"] = true;
+    $.__views.__alloyId35 = Ti.UI.createImageView({
+        image: "SwoleTrainLogo.png",
+        top: "5",
+        width: "50%",
+        height: "55%",
+        id: "__alloyId35"
+    });
+    $.__views.view4.add($.__views.__alloyId35);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.signupWin,
         id: "navGroupWin"

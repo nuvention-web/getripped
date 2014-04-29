@@ -14,7 +14,7 @@ function Controller() {
     $.__views.dashboardWin = Ti.UI.createWindow({
         id: "dashboardWin",
         backgroundImage: "texture.jpg",
-        title: "Get Ready to Get Swole!"
+        title: "SwoleTrain"
     });
     $.__views.scrollviewId = Ti.UI.createScrollView({
         id: "scrollviewId",
@@ -37,6 +37,27 @@ function Controller() {
         id: "welcomeLabel"
     });
     $.__views.mainView.add($.__views.welcomeLabel);
+    $.__views.__alloyId6 = Ti.UI.createLabel({
+        text: "SwoleTrain is ready to help you",
+        top: "20",
+        id: "__alloyId6"
+    });
+    $.__views.mainView.add($.__views.__alloyId6);
+    $.__views.__alloyId7 = Ti.UI.createLabel({
+        text: "get swole.",
+        id: "__alloyId7"
+    });
+    $.__views.mainView.add($.__views.__alloyId7);
+    $.__views.__alloyId8 = Ti.UI.createLabel({
+        text: "Just enter what you can do",
+        id: "__alloyId8"
+    });
+    $.__views.mainView.add($.__views.__alloyId8);
+    $.__views.__alloyId9 = Ti.UI.createLabel({
+        text: "for each exercise.",
+        id: "__alloyId9"
+    });
+    $.__views.mainView.add($.__views.__alloyId9);
     $.__views.btnWorkout = Ti.UI.createButton({
         width: 200,
         height: 30,
@@ -49,11 +70,19 @@ function Controller() {
             fontSize: 14
         },
         id: "btnWorkout",
-        top: "40",
+        top: "20",
         title: "Start a new workout"
     });
     $.__views.mainView.add($.__views.btnWorkout);
     showWorkout ? $.__views.btnWorkout.addEventListener("click", showWorkout) : __defers["$.__views.btnWorkout!click!showWorkout"] = true;
+    $.__views.__alloyId10 = Ti.UI.createImageView({
+        image: "SwoleTrainLogo.png",
+        top: "5",
+        width: "40%",
+        height: "40%",
+        id: "__alloyId10"
+    });
+    $.__views.mainView.add($.__views.__alloyId10);
     $.__views.dashBoardNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.dashboardWin,
         id: "dashBoardNavWin"

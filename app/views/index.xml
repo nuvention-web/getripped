@@ -23,9 +23,12 @@
 		<View id="view3"  height="100%" width="100%">
 		<ImageView image="img3.png"></ImageView>
 		</View>
+		<View id="view3"  height="100%" width="100%">
+		<ImageView image="img4.png"></ImageView>
+		</View>
 		</ScrollableView>
 		<View id="view4" height="SIZE" top="5">
-		<Button id="btnSubmit" class="getRippedBtn" verticalAlign="center" title="New User" onClick="signupUser"></Button>
+		<Button id="btnSubmit" class="getRippedBtn" verticalAlign="center" title="Sign Up" onClick="signupUser"></Button>
 		</View>
 		<View id="view5" height="SIZE">
 		<Button id="btnUser" title="Already a user? Sign in here." onClick="openLogin"></Button>
