@@ -24,7 +24,7 @@ function Controller() {
             return;
         }
         var exAttempt = Titanium.Network.createHTTPClient();
-        exAttempt.open("POST", "http://getripped.herokuapp.com/exercise/" + exId + "/attempt/last");
+        exAttempt.open("POST", "http://getripped.herokuapp.com/exercise/" + exId + "/attempt");
         var userEx = {
             user_id: uId,
             weight: weightText,
