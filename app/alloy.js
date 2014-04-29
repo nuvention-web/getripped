@@ -19,6 +19,7 @@ Alloy.Globals.eName = [];
 Alloy.Globals.images = [];
 Alloy.Globals.eDescription = [];
 Alloy.Globals.exCount = 0;
+Alloy.Globals.userId = 0;
 var xhr = Ti.Network.createHTTPClient({
     onload: function(e) {
     	//alert(e);

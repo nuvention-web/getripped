@@ -2,6 +2,14 @@ function Controller() {
     function showWorkout() {
         var pass = $.txtPassword.value;
         var uname = $.txtUsername.value;
+        if ("" == uname) {
+            alert("Enter Email");
+            return;
+        }
+        if ("" == pass) {
+            alert("Enter Password");
+            return;
+        }
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
         loginReq.open("POST", "http://getripped.herokuapp.com/session");
@@ -13,10 +21,12 @@ function Controller() {
         loginReq.onload = function() {
             var json = this.responseText;
             var response = JSON.parse(json);
-            alert(response.message);
+            if ("succeeded" != response.message) alert("Invalid email/password"); else {
+                Alloy.Globals.userId = response.user_id;
+                var workoutsWin = Alloy.createController("dashboard", {}).getView();
+                workoutsWin.open();
+            }
         };
-        var workoutsWin = Alloy.createController("dashboard", {}).getView();
-        workoutsWin.open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "login";
@@ -60,7 +70,8 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtUsername",
         top: "20",
-        hintText: "Username"
+        hintText: "Email",
+        autocapitalization: "false"
     });
     $.__views.view1.add($.__views.txtUsername);
     $.__views.txtPassword = Ti.UI.createTextField({

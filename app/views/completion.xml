@@ -1,6 +1,6 @@
 <Alloy>
 	<NavigationWindow id="compNavWin">
-	<Window id="exWin" backgroundImage="texture.jpg" title="You are swolled!!!">
+	<Window id="exWin" backgroundImage="texture.jpg" title="You are so Swole!">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<View id="mainView" layout="vertical" >
 				<Button id="btnLogout" left="70%" top="10" title="Logout" onClick="logout"></Button>

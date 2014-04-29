@@ -1,6 +1,6 @@
 <Alloy>
 	<NavigationWindow id="dashBoardNavWin">
-	<Window id="dashboardWin" backgroundImage="texture.jpg" title="Get ready to be swolled!!!">
+	<Window id="dashboardWin" backgroundImage="texture.jpg" title="Get Ready to Get Swole!">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<View id="mainView" layout="vertical" >
 				<Button id="btnLogout" left="70%" top="10" title="Logout" onClick="logout"></Button>

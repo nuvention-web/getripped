@@ -51,7 +51,7 @@ function Controller() {
     $.__views.signupWin = Ti.UI.createWindow({
         id: "signupWin",
         backgroundImage: "texture.jpg",
-        title: "Signup"
+        title: "SwoleTrain"
     });
     $.__views.mainView = Ti.UI.createScrollView({
         id: "mainView",

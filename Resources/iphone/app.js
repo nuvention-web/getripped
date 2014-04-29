@@ -20,6 +20,8 @@ Alloy.Globals.eDescription = [];
 
 Alloy.Globals.exCount = 0;
 
+Alloy.Globals.userId = 0;
+
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
         jsonObj = JSON.parse(this.responseText);

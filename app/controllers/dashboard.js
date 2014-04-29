@@ -5,6 +5,8 @@ function showWorkout(){
 }
 
 function logout() {
+	Alloy.Globals.userId = 0;
+	Alloy.Globals.exCount = 0;
 	var dashboardWin = Alloy.createController("login",{}).getView();
     dashboardWin.open();
 }

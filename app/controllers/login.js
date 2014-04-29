@@ -20,8 +20,14 @@ bkBtn.addEventListener("click", function(e){
 function showWorkout(){
 	var pass = $.txtPassword.value;
 	var uname = $.txtUsername.value;
-	//alert(uname);
-	//alert(pass);
+	if(uname==""){
+		alert("Enter Email");
+		return;
+	}
+	if(pass==""){
+		alert("Enter Password");
+		return;
+	}
 	var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;	
         loginReq.open("POST","http://getripped.herokuapp.com/session");
@@ -33,15 +39,21 @@ function showWorkout(){
         loginReq.send(user);
         
      loginReq.onload = function()
-	{
+	 {
     	var json = this.responseText;
     	var response = JSON.parse(json);
-    	alert(response.message);
+    	//alert(response.message);
+    	if(response.message!= "succeeded"){
+    		alert("Invalid email/password");
+    	}
+    	else{
+    		//alert(response.user_id);
+    		Alloy.Globals.userId = response.user_id;
+    		var workoutsWin = Alloy.createController("dashboard",{}).getView();
+    		workoutsWin.open();
+    	}
 	}; 
-	
-	
-    var workoutsWin = Alloy.createController("dashboard",{}).getView();
-        workoutsWin.open();
+    
 }
 
 if(OS_IOS) { 

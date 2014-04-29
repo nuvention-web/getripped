@@ -4,6 +4,8 @@ function Controller() {
         dashboardWin.open();
     }
     function logout() {
+        Alloy.Globals.userId = 0;
+        Alloy.Globals.exCount = 0;
         var dashboardWin = Alloy.createController("login", {}).getView();
         dashboardWin.open();
     }
@@ -18,7 +20,7 @@ function Controller() {
     $.__views.dashboardWin = Ti.UI.createWindow({
         id: "dashboardWin",
         backgroundImage: "texture.jpg",
-        title: "Get ready to be swolled!!!"
+        title: "Get Ready to Get Swole!"
     });
     $.__views.scrollviewId = Ti.UI.createScrollView({
         id: "scrollviewId",

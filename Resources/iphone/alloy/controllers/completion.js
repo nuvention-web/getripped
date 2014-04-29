@@ -1,11 +1,14 @@
 function Controller() {
     function showDashboard() {
-        var dashboardWin = Alloy.createController("dashboard", {}).getView();
-        $.compNavWin.openWindow(dashboardWin);
+        Alloy.Globals.exCount = 0;
+        var compWin = Alloy.createController("dashboard", {}).getView();
+        compWin.open();
     }
     function logout() {
-        var dashboardWin = Alloy.createController("login", {}).getView();
-        $.compNavWin.openWindow(dashboardWin);
+        Alloy.Globals.userId = 0;
+        Alloy.Globals.exCount = 0;
+        var compWin = Alloy.createController("login", {}).getView();
+        compWin.open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "completion";
@@ -18,7 +21,7 @@ function Controller() {
     $.__views.exWin = Ti.UI.createWindow({
         id: "exWin",
         backgroundImage: "texture.jpg",
-        title: "You are swolled!!!"
+        title: "You are so Swole!"
     });
     $.__views.scrollviewId = Ti.UI.createScrollView({
         id: "scrollviewId",

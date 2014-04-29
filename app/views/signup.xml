@@ -1,6 +1,6 @@
 <Alloy>
 	<NavigationWindow id="navGroupWin">
-	<Window id="signupWin" backgroundImage="texture.jpg" title="Signup">
+	<Window id="signupWin" backgroundImage="texture.jpg" title="SwoleTrain">
 		<ScrollView id="mainView" layout="vertical" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<Label id="label" class="getRippedText">Ready To Get swole? Give us some info</Label>
 		<View id="view1" layout="vertical" height="SIZE">
