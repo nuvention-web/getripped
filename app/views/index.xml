@@ -2,12 +2,12 @@
 	<!--NavigationWindow id="navGroupWin"-->
 	<Window id="indexWin" class="container" backgroundColor="white"  backgroundImage="texture.jpg">
 		
-		<ScrollView layout="vertical">
+		<View layout="vertical">
 			<Toolbar platform="ios" top="15" borderTop="true" borderBottom="true">
 
             <!-- The Items tag sets the Toolbar.items property. -->
             <Items>
-                <Label id="titleLabel" class="titleLabel" verticalAlign="center">SwoleTrain</Label>
+                <FlexSpace/><Label id="titleLabel" class="titleLabel" verticalAlign="center">SwoleTrain</Label><FlexSpace/>
             </Items>
 
             <!-- Place additional views for the Toolbar here. -->
@@ -30,7 +30,7 @@
 		<View id="view5" height="SIZE">
 		<Button id="btnUser" title="Already a user? Sign in here." onClick="openLogin"></Button>
 		</View>		
-		</ScrollView>
+		</View>
 		   
 	</Window>
 	 <!--/NavigationWindow-->

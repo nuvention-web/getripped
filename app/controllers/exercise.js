@@ -27,7 +27,6 @@ imgurl = Alloy.Globals.images;
 eNames = Alloy.Globals.eName;
 eDesc = Alloy.Globals.eDescription;
 $.eName.text = eNames[index];
-//$.eDesc.text = "Instructions: " + eDesc[index];
 var exNum = index + 1;
 var imgName = exNum + ".JPG";
 $.exImage.image = imgName;
@@ -38,7 +37,28 @@ if(exNum == 5 || exNum == 8){
 	$.txtWeight.editable = "false";
 }
 
-//alert(imgurl[index]);
+/* Code to check if user has attempted the workout previously*/
+var uId = Alloy.Globals.userId;
+var exAttempt = Titanium.Network.createHTTPClient();		
+        exAttempt.open("POST","http://getripped.herokuapp.com/user/"+uId+"/exercise/"+exNum+"/attempt/last");
+        var userEx = { 
+			password: "gotraingo"
+         };
+        exAttempt.send(userEx);
+        
+     exAttempt.onload = function()
+	{
+    	var json = this.responseText;
+    	var response = JSON.parse(json);
+    	alert(response);
+    	if(response.weight && response.weight!=0){
+    		$.txtWeight.value = response.weight;
+    		$.txtWeight.editable = "false";
+    	}
+	};
+
+
+
 if (index > 0) {
 	$.btnPrev.visible = true;
 }
@@ -55,23 +75,38 @@ else {
 	$.btnFinish.visible = false;
 }
 
-//alert(eNames[0]);
-//for(var i = 0;  i < eNames.length; i++) {
-	
-//}
 function showNext(){
-	//alert(Alloy.Globals.exCount);
 	var exId = exNum;
-	var userId = 1;
+	var uId = Alloy.Globals.userId;
 	var weightText = $.txtWeight.value;
 	var set1Text = $.txtSet1.value;
 	var set2Text = $.txtSet2.value;
 	var set3Text = $.txtSet3.value;
 	
+	if(weightText==""){
+		alert("Enter weight used");
+		return;
+	}
+	else if(weightText=="N/A"){
+		weightText = 0;
+	}
+	if(set1Text==""){
+		alert("Enter reps completed for Set 1");
+		return;
+	}
+	if(set2Text==""){
+		alert("Enter reps completed for Set 2");
+		return;
+	}
+	if(set3Text==""){
+		alert("Enter reps completed for Set 3");
+		return;
+	}
+	
 	var exAttempt = Titanium.Network.createHTTPClient();		
-        exAttempt.open("POST","http://getripped.herokuapp.com/exercise/"+exId+"/attempt");
+        exAttempt.open("POST","http://getripped.herokuapp.com/exercise/"+exId+"/attempt/last");
         var userEx = { 
-        	user_id: userId,
+        	user_id: uId,
 			weight: weightText,
 			reps1: set1Text,
 			reps2: set2Text,
@@ -84,7 +119,7 @@ function showNext(){
 	{
     	var json = this.responseText;
     	var response = JSON.parse(json);
-    	//alert(response.message);
+    	//alert(response);
 	};
 	
 	Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
@@ -129,7 +164,6 @@ function openExDetails(){
 }
 
 function openLogin(){
-	//alert("test");
 	var completionWin = Alloy.createController("login",{}).getView();
     if (OS_IOS) {
         completionWin.open();

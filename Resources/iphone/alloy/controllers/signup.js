@@ -34,9 +34,7 @@ function Controller() {
         loginReq.onload = function() {
             var json = this.responseText;
             var response = JSON.parse(json);
-            alert(response.message);
             if ("succeeded" == response.message) {
-                alert("yes");
                 var loginRequest = Titanium.Network.createHTTPClient();
                 loginRequest.withCredentials = true;
                 loginRequest.open("POST", "http://getripped.herokuapp.com/session");
@@ -52,7 +50,6 @@ function Controller() {
                         Alloy.Globals.userId = response.user_id;
                         var workoutsWin = Alloy.createController("dashboard", {}).getView();
                         workoutsWin.open();
-                        alert(Alloy.Globals.userId);
                     }
                 };
             }
@@ -133,7 +130,8 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtEmail",
         top: "10",
-        hintText: "Email"
+        hintText: "Email",
+        autocapitalization: "false"
     });
     $.__views.view1.add($.__views.txtEmail);
     $.__views.txtPassword = Ti.UI.createTextField({

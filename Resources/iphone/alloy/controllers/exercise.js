@@ -1,15 +1,32 @@
 function Controller() {
     function showNext() {
         var exId = exNum;
-        var userId = 1;
+        var uId = Alloy.Globals.userId;
         var weightText = $.txtWeight.value;
         var set1Text = $.txtSet1.value;
         var set2Text = $.txtSet2.value;
         var set3Text = $.txtSet3.value;
+        if ("" == weightText) {
+            alert("Enter weight used");
+            return;
+        }
+        "N/A" == weightText && (weightText = 0);
+        if ("" == set1Text) {
+            alert("Enter reps completed for Set 1");
+            return;
+        }
+        if ("" == set2Text) {
+            alert("Enter reps completed for Set 2");
+            return;
+        }
+        if ("" == set3Text) {
+            alert("Enter reps completed for Set 3");
+            return;
+        }
         var exAttempt = Titanium.Network.createHTTPClient();
-        exAttempt.open("POST", "http://getripped.herokuapp.com/exercise/" + exId + "/attempt");
+        exAttempt.open("POST", "http://getripped.herokuapp.com/exercise/" + exId + "/attempt/last");
         var userEx = {
-            user_id: userId,
+            user_id: uId,
             weight: weightText,
             reps1: set1Text,
             reps2: set2Text,
@@ -438,6 +455,22 @@ function Controller() {
         $.txtWeight.value = "N/A";
         $.txtWeight.editable = "false";
     }
+    var uId = Alloy.Globals.userId;
+    var exAttempt = Titanium.Network.createHTTPClient();
+    exAttempt.open("POST", "http://getripped.herokuapp.com/user/" + uId + "/exercise/" + exNum + "/attempt/last");
+    var userEx = {
+        password: "gotraingo"
+    };
+    exAttempt.send(userEx);
+    exAttempt.onload = function() {
+        var json = this.responseText;
+        var response = JSON.parse(json);
+        alert(response);
+        if (response.weight && 0 != response.weight) {
+            $.txtWeight.value = response.weight;
+            $.txtWeight.editable = "false";
+        }
+    };
     $.btnPrev.visible = index > 0 ? true : false;
     if (8 == exNum) {
         $.btnFinish.visible = true;

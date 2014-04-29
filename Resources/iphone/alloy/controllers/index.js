@@ -30,12 +30,16 @@ function Controller() {
         backgroundImage: "texture.jpg"
     });
     $.__views.indexWin && $.addTopLevelView($.__views.indexWin);
-    $.__views.__alloyId18 = Ti.UI.createScrollView({
+    $.__views.__alloyId18 = Ti.UI.createView({
         layout: "vertical",
         id: "__alloyId18"
     });
     $.__views.indexWin.add($.__views.__alloyId18);
     var __alloyId21 = [];
+    $.__views.__alloyId22 = Ti.UI.createButton({
+        systemButton: Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE
+    });
+    __alloyId21.push($.__views.__alloyId22);
     $.__views.titleLabel = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -57,6 +61,10 @@ function Controller() {
         verticalAlign: "center"
     });
     __alloyId21.push($.__views.titleLabel);
+    $.__views.__alloyId23 = Ti.UI.createButton({
+        systemButton: Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE
+    });
+    __alloyId21.push($.__views.__alloyId23);
     $.__views.__alloyId19 = Ti.UI.iOS.createToolbar({
         items: __alloyId21,
         top: "15",
@@ -65,42 +73,42 @@ function Controller() {
         id: "__alloyId19"
     });
     $.__views.__alloyId18.add($.__views.__alloyId19);
-    var __alloyId22 = [];
+    var __alloyId24 = [];
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         height: "100%",
         width: "100%"
     });
-    __alloyId22.push($.__views.view1);
-    $.__views.__alloyId23 = Ti.UI.createImageView({
+    __alloyId24.push($.__views.view1);
+    $.__views.__alloyId25 = Ti.UI.createImageView({
         image: "img1.png",
-        id: "__alloyId23"
+        id: "__alloyId25"
     });
-    $.__views.view1.add($.__views.__alloyId23);
+    $.__views.view1.add($.__views.__alloyId25);
     $.__views.view2 = Ti.UI.createView({
         id: "view2",
         height: "100%",
         width: "100%"
     });
-    __alloyId22.push($.__views.view2);
-    $.__views.__alloyId24 = Ti.UI.createImageView({
+    __alloyId24.push($.__views.view2);
+    $.__views.__alloyId26 = Ti.UI.createImageView({
         image: "img2.png",
-        id: "__alloyId24"
+        id: "__alloyId26"
     });
-    $.__views.view2.add($.__views.__alloyId24);
+    $.__views.view2.add($.__views.__alloyId26);
     $.__views.view3 = Ti.UI.createView({
         id: "view3",
         height: "100%",
         width: "100%"
     });
-    __alloyId22.push($.__views.view3);
-    $.__views.__alloyId25 = Ti.UI.createImageView({
+    __alloyId24.push($.__views.view3);
+    $.__views.__alloyId27 = Ti.UI.createImageView({
         image: "img3.png",
-        id: "__alloyId25"
+        id: "__alloyId27"
     });
-    $.__views.view3.add($.__views.__alloyId25);
+    $.__views.view3.add($.__views.__alloyId27);
     $.__views.mainView = Ti.UI.createScrollableView({
-        views: __alloyId22,
+        views: __alloyId24,
         id: "mainView",
         height: "70%",
         width: "100%",
