@@ -1,7 +1,7 @@
 //var args = arguments[0] || {};
 function showDashboard(){
 	Alloy.Globals.exCount = 0;
-	var compWin = Alloy.createController("dashboard",{}).getView();
+	var compWin = Alloy.createController("exercise",{}).getView();
     compWin.open();
 }
 

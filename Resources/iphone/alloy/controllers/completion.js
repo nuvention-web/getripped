@@ -1,7 +1,7 @@
 function Controller() {
     function showDashboard() {
         Alloy.Globals.exCount = 0;
-        var compWin = Alloy.createController("dashboard", {}).getView();
+        var compWin = Alloy.createController("exercise", {}).getView();
         compWin.open();
     }
     function logout() {
@@ -106,7 +106,7 @@ function Controller() {
         },
         id: "btnDashboard",
         top: "20",
-        title: "Go to Dashboard"
+        title: "Start a new workout"
     });
     $.__views.mainView.add($.__views.btnDashboard);
     showDashboard ? $.__views.btnDashboard.addEventListener("click", showDashboard) : __defers["$.__views.btnDashboard!click!showDashboard"] = true;

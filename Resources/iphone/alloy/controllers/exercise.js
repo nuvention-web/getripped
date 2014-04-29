@@ -465,7 +465,6 @@ function Controller() {
     exAttempt.onload = function() {
         var json = this.responseText;
         var response = JSON.parse(json);
-        alert(response);
         if (response.weight && 0 != response.weight) {
             $.txtWeight.value = response.weight;
             $.txtWeight.editable = "false";

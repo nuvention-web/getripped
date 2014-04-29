@@ -50,7 +50,7 @@ var exAttempt = Titanium.Network.createHTTPClient();
 	{
     	var json = this.responseText;
     	var response = JSON.parse(json);
-    	alert(response);
+    	//alert(response);
     	if(response.weight && response.weight!=0){
     		$.txtWeight.value = response.weight;
     		$.txtWeight.editable = "false";

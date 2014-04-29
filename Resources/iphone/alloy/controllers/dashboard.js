@@ -3,12 +3,6 @@ function Controller() {
         var dashboardWin = Alloy.createController("exercise", {}).getView();
         dashboardWin.open();
     }
-    function logout() {
-        Alloy.Globals.userId = 0;
-        Alloy.Globals.exCount = 0;
-        var dashboardWin = Alloy.createController("login", {}).getView();
-        dashboardWin.open();
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "dashboard";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -33,24 +27,6 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.scrollviewId.add($.__views.mainView);
-    $.__views.btnLogout = Ti.UI.createButton({
-        width: 60,
-        height: 30,
-        borderRadius: 1,
-        backgroundColor: "#3B74F5",
-        color: "white",
-        font: {
-            fontFamily: "Arial",
-            fontWeight: "bold",
-            fontSize: 14
-        },
-        id: "btnLogout",
-        left: "70%",
-        top: "10",
-        title: "Logout"
-    });
-    $.__views.mainView.add($.__views.btnLogout);
-    logout ? $.__views.btnLogout.addEventListener("click", logout) : __defers["$.__views.btnLogout!click!logout"] = true;
     $.__views.welcomeLabel = Ti.UI.createLabel({
         font: {
             fontSize: 30,
@@ -85,7 +61,6 @@ function Controller() {
     $.__views.dashBoardNavWin && $.addTopLevelView($.__views.dashBoardNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    __defers["$.__views.btnLogout!click!logout"] && $.__views.btnLogout.addEventListener("click", logout);
     __defers["$.__views.btnWorkout!click!showWorkout"] && $.__views.btnWorkout.addEventListener("click", showWorkout);
     _.extend($, exports);
 }
