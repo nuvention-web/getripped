@@ -33,6 +33,11 @@ var imgName = exNum + ".JPG";
 $.exImage.image = imgName;
 $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
 
+if(exNum == 5 || exNum == 8){
+	$.txtWeight.value = "N/A";
+	$.txtWeight.editable = "false";
+}
+
 //alert(imgurl[index]);
 if (index > 0) {
 	$.btnPrev.visible = true;

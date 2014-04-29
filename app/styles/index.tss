@@ -56,6 +56,6 @@
 ".getRippedBtn": {
 	width: "150dp",
 	height: "35dp",
-	backgroundColor: "red",
+	backgroundColor: "#3B74F5",
 	color: "white",
 }

@@ -30,9 +30,9 @@
 	color: "#000",
 		//height: "30dp",
 		//width: "auto",
-		top: "10dp",
+		top: "10",
 		font: {
-			fontsize: 16,
+			fontsize: 18,
 			fontWeight: "bold"
 		}
 },
@@ -45,9 +45,9 @@
 	color: "black"
 },
 
-".getRippedBtn" : {
+".getRippedBtn": {
 	width: "150dp",
 	height: "35dp",
-	backgroundColor: "red",
+	backgroundColor: "#3B74F5",
 	color: "white",
 }

@@ -31,8 +31,15 @@
     width:90,
     height:35,
     borderRadius:1,
-    backgroundColor: "blue",
+    backgroundColor: "#3B74F5",
 	color: "white",
     font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+}
+
+"#loginLabel": {
+	font: {
+		fontSize: 20,
+		fontWeight:"bold"
+	}
 }
 

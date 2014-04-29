@@ -29,8 +29,8 @@
 			
 			</View>
 			<View id="viewId2" layout="horizontal" height="SIZE">
-				<Label left="10%" >Weight </Label>
-				<TextField id="txtWeight" class="txtClass" left="10%" color="red" value="40"></TextField>
+				<Label left="10%" >Weight Used</Label>
+				<TextField id="txtWeight" class="txtClass" left="10%" color="red"></TextField>
 			</View>
 			<View id="viewId3" layout="horizontal" height="SIZE" top="10">
 				<Label left="30%" class="showExCount">Recommended</Label><Label class="showExCount" left="10%">Reps</Label>

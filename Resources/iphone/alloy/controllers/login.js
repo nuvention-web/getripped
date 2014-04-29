@@ -15,8 +15,8 @@ function Controller() {
             var response = JSON.parse(json);
             alert(response.message);
         };
-        var workoutsWin = Alloy.createController("exercise", {}).getView();
-        $.navGroupWin.openWindow(workoutsWin);
+        var workoutsWin = Alloy.createController("dashboard", {}).getView();
+        workoutsWin.open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "login";
@@ -29,8 +29,27 @@ function Controller() {
     $.__views.loginWin = Ti.UI.createWindow({
         id: "loginWin",
         backgroundImage: "texture.jpg",
-        title: "Login"
+        title: "SwoleTrain"
     });
+    $.__views.view1 = Ti.UI.createView({
+        id: "view1",
+        layout: "vertical",
+        height: "SIZE",
+        top: "10"
+    });
+    $.__views.loginWin.add($.__views.view1);
+    $.__views.loginLabel = Ti.UI.createLabel({
+        width: Ti.UI.SIZE,
+        height: Ti.UI.SIZE,
+        color: "#000",
+        font: {
+            fontSize: 20,
+            fontWeight: "bold"
+        },
+        text: "Sign in to continue",
+        id: "loginLabel"
+    });
+    $.__views.view1.add($.__views.loginLabel);
     $.__views.txtUsername = Ti.UI.createTextField({
         color: "#336699",
         left: 10,
@@ -40,11 +59,10 @@ function Controller() {
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtUsername",
-        top: "10",
-        opacity: "1",
+        top: "20",
         hintText: "Username"
     });
-    $.__views.loginWin.add($.__views.txtUsername);
+    $.__views.view1.add($.__views.txtUsername);
     $.__views.txtPassword = Ti.UI.createTextField({
         color: "#336699",
         left: 10,
@@ -54,18 +72,17 @@ function Controller() {
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtPassword",
-        top: "60",
-        opacity: "1",
+        top: "10",
         passwordMask: "true",
         hintText: "Password"
     });
-    $.__views.loginWin.add($.__views.txtPassword);
+    $.__views.view1.add($.__views.txtPassword);
     $.__views.btnSubmit = Ti.UI.createButton({
-        top: 110,
+        top: "20",
         width: 90,
         height: 35,
         borderRadius: 1,
-        backgroundColor: "blue",
+        backgroundColor: "#3B74F5",
         color: "white",
         font: {
             fontFamily: "Arial",
@@ -73,10 +90,9 @@ function Controller() {
             fontSize: 14
         },
         id: "btnSubmit",
-        title: "Login",
-        opacity: "1"
+        title: "Login"
     });
-    $.__views.loginWin.add($.__views.btnSubmit);
+    $.__views.view1.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.loginWin,

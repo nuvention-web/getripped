@@ -1,10 +1,13 @@
 <Alloy>
 	<NavigationWindow id="dashBoardNavWin">
-	<Window id="exWin" backgroundColor="#bcbcbc">
-		<View id="viewId">
-		<Label id="workoutTitle" top="10">Dashboard </Label>
-		<Label id="eName" top="30"> Under Construction!</Label>
-		</View>
+	<Window id="dashboardWin" backgroundImage="texture.jpg" title="Get ready to be swolled!!!">
+		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
+		<View id="mainView" layout="vertical" >
+				<Button id="btnLogout" left="70%" top="10" title="Logout" onClick="logout"></Button>
+				<Label top="20" id="welcomeLabel">Welcome! </Label>
+				<Button id="btnWorkout" top="40" title="Start a new workout" onClick="showWorkout"></Button>
+			</View>		
+		</ScrollView>
 	</Window>
 	</NavigationWindow>
 </Alloy>

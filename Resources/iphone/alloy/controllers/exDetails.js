@@ -38,8 +38,7 @@ function Controller() {
         id: "exDescription",
         top: "20",
         font: "30",
-        width: "90%",
-        backgroundColor: "yellow"
+        width: "90%"
     });
     $.__views.mainView.add($.__views.exDescription);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({

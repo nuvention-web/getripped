@@ -1,4 +1,12 @@
 function Controller() {
+    function showWorkout() {
+        var dashboardWin = Alloy.createController("exercise", {}).getView();
+        dashboardWin.open();
+    }
+    function logout() {
+        var dashboardWin = Alloy.createController("login", {}).getView();
+        dashboardWin.open();
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "dashboard";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -6,43 +14,77 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.exWin = Ti.UI.createWindow({
-        title: "Trainer",
-        fullScreen: false,
-        exitOnClose: true,
-        navBarHidden: true,
-        tabBarHidden: true,
+    var __defers = {};
+    $.__views.dashboardWin = Ti.UI.createWindow({
+        id: "dashboardWin",
+        backgroundImage: "texture.jpg",
+        title: "Get ready to be swolled!!!"
+    });
+    $.__views.scrollviewId = Ti.UI.createScrollView({
+        id: "scrollviewId",
+        scrollingEnabled: "true",
+        showVerticalScrollIndicator: "true"
+    });
+    $.__views.dashboardWin.add($.__views.scrollviewId);
+    $.__views.mainView = Ti.UI.createView({
+        id: "mainView",
+        layout: "vertical"
+    });
+    $.__views.scrollviewId.add($.__views.mainView);
+    $.__views.btnLogout = Ti.UI.createButton({
+        width: 60,
+        height: 30,
+        borderRadius: 1,
+        backgroundColor: "#3B74F5",
+        color: "white",
         font: {
-            fontsize: "32dp",
+            fontFamily: "Arial",
+            fontWeight: "bold",
+            fontSize: 14
+        },
+        id: "btnLogout",
+        left: "70%",
+        top: "10",
+        title: "Logout"
+    });
+    $.__views.mainView.add($.__views.btnLogout);
+    logout ? $.__views.btnLogout.addEventListener("click", logout) : __defers["$.__views.btnLogout!click!logout"] = true;
+    $.__views.welcomeLabel = Ti.UI.createLabel({
+        font: {
+            fontSize: 30,
             fontWeight: "bold"
         },
-        id: "exWin",
-        backgroundColor: "#bcbcbc"
+        text: "Welcome!",
+        top: "20",
+        id: "welcomeLabel"
     });
-    $.__views.viewId = Ti.UI.createView({
-        id: "viewId"
+    $.__views.mainView.add($.__views.welcomeLabel);
+    $.__views.btnWorkout = Ti.UI.createButton({
+        width: 200,
+        height: 30,
+        borderRadius: 1,
+        backgroundColor: "#3B74F5",
+        color: "white",
+        font: {
+            fontFamily: "Arial",
+            fontWeight: "bold",
+            fontSize: 14
+        },
+        id: "btnWorkout",
+        top: "40",
+        title: "Start a new workout"
     });
-    $.__views.exWin.add($.__views.viewId);
-    $.__views.workoutTitle = Ti.UI.createLabel({
-        text: "Dashboard",
-        id: "workoutTitle",
-        top: "10"
-    });
-    $.__views.viewId.add($.__views.workoutTitle);
-    $.__views.eName = Ti.UI.createLabel({
-        text: "Under Construction!",
-        id: "eName",
-        top: "30"
-    });
-    $.__views.viewId.add($.__views.eName);
+    $.__views.mainView.add($.__views.btnWorkout);
+    showWorkout ? $.__views.btnWorkout.addEventListener("click", showWorkout) : __defers["$.__views.btnWorkout!click!showWorkout"] = true;
     $.__views.dashBoardNavWin = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.exWin,
+        window: $.__views.dashboardWin,
         id: "dashBoardNavWin"
     });
     $.__views.dashBoardNavWin && $.addTopLevelView($.__views.dashBoardNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    arguments[0] || {};
+    __defers["$.__views.btnLogout!click!logout"] && $.__views.btnLogout.addEventListener("click", logout);
+    __defers["$.__views.btnWorkout!click!showWorkout"] && $.__views.btnWorkout.addEventListener("click", showWorkout);
     _.extend($, exports);
 }
 

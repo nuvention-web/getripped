@@ -40,13 +40,8 @@ function showWorkout(){
 	}; 
 	
 	
-    var workoutsWin = Alloy.createController("exercise",{}).getView();
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(workoutsWin);
-    }
-    if (OS_ANDROID) {
-        workouts.open();
-    }
+    var workoutsWin = Alloy.createController("dashboard",{}).getView();
+        workoutsWin.open();
 }
 
 if(OS_IOS) { 
