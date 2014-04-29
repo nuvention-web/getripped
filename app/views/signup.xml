@@ -6,7 +6,7 @@
 		<View id="view1" layout="vertical" height="SIZE">
 			<TextField id="txtFirstName" class="txtFieldLogin" top="10" hintText="First Name"></TextField>
 			<TextField id="txtLastName" class="txtFieldLogin" top="10" hintText="Last Name"></TextField>
-			<TextField id="txtEmail" class="txtFieldLogin" top="10" hintText="Email"></TextField>
+			<TextField id="txtEmail" class="txtFieldLogin" top="10" hintText="Email" autocapitalization="false"></TextField>
 			<TextField id="txtPassword" class="txtFieldLogin" top="10" passwordMask="true"  hintText="Password"></TextField>
 		</View>
 		<!--View id="view2" layout="horizontal" height="SIZE" top="10">

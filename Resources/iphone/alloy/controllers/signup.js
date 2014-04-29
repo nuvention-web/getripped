@@ -35,10 +35,28 @@ function Controller() {
             var json = this.responseText;
             var response = JSON.parse(json);
             alert(response.message);
-            "succeeded" == response.message && alert("yes");
+            if ("succeeded" == response.message) {
+                alert("yes");
+                var loginRequest = Titanium.Network.createHTTPClient();
+                loginRequest.withCredentials = true;
+                loginRequest.open("POST", "http://getripped.herokuapp.com/session");
+                var userLogin = {
+                    password: $.txtPassword.value,
+                    email: $.txtEmail.value
+                };
+                loginRequest.send(userLogin);
+                loginRequest.onload = function() {
+                    var json = this.responseText;
+                    var response = JSON.parse(json);
+                    if ("succeeded" != response.message) alert("Invalid email/password"); else {
+                        Alloy.Globals.userId = response.user_id;
+                        var workoutsWin = Alloy.createController("dashboard", {}).getView();
+                        workoutsWin.open();
+                        alert(Alloy.Globals.userId);
+                    }
+                };
+            }
         };
-        var workoutsWin = Alloy.createController("dashboard", {}).getView();
-        $.navGroupWin.openWindow(workoutsWin);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "signup";

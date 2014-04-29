@@ -59,20 +59,35 @@ function signupUser(){
 	{
     	var json = this.responseText;
     	var response = JSON.parse(json);
-    	alert(response.message);
+    	//alert(response.message);
     	if(response.message == "succeeded") {
-    		alert("yes");
+    		var loginRequest = Titanium.Network.createHTTPClient();
+        	loginRequest.withCredentials = true;	
+        	loginRequest.open("POST","http://getripped.herokuapp.com/session");
+        	var userLogin = {
+            	password: $.txtPassword.value,
+            	email: $.txtEmail.value
+         	};
+         
+        	loginRequest.send(userLogin);
+        
+     		loginRequest.onload = function()
+	 		{
+    			var json = this.responseText;
+    			var response = JSON.parse(json);
+    			//alert(response.message);
+    			if(response.message!= "succeeded"){
+    				alert("Invalid email/password");
+    			}
+    			else{
+    				//alert(response.user_id);
+    				Alloy.Globals.userId = response.user_id;
+    				var workoutsWin = Alloy.createController("dashboard",{}).getView();
+    				workoutsWin.open();
+    			}
+			};
     	}
 	}; 
-	
-	
-    var workoutsWin = Alloy.createController("dashboard",{}).getView();
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(workoutsWin);
-    }
-    if (OS_ANDROID) {
-        workouts.open();
-    }
 }
 
 function openLogin() {
