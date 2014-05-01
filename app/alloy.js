@@ -19,6 +19,7 @@ Alloy.Globals.eName = [];
 Alloy.Globals.images = [];
 Alloy.Globals.eDescription = [];
 Alloy.Globals.exCount = 0;
+Alloy.Globals.userId = 0;
 var xhr = Ti.Network.createHTTPClient({
     onload: function(e) {
     	//alert(e);
@@ -36,8 +37,8 @@ var xhr = Ti.Network.createHTTPClient({
  		 Alloy.Globals.sets = jsonObj[i].sets;
  		 //alert(jsonObj[i].name);
  		 Alloy.Globals.eName[i] = jsonObj[i].name;
- 		 Alloy.Globals.images[i] = jsonObj[i].image;
- 		 
+ 		 Alloy.Globals.images[i] = 'images/' + jsonObj[i].image;
+ 		// var path = "images" + Alloy.Globals.images[i];
  		 Alloy.Globals.eDescription[i] = jsonObj[i].description;//alert(Alloy.Globals.eName[i]);
 		}
         //alert(jsonObj.);
@@ -48,7 +49,7 @@ var xhr = Ti.Network.createHTTPClient({
     onerror: function(e) {
 		// this function is called when an error occurs, including a timeout
         Ti.API.debug(e.error);
-        alert('error');
+        //alert('error');
     },
     timeout:5000  /* in milliseconds */
 });

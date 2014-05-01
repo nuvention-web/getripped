@@ -1,32 +1,25 @@
-function showWorkout(){
-	var loginReq = Titanium.Network.createHTTPClient();
-        loginReq.open("POST","http://getripped.herokuapp.com/session");
-        var user = {
-            password: "1234",
-            email: "pri1229@gmail.com"
-         };
-         
-        loginReq.send(user);
-        
-     loginReq.onload = function()
-	{
-    	var json = this.responseText;
-    	var response = JSON.parse(json);
-    	//alert(response.message);
-	}; 
-	
-	
-    var workoutsWin = Alloy.createController("exercise",{}).getView();
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(workoutsWin);
+//alert($.titleLabel.text);
+//$.indexWin.setTitle = $.titleLabel.text;
+
+function signupUser(){
+
+    var signUp = Alloy.createController("signup",{}).getView();
+    signUp.open();
+}
+
+function openLogin() {
+	var loginWin = Alloy.createController("login",{}).getView();
+	loginWin.open();
+    /*if (OS_IOS) {
+        $.indexWin.openWindow(loginWin);
     }
     if (OS_ANDROID) {
-        workouts.open();
-    }
+        loginWin.open();
+    }*/
 }
 
 if(OS_IOS) { 
-   $.navGroupWin.open();
+   $.indexWin.open();
 } 
 if (OS_ANDROID) { 
    $.index.open(); 

@@ -1,13 +1,21 @@
-".container": {
-	title : "Swole Trainer",
+".container[platform=ios]": {
+	//title : "SwoleTrain",
 	fullScreen: false,
 	exitOnClose: true,
-	navBarHidden: false,
+	navBarHidden: true,
 	tabBarHidden: true,
 	font: {
-		fontsize: "32dp",
+		fontsize: "48dp",
 		fontWeight: "bold"
-	}
+	},
+	color : "red"
+},
+
+".titleLabel": {
+	top:10,
+	textAlign:'center',
+    font:{fontFamily:'Trebuchet MS',fontSize:20,fontWeight:'bold'},
+    shadowColor:'#eee',shadowOffset:{x:0,y:1}
 },
 
 "Label": {
@@ -24,14 +32,30 @@
     keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
     returnKeyType:Titanium.UI.RETURNKEY_DEFAULT,
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
-}
+},
 
-".loginBtn": {
-	top:110,
-    width:90,
-    height:35,
-    borderRadius:1,
-    backgroundColor: "blue",
+".getRippedText": {
+	color: "#000",
+		//height: "30dp",
+		//width: "auto",
+		top: "10dp",
+		font: {
+			fontsize: 16,
+			fontWeight: "bold"
+		}
+},
+
+".demographicText": {
+	width: "120dp",
+	height: "35dp",
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	backgroundColor: "white",
+	color: "black"
+},
+
+".getRippedBtn": {
+	width: "150dp",
+	height: "35dp",
+	backgroundColor: "#3B74F5",
 	color: "white",
-    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
 }

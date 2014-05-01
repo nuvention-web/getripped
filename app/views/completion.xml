@@ -1,15 +1,18 @@
 <Alloy>
 	<NavigationWindow id="compNavWin">
-	<Window id="exWin" backgroundColor="#bcbcbc">
-		<View id="viewId">
-		<Label top="20">Congratulations! </Label>
-		<Label top="60">You've completed today's</Label>
-		<Label top="80">weight training</Label>
-		<Label top="100" left="30">Two things left to do: </Label>
-		<Label top="120" left="30">1. Run 1 Mile </Label>
-		<Label top="140" left="30">2. Stretch </Label>
-		<Button id="bnDashboard" class="dashboardBtn" bottom="50" title="Go to Dashboard" onClick="showDashboard"></Button>
-		</View>
+	<Window id="exWin" backgroundImage="texture.jpg" title="You are so Swole!">
+		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
+		<View id="mainView" layout="vertical" >
+				<Button id="btnLogout" left="70%" top="10" title="Logout" onClick="logout"></Button>
+				<Label top="20" id="congratsLabel">Congratulations! </Label>
+				<Label top="20">You've completed today's</Label>
+				<Label>weight training</Label>
+				<Label top="20" left="30">Two things left to do: </Label>
+				<Label top="5" left="30">1. Run 1 Mile </Label>
+				<Label left="30">2. Stretch </Label>
+				<Button id="btnDashboard" top="20" title="Start over" onClick="showDashboard"></Button>
+			</View>		
+		</ScrollView>
 	</Window>
 	</NavigationWindow>
 </Alloy>

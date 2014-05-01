@@ -1,10 +1,9 @@
-".container[platform=ios]": {
-	title : "GetRipped",
-	backgroundColor : "grey",
-	//fullScreen: false,
+".container": {
+	title : "Swole Trainer",
+	fullScreen: false,
 	exitOnClose: true,
-	//navBarHidden: false,
-	//tabBarHidden: true,
+	navBarHidden: false,
+	tabBarHidden: true,
 	font: {
 		fontsize: "32dp",
 		fontWeight: "bold"
@@ -17,29 +16,23 @@
 	color: "#000"
 }, 
 
-".getRippedText": {
-	color: "#000",
-		//height: "30dp",
-		//width: "auto",
-		top: "10dp",
-		font: {
-			fontsize: 16,
-			fontWeight: "bold"
-		}
-},
-
-".demographicText": {
-	width: "150dp",
-	height: "35dp",
-	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-	backgroundColor: "white",
-	color: "black"
-},
-
-".getRippedBtn" : {
-	width: "150dp",
-	top: "340dp",
-	height: "35dp",
-	backgroundColor: "red",
-	color: "white",
+".txtFieldLogin": {
+	color:'#336699',
+    left:10,
+    width:300,
+    height:40,
+    keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+    returnKeyType:Titanium.UI.RETURNKEY_DEFAULT,
+    borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 }
+
+".loginBtn": {
+	top:110,
+    width:90,
+    height:35,
+    borderRadius:1,
+    backgroundColor: "blue",
+	color: "white",
+    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+}
+
