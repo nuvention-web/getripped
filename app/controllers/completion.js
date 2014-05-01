@@ -1,10 +1,13 @@
 //var args = arguments[0] || {};
 function showDashboard(){
-	var dashboardWin = Alloy.createController("dashboard",{}).getView();
-    if (OS_IOS) {
-        $.compNavWin.openWindow(dashboardWin);
-    }
-    if (OS_ANDROID) {
-        workoutsWin.open();
-    }
+	Alloy.Globals.exCount = 0;
+	var compWin = Alloy.createController("exercise",{}).getView();
+    compWin.open();
+}
+
+function logout() {
+	Alloy.Globals.userId = 0;
+	Alloy.Globals.exCount = 0;
+	var compWin = Alloy.createController("login",{}).getView();
+    compWin.open();
 }

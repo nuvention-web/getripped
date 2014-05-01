@@ -1,11 +1,24 @@
-"#exWin": {
-	title : "Trainer",
-	fullScreen: false,
-	exitOnClose: true,
-	navBarHidden: true,
-	tabBarHidden: true,
+"#congratsLabel": {
 	font: {
-		fontsize: "32dp",
-		fontWeight: "bold"
+		fontSize: 30,
+		fontWeight:"bold"
 	}
+}
+
+"#btnDashboard": {
+	width:150,
+    height:30,
+    borderRadius:1,
+    backgroundColor: "#3B74F5",
+	color: "white",
+    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+},
+
+"#btnLogout": {
+	width:60,
+    height:30,
+    borderRadius:1,
+    backgroundColor: "#3B74F5",
+	color: "white",
+    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
 }

@@ -1,0 +1,53 @@
+".container[platform=ios]": {
+	title : "SwoleTrain",
+	fullScreen: false,
+	exitOnClose: true,
+	navBarHidden: false,
+	tabBarHidden: true,
+	font: {
+		fontsize: "32dp",
+		fontWeight: "bold"
+	}
+},
+
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000"
+}, 
+
+".txtFieldLogin": {
+	color:'#336699',
+    left:10,
+    width:300,
+    height:40,
+    keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+    returnKeyType:Titanium.UI.RETURNKEY_DEFAULT,
+    borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+},
+
+".getRippedText": {
+	color: "#000",
+		//height: "30dp",
+		//width: "auto",
+		top: "10",
+		font: {
+			fontsize: 18,
+			fontWeight: "bold"
+		}
+},
+
+".demographicText": {
+	width: "120dp",
+	height: "35dp",
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	backgroundColor: "white",
+	color: "black"
+},
+
+".getRippedBtn": {
+	width: "150dp",
+	height: "35dp",
+	backgroundColor: "#3B74F5",
+	color: "white",
+}
