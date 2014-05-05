@@ -31,6 +31,9 @@ var exNum = index + 1;
 var imgName = exNum + ".JPG";
 $.exImage.image = imgName;
 $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
+$.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+$.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+$.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 
 if(exNum == 5 || exNum == 8){
 	$.txtWeight.value = "N/A";

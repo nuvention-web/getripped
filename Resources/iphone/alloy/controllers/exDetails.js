@@ -69,6 +69,7 @@ function Controller() {
     $.eName.text = exName;
     $.exImage.image = imageName;
     $.exDescription.text = "Instructions: " + exDesc;
+    alert(exDesc);
     _.extend($, exports);
 }
 

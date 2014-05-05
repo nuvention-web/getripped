@@ -24,11 +24,11 @@
 				
 				<Label id="workoutTitle" class="showExCount" top="10"> </Label>
 				<Label id="eName" top="10"></Label>
-				<ImageView id="exImage"  top="10" height="120" width="50%"></ImageView>
-				<Button id="detailsBtn" class="clickBtn" title="Click here to see full sized image and instructions" onClick="openExDetails" ></Button>
+				<ImageView id="exImage"  top="10" height="120" width="50%" onClick="openExDetails"></ImageView>
+				<!--Button id="detailsBtn" class="clickBtn" title="Click here to see full sized image and instructions" onClick="openExDetails" ></Button-->
 			
 			</View>
-			<View id="viewId2" layout="horizontal" height="SIZE">
+			<View id="viewId2" layout="horizontal" height="SIZE" top="10">
 				<Label left="10%" >Weight Used</Label>
 				<TextField id="txtWeight" class="txtClass" left="10%" color="red" ></TextField>
 			</View>

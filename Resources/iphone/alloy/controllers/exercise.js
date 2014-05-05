@@ -144,20 +144,12 @@ function Controller() {
         width: "50%"
     });
     $.__views.viewId.add($.__views.exImage);
-    $.__views.detailsBtn = Ti.UI.createButton({
-        width: "75%",
-        font: {
-            fontSize: 10
-        },
-        id: "detailsBtn",
-        title: "Click here to see full sized image and instructions"
-    });
-    $.__views.viewId.add($.__views.detailsBtn);
-    openExDetails ? $.__views.detailsBtn.addEventListener("click", openExDetails) : __defers["$.__views.detailsBtn!click!openExDetails"] = true;
+    openExDetails ? $.__views.exImage.addEventListener("click", openExDetails) : __defers["$.__views.exImage!click!openExDetails"] = true;
     $.__views.viewId2 = Ti.UI.createView({
         id: "viewId2",
         layout: "horizontal",
-        height: "SIZE"
+        height: "SIZE",
+        top: "10"
     });
     $.__views.mainView.add($.__views.viewId2);
     $.__views.__alloyId12 = Ti.UI.createLabel({
@@ -421,6 +413,7 @@ function Controller() {
     var imgName = exNum + ".JPG";
     $.exImage.image = imgName;
     $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
+    $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
     if (5 == exNum || 8 == exNum) {
         $.txtWeight.value = "N/A";
         $.txtWeight.editable = "false";
@@ -442,7 +435,7 @@ function Controller() {
     };
     $.btnPrev.visible = index > 0 ? true : false;
     $.btnNext.title = 8 == exNum ? "Finish" : "Next";
-    __defers["$.__views.detailsBtn!click!openExDetails"] && $.__views.detailsBtn.addEventListener("click", openExDetails);
+    __defers["$.__views.exImage!click!openExDetails"] && $.__views.exImage.addEventListener("click", openExDetails);
     __defers["$.__views.btnPrev!click!showPrev"] && $.__views.btnPrev.addEventListener("click", showPrev);
     __defers["$.__views.btnNext!click!showNext"] && $.__views.btnNext.addEventListener("click", showNext);
     _.extend($, exports);
