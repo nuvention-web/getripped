@@ -38,11 +38,10 @@
 },
 
 ".demographicText": {
-	width: "120dp",
+	color:'#336699',
+	width: "135dp",
 	height: "35dp",
 	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-	backgroundColor: "white",
-	color: "black"
 },
 
 ".getRippedBtn": {
