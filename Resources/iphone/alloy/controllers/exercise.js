@@ -1,4 +1,7 @@
 function Controller() {
+    function isNumber(n) {
+        return !isNaN(parseInt(n)) && isFinite(n) && -1 == n.toString().indexOf(".");
+    }
     function showNext() {
         if (8 == exNum) showAckView(); else {
             var exId = exNum;
@@ -22,6 +25,21 @@ function Controller() {
             }
             if ("" == set3Text) {
                 alert("Enter reps completed for Set 3");
+                return;
+            }
+            var rep1Input = isNumber(set1Text);
+            var rep2Input = isNumber(set2Text);
+            var rep3Input = isNumber(set3Text);
+            if (0 == rep1Input) {
+                alert("Enter only numbers for Set 1 reps");
+                return;
+            }
+            if (0 == rep2Input) {
+                alert("Enter only numbers for Set 2 reps");
+                return;
+            }
+            if (0 == rep3Input) {
+                alert("Enter only numbers for Set 3 reps");
                 return;
             }
             var exAttempt = Titanium.Network.createHTTPClient();
@@ -414,6 +432,8 @@ function Controller() {
     $.exImage.image = imgName;
     $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
     $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+    $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+    $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
     if (5 == exNum || 8 == exNum) {
         $.txtWeight.value = "N/A";
         $.txtWeight.editable = "false";

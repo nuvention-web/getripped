@@ -78,6 +78,10 @@ else {
 	//$.btnFinish.visible = false;
 }
 
+function isNumber(n) {
+  return !isNaN(parseInt(n)) && isFinite(n) && n.toString().indexOf(".") == -1;
+}
+
 function showNext(){
 	if(exNum == 8) {
 		showAckView();
@@ -107,6 +111,22 @@ function showNext(){
 	}
 	if(set3Text==""){
 		alert("Enter reps completed for Set 3");
+		return;
+	}
+	
+	var rep1Input = isNumber(set1Text);
+	var rep2Input = isNumber(set2Text);
+	var rep3Input = isNumber(set3Text);
+	if(rep1Input == 0) {
+		alert("Enter only numbers for Set 1 reps");
+		return;
+	}
+	if(rep2Input == 0) {
+		alert("Enter only numbers for Set 2 reps");
+		return;
+	}
+	if(rep3Input == 0) {
+		alert("Enter only numbers for Set 3 reps");
 		return;
 	}
 	
