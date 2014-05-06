@@ -1,24 +1,15 @@
 <Alloy>
-	<!--NavigationWindow id="exNavWin"-->
+	<NavigationWindow id="exNavWin">
 	<Window id="exWin" backgroundImage="texture.jpg">
-		<Toolbar platform="ios" top="15" borderTop="true" borderBottom="true">
-            <!-- The Items tag sets the Toolbar.items property. -->
-            <!--Items>
-            
-                <!--Label id="titleLabel" class="titleLabel" left="200"  verticalAlign="center">SwoleTrain</Label>
-            
-          </Items-->
+		<!--Toolbar platform="ios" top="15" borderTop="true" borderBottom="true">
 
-            <!-- Place additional views for the Toolbar here. -->
-
-        </Toolbar>
-		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true" top="30">
+        </Toolbar-->
+		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 			
 		<View id="mainView" layout="vertical">
-		<View id="toolbarView" layout="horizontal"  height="SIZE">
-			<!--Button id="bkbtn" backgroundImage="back.png" height="25" width="50" left="10" onClick="openLogin"></Button-->
+		<!--View id="toolbarView" layout="horizontal"  height="SIZE">
 			<Label id="windowTitle" left="40%">Workout</Label>
-		</View>
+		</View-->
 		
 			<View id="viewId" layout="vertical" height="SIZE">
 				
@@ -61,5 +52,5 @@
 		</View>
 		</ScrollView>
 	</Window>
-	<!--/NavigationWindow-->
+	</NavigationWindow>
 </Alloy>

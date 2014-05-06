@@ -5,17 +5,12 @@ font:{size:9, fontWeight:'bold'},
 width: 50,
 backgroundImage: 'back.png',
 });
-//$.exWin.setLeftNavButton(bkBtn);
+
 //$.loginWin.setTitleAttributes(color:'blue',font: {fontFamily:'Snell Roundhand', fontSize:36},shadow:{color:'gray', offset:{width:1,height:1}});
 
 bkBtn.addEventListener("click", function(e){
-		 var workoutsWin = Alloy.createController("index",{}).getView();
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(workoutsWin);
-    }
-    if (OS_ANDROID) {
-        workouts.open();
-    }
+		 var workoutsWin = Alloy.createController("dashboard",{}).getView();
+        workoutsWin.open();
 	});
 
 
@@ -35,6 +30,9 @@ $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 
+if(exNum == 1){
+	$.exWin.setLeftNavButton(bkBtn);
+}
 if(exNum == 5 || exNum == 8){
 	$.txtWeight.value = "N/A";
 	$.txtWeight.editable = "false";

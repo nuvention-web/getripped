@@ -83,10 +83,9 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.exWin = Ti.UI.createWindow({
-        title: "Trainer",
+        title: "Workout",
         fullScreen: false,
         exitOnClose: true,
-        navBarHidden: true,
         tabBarHidden: true,
         font: {
             fontsize: "32dp",
@@ -95,19 +94,10 @@ function Controller() {
         id: "exWin",
         backgroundImage: "texture.jpg"
     });
-    $.__views.exWin && $.addTopLevelView($.__views.exWin);
-    $.__views.__alloyId11 = Ti.UI.iOS.createToolbar({
-        top: "15",
-        borderTop: "true",
-        borderBottom: "true",
-        id: "__alloyId11"
-    });
-    $.__views.exWin.add($.__views.__alloyId11);
     $.__views.scrollviewId = Ti.UI.createScrollView({
         id: "scrollviewId",
         scrollingEnabled: "true",
-        showVerticalScrollIndicator: "true",
-        top: "30"
+        showVerticalScrollIndicator: "true"
     });
     $.__views.exWin.add($.__views.scrollviewId);
     $.__views.mainView = Ti.UI.createView({
@@ -115,22 +105,6 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.scrollviewId.add($.__views.mainView);
-    $.__views.toolbarView = Ti.UI.createView({
-        id: "toolbarView",
-        layout: "horizontal",
-        height: "SIZE"
-    });
-    $.__views.mainView.add($.__views.toolbarView);
-    $.__views.windowTitle = Ti.UI.createLabel({
-        font: {
-            fontSize: 20,
-            fontWeight: "bold"
-        },
-        text: "Workout",
-        id: "windowTitle",
-        left: "40%"
-    });
-    $.__views.toolbarView.add($.__views.windowTitle);
     $.__views.viewId = Ti.UI.createView({
         id: "viewId",
         layout: "vertical",
@@ -170,12 +144,12 @@ function Controller() {
         top: "10"
     });
     $.__views.mainView.add($.__views.viewId2);
-    $.__views.__alloyId12 = Ti.UI.createLabel({
+    $.__views.__alloyId11 = Ti.UI.createLabel({
         text: "Weight Used",
         left: "10%",
-        id: "__alloyId12"
+        id: "__alloyId11"
     });
-    $.__views.viewId2.add($.__views.__alloyId12);
+    $.__views.viewId2.add($.__views.__alloyId11);
     $.__views.txtWeight = Ti.UI.createTextField({
         width: 50,
         height: 30,
@@ -197,61 +171,61 @@ function Controller() {
         top: "10"
     });
     $.__views.mainView.add($.__views.viewId3);
-    $.__views.__alloyId13 = Ti.UI.createLabel({
+    $.__views.__alloyId12 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Recommended",
         left: "30%",
-        id: "__alloyId13"
+        id: "__alloyId12"
     });
-    $.__views.viewId3.add($.__views.__alloyId13);
-    $.__views.__alloyId14 = Ti.UI.createLabel({
+    $.__views.viewId3.add($.__views.__alloyId12);
+    $.__views.__alloyId13 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Reps",
         left: "10%",
-        id: "__alloyId14"
+        id: "__alloyId13"
     });
-    $.__views.viewId3.add($.__views.__alloyId14);
+    $.__views.viewId3.add($.__views.__alloyId13);
     $.__views.viewId4 = Ti.UI.createView({
         id: "viewId4",
         layout: "horizontal",
         height: "SIZE"
     });
     $.__views.mainView.add($.__views.viewId4);
-    $.__views.__alloyId15 = Ti.UI.createLabel({
+    $.__views.__alloyId14 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Reps",
         left: "40%",
-        id: "__alloyId15"
+        id: "__alloyId14"
     });
-    $.__views.viewId4.add($.__views.__alloyId15);
-    $.__views.__alloyId16 = Ti.UI.createLabel({
+    $.__views.viewId4.add($.__views.__alloyId14);
+    $.__views.__alloyId15 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Completed",
         left: "12%",
-        id: "__alloyId16"
+        id: "__alloyId15"
     });
-    $.__views.viewId4.add($.__views.__alloyId16);
+    $.__views.viewId4.add($.__views.__alloyId15);
     $.__views.viewId5 = Ti.UI.createView({
         id: "viewId5",
         layout: "horizontal",
         height: "SIZE"
     });
     $.__views.mainView.add($.__views.viewId5);
-    $.__views.__alloyId17 = Ti.UI.createLabel({
+    $.__views.__alloyId16 = Ti.UI.createLabel({
         text: "Set 1",
         left: "30",
-        id: "__alloyId17"
+        id: "__alloyId16"
     });
-    $.__views.viewId5.add($.__views.__alloyId17);
-    $.__views.__alloyId18 = Ti.UI.createLabel({
+    $.__views.viewId5.add($.__views.__alloyId16);
+    $.__views.__alloyId17 = Ti.UI.createLabel({
         width: 50,
         height: 30,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -263,9 +237,9 @@ function Controller() {
         color: "red",
         left: "14%",
         text: "12",
-        id: "__alloyId18"
+        id: "__alloyId17"
     });
-    $.__views.viewId5.add($.__views.__alloyId18);
+    $.__views.viewId5.add($.__views.__alloyId17);
     $.__views.txtSet1 = Ti.UI.createTextField({
         width: 50,
         height: 30,
@@ -286,13 +260,13 @@ function Controller() {
         height: "SIZE"
     });
     $.__views.mainView.add($.__views.viewId6);
-    $.__views.__alloyId19 = Ti.UI.createLabel({
+    $.__views.__alloyId18 = Ti.UI.createLabel({
         text: "Set 2",
         left: "30",
-        id: "__alloyId19"
+        id: "__alloyId18"
     });
-    $.__views.viewId6.add($.__views.__alloyId19);
-    $.__views.__alloyId20 = Ti.UI.createLabel({
+    $.__views.viewId6.add($.__views.__alloyId18);
+    $.__views.__alloyId19 = Ti.UI.createLabel({
         width: 50,
         height: 30,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -304,9 +278,9 @@ function Controller() {
         color: "red",
         left: "14%",
         text: "12",
-        id: "__alloyId20"
+        id: "__alloyId19"
     });
-    $.__views.viewId6.add($.__views.__alloyId20);
+    $.__views.viewId6.add($.__views.__alloyId19);
     $.__views.txtSet2 = Ti.UI.createTextField({
         width: 50,
         height: 30,
@@ -327,13 +301,13 @@ function Controller() {
         height: "SIZE"
     });
     $.__views.mainView.add($.__views.viewId7);
-    $.__views.__alloyId21 = Ti.UI.createLabel({
+    $.__views.__alloyId20 = Ti.UI.createLabel({
         text: "Set 3",
         left: "30",
-        id: "__alloyId21"
+        id: "__alloyId20"
     });
-    $.__views.viewId7.add($.__views.__alloyId21);
-    $.__views.__alloyId22 = Ti.UI.createLabel({
+    $.__views.viewId7.add($.__views.__alloyId20);
+    $.__views.__alloyId21 = Ti.UI.createLabel({
         width: 50,
         height: 30,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -345,9 +319,9 @@ function Controller() {
         color: "red",
         left: "14%",
         text: "12",
-        id: "__alloyId22"
+        id: "__alloyId21"
     });
-    $.__views.viewId7.add($.__views.__alloyId22);
+    $.__views.viewId7.add($.__views.__alloyId21);
     $.__views.txtSet3 = Ti.UI.createTextField({
         width: 50,
         height: 30,
@@ -404,6 +378,11 @@ function Controller() {
     });
     $.__views.buttonView.add($.__views.btnNext);
     showNext ? $.__views.btnNext.addEventListener("click", showNext) : __defers["$.__views.btnNext!click!showNext"] = true;
+    $.__views.exNavWin = Ti.UI.iOS.createNavigationWindow({
+        window: $.__views.exWin,
+        id: "exNavWin"
+    });
+    $.__views.exNavWin && $.addTopLevelView($.__views.exNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var bkBtn = Titanium.UI.createButton({
@@ -416,8 +395,8 @@ function Controller() {
         backgroundImage: "back.png"
     });
     bkBtn.addEventListener("click", function() {
-        var workoutsWin = Alloy.createController("index", {}).getView();
-        $.navGroupWin.openWindow(workoutsWin);
+        var workoutsWin = Alloy.createController("dashboard", {}).getView();
+        workoutsWin.open();
     });
     var eNames = [];
     var eDesc = [];
@@ -434,6 +413,7 @@ function Controller() {
     $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
     $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
     $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+    1 == exNum && $.exWin.setLeftNavButton(bkBtn);
     if (5 == exNum || 8 == exNum) {
         $.txtWeight.value = "N/A";
         $.txtWeight.editable = "false";
