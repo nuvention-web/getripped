@@ -9,12 +9,7 @@ $.exDetailsWin.setLeftNavButton(bkBtn);
 
 bkBtn.addEventListener("click", function(e){
 		 var workoutsWin = Alloy.createController("exercise",{}).getView();
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(workoutsWin);
-    }
-    if (OS_ANDROID) {
-        workouts.open();
-    }
+         workoutsWin.open();
 	});
 	
 var count = Alloy.Globals.exCount + 1;
