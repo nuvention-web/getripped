@@ -5,17 +5,12 @@ font:{size:9, fontWeight:'bold'},
 width: 50,
 backgroundImage: 'back.png',
 });
-//$.exWin.setLeftNavButton(bkBtn);
+
 //$.loginWin.setTitleAttributes(color:'blue',font: {fontFamily:'Snell Roundhand', fontSize:36},shadow:{color:'gray', offset:{width:1,height:1}});
 
 bkBtn.addEventListener("click", function(e){
-		 var workoutsWin = Alloy.createController("index",{}).getView();
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(workoutsWin);
-    }
-    if (OS_ANDROID) {
-        workouts.open();
-    }
+		 var workoutsWin = Alloy.createController("dashboard",{}).getView();
+        workoutsWin.open();
 	});
 
 
@@ -31,7 +26,13 @@ var exNum = index + 1;
 var imgName = exNum + ".JPG";
 $.exImage.image = imgName;
 $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
+$.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+$.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+$.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 
+if(exNum == 1){
+	$.exWin.setLeftNavButton(bkBtn);
+}
 if(exNum == 5 || exNum == 8){
 	$.txtWeight.value = "N/A";
 	$.txtWeight.editable = "false";
@@ -75,6 +76,10 @@ else {
 	//$.btnFinish.visible = false;
 }
 
+function isNumber(n) {
+  return !isNaN(parseInt(n)) && isFinite(n) && n.toString().indexOf(".") == -1;
+}
+
 function showNext(){
 	if(exNum == 8) {
 		showAckView();
@@ -104,6 +109,22 @@ function showNext(){
 	}
 	if(set3Text==""){
 		alert("Enter reps completed for Set 3");
+		return;
+	}
+	
+	var rep1Input = isNumber(set1Text);
+	var rep2Input = isNumber(set2Text);
+	var rep3Input = isNumber(set3Text);
+	if(rep1Input == 0) {
+		alert("Enter only numbers for Set 1 reps");
+		return;
+	}
+	if(rep2Input == 0) {
+		alert("Enter only numbers for Set 2 reps");
+		return;
+	}
+	if(rep3Input == 0) {
+		alert("Enter only numbers for Set 3 reps");
 		return;
 	}
 	
