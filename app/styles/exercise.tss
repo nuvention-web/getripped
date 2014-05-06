@@ -1,8 +1,10 @@
 "#exWin": {
-	title : "Trainer",
+	title : "Workout",
+	//color: "#FFFFFF",
 	fullScreen: false,
 	exitOnClose: true,
-	navBarHidden: true,
+	//backgroundImage: "titleBackground.png",
+	//navBarHidden: true,
 	tabBarHidden: true,
 	font: {
 		fontsize: "32dp",
