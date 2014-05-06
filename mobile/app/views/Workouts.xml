@@ -1,0 +1,9 @@
+<Alloy>
+	<Window class="container">
+	<View>
+		<TableView id="workoutsTable" class="workoutTable">
+			
+		</TableView>
+	</View>
+	</Window>
+</Alloy>

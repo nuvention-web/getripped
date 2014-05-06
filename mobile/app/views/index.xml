@@ -1,0 +1,40 @@
+<Alloy>
+	<!--NavigationWindow id="navGroupWin"-->
+	<Window id="indexWin" class="container" backgroundColor="white"  backgroundImage="texture.jpg">
+		
+		<View layout="vertical">
+			<Toolbar platform="ios" top="15" borderTop="true" borderBottom="true">
+
+            <!-- The Items tag sets the Toolbar.items property. -->
+            <Items>
+                <FlexSpace/><Label id="titleLabel" class="titleLabel" verticalAlign="center">SwoleTrain</Label><FlexSpace/>
+            </Items>
+
+            <!-- Place additional views for the Toolbar here. -->
+
+        </Toolbar>
+		<ScrollableView id="mainView" height="70%" width="100%"  showPagingControl="true" top="15">
+		<View id="view1" height="100%" width="100%">
+			<ImageView image="img1.png"></ImageView>
+		</View>
+		<View id="view2" height="100%" width="100%" >
+			<ImageView image="img2.png"></ImageView>
+		</View>
+		<View id="view3"  height="100%" width="100%">
+		<ImageView image="img3.png"></ImageView>
+		</View>
+		<View id="view3"  height="100%" width="100%">
+		<ImageView image="img4.png"></ImageView>
+		</View>
+		</ScrollableView>
+		<View id="view4" height="SIZE" top="5">
+		<Button id="btnSubmit" class="getRippedBtn" verticalAlign="center" title="Sign Up" onClick="signupUser"></Button>
+		</View>
+		<View id="view5" height="SIZE">
+		<Button id="btnUser" title="Already a user? Sign in here." onClick="openLogin"></Button>
+		</View>		
+		</View>
+		   
+	</Window>
+	 <!--/NavigationWindow-->
+</Alloy>

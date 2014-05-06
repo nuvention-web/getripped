@@ -1,0 +1,24 @@
+"#welcomeLabel": {
+	font: {
+		fontSize: 30,
+		fontWeight:"bold"
+	}
+}
+
+"#btnWorkout": {
+	width:200,
+    height:30,
+    borderRadius:1,
+    backgroundColor: "#3B74F5",
+	color: "white",
+    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+},
+
+"#btnLogout": {
+	width:60,
+    height:30,
+    borderRadius:1,
+    backgroundColor: "#3B74F5",
+	color: "white",
+    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+}
