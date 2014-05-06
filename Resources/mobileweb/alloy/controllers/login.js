@@ -2,6 +2,14 @@ function Controller() {
     function showWorkout() {
         var pass = $.txtPassword.value;
         var uname = $.txtUsername.value;
+        if ("" == uname) {
+            alert("Enter Email");
+            return;
+        }
+        if ("" == pass) {
+            alert("Enter Password");
+            return;
+        }
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
         loginReq.open("POST", "http://getripped.herokuapp.com/session");
@@ -13,25 +21,45 @@ function Controller() {
         loginReq.onload = function() {
             var json = this.responseText;
             var response = JSON.parse(json);
-            alert(response.message);
+            if ("succeeded" != response.message) alert("Invalid email/password"); else {
+                Alloy.Globals.userId = response.user_id;
+                var workoutsWin = Alloy.createController("dashboard", {}).getView();
+                workoutsWin.open();
+            }
         };
-        var workoutsWin = Alloy.createController("exercise", {}).getView();
-        $.navGroupWin.openWindow(workoutsWin);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "signIn";
+    this.__controllerPath = "login";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.__alloyId34 = Ti.UI.createWindow({
-        backgroundColor: "#bcbcbc",
-        backgroundImage: "gym.jpg",
-        title: "Swole Trainer",
-        id: "__alloyId34"
+    $.__views.loginWin = Ti.UI.createWindow({
+        id: "loginWin",
+        backgroundImage: "texture.jpg",
+        title: "SwoleTrain"
     });
+    $.__views.view1 = Ti.UI.createView({
+        id: "view1",
+        layout: "vertical",
+        height: "SIZE",
+        top: "10"
+    });
+    $.__views.loginWin.add($.__views.view1);
+    $.__views.loginLabel = Ti.UI.createLabel({
+        width: Ti.UI.SIZE,
+        height: Ti.UI.SIZE,
+        color: "#000",
+        font: {
+            fontSize: 20,
+            fontWeight: "bold"
+        },
+        text: "Sign in to continue",
+        id: "loginLabel"
+    });
+    $.__views.view1.add($.__views.loginLabel);
     $.__views.txtUsername = Ti.UI.createTextField({
         color: "#336699",
         left: 10,
@@ -41,11 +69,11 @@ function Controller() {
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtUsername",
-        top: "10",
-        opacity: "1",
-        hintText: "Username"
+        top: "20",
+        hintText: "Email",
+        autocapitalization: "false"
     });
-    $.__views.__alloyId34.add($.__views.txtUsername);
+    $.__views.view1.add($.__views.txtUsername);
     $.__views.txtPassword = Ti.UI.createTextField({
         color: "#336699",
         left: 10,
@@ -55,18 +83,17 @@ function Controller() {
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtPassword",
-        top: "60",
-        opacity: "1",
+        top: "10",
         passwordMask: "true",
         hintText: "Password"
     });
-    $.__views.__alloyId34.add($.__views.txtPassword);
+    $.__views.view1.add($.__views.txtPassword);
     $.__views.btnSubmit = Ti.UI.createButton({
-        top: 110,
+        top: "20",
         width: 90,
         height: 35,
         borderRadius: 1,
-        backgroundColor: "blue",
+        backgroundColor: "#3B74F5",
         color: "white",
         font: {
             fontFamily: "Arial",
@@ -74,19 +101,40 @@ function Controller() {
             fontSize: 14
         },
         id: "btnSubmit",
-        title: "Login",
-        opacity: "1"
+        title: "Login"
     });
-    $.__views.__alloyId34.add($.__views.btnSubmit);
+    $.__views.view1.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
+    $.__views.__alloyId34 = Ti.UI.createImageView({
+        image: "SwoleTrainLogo.png",
+        top: "20",
+        width: "50%",
+        height: "35%",
+        id: "__alloyId34"
+    });
+    $.__views.view1.add($.__views.__alloyId34);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.__alloyId34,
+        window: $.__views.loginWin,
         id: "navGroupWin"
     });
     $.__views.navGroupWin && $.addTopLevelView($.__views.navGroupWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.navGroupWin.open();
+    var bkBtn = Titanium.UI.createButton({
+        height: 25,
+        font: {
+            size: 9,
+            fontWeight: "bold"
+        },
+        width: 50,
+        backgroundImage: "back.png"
+    });
+    $.loginWin.setLeftNavButton(bkBtn);
+    bkBtn.addEventListener("click", function() {
+        {
+            Alloy.createController("index", {}).getView();
+        }
+    });
     __defers["$.__views.btnSubmit!click!showWorkout"] && $.__views.btnSubmit.addEventListener("click", showWorkout);
     _.extend($, exports);
 }
