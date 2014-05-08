@@ -7,7 +7,7 @@ class Attempt < ActiveRecord::Base
 	attr_accessor :user, :exercise, :weight, :reps1, :reps2, :reps3
 
 	def total_reps
-		total_reps = reps1 + rep2 + rep3 	
+		total_reps = reps1 + reps2 + reps3 	
 	end
 
 	def calculate_weight(total_reps_P1, total_reps_P2, total_reps_P3)
