@@ -10,3 +10,55 @@ Migrating to AddNextWeightToAttempts (20140508041144)
   [1m[35mAttempt Load (0.8ms)[0m  SELECT "attempts".* FROM "attempts"
   [1m[36mExercise Load (2.2ms)[0m  [1mSELECT "exercises".* FROM "exercises"[0m
   [1m[36mAttempt Load (1.8ms)[0m  [1mSELECT "attempts".* FROM "attempts"[0m
+
+Started GET "/" for 127.0.0.1 at 2014-05-06 16:29:28 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (20.1ms)
+Completed 200 OK in 1551ms (Views: 1311.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/exercise.css?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/attempt.css?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/exercise.js?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/attempt.js?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-06 16:29:33 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mUser Load (1.9ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mExercise Load (0.6ms)[0m  SELECT "exercises".* FROM "exercises"
