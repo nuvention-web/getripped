@@ -2016,3 +2016,270 @@ Migrating to AddWorkoutIdToExercise (20140508045934)
   [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "exercises" WHERE "exercises"."workout_id" = $1[0m  [["workout_id", 1]]
   [1m[35mWorkout Load (0.5ms)[0m  SELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = $1 LIMIT 1  [["id", 2]]
   [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "exercises" WHERE "exercises"."workout_id" = $1[0m  [["workout_id", 2]]
+  [1m[36mAttempt Load (0.9ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mAttempt Load (0.9ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.5ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.4ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.6ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "attempts" SET "reps1" = 1 WHERE "attempts"."id" = 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.5ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mSQL (1.9ms)[0m  UPDATE "attempts" SET "reps1" = 1, "reps2" = 2, "reps3" = 3 WHERE "attempts"."id" = 1
+  [1m[36mAttempt Load (0.5ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.4ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.5ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.5ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36mAttempt Load (0.5ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36mAttempt Load (0.6ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.6ms)[0m  INSERT INTO "attempts" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:09:35 UTC +00:00], ["updated_at", Thu, 08 May 2014 14:09:35 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" WHERE "attempts"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "attempts" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:11:25 UTC +00:00], ["updated_at", Thu, 08 May 2014 14:11:25 UTC +00:00]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mAttempt Load (0.5ms)[0m  SELECT "attempts".* FROM "attempts"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.5ms)[0m  INSERT INTO "attempts" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:14:03 UTC +00:00], ["updated_at", Thu, 08 May 2014 14:14:03 UTC +00:00]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.4ms)[0m  INSERT INTO "attempts" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:15:09 UTC +00:00], ["updated_at", Thu, 08 May 2014 14:15:09 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'pri1229@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'pri1229@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'pri1229@gmail.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36mAttempt Load (0.9ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.4ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mSQL (2.3ms)[0m  [1mUPDATE "attempts" SET "reps1" = 1, "reps2" = 2, "reps3" = 3 WHERE "attempts"."id" = 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'pri1229@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'pri1229@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'pri1229@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "users" ("email", "first_name", "last_name", "password_digest") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "pri1229@gmail.com"], ["first_name", "Priya"], ["last_name", "Mathew"], ["password_digest", "$2a$10$078i84h3nWL4gupUCzlYJOJ0AvawBDcof5g1qJeq9Qxf6bolnKPqq"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.6ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mSQL (2.3ms)[0m  UPDATE "attempts" SET "user" = 1 WHERE "attempts"."id" = 1
+PG::UndefinedColumn: ERROR:  column "user" of relation "attempts" does not exist
+LINE 1: UPDATE "attempts" SET "user" = 1 WHERE "attempts"."id" = 1
+                              ^
+: UPDATE "attempts" SET "user" = 1 WHERE "attempts"."id" = 1
+  [1m[36mAttempt Load (0.5ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.4ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.5ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mSQL (1.9ms)[0m  UPDATE "attempts" SET "user_id" = 1 WHERE "attempts"."id" = 1
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.6ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mExercise Load (0.6ms)[0m  SELECT "exercises".* FROM "exercises" ORDER BY "exercises"."id" ASC LIMIT 1
+  [1m[36mSQL (2.2ms)[0m  [1mUPDATE "attempts" SET "exercise_id" = 1 WHERE "attempts"."id" = 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mSQL (1.8ms)[0m  [1mUPDATE "attempts" SET "weight" = 40 WHERE "attempts"."id" = 1[0m
+  [1m[35mAttempt Load (0.4ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36mAttempt Load (0.5ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.5ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.4ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.6ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.6ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 3]]
+  [1m[36m (8.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 7]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 9]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 11]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 13]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 14]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mAttempt Load (0.4ms)[0m  SELECT "attempts".* FROM "attempts"
+  [1m[36mExercise Load (0.6ms)[0m  [1mSELECT "exercises".* FROM "exercises" ORDER BY "exercises"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "attempts" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:29:47 UTC +00:00], ["updated_at", Thu, 08 May 2014 14:29:47 UTC +00:00]]
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.6ms)[0m  SELECT "exercises".* FROM "exercises" ORDER BY "exercises"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "attempts" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", Thu, 08 May 2014 14:30:09 UTC +00:00], ["updated_at", Thu, 08 May 2014 14:30:09 UTC +00:00]]
+  [1m[35m (1.7ms)[0m  COMMIT
+  [1m[36mExercise Load (0.6ms)[0m  [1mSELECT "exercises".* FROM "exercises" ORDER BY "exercises"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "attempts" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:32:13 UTC +00:00], ["updated_at", Thu, 08 May 2014 14:32:13 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.5ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mExercise Load (0.6ms)[0m  [1mSELECT "exercises".* FROM "exercises" ORDER BY "exercises"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "attempts" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:35:45 UTC +00:00], ["updated_at", Thu, 08 May 2014 14:35:45 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[36mExercise Load (0.8ms)[0m  [1mSELECT "exercises".* FROM "exercises" ORDER BY "exercises"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.6ms)[0m  INSERT INTO "attempts" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:37:48 UTC +00:00], ["updated_at", Thu, 08 May 2014 14:37:48 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "attempts" ("created_at", "exercise_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", Thu, 08 May 2014 14:39:24 UTC +00:00], ["exercise_id", 1], ["updated_at", Thu, 08 May 2014 14:39:24 UTC +00:00], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "attempts" ("created_at", "exercise_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:40:29 UTC +00:00], ["exercise_id", 1], ["updated_at", Thu, 08 May 2014 14:40:29 UTC +00:00], ["user_id", 1]]
+  [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.4ms)[0m  INSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:40:35 UTC +00:00], ["exercise_id", 1], ["reps1", 1], ["reps2", 2], ["reps3", 3], ["updated_at", Thu, 08 May 2014 14:40:35 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[36mAttempt Load (1.9ms)[0m  [1mSELECT "attempts".* FROM "attempts"[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.7ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 15]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 16]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 17]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 18]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 19]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 20]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "attempts" WHERE "attempts"."id" = $1  [["id", 21]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "attempts" WHERE "attempts"."id" = $1[0m  [["id", 22]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:42:57 UTC +00:00], ["exercise_id", 1], ["reps1", 1], ["reps2", 2], ["reps3", 3], ["updated_at", Thu, 08 May 2014 14:42:57 UTC +00:00], ["user_id", 1]]
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mAttempt Load (0.8ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "attempts" SET "weight" = $1, "updated_at" = $2 WHERE "attempts"."id" = 23  [["weight", 50], ["updated_at", Thu, 08 May 2014 14:43:24 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" ASC LIMIT 1[0m
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.4ms)[0m  INSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:54:38 UTC +00:00], ["exercise_id", 1], ["reps1", 1], ["reps2", 6], ["reps3", 9], ["updated_at", Thu, 08 May 2014 14:54:38 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Thu, 08 May 2014 14:54:45 UTC +00:00], ["exercise_id", 1], ["reps1", 1], ["reps2", 6], ["reps3", 12], ["updated_at", Thu, 08 May 2014 14:54:45 UTC +00:00], ["user_id", 1]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Thu, 08 May 2014 14:54:56 UTC +00:00], ["exercise_id", 1], ["reps1", 1], ["reps2", 6], ["reps3", 14], ["updated_at", Thu, 08 May 2014 14:54:56 UTC +00:00], ["user_id", 1]]
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mAttempt Load (1.0ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 1
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from avg_pct_reps_completed at /Users/priya/nuvention/getripped/rails/app/models/attempt.rb:14)
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from avg_pct_reps_completed at /Users/priya/nuvention/getripped/rails/app/models/attempt.rb:14)
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from avg_pct_reps_completed at /Users/priya/nuvention/getripped/rails/app/models/attempt.rb:14)
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from avg_pct_reps_completed at /Users/priya/nuvention/getripped/rails/app/models/attempt.rb:14)
+  [1m[36mAttempt Load (1.1ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
+  [1m[36mAttempt Load (1.3ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
+  [1m[35mAttempt Load (0.4ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3
+  [1m[36mAttempt Load (0.3ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3
+  [1m[36mAttempt Load (0.6ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3
+  [1m[36mAttempt Load (0.3ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
+  [1m[35mAttempt Load (0.4ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3
+  [1m[36mAttempt Load (0.4ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
+  [1m[35mAttempt Load (0.4ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3
+  [1m[36mAttempt Load (0.3ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
+  [1m[36mAttempt Load (1.1ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
+  [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3
+  [1m[36mAttempt Load (0.3ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
+  [1m[35mAttempt Load (0.3ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3
