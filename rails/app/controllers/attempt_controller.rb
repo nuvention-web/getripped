@@ -11,6 +11,7 @@ skip_before_filter :verify_authenticity_token
 			          reps3: params[:reps3])
 		if attempt
 			attempt.save
+			Attempt.calculate_weight(user_id,exercise_id)
 			result = {message: "succeeded"}
 			render json: result
 		else
