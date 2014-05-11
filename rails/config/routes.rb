@@ -2,15 +2,18 @@ Getripped::Application.routes.draw do
 
   root 'welcome#index'
 
+  resources :workout, only: [:index, :show]
   resources :exercise, only: [:index, :show]
+  get 'workout/:workout_id/exercise' => 'workout#show_exercise', as: :show_exercise
+  post 'exercise/:id/attempt' => 'attempt#create', as: :attempt
 
   resources :session, only: [:new, :create, :destroy]
 
   resources :user, only: [:create]
+  post 'user/:user_id/exercise/:exercise_id/attempt/last' => 'attempt#last', as: :last  
 
   get 'session/signout' => 'session#signout', as: :signout
-  post 'user/:user_id/exercise/:exercise_id/attempt/last' => 'attempt#last', as: :last
-  post 'exercise/:id/attempt' => 'attempt#create', as: :attempt
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
