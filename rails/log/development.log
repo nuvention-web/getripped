@@ -2283,3 +2283,185 @@ DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a rel
   [1m[35mAttempt Load (0.6ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3
   [1m[36mAttempt Load (0.3ms)[0m  [1mSELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3[0m
   [1m[35mAttempt Load (0.3ms)[0m  SELECT "attempts".* FROM "attempts" ORDER BY "attempts"."id" DESC LIMIT 3
+  [1m[36mExercise Load (7.0ms)[0m  [1mSELECT "exercises".* FROM "exercises"[0m
+  [1m[35mAttempt Load (2.7ms)[0m  SELECT "attempts".* FROM "attempts"
+  [1m[36mExercise Load (0.8ms)[0m  [1mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout" = 1[0m
+PG::UndefinedColumn: ERROR:  column exercises.workout does not exist
+LINE 1: SELECT "exercises".* FROM "exercises"  WHERE "exercises"."wo...
+                                                     ^
+: SELECT "exercises".* FROM "exercises"  WHERE "exercises"."workout" = 1
+  [1m[35mExercise Load (0.5ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_i" = 1
+PG::UndefinedColumn: ERROR:  column exercises.workout_i does not exist
+LINE 1: SELECT "exercises".* FROM "exercises"  WHERE "exercises"."wo...
+                                                     ^
+: SELECT "exercises".* FROM "exercises"  WHERE "exercises"."workout_i" = 1
+  [1m[36mExercise Load (2.4ms)[0m  [1mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = 1[0m
+  [1m[35mExercise Load (0.6ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = 2
+  [1m[36mExercise Load (0.5ms)[0m  [1mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = 3[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-11 15:28:08 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 1012ms (Views: 983.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/attempt.css?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/exercise.css?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/attempt.js?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/exercise.js?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-11 15:28:09 -0500
+
+
+Started GET "/exercise/lowerbody" for 127.0.0.1 at 2014-05-11 15:28:23 -0500
+Processing by ExerciseController#show as HTML
+  Parameters: {"id"=>"lowerbody"}
+  [1m[35mExercise Load (2.4ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."id" = $1 LIMIT 1  [["id", "lowerbody"]]
+Completed 404 Not Found in 19ms
+
+ActiveRecord::RecordNotFound (Couldn't find Exercise with id=lowerbody):
+  app/controllers/exercise_controller.rb:21:in `show'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-11 15:50:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 404ms (Views: 372.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/workout.css?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/attempt.css?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/exercise.css?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/workout.js?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/attempt.js?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/exercise.js?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-05-11 15:50:14 -0500
+
+
+Started GET "/exercise" for 127.0.0.1 at 2014-05-11 15:50:20 -0500
+Processing by ExerciseController#index as HTML
+  [1m[35mExercise Load (1.2ms)[0m  SELECT "exercises".* FROM "exercises"
+Completed 200 OK in 38ms (Views: 20.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/workout" for 127.0.0.1 at 2014-05-11 15:50:25 -0500
+Processing by WorkoutController#index as HTML
+  [1m[36mWorkout Load (3.7ms)[0m  [1mSELECT "workouts".* FROM "workouts"[0m
+Completed 200 OK in 44ms (Views: 7.3ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/workout/1" for 127.0.0.1 at 2014-05-11 15:50:30 -0500
+Processing by WorkoutController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mWorkout Load (1.8ms)[0m  SELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = $1 LIMIT 1  [["id", "1"]]
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/workout/2" for 127.0.0.1 at 2014-05-11 15:50:40 -0500
+Processing by WorkoutController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mWorkout Load (0.6ms)[0m  [1mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/workout/2/exercise" for 127.0.0.1 at 2014-05-11 15:53:03 -0500
+Processing by WorkoutController#show_exercise as HTML
+  Parameters: {"workout_id"=>"2"}
+  [1m[35mExercise Load (0.4ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = 2
+Completed 200 OK in 22ms (Views: 10.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/workout/1/exercise" for 127.0.0.1 at 2014-05-11 15:53:17 -0500
+Processing by WorkoutController#show_exercise as HTML
+  Parameters: {"workout_id"=>"1"}
+  [1m[36mExercise Load (0.5ms)[0m  [1mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = 1[0m
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/workout/2/exercise" for 127.0.0.1 at 2014-05-11 15:53:41 -0500
+Processing by WorkoutController#show_exercise as HTML
+  Parameters: {"workout_id"=>"2"}
+  [1m[35mExercise Load (0.5ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = 2
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.5ms)
