@@ -21,7 +21,7 @@ CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |
 			:sets => row[:sets],
 			:rest => row[:rest],
 			:description => row[:description],
-			:image => "/assets/images/#{row[:name]}"+".png")
+			:image => "/assets/images/#{row[:name].gsub(/ /,'_')}"+".png")
 
 		# exercise_update = Exercise.find(exercise.id)
 		# p exercise_update

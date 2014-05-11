@@ -2465,3 +2465,387 @@ Processing by WorkoutController#show_exercise as HTML
   Parameters: {"workout_id"=>"2"}
   [1m[35mExercise Load (0.5ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = 2
 Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.5ms)
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateWorkouts (20140412232042)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.8ms)[0m  [1mCREATE TABLE "workouts" ("id" serial primary key, "name" character varying(255), "duration" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140412232042"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateExercises (20140412232103)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "exercises" ("id" serial primary key, "name" character varying(255), "description" text, "image" character varying(255), "reps" integer, "sets" integer, "rest" integer, "weight" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140412232103"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20140413204954)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "email" character varying(255), "secret_token" character varying(255), "password_digest" character varying(255)) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140413204954"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateWorkoutsets (20140426005828)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "workoutsets" ("id" serial primary key, "attempt_id" integer, "reps" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140426005828"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAttempts (20140426005845)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.1ms)[0m  [1mCREATE TABLE "attempts" ("id" serial primary key, "user_id" integer, "exercise_id" integer, "weight" integer, "reps1" integer, "reps2" integer, "reps3" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140426005845"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddNextWeightToAttempts (20140508041144)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "attempts" ADD COLUMN "next_weight" integer[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140508041144"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to AddWorkoutIdToExercise (20140508045934)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "exercises" ADD COLUMN "workout_id" integer[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140508045934"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (5.1ms)[0m  [1mINSERT INTO "workouts" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["name", "Upper Body"], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "workouts" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["name", "Lower Body"], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Hold a dumbbell in each hand and lie back on a flat bench with the weights at shoulder level."], ["image", "/assets/images/Dumbell_Bench_Press.png"], ["name", "Dumbell Bench Press"], ["reps", 8], ["rest", 60], ["sets", 3], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 1  [["workout_id", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Rest one hand and one knee on a bench and hold a dumbbell with the other hand, arm extended but not resting on the floor. Row the weight to your ribs."], ["image", "/assets/images/One-arm_Dumbbell_Row.png"], ["name", "One-arm Dumbbell Row"], ["reps", 12], ["rest", 30], ["sets", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 2  [["workout_id", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Set an adjustable bench to a 45-degree incline and hold a dumbbell in each hand and lie back on a flat bench with the weights at shoulder level."], ["image", "/assets/images/Incline_Dumbell_Bench_Press.png"], ["name", "Incline Dumbell Bench Press"], ["reps", 8], ["rest", 60], ["sets", 3], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 3  [["workout_id", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Set an adjustable bench to a 45-degree incline and lie on it facedown with a dumbbell in each hand (palms facing each other). Squeeze your shoulder blades together and row the weights to your ribs."], ["image", "/assets/images/Chest-Supported_Dumbbell_Row.png"], ["name", "Chest-Supported Dumbbell Row"], ["reps", 12], ["rest", 30], ["sets", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 4  [["workout_id", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Hang from a chinup bar with palms facing away from you. Squeeze your shoulder blades together and pull yourself up until your chin is over the bar"], ["image", "/assets/images/Chinup.png"], ["name", "Chinup"], ["reps", 8], ["rest", 60], ["sets", 3], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 5  [["workout_id", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Hold an EZ-curl bar with a shoulder-width grip and lie back on a flat bench. Press the bar over your chest and then bend your elbows until the bar nearly touches your forehead. Extend your elbows to press the weight back up"], ["image", "/assets/images/EZ-Bar_Skullcrusher.png"], ["name", "EZ-Bar Skullcrusher"], ["reps", 12], ["rest", 30], ["sets", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 6  [["workout_id", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Stand up straight while holding an EZ curl bar at the wide outer handle. The palms of your hands should be facing forward. While keeping your upper arms stationary, exhale and curl the weights forward while contracting the biceps. Focus on only moving your forearms and raise the weight until the bar is shoulder level."], ["image", "/assets/images/EZ-Bar_Bicep_Curls.png"], ["name", "EZ-Bar Bicep Curls"], ["reps", 12], ["rest", 30], ["sets", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 7  [["workout_id", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Raise yourself on 2 supports with elbows locked. Lower your body until your shoulders are lower than your elbows. Push yourself up by straightening your arms"], ["image", "/assets/images/Dips.png"], ["name", "Dips"], ["reps", 12], ["rest", 30], ["sets", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 8  [["workout_id", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Use eliptical if there is joint pain"], ["image", "/assets/images/1_mile_run_on_treadmill.png"], ["name", "1 mile run on treadmill"], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 9  [["workout_id", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Stand with feet double-shoulder-width apart and toes turned out 45 degrees. Bend your hips back, reach down, and grasp the dumbbels with hands inside your knees. Drive through your heels to extend your hips and pull the dumbbells up until youí´re standing tall.\n"], ["image", "/assets/images/Dumbbell_Sumo_Deadlift.png"], ["name", "Dumbbell Sumo Deadlift"], ["reps", 8], ["rest", 60], ["sets", 3], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 10  [["workout_id", 2], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Stand with your torso upright holding two dumbbells in your hands by your sides. Step forward with your right leg around 2 feet or so from the foot being left stationary behind and lower your upper body down, while keeping the torso upright and maintaining balance. Do not allow your knee to go forward beyond your toes as you come down, as this will put undue stress on the knee joint. Make sure that you keep your front shin perpendicular to the ground.\nUsing mainly the heel of your foot, push up and go back to the starting position."], ["image", "/assets/images/Dumbbell_Front_Lunge.png"], ["name", "Dumbbell Front Lunge"], ["reps", 12], ["rest", 30], ["sets", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 11  [["workout_id", 2], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Stand lunge length in front of a bench, holding a dumbbell in each hand. Rest the top of one foot on the bench behind you. Lower your body until your rear knee nearly touches the floor, then drive your heel into the floor to come back up. Complete all your reps on that side and then switch legs and repeat."], ["image", "/assets/images/Bulgarian_Split_Squat.png"], ["name", "Bulgarian Split Squat"], ["reps", 10], ["rest", 60], ["sets", 3], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 12  [["workout_id", 2], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Hold Dumbbells at shoulder level and stand with feet shoulder width. Bend your hips back and squat down as low as you can without losing the arch in your lower back. Drive through your heels to come up."], ["image", "/assets/images/Dumbbell_Front_Squat.png"], ["name", "Dumbbell Front Squat"], ["reps", 20], ["rest", 30], ["sets", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 13  [["workout_id", 2], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Lie on your back on the floor with your knees bent and your feet flat on the floor. Extend your arms out to your sides and place them on the floor at a 45-degree angle. Raise your hips so your body forms a straight line from you shoulders to your knees, squeeze your glutes tightly."], ["image", "/assets/images/Hip_Raises.png"], ["name", "Hip Raises"], ["reps", 15], ["rest", 15], ["sets", 3], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 14  [["workout_id", 2], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Lie on your back on the floor with your knees bent and your feet flat on the floor. Extend one leg and suspend at a 45 degree angle. Slowly and gently lift your head first, followed by shoulder blades and reach to touch the toe of your suspended leg."], ["image", "/assets/images/Raised_Leg_Sit_Up.png"], ["name", "Raised Leg Sit Up"], ["reps", 12], ["rest", 0], ["sets", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 15  [["workout_id", 2], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Lie on your side with your forearm on the floor under your shoulder to prop you up, and your feet stacked. Contract your core and press your forearm against the floor to raise your hips until your body is straight from ankles to shoulders, pause when ankles, hips and shoulders are aligned."], ["image", "/assets/images/Side_Bridge.png"], ["name", "Side Bridge"], ["reps", 12], ["rest", 30], ["sets", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 16  [["workout_id", 2], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["description", "Get into pushup position and then bend your elbows to rest your forearms on the floor. Brace your abs."], ["image", "/assets/images/Plank.png"], ["name", "Plank"], ["reps", 1], ["rest", 30], ["sets", 3], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 17  [["workout_id", 2], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mExercise Load (0.4ms)[0m  [1mSELECT "exercises".* FROM "exercises"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "weight") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["exercise_id", 15], ["reps1", 3], ["reps2", 4], ["reps3", 7], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["weight", 60]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "weight") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["exercise_id", 7], ["reps1", 4], ["reps2", 8], ["reps3", 2], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["weight", 40]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mExercise Load (0.4ms)[0m  [1mSELECT "exercises".* FROM "exercises"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "weight") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["exercise_id", 17], ["reps1", 2], ["reps2", 6], ["reps3", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["weight", 30]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mExercise Load (0.4ms)[0m  SELECT "exercises".* FROM "exercises"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "weight") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["exercise_id", 16], ["reps1", 2], ["reps2", 5], ["reps3", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["weight", 30]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mExercise Load (0.3ms)[0m  [1mSELECT "exercises".* FROM "exercises"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "weight") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["exercise_id", 15], ["reps1", 6], ["reps2", 7], ["reps3", 2], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["weight", 30]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "weight") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["exercise_id", 10], ["reps1", 5], ["reps2", 2], ["reps3", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["weight", 60]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mExercise Load (0.3ms)[0m  [1mSELECT "exercises".* FROM "exercises"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "weight") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["exercise_id", 5], ["reps1", 5], ["reps2", 1], ["reps3", 8], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["weight", 20]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mExercise Load (0.4ms)[0m  SELECT "exercises".* FROM "exercises"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "weight") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["exercise_id", 4], ["reps1", 7], ["reps2", 2], ["reps3", 1], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["weight", 60]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mExercise Load (0.3ms)[0m  [1mSELECT "exercises".* FROM "exercises"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "weight") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["exercise_id", 3], ["reps1", 1], ["reps2", 4], ["reps3", 5], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["weight", 30]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "attempts" ("created_at", "exercise_id", "reps1", "reps2", "reps3", "updated_at", "weight") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["exercise_id", 13], ["reps1", 1], ["reps2", 6], ["reps3", 4], ["updated_at", Sun, 11 May 2014 21:01:08 UTC +00:00], ["weight", 40]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/workout/2/exercise" for 127.0.0.1 at 2014-05-11 16:02:07 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WorkoutController#show_exercise as HTML
+  Parameters: {"workout_id"=>"2"}
+  [1m[35mExercise Load (0.7ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = 2
+Completed 200 OK in 53ms (Views: 12.9ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/workout/1/exercise" for 127.0.0.1 at 2014-05-11 16:02:17 -0500
+Processing by WorkoutController#show_exercise as HTML
+  Parameters: {"workout_id"=>"1"}
+  [1m[36mExercise Load (0.5ms)[0m  [1mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = 1[0m
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/images/Dumbell_Bench_Press.png" for 127.0.0.1 at 2014-05-11 16:02:46 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/images/Dumbell_Bench_Press.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (34.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (72.1ms)
+
+
+Started GET "/assets/images/dumbellpress.jpg" for 127.0.0.1 at 2014-05-11 16:04:46 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/assets/images/dumbellpress.jpg"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (26.0ms)
+
+
+Started GET "/assets/images/dumbellpress.jpg" for 127.0.0.1 at 2014-05-11 16:05:06 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/images/dumbellpress.jpg"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (18.2ms)
+
+
+Started GET "/assets/images/dumbellpress-b8ae7fce73eaf879d75ca1c3a128e2b8.jpg" for 127.0.0.1 at 2014-05-11 16:05:40 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/images/dumbellpress-b8ae7fce73eaf879d75ca1c3a128e2b8.jpg"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (19.3ms)
+
+
+Started GET "/assets/images/dumbellpress.jpg" for 127.0.0.1 at 2014-05-11 16:05:46 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/images/dumbellpress.jpg"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (18.6ms)
