@@ -1,5 +1,6 @@
 //alert($.titleLabel.text);
 //$.indexWin.setTitle = $.titleLabel.text;
+$.indexWin.open();
 
 function signupUser(){
 
@@ -16,11 +17,4 @@ function openLogin() {
     if (OS_ANDROID) {
         loginWin.open();
     }*/
-}
-
-if(OS_IOS) { 
-   $.indexWin.open();
-} 
-if (OS_ANDROID) { 
-   $.index.open(); 
 }

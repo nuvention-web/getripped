@@ -9,17 +9,17 @@
 			<TextField id="txtEmail" class="txtFieldLogin" top="10" hintText="Email" autocapitalization="false"></TextField>
 			<TextField id="txtPassword" class="txtFieldLogin" top="10" passwordMask="true"  hintText="Password"></TextField>
 		</View>
-		<View id="view2" layout="horizontal" height="SIZE" top="10">
+		<!--View id="view2" layout="horizontal" height="SIZE" top="10">
 			<TextField id="txtAge" class="demographicText" left="20" hintText="Age" ></TextField>
 			<TextField id="txtGender" class="demographicText" left="10" hintText="Gender(M/F)" ></TextField>
 		</View>
 		<View id="view3" layout="horizontal" height="SIZE" top="10">
 		<TextField id="txtHeight" class="demographicText" left="20" hintText="Height(Eg:5'10)"></TextField>
 		<TextField id="txtWeight" class="demographicText" left="10" hintText="Weight(In lbs)"></TextField>
-		</View>
+		</View-->
 		<View id="view4" height="SIZE" top="20" layout="vertical">
 		<Button id="btnSubmit" class="getRippedBtn" verticalAlign="center" title="Get Swole" onClick="signupUser"></Button>
-		<!--ImageView image="SwoleTrainLogo.png" top="5" width="50%" height="55%"></ImageView-->
+		<ImageView image="SwoleTrainLogo.png" top="5" width="50%" height="55%"></ImageView>
 		</View>
 		<!--View id="view5" height="SIZE" top="20">
 		<Button id="btnUser" title="Already a user? Sign in here." onClick="openLogin"></Button>

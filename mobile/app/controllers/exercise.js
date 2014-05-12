@@ -26,6 +26,7 @@ var exNum = index + 1;
 var imgName = exNum + ".JPG";
 $.exImage.image = imgName;
 $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
+$.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
@@ -49,31 +50,29 @@ var exAttempt = Titanium.Network.createHTTPClient();
         
      exAttempt.onload = function()
 	{
+		$.maskImg.visible = "true";
     	var json = this.responseText;
     	var response = JSON.parse(json);
     	//alert(response);
     	if(response.weight && response.weight!=0){
     		$.txtWeight.value = response.weight;
     		$.txtWeight.editable = "false";
+    		$.weightLabel.text = "Recommended Weight";
     	}
+    	else {
+    		$.weightLabel.text = "Enter Weight";
+    	}
+    	$.txtWeight.visible = "true";
+    	$.maskImg.visible = "false";
 	};
 
 
-
-if (index > 0) {
-	$.btnPrev.visible = true;
-}
-else {
-	$.btnPrev.visible = false;
-}
 if(exNum == 8)
 {
-	//$.btnFinish.visible = true;
 	$.btnNext.title = "Finish";
 }
 else {
 	$.btnNext.title = "Next";
-	//$.btnFinish.visible = false;
 }
 
 function isNumber(n) {
@@ -158,15 +157,15 @@ function showNext(){
    }
 }
 
-function showPrev() {
-	Alloy.Globals.exCount = Alloy.Globals.exCount - 1;
-	var workoutsWin = Alloy.createController("exercise",{}).getView();
-    if (OS_IOS) {
-        workoutsWin.open();
-    }
-    if (OS_ANDROID) {
-        workoutsWin.open();
-    }
+function skipExercise() {
+	if(exNum == 8) {
+		showAckView();
+	}
+	else {
+		Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
+		var workoutsWin = Alloy.createController("exercise",{}).getView();
+   		workoutsWin.open();
+   }
 }
 
 function showAckView() {

@@ -20,8 +20,8 @@
 			
 			</View>
 			<View id="viewId2" layout="horizontal" height="SIZE" top="10">
-				<Label left="10%" >Weight Used</Label>
-				<TextField id="txtWeight" class="txtClass" left="10%" color="red" ></TextField>
+				<Label id="weightLabel" class="staticLabel" left="10%" ></Label>
+				<TextField id="txtWeight" class="txtClass" left="10%" color="red" visible="false"></TextField>
 			</View>
 			<View id="viewId3" layout="horizontal" height="SIZE" top="10">
 				<Label left="30%" class="showExCount">Recommended</Label><Label class="showExCount" left="10%">Reps</Label>
@@ -29,27 +29,28 @@
 			<View id="viewId4" layout="horizontal" height="SIZE">
 				<Label left="40%" class="showExCount">Reps</Label><Label class="showExCount" left="12%">Completed</Label>
 			</View>
-			<View id="viewId5" layout="horizontal" height="SIZE">
-				<Label left="30">Set 1</Label>
+			<View id="viewId5" layout="horizontal" height="SIZE" top="2">
+				<Label left="30" class="staticLabel">Set 1</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
 				<TextField id="txtSet1" class="txtClass" left="12%"></TextField>
 			</View>
-			<View id="viewId6" layout="horizontal" height="SIZE">
-				<Label left="30">Set 2</Label>
+			<View id="viewId6" layout="horizontal" height="SIZE" top="3">
+				<Label left="30" class="staticLabel">Set 2</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
 				<TextField  id="txtSet2" class="txtClass" left="12%" ></TextField>
 			</View>
-			<View id="viewId7" layout="horizontal" height="SIZE">
-				<Label left="30">Set 3</Label>
+			<View id="viewId7" layout="horizontal" height="SIZE" top="3">
+				<Label left="30" class="staticLabel">Set 3</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
 				<TextField id="txtSet3" class="txtClass" left="12%"></TextField>
 			</View>
 			<View id="buttonView" layout="horizontal" height="SIZE" top="12">
-				<Button id="btnPrev" class="bottomBtn" left="20" width="70" title="Previous" onClick="showPrev" visible="false"></Button>
+				<Button id="btnSkip" class="bottomBtn" left="20"  title="Skip" onClick="skipExercise"></Button>
 				<Button id="btnNext" class="bottomBtn" left="140" title="Next"  onClick="showNext"></Button>
 				<!--Button id="btnFinish" class="bottomBtn" left="10" title="Finish" onClick="showAckView" visible="false"></Button-->
 			</View>
 		</View>
+		<MaskedImage id="maskImg" mask="loading-icon.png" height="30" width="30" visible="false"></MaskedImage>
 		</ScrollView>
 	</Window>
 	</NavigationWindow>
