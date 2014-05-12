@@ -61,10 +61,12 @@ function Controller() {
             workoutsWin.open();
         }
     }
-    function showPrev() {
-        Alloy.Globals.exCount = Alloy.Globals.exCount - 1;
-        var workoutsWin = Alloy.createController("exercise", {}).getView();
-        workoutsWin.open();
+    function skipExercise() {
+        if (8 == exNum) showAckView(); else {
+            Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
+            var workoutsWin = Alloy.createController("exercise", {}).getView();
+            workoutsWin.open();
+        }
     }
     function showAckView() {
         var completionWin = Alloy.createController("completion", {}).getView();
@@ -164,7 +166,8 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "red",
         id: "txtWeight",
-        left: "10%"
+        left: "10%",
+        visible: "false"
     });
     $.__views.viewId2.add($.__views.txtWeight);
     $.__views.viewId3 = Ti.UI.createView({
@@ -361,8 +364,8 @@ function Controller() {
         top: "12"
     });
     $.__views.mainView.add($.__views.buttonView);
-    $.__views.btnPrev = Ti.UI.createButton({
-        width: "70",
+    $.__views.btnSkip = Ti.UI.createButton({
+        width: 70,
         height: 30,
         borderRadius: 1,
         backgroundColor: "#3B74F5",
@@ -372,15 +375,14 @@ function Controller() {
             fontWeight: "bold",
             fontSize: 14
         },
-        id: "btnPrev",
+        id: "btnSkip",
         left: "20",
-        title: "Previous",
-        visible: "false"
+        title: "Skip"
     });
-    $.__views.buttonView.add($.__views.btnPrev);
-    showPrev ? $.__views.btnPrev.addEventListener("click", showPrev) : __defers["$.__views.btnPrev!click!showPrev"] = true;
+    $.__views.buttonView.add($.__views.btnSkip);
+    skipExercise ? $.__views.btnSkip.addEventListener("click", skipExercise) : __defers["$.__views.btnSkip!click!skipExercise"] = true;
     $.__views.btnNext = Ti.UI.createButton({
-        width: 60,
+        width: 70,
         height: 30,
         borderRadius: 1,
         backgroundColor: "#3B74F5",
@@ -396,6 +398,14 @@ function Controller() {
     });
     $.__views.buttonView.add($.__views.btnNext);
     showNext ? $.__views.btnNext.addEventListener("click", showNext) : __defers["$.__views.btnNext!click!showNext"] = true;
+    $.__views.maskImg = Ti.UI.createMaskedImage({
+        id: "maskImg",
+        mask: "loading-icon.png",
+        height: "30",
+        width: "30",
+        visible: "false"
+    });
+    $.__views.scrollviewId.add($.__views.maskImg);
     $.__views.exNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.exWin,
         id: "exNavWin"
@@ -445,6 +455,7 @@ function Controller() {
     };
     exAttempt.send(userEx);
     exAttempt.onload = function() {
+        $.maskImg.visible = "true";
         var json = this.responseText;
         var response = JSON.parse(json);
         if (response.weight && 0 != response.weight) {
@@ -452,11 +463,12 @@ function Controller() {
             $.txtWeight.editable = "false";
             $.weightLabel.text = "Recommended Weight";
         } else $.weightLabel.text = "Enter Weight";
+        $.txtWeight.visible = "true";
+        $.maskImg.visible = "false";
     };
-    $.btnPrev.visible = index > 0 ? true : false;
     $.btnNext.title = 8 == exNum ? "Finish" : "Next";
     __defers["$.__views.exImage!click!openExDetails"] && $.__views.exImage.addEventListener("click", openExDetails);
-    __defers["$.__views.btnPrev!click!showPrev"] && $.__views.btnPrev.addEventListener("click", showPrev);
+    __defers["$.__views.btnSkip!click!skipExercise"] && $.__views.btnSkip.addEventListener("click", skipExercise);
     __defers["$.__views.btnNext!click!showNext"] && $.__views.btnNext.addEventListener("click", showNext);
     _.extend($, exports);
 }

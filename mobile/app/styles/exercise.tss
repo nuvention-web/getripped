@@ -54,7 +54,7 @@
 }
 
 ".bottomBtn": {
-    width:60,
+    width:70,
     height:30,
     borderRadius:1,
     backgroundColor: "#3B74F5",

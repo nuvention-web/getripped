@@ -50,6 +50,7 @@ var exAttempt = Titanium.Network.createHTTPClient();
         
      exAttempt.onload = function()
 	{
+		$.maskImg.visible = "true";
     	var json = this.responseText;
     	var response = JSON.parse(json);
     	//alert(response);
@@ -61,24 +62,17 @@ var exAttempt = Titanium.Network.createHTTPClient();
     	else {
     		$.weightLabel.text = "Enter Weight";
     	}
+    	$.txtWeight.visible = "true";
+    	$.maskImg.visible = "false";
 	};
 
 
-
-if (index > 0) {
-	$.btnPrev.visible = true;
-}
-else {
-	$.btnPrev.visible = false;
-}
 if(exNum == 8)
 {
-	//$.btnFinish.visible = true;
 	$.btnNext.title = "Finish";
 }
 else {
 	$.btnNext.title = "Next";
-	//$.btnFinish.visible = false;
 }
 
 function isNumber(n) {
@@ -163,15 +157,15 @@ function showNext(){
    }
 }
 
-function showPrev() {
-	Alloy.Globals.exCount = Alloy.Globals.exCount - 1;
-	var workoutsWin = Alloy.createController("exercise",{}).getView();
-    if (OS_IOS) {
-        workoutsWin.open();
-    }
-    if (OS_ANDROID) {
-        workoutsWin.open();
-    }
+function skipExercise() {
+	if(exNum == 8) {
+		showAckView();
+	}
+	else {
+		Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
+		var workoutsWin = Alloy.createController("exercise",{}).getView();
+   		workoutsWin.open();
+   }
 }
 
 function showAckView() {
