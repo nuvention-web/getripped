@@ -20,7 +20,7 @@
 			
 			</View>
 			<View id="viewId2" layout="horizontal" height="SIZE" top="10">
-				<Label left="10%" >Weight Used</Label>
+				<Label id="weightLabel" class="staticLabel" left="10%" ></Label>
 				<TextField id="txtWeight" class="txtClass" left="10%" color="red" ></TextField>
 			</View>
 			<View id="viewId3" layout="horizontal" height="SIZE" top="10">
@@ -29,18 +29,18 @@
 			<View id="viewId4" layout="horizontal" height="SIZE">
 				<Label left="40%" class="showExCount">Reps</Label><Label class="showExCount" left="12%">Completed</Label>
 			</View>
-			<View id="viewId5" layout="horizontal" height="SIZE">
-				<Label left="30">Set 1</Label>
+			<View id="viewId5" layout="horizontal" height="SIZE" top="2">
+				<Label left="30" class="staticLabel">Set 1</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
 				<TextField id="txtSet1" class="txtClass" left="12%"></TextField>
 			</View>
-			<View id="viewId6" layout="horizontal" height="SIZE">
-				<Label left="30">Set 2</Label>
+			<View id="viewId6" layout="horizontal" height="SIZE" top="3">
+				<Label left="30" class="staticLabel">Set 2</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
 				<TextField  id="txtSet2" class="txtClass" left="12%" ></TextField>
 			</View>
-			<View id="viewId7" layout="horizontal" height="SIZE">
-				<Label left="30">Set 3</Label>
+			<View id="viewId7" layout="horizontal" height="SIZE" top="3">
+				<Label left="30" class="staticLabel">Set 3</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
 				<TextField id="txtSet3" class="txtClass" left="12%"></TextField>
 			</View>

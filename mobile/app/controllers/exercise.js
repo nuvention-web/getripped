@@ -26,6 +26,7 @@ var exNum = index + 1;
 var imgName = exNum + ".JPG";
 $.exImage.image = imgName;
 $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
+$.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
@@ -55,6 +56,10 @@ var exAttempt = Titanium.Network.createHTTPClient();
     	if(response.weight && response.weight!=0){
     		$.txtWeight.value = response.weight;
     		$.txtWeight.editable = "false";
+    		$.weightLabel.text = "Recommended Weight";
+    	}
+    	else {
+    		$.weightLabel.text = "Enter Weight";
     	}
 	};
 

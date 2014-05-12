@@ -32,9 +32,9 @@
 	}
 }
 
-"#windowTitle": {
+".staticLabel": {
 	font: {
-		fontSize: 20,
+		fontSize: 14,
 		fontWeight:"bold"
 	}
 }
@@ -42,7 +42,7 @@
 ".txtClass": {
 	//backgroundColor:'red',
     width:50,
-    height:30,
+    height:25,
     textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
     font: {
     	fontSize: 14,
