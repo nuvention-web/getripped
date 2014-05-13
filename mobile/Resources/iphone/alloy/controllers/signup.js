@@ -22,7 +22,7 @@ function Controller() {
         }
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
-        loginReq.open("POST", "http://getripped.herokuapp.com/user");
+        loginReq.open("POST", "http://localhost:3000/user");
         var user = {
             first_name: fname,
             last_name: lname,
@@ -37,7 +37,7 @@ function Controller() {
             if ("succeeded" == response.message) {
                 var loginRequest = Titanium.Network.createHTTPClient();
                 loginRequest.withCredentials = true;
-                loginRequest.open("POST", "http://getripped.herokuapp.com/session");
+                loginRequest.open("POST", "http://localhost:3000/session");
                 var userLogin = {
                     password: $.txtPassword.value,
                     email: $.txtEmail.value

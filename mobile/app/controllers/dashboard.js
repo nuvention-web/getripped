@@ -1,6 +1,14 @@
 //var args = arguments[0] || {};
-function showWorkout(){
-	var dashboardWin = Alloy.createController("exercise",{}).getView();
+
+function showUpperBodyWorkout(){
+	var arg = 1;
+	var dashboardWin = Alloy.createController("exercise",arg).getView();
+    dashboardWin.open();
+}
+
+function showLowerBodyWorkout(){
+	var arg = 2;
+	var dashboardWin = Alloy.createController("exercise",arg).getView();
     dashboardWin.open();
 }
 

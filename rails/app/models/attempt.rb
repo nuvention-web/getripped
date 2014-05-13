@@ -33,11 +33,13 @@ class Attempt < ActiveRecord::Base
 
 	def self.last_three_equal?(uid,exId)
 		last_three_attempts = Attempt.where(:user_id => uid, :exercise_id => exId).last(3)
-		weight_used_attempt_1 = last_three_attempts[0].weight
-		weight_used_attempt_2 = last_three_attempts[1].weight
-		weight_used_attempt_3 = last_three_attempts[2].weight
-		return true if weight_used_attempt_1 == weight_used_attempt_2 && weight_used_attempt_1== weight_used_attempt_3
-
+		if last_three_attempts[2]
+			weight_used_attempt_1 = last_three_attempts[0].weight
+			weight_used_attempt_2 = last_three_attempts[1].weight
+			weight_used_attempt_3 = last_three_attempts[2].weight
+			return true if weight_used_attempt_1 == weight_used_attempt_2 && weight_used_attempt_1== weight_used_attempt_3
+		else return false
+		end
 	end
 
 	def self.last_two_not_equal?(uid,exId)
@@ -55,8 +57,14 @@ class Attempt < ActiveRecord::Base
 		if (Attempt.where(:user_id => uid, :exercise_id => exId).count == 1 || Attempt.last_two_not_equal?(uid,exId))
 			last_attempt_avg = Attempt.avg_pct_reps_completed(uid,exId,1)
 			if last_attempt_avg < 0.5
+				p last_attempt_avg
+				p last_attempt_avg
+				p last_attempt_avg
+				p last_attempt_avg
 				Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used - 5)
-			end	
+			else
+				Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used)	
+			end
 		elsif Attempt.last_three_equal?(uid,exId)
 			avg_total_reps = Attempt.avg_pct_reps_completed(uid,exId,3)
 			if  avg_total_reps > 0.8
@@ -64,6 +72,8 @@ class Attempt < ActiveRecord::Base
 			elsif avg_total_reps < 0.5
 				Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used - 5) 
 			end
+		else
+			Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used)	
 		end
 	end
 

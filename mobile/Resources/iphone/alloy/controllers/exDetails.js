@@ -59,7 +59,8 @@ function Controller() {
     });
     $.exDetailsWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {
-        var workoutsWin = Alloy.createController("exercise", {}).getView();
+        var args = 1;
+        var workoutsWin = Alloy.createController("exercise", args).getView();
         workoutsWin.open();
     });
     var count = Alloy.Globals.exCount + 1;

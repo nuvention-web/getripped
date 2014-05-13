@@ -43,7 +43,7 @@ function Controller() {
                 return;
             }
             var exAttempt = Titanium.Network.createHTTPClient();
-            exAttempt.open("POST", "http://getripped.herokuapp.com/exercise/" + exId + "/attempt");
+            exAttempt.open("POST", "http://localhost:3000/exercise/" + exId + "/attempt");
             var userEx = {
                 user_id: uId,
                 weight: weightText,
@@ -57,14 +57,16 @@ function Controller() {
                 JSON.parse(json);
             };
             Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
-            var workoutsWin = Alloy.createController("exercise", {}).getView();
+            var args = 1;
+            var workoutsWin = Alloy.createController("exercise", args).getView();
             workoutsWin.open();
         }
     }
     function skipExercise() {
         if (8 == exNum) showAckView(); else {
             Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
-            var workoutsWin = Alloy.createController("exercise", {}).getView();
+            var args = 1;
+            var workoutsWin = Alloy.createController("exercise", args).getView();
             workoutsWin.open();
         }
     }
@@ -413,6 +415,7 @@ function Controller() {
     $.__views.exNavWin && $.addTopLevelView($.__views.exNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var args = arguments[0] || {};
     var bkBtn = Titanium.UI.createButton({
         height: 25,
         font: {
@@ -426,47 +429,90 @@ function Controller() {
         var workoutsWin = Alloy.createController("dashboard", {}).getView();
         workoutsWin.open();
     });
-    var eNames = [];
-    var eDesc = [];
-    var imgurl = [];
-    var index = Alloy.Globals.exCount;
-    imgurl = Alloy.Globals.images;
-    eNames = Alloy.Globals.eName;
-    eDesc = Alloy.Globals.eDescription;
-    $.eName.text = eNames[index];
-    var exNum = index + 1;
-    var imgName = exNum + ".JPG";
-    $.exImage.image = imgName;
-    $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
-    $.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-    $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-    $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-    $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-    1 == exNum && $.exWin.setLeftNavButton(bkBtn);
-    if (5 == exNum || 8 == exNum) {
-        $.txtWeight.value = "N/A";
-        $.txtWeight.editable = "false";
-    }
-    var uId = Alloy.Globals.userId;
-    var exAttempt = Titanium.Network.createHTTPClient();
-    exAttempt.open("POST", "http://getripped.herokuapp.com/user/" + uId + "/exercise/" + exNum + "/attempt/last");
-    var userEx = {
-        password: "gotraingo"
-    };
-    exAttempt.send(userEx);
-    exAttempt.onload = function() {
-        $.maskImg.visible = "true";
-        var json = this.responseText;
-        var response = JSON.parse(json);
-        if (response.weight && 0 != response.weight) {
-            $.txtWeight.value = response.weight;
+    if (1 == args) {
+        var eNames = [];
+        var eDesc = [];
+        var imgurl = [];
+        var index = Alloy.Globals.exCount;
+        imgurl = Alloy.Globals.images;
+        eNames = Alloy.Globals.eName;
+        eDesc = Alloy.Globals.eDescription;
+        $.eName.text = eNames[index];
+        var exNum = index + 1;
+        var imgName = exNum + ".JPG";
+        $.exImage.image = imgName;
+        $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
+        $.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        1 == exNum && $.exWin.setLeftNavButton(bkBtn);
+        if (5 == exNum || 8 == exNum) {
+            $.txtWeight.value = "N/A";
             $.txtWeight.editable = "false";
-            $.weightLabel.text = "Recommended Weight";
-        } else $.weightLabel.text = "Enter Weight";
-        $.txtWeight.visible = "true";
-        $.maskImg.visible = "false";
-    };
-    $.btnNext.title = 8 == exNum ? "Finish" : "Next";
+        }
+        var uId = Alloy.Globals.userId;
+        var exAttempt = Titanium.Network.createHTTPClient();
+        exAttempt.open("POST", "http://localhost:3000/user/" + uId + "/exercise/" + exNum + "/attempt/last");
+        var userEx = {
+            password: "gotraingo"
+        };
+        exAttempt.send(userEx);
+        exAttempt.onload = function() {
+            $.maskImg.visible = "true";
+            var json = this.responseText;
+            var response = JSON.parse(json);
+            if (response.weight && 0 != response.weight) {
+                $.txtWeight.value = response.next_weight;
+                $.txtWeight.editable = "false";
+                $.weightLabel.text = "Recommended Weight";
+            } else $.weightLabel.text = "Enter Weight";
+            $.txtWeight.visible = "true";
+            $.maskImg.visible = "false";
+        };
+        $.btnNext.title = 8 == exNum ? "Finish" : "Next";
+    } else {
+        var eNamesLower = [];
+        var eDescLower = [];
+        var imgurlLower = [];
+        Alloy.Globals.exCount;
+        imgurlLower = Alloy.Globals.images;
+        eNamesLower = Alloy.Globals.eName;
+        eDescLower = Alloy.Globals.eDescription;
+        $.eName.text = eNames[index];
+        var exNum = index + 1;
+        $.exImage.image = imgName;
+        $.workoutTitle.text = "Upper Body workout " + exNumLower + " of " + "8";
+        $.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        1 == exNumLower && $.exWin.setLeftNavButton(bkBtn);
+        if (5 == exNumLower || 8 == exNumLower) {
+            $.txtWeight.value = "N/A";
+            $.txtWeight.editable = "false";
+        }
+        var uId = Alloy.Globals.userId;
+        var exAttempt = Titanium.Network.createHTTPClient();
+        exAttempt.open("POST", "http://localhost:3000/user/" + uId + "/exercise/" + exNum + "/attempt/last");
+        var userEx = {
+            password: "gotraingo"
+        };
+        exAttempt.send(userEx);
+        exAttempt.onload = function() {
+            $.maskImg.visible = "true";
+            var json = this.responseText;
+            var response = JSON.parse(json);
+            if (response.weight && 0 != response.weight) {
+                $.txtWeight.value = response.next_weight;
+                $.txtWeight.editable = "false";
+                $.weightLabel.text = "Recommended Weight";
+            } else $.weightLabel.text = "Enter Weight";
+            $.txtWeight.visible = "true";
+            $.maskImg.visible = "false";
+        };
+        $.btnNext.title = 8 == exNum ? "Finish" : "Next";
+    }
     __defers["$.__views.exImage!click!openExDetails"] && $.__views.exImage.addEventListener("click", openExDetails);
     __defers["$.__views.btnSkip!click!skipExercise"] && $.__views.btnSkip.addEventListener("click", skipExercise);
     __defers["$.__views.btnNext!click!showNext"] && $.__views.btnNext.addEventListener("click", showNext);
