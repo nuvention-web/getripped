@@ -15,20 +15,17 @@ upper_body = Workout.create(name: "Upper Body")
 lower_body = Workout.create(name: "Lower Body")
 
 CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |row|
-		exercise = Exercise.create(
-			:name => row[:name],
-			:reps => row[:reps],
-			:sets => row[:sets],
-			:rest => row[:rest],
-			:description => row[:description],
-			:image => "/assets/images/#{row[:name].gsub(/ /,'_')}"+".png")
-
-		# exercise_update = Exercise.find(exercise.id)
-		# p exercise_update
-		# p exercise_update.workout
 		if row[:workout] == "Upper Body"
 			exercise.update_attributes(workout_id: upper_body.id)
-		elsif row[:workout] == "Lower Body"
+			exercise.update_attributes(:image => "https://s3.amazonaws.com/swoletrain/#{row[:name].gsub(/ /,'+')}"+".JPG")
+		else
+			exercise = Exercise.create(
+				:name => row[:name],
+				:reps => row[:reps],
+				:sets => row[:sets],
+				:rest => row[:rest],
+				:description => row[:description],
+				:image => "https://s3.amazonaws.com/swoletrain/#{row[:name].gsub(/ /,'+')}"+".JPG")
 			exercise.update_attributes(workout_id: lower_body.id)
 		end
 end
