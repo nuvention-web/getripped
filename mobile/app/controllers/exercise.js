@@ -1,4 +1,5 @@
-//\nvar args = arguments[0] || {};
+var args = arguments[0] || {};
+//alert(args);
 var bkBtn = Titanium.UI.createButton({
 height: 25,
 font:{size:9, fontWeight:'bold'},
@@ -13,68 +14,135 @@ bkBtn.addEventListener("click", function(e){
         workoutsWin.open();
 	});
 
-
-var eNames = [];
-var eDesc = [];
-var imgurl = [];
-var index = Alloy.Globals.exCount;
-imgurl = Alloy.Globals.images;
-eNames = Alloy.Globals.eName;
-eDesc = Alloy.Globals.eDescription;
-$.eName.text = eNames[index];
-var exNum = index + 1;
-var imgName = exNum + ".JPG";
-$.exImage.image = imgName;
-$.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
-$.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-$.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-$.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-
-if(exNum == 1){
-	$.exWin.setLeftNavButton(bkBtn);
-}
-if(exNum == 5 || exNum == 8){
-	$.txtWeight.value = "N/A";
-	$.txtWeight.editable = "false";
-}
-
-/* Code to check if user has attempted the workout previously*/
-var uId = Alloy.Globals.userId;
-var exAttempt = Titanium.Network.createHTTPClient();		
-        exAttempt.open("POST","http://getripped.herokuapp.com/user/"+uId+"/exercise/"+exNum+"/attempt/last");
-        var userEx = { 
-			password: "gotraingo"
-         };
-        exAttempt.send(userEx);
-        
-     exAttempt.onload = function()
-	{
-    	var json = this.responseText;
-    	var response = JSON.parse(json);
-    	//alert(response);
-    	if(response.weight && response.weight!=0){
-    		$.txtWeight.value = response.weight;
-    		$.txtWeight.editable = "false";
-    	}
-	};
-
-
-
-if (index > 0) {
-	$.btnPrev.visible = true;
-}
-else {
-	$.btnPrev.visible = false;
-}
-if(exNum == 8)
+if(args == 1) 
 {
-	//$.btnFinish.visible = true;
-	$.btnNext.title = "Finish";
+	var eNames = [];
+	var eDesc = [];
+	var imgurl = [];
+	var index = Alloy.Globals.exCount;
+	imgurl = Alloy.Globals.images;
+	eNames = Alloy.Globals.eName;
+	eDesc = Alloy.Globals.eDescription;
+	$.eName.text = eNames[index];
+	var exNum = index + 1;
+	var imgName = exNum + ".JPG";
+	$.exImage.image = imgName;
+	$.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
+	$.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+	$.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+	$.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+	$.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+	
+	if(exNum == 1){
+		$.exWin.setLeftNavButton(bkBtn);
+	}
+	if(exNum == 5 || exNum == 8){
+		$.txtWeight.value = "N/A";
+		$.txtWeight.editable = "false";
+	}
+	
+	/* Code to check if user has attempted the workout previously*/
+	var uId = Alloy.Globals.userId;
+	var exAttempt = Titanium.Network.createHTTPClient();		
+	        exAttempt.open("POST","http://localhost:3000/user/"+uId+"/exercise/"+exNum+"/attempt/last");
+	        var userEx = { 
+				password: "gotraingo"
+	         };
+	        exAttempt.send(userEx);
+	        
+	     exAttempt.onload = function()
+		{
+			$.maskImg.visible = "true";
+	    	var json = this.responseText;
+	    	var response = JSON.parse(json);
+	    	//alert(response);
+	    	if(response.weight && response.weight!=0){
+	    		$.txtWeight.value = response.next_weight;
+	    		$.txtWeight.editable = "false";
+	    		$.weightLabel.text = "Recommended Weight";
+	    	}
+	    	else {
+	    		$.weightLabel.text = "Enter Weight";
+	    	}
+	    	$.txtWeight.visible = "true";
+	    	$.maskImg.visible = "false";
+		};
+	
+	
+	if(exNum == 8)
+	{
+		$.btnNext.title = "Finish";
+	}
+	else {
+		$.btnNext.title = "Next";
+	}
 }
-else {
-	$.btnNext.title = "Next";
-	//$.btnFinish.visible = false;
+else
+{
+	var eNamesLower = [];
+	var eDescLower = [];
+	var imgurlLower = [];
+	var indexLower = Alloy.Globals.exCount;
+	imgurlLower = Alloy.Globals.images;
+	eNamesLower = Alloy.Globals.eName;
+	eDescLower = Alloy.Globals.eDescription;
+	$.eName.text = eNames[index];
+	var exNum = index + 1;
+	var imgNameLower = exNumLower + ".JPG";
+	$.exImage.image = imgName;
+	$.workoutTitle.text = "Upper Body workout " + exNumLower + " of " + "8";
+	$.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+	$.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+	$.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+	$.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+	
+	if(exNumLower == 1){
+		$.exWin.setLeftNavButton(bkBtn);
+	}
+	if(exNumLower == 5 || exNumLower == 8){
+		$.txtWeight.value = "N/A";
+		$.txtWeight.editable = "false";
+	}
+	
+	/* Code to check if user has attempted the workout previously*/
+	var uId = Alloy.Globals.userId;
+	var exAttempt = Titanium.Network.createHTTPClient();		
+	        exAttempt.open("POST","http://localhost:3000/user/"+uId+"/exercise/"+exNum+"/attempt/last");
+	        var userEx = { 
+				password: "gotraingo"
+	         };
+	        exAttempt.send(userEx);
+	        
+	     exAttempt.onload = function()
+		{
+			$.maskImg.visible = "true";
+	    	var json = this.responseText;
+	    	var response = JSON.parse(json);
+	    	//alert(response);
+	    	if(response.weight && response.weight!=0){
+	    		$.txtWeight.value = response.next_weight;
+	    		$.txtWeight.editable = "false";
+	    		$.weightLabel.text = "Recommended Weight";
+	    	}
+	    	else {
+	    		$.weightLabel.text = "Enter Weight";
+	    	}
+	    	$.txtWeight.visible = "true";
+	    	$.maskImg.visible = "false";
+		};
+	
+	
+	if(exNum == 8)
+	{
+		$.btnNext.title = "Finish";
+	}
+	else {
+		$.btnNext.title = "Next";
+	}
 }
+
+
+
 
 function isNumber(n) {
   return !isNaN(parseInt(n)) && isFinite(n) && n.toString().indexOf(".") == -1;
@@ -129,7 +197,7 @@ function showNext(){
 	}
 	
 	var exAttempt = Titanium.Network.createHTTPClient();		
-        exAttempt.open("POST","http://getripped.herokuapp.com/exercise/"+exId+"/attempt");
+        exAttempt.open("POST","http://localhost:3000/exercise/"+exId+"/attempt");
         var userEx = { 
         	user_id: uId,
 			weight: weightText,
@@ -148,7 +216,8 @@ function showNext(){
 	};
 	
 	Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
-	var workoutsWin = Alloy.createController("exercise",{}).getView();
+	var args = 1;
+	var workoutsWin = Alloy.createController("exercise",args).getView();
     if (OS_IOS) {
         workoutsWin.open();
     }
@@ -158,15 +227,16 @@ function showNext(){
    }
 }
 
-function showPrev() {
-	Alloy.Globals.exCount = Alloy.Globals.exCount - 1;
-	var workoutsWin = Alloy.createController("exercise",{}).getView();
-    if (OS_IOS) {
-        workoutsWin.open();
-    }
-    if (OS_ANDROID) {
-        workoutsWin.open();
-    }
+function skipExercise() {
+	if(exNum == 8) {
+		showAckView();
+	}
+	else {
+		Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
+		var args = 1;
+		var workoutsWin = Alloy.createController("exercise",args).getView();
+   		workoutsWin.open();
+   }
 }
 
 function showAckView() {

@@ -9,8 +9,10 @@
 				<Label>get swole.</Label>
 				<Label>Just enter what you can do</Label>
 				<Label>for each exercise.</Label>
-				<Button id="btnWorkout" top="20" title="Start a new workout" onClick="showWorkout"></Button>
-				<ImageView image="SwoleTrainLogo.png" top="5" width="40%" height="40%"></ImageView>
+				<!--ProgressBar id="pb" top="10" width="250" height="auto" min="0" max="10" value="5" color="#fff" message="Downloading 0 of 10" /-->
+				<Button id="btnWorkout" top="20" title="Upper Body" onClick="showUpperBodyWorkout"></Button>
+				<Button id="btnWorkout" top="10" title="Lower Body & Core" onClick="showLowerBodyWorkout"></Button>
+				<ImageView image="SwoleTrainLogo.png" top="10" width="40%" height="30%"></ImageView>
 			</View>		
 		</ScrollView>
 	</Window>

@@ -1,6 +1,12 @@
 function Controller() {
-    function showWorkout() {
-        var dashboardWin = Alloy.createController("exercise", {}).getView();
+    function showUpperBodyWorkout() {
+        var arg = 1;
+        var dashboardWin = Alloy.createController("exercise", arg).getView();
+        dashboardWin.open();
+    }
+    function showLowerBodyWorkout() {
+        var arg = 2;
+        var dashboardWin = Alloy.createController("exercise", arg).getView();
         dashboardWin.open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -71,15 +77,32 @@ function Controller() {
         },
         id: "btnWorkout",
         top: "20",
-        title: "Start a new workout"
+        title: "Upper Body"
     });
     $.__views.mainView.add($.__views.btnWorkout);
-    showWorkout ? $.__views.btnWorkout.addEventListener("click", showWorkout) : __defers["$.__views.btnWorkout!click!showWorkout"] = true;
+    showUpperBodyWorkout ? $.__views.btnWorkout.addEventListener("click", showUpperBodyWorkout) : __defers["$.__views.btnWorkout!click!showUpperBodyWorkout"] = true;
+    $.__views.btnWorkout = Ti.UI.createButton({
+        width: 200,
+        height: 30,
+        borderRadius: 1,
+        backgroundColor: "#3B74F5",
+        color: "white",
+        font: {
+            fontFamily: "Arial",
+            fontWeight: "bold",
+            fontSize: 14
+        },
+        id: "btnWorkout",
+        top: "10",
+        title: "Lower Body & Core"
+    });
+    $.__views.mainView.add($.__views.btnWorkout);
+    showLowerBodyWorkout ? $.__views.btnWorkout.addEventListener("click", showLowerBodyWorkout) : __defers["$.__views.btnWorkout!click!showLowerBodyWorkout"] = true;
     $.__views.__alloyId10 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
-        top: "5",
+        top: "10",
         width: "40%",
-        height: "40%",
+        height: "30%",
         id: "__alloyId10"
     });
     $.__views.mainView.add($.__views.__alloyId10);
@@ -90,7 +113,8 @@ function Controller() {
     $.__views.dashBoardNavWin && $.addTopLevelView($.__views.dashBoardNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    __defers["$.__views.btnWorkout!click!showWorkout"] && $.__views.btnWorkout.addEventListener("click", showWorkout);
+    __defers["$.__views.btnWorkout!click!showUpperBodyWorkout"] && $.__views.btnWorkout.addEventListener("click", showUpperBodyWorkout);
+    __defers["$.__views.btnWorkout!click!showLowerBodyWorkout"] && $.__views.btnWorkout.addEventListener("click", showLowerBodyWorkout);
     _.extend($, exports);
 }
 

@@ -43,7 +43,7 @@ function Controller() {
                 return;
             }
             var exAttempt = Titanium.Network.createHTTPClient();
-            exAttempt.open("POST", "http://getripped.herokuapp.com/exercise/" + exId + "/attempt");
+            exAttempt.open("POST", "http://localhost:3000/exercise/" + exId + "/attempt");
             var userEx = {
                 user_id: uId,
                 weight: weightText,
@@ -57,14 +57,18 @@ function Controller() {
                 JSON.parse(json);
             };
             Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
-            var workoutsWin = Alloy.createController("exercise", {}).getView();
+            var args = 1;
+            var workoutsWin = Alloy.createController("exercise", args).getView();
             workoutsWin.open();
         }
     }
-    function showPrev() {
-        Alloy.Globals.exCount = Alloy.Globals.exCount - 1;
-        var workoutsWin = Alloy.createController("exercise", {}).getView();
-        workoutsWin.open();
+    function skipExercise() {
+        if (8 == exNum) showAckView(); else {
+            Alloy.Globals.exCount = Alloy.Globals.exCount + 1;
+            var args = 1;
+            var workoutsWin = Alloy.createController("exercise", args).getView();
+            workoutsWin.open();
+        }
     }
     function showAckView() {
         var completionWin = Alloy.createController("completion", {}).getView();
@@ -144,15 +148,18 @@ function Controller() {
         top: "10"
     });
     $.__views.mainView.add($.__views.viewId2);
-    $.__views.__alloyId11 = Ti.UI.createLabel({
-        text: "Weight Used",
-        left: "10%",
-        id: "__alloyId11"
+    $.__views.weightLabel = Ti.UI.createLabel({
+        font: {
+            fontSize: 14,
+            fontWeight: "bold"
+        },
+        id: "weightLabel",
+        left: "10%"
     });
-    $.__views.viewId2.add($.__views.__alloyId11);
+    $.__views.viewId2.add($.__views.weightLabel);
     $.__views.txtWeight = Ti.UI.createTextField({
         width: 50,
-        height: 30,
+        height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         font: {
             fontSize: 14,
@@ -161,7 +168,8 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "red",
         id: "txtWeight",
-        left: "10%"
+        left: "10%",
+        visible: "false"
     });
     $.__views.viewId2.add($.__views.txtWeight);
     $.__views.viewId3 = Ti.UI.createView({
@@ -171,63 +179,68 @@ function Controller() {
         top: "10"
     });
     $.__views.mainView.add($.__views.viewId3);
-    $.__views.__alloyId12 = Ti.UI.createLabel({
+    $.__views.__alloyId11 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Recommended",
         left: "30%",
-        id: "__alloyId12"
+        id: "__alloyId11"
     });
-    $.__views.viewId3.add($.__views.__alloyId12);
-    $.__views.__alloyId13 = Ti.UI.createLabel({
+    $.__views.viewId3.add($.__views.__alloyId11);
+    $.__views.__alloyId12 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Reps",
         left: "10%",
-        id: "__alloyId13"
+        id: "__alloyId12"
     });
-    $.__views.viewId3.add($.__views.__alloyId13);
+    $.__views.viewId3.add($.__views.__alloyId12);
     $.__views.viewId4 = Ti.UI.createView({
         id: "viewId4",
         layout: "horizontal",
         height: "SIZE"
     });
     $.__views.mainView.add($.__views.viewId4);
-    $.__views.__alloyId14 = Ti.UI.createLabel({
+    $.__views.__alloyId13 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Reps",
         left: "40%",
-        id: "__alloyId14"
+        id: "__alloyId13"
     });
-    $.__views.viewId4.add($.__views.__alloyId14);
-    $.__views.__alloyId15 = Ti.UI.createLabel({
+    $.__views.viewId4.add($.__views.__alloyId13);
+    $.__views.__alloyId14 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Completed",
         left: "12%",
-        id: "__alloyId15"
+        id: "__alloyId14"
     });
-    $.__views.viewId4.add($.__views.__alloyId15);
+    $.__views.viewId4.add($.__views.__alloyId14);
     $.__views.viewId5 = Ti.UI.createView({
         id: "viewId5",
         layout: "horizontal",
-        height: "SIZE"
+        height: "SIZE",
+        top: "2"
     });
     $.__views.mainView.add($.__views.viewId5);
-    $.__views.__alloyId16 = Ti.UI.createLabel({
+    $.__views.__alloyId15 = Ti.UI.createLabel({
+        font: {
+            fontSize: 14,
+            fontWeight: "bold"
+        },
         text: "Set 1",
         left: "30",
-        id: "__alloyId16"
+        id: "__alloyId15"
     });
-    $.__views.viewId5.add($.__views.__alloyId16);
-    $.__views.__alloyId17 = Ti.UI.createLabel({
+    $.__views.viewId5.add($.__views.__alloyId15);
+    $.__views.__alloyId16 = Ti.UI.createLabel({
         width: 50,
-        height: 30,
+        height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         font: {
             fontSize: 14,
@@ -237,12 +250,12 @@ function Controller() {
         color: "red",
         left: "14%",
         text: "12",
-        id: "__alloyId17"
+        id: "__alloyId16"
     });
-    $.__views.viewId5.add($.__views.__alloyId17);
+    $.__views.viewId5.add($.__views.__alloyId16);
     $.__views.txtSet1 = Ti.UI.createTextField({
         width: 50,
-        height: 30,
+        height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         font: {
             fontSize: 14,
@@ -257,18 +270,23 @@ function Controller() {
     $.__views.viewId6 = Ti.UI.createView({
         id: "viewId6",
         layout: "horizontal",
-        height: "SIZE"
+        height: "SIZE",
+        top: "3"
     });
     $.__views.mainView.add($.__views.viewId6);
-    $.__views.__alloyId18 = Ti.UI.createLabel({
+    $.__views.__alloyId17 = Ti.UI.createLabel({
+        font: {
+            fontSize: 14,
+            fontWeight: "bold"
+        },
         text: "Set 2",
         left: "30",
-        id: "__alloyId18"
+        id: "__alloyId17"
     });
-    $.__views.viewId6.add($.__views.__alloyId18);
-    $.__views.__alloyId19 = Ti.UI.createLabel({
+    $.__views.viewId6.add($.__views.__alloyId17);
+    $.__views.__alloyId18 = Ti.UI.createLabel({
         width: 50,
-        height: 30,
+        height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         font: {
             fontSize: 14,
@@ -278,12 +296,12 @@ function Controller() {
         color: "red",
         left: "14%",
         text: "12",
-        id: "__alloyId19"
+        id: "__alloyId18"
     });
-    $.__views.viewId6.add($.__views.__alloyId19);
+    $.__views.viewId6.add($.__views.__alloyId18);
     $.__views.txtSet2 = Ti.UI.createTextField({
         width: 50,
-        height: 30,
+        height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         font: {
             fontSize: 14,
@@ -298,18 +316,23 @@ function Controller() {
     $.__views.viewId7 = Ti.UI.createView({
         id: "viewId7",
         layout: "horizontal",
-        height: "SIZE"
+        height: "SIZE",
+        top: "3"
     });
     $.__views.mainView.add($.__views.viewId7);
-    $.__views.__alloyId20 = Ti.UI.createLabel({
+    $.__views.__alloyId19 = Ti.UI.createLabel({
+        font: {
+            fontSize: 14,
+            fontWeight: "bold"
+        },
         text: "Set 3",
         left: "30",
-        id: "__alloyId20"
+        id: "__alloyId19"
     });
-    $.__views.viewId7.add($.__views.__alloyId20);
-    $.__views.__alloyId21 = Ti.UI.createLabel({
+    $.__views.viewId7.add($.__views.__alloyId19);
+    $.__views.__alloyId20 = Ti.UI.createLabel({
         width: 50,
-        height: 30,
+        height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         font: {
             fontSize: 14,
@@ -319,12 +342,12 @@ function Controller() {
         color: "red",
         left: "14%",
         text: "12",
-        id: "__alloyId21"
+        id: "__alloyId20"
     });
-    $.__views.viewId7.add($.__views.__alloyId21);
+    $.__views.viewId7.add($.__views.__alloyId20);
     $.__views.txtSet3 = Ti.UI.createTextField({
         width: 50,
-        height: 30,
+        height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         font: {
             fontSize: 14,
@@ -343,8 +366,8 @@ function Controller() {
         top: "12"
     });
     $.__views.mainView.add($.__views.buttonView);
-    $.__views.btnPrev = Ti.UI.createButton({
-        width: "70",
+    $.__views.btnSkip = Ti.UI.createButton({
+        width: 70,
         height: 30,
         borderRadius: 1,
         backgroundColor: "#3B74F5",
@@ -354,15 +377,14 @@ function Controller() {
             fontWeight: "bold",
             fontSize: 14
         },
-        id: "btnPrev",
+        id: "btnSkip",
         left: "20",
-        title: "Previous",
-        visible: "false"
+        title: "Skip"
     });
-    $.__views.buttonView.add($.__views.btnPrev);
-    showPrev ? $.__views.btnPrev.addEventListener("click", showPrev) : __defers["$.__views.btnPrev!click!showPrev"] = true;
+    $.__views.buttonView.add($.__views.btnSkip);
+    skipExercise ? $.__views.btnSkip.addEventListener("click", skipExercise) : __defers["$.__views.btnSkip!click!skipExercise"] = true;
     $.__views.btnNext = Ti.UI.createButton({
-        width: 60,
+        width: 70,
         height: 30,
         borderRadius: 1,
         backgroundColor: "#3B74F5",
@@ -378,6 +400,14 @@ function Controller() {
     });
     $.__views.buttonView.add($.__views.btnNext);
     showNext ? $.__views.btnNext.addEventListener("click", showNext) : __defers["$.__views.btnNext!click!showNext"] = true;
+    $.__views.maskImg = Ti.UI.createMaskedImage({
+        id: "maskImg",
+        mask: "loading-icon.png",
+        height: "30",
+        width: "30",
+        visible: "false"
+    });
+    $.__views.scrollviewId.add($.__views.maskImg);
     $.__views.exNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.exWin,
         id: "exNavWin"
@@ -385,6 +415,7 @@ function Controller() {
     $.__views.exNavWin && $.addTopLevelView($.__views.exNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var args = arguments[0] || {};
     var bkBtn = Titanium.UI.createButton({
         height: 25,
         font: {
@@ -398,45 +429,92 @@ function Controller() {
         var workoutsWin = Alloy.createController("dashboard", {}).getView();
         workoutsWin.open();
     });
-    var eNames = [];
-    var eDesc = [];
-    var imgurl = [];
-    var index = Alloy.Globals.exCount;
-    imgurl = Alloy.Globals.images;
-    eNames = Alloy.Globals.eName;
-    eDesc = Alloy.Globals.eDescription;
-    $.eName.text = eNames[index];
-    var exNum = index + 1;
-    var imgName = exNum + ".JPG";
-    $.exImage.image = imgName;
-    $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
-    $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-    $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-    $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-    1 == exNum && $.exWin.setLeftNavButton(bkBtn);
-    if (5 == exNum || 8 == exNum) {
-        $.txtWeight.value = "N/A";
-        $.txtWeight.editable = "false";
-    }
-    var uId = Alloy.Globals.userId;
-    var exAttempt = Titanium.Network.createHTTPClient();
-    exAttempt.open("POST", "http://getripped.herokuapp.com/user/" + uId + "/exercise/" + exNum + "/attempt/last");
-    var userEx = {
-        password: "gotraingo"
-    };
-    exAttempt.send(userEx);
-    exAttempt.onload = function() {
-        var json = this.responseText;
-        var response = JSON.parse(json);
-        if (response.weight && 0 != response.weight) {
-            $.txtWeight.value = response.weight;
+    if (1 == args) {
+        var eNames = [];
+        var eDesc = [];
+        var imgurl = [];
+        var index = Alloy.Globals.exCount;
+        imgurl = Alloy.Globals.images;
+        eNames = Alloy.Globals.eName;
+        eDesc = Alloy.Globals.eDescription;
+        $.eName.text = eNames[index];
+        var exNum = index + 1;
+        var imgName = exNum + ".JPG";
+        $.exImage.image = imgName;
+        $.workoutTitle.text = "Upper Body workout " + exNum + " of " + "8";
+        $.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        1 == exNum && $.exWin.setLeftNavButton(bkBtn);
+        if (5 == exNum || 8 == exNum) {
+            $.txtWeight.value = "N/A";
             $.txtWeight.editable = "false";
         }
-    };
-    $.btnPrev.visible = index > 0 ? true : false;
-    $.btnNext.title = 8 == exNum ? "Finish" : "Next";
+        var uId = Alloy.Globals.userId;
+        var exAttempt = Titanium.Network.createHTTPClient();
+        exAttempt.open("POST", "http://localhost:3000/user/" + uId + "/exercise/" + exNum + "/attempt/last");
+        var userEx = {
+            password: "gotraingo"
+        };
+        exAttempt.send(userEx);
+        exAttempt.onload = function() {
+            $.maskImg.visible = "true";
+            var json = this.responseText;
+            var response = JSON.parse(json);
+            if (response.weight && 0 != response.weight) {
+                $.txtWeight.value = response.next_weight;
+                $.txtWeight.editable = "false";
+                $.weightLabel.text = "Recommended Weight";
+            } else $.weightLabel.text = "Enter Weight";
+            $.txtWeight.visible = "true";
+            $.maskImg.visible = "false";
+        };
+        $.btnNext.title = 8 == exNum ? "Finish" : "Next";
+    } else {
+        var eNamesLower = [];
+        var eDescLower = [];
+        var imgurlLower = [];
+        Alloy.Globals.exCount;
+        imgurlLower = Alloy.Globals.images;
+        eNamesLower = Alloy.Globals.eName;
+        eDescLower = Alloy.Globals.eDescription;
+        $.eName.text = eNames[index];
+        var exNum = index + 1;
+        $.exImage.image = imgName;
+        $.workoutTitle.text = "Upper Body workout " + exNumLower + " of " + "8";
+        $.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
+        1 == exNumLower && $.exWin.setLeftNavButton(bkBtn);
+        if (5 == exNumLower || 8 == exNumLower) {
+            $.txtWeight.value = "N/A";
+            $.txtWeight.editable = "false";
+        }
+        var uId = Alloy.Globals.userId;
+        var exAttempt = Titanium.Network.createHTTPClient();
+        exAttempt.open("POST", "http://localhost:3000/user/" + uId + "/exercise/" + exNum + "/attempt/last");
+        var userEx = {
+            password: "gotraingo"
+        };
+        exAttempt.send(userEx);
+        exAttempt.onload = function() {
+            $.maskImg.visible = "true";
+            var json = this.responseText;
+            var response = JSON.parse(json);
+            if (response.weight && 0 != response.weight) {
+                $.txtWeight.value = response.next_weight;
+                $.txtWeight.editable = "false";
+                $.weightLabel.text = "Recommended Weight";
+            } else $.weightLabel.text = "Enter Weight";
+            $.txtWeight.visible = "true";
+            $.maskImg.visible = "false";
+        };
+        $.btnNext.title = 8 == exNum ? "Finish" : "Next";
+    }
     __defers["$.__views.exImage!click!openExDetails"] && $.__views.exImage.addEventListener("click", openExDetails);
-    __defers["$.__views.btnPrev!click!showPrev"] && $.__views.btnPrev.addEventListener("click", showPrev);
+    __defers["$.__views.btnSkip!click!skipExercise"] && $.__views.btnSkip.addEventListener("click", skipExercise);
     __defers["$.__views.btnNext!click!showNext"] && $.__views.btnNext.addEventListener("click", showNext);
     _.extend($, exports);
 }

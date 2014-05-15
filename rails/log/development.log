@@ -2992,3 +2992,157 @@ Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-05-14 22:51:57 -0500
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-14 22:51:57 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (9.5ms)[0m  [1mINSERT INTO "workouts" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:02:22 UTC +00:00], ["name", "Upper Body"], ["updated_at", Thu, 15 May 2014 05:02:22 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "workouts" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 15 May 2014 05:02:22 UTC +00:00], ["name", "Lower Body"], ["updated_at", Thu, 15 May 2014 05:02:22 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (5.4ms)[0m  [1mINSERT INTO "workouts" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:03:46 UTC +00:00], ["name", "Upper Body"], ["updated_at", Thu, 15 May 2014 05:03:46 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "workouts" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 15 May 2014 05:03:46 UTC +00:00], ["name", "Lower Body"], ["updated_at", Thu, 15 May 2014 05:03:46 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (5.0ms)[0m  [1mINSERT INTO "workouts" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:04:00 UTC +00:00], ["name", "Upper Body"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "workouts" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 15 May 2014 05:04:00 UTC +00:00], ["name", "Lower Body"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (4.4ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'Dumbell Bench Press' LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 1  [["workout_id", 7], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'Dumbell Bench Press' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "exercises" SET "image" = $1, "updated_at" = $2 WHERE "exercises"."id" = 1  [["image", "https://s3.amazonaws.com/swoletrain/Dumbell+Bench+Press.JPG"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'One-arm Dumbbell Row' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 2  [["workout_id", 7], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.4ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'One-arm Dumbbell Row' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "exercises" SET "image" = $1, "updated_at" = $2 WHERE "exercises"."id" = 2  [["image", "https://s3.amazonaws.com/swoletrain/One-arm+Dumbbell+Row.JPG"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'Incline Dumbell Bench Press' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 3  [["workout_id", 7], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.2ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'Incline Dumbell Bench Press' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "image" = $1, "updated_at" = $2 WHERE "exercises"."id" = 3  [["image", "https://s3.amazonaws.com/swoletrain/Incline+Dumbell+Bench+Press.JPG"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.2ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'Chest-Supported Dumbbell Row' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 4  [["workout_id", 7], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.4ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'Chest-Supported Dumbbell Row' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "image" = $1, "updated_at" = $2 WHERE "exercises"."id" = 4  [["image", "https://s3.amazonaws.com/swoletrain/Chest-Supported+Dumbbell+Row.JPG"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'Chinup' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 5  [["workout_id", 7], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.2ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'Chinup' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "image" = $1, "updated_at" = $2 WHERE "exercises"."id" = 5  [["image", "https://s3.amazonaws.com/swoletrain/Chinup.JPG"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'EZ-Bar Skullcrusher' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 6  [["workout_id", 7], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.4ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'EZ-Bar Skullcrusher' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "image" = $1, "updated_at" = $2 WHERE "exercises"."id" = 6  [["image", "https://s3.amazonaws.com/swoletrain/EZ-Bar+Skullcrusher.JPG"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.2ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'EZ-Bar Bicep Curls' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 7  [["workout_id", 7], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'EZ-Bar Bicep Curls' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "image" = $1, "updated_at" = $2 WHERE "exercises"."id" = 7  [["image", "https://s3.amazonaws.com/swoletrain/EZ-Bar+Bicep+Curls.JPG"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.4ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'Dips' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 8  [["workout_id", 7], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = 'Dips' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "exercises" SET "image" = $1, "updated_at" = $2 WHERE "exercises"."id" = 8  [["image", "https://s3.amazonaws.com/swoletrain/Dips.JPG"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = '1 mile run on treadmill' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 9  [["workout_id", 7], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mExercise Load (0.3ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."name" = '1 mile run on treadmill' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "exercises" SET "image" = $1, "updated_at" = $2 WHERE "exercises"."id" = 9  [["image", "https://s3.amazonaws.com/swoletrain/1+mile+run+on+treadmill.JPG"], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:04:00 UTC +00:00], ["description", "Stand with feet double-shoulder-width apart and toes turned out 45 degrees. Bend your hips back, reach down, and grasp the dumbbels with hands inside your knees. Drive through your heels to extend your hips and pull the dumbbells up until youí´re standing tall.\n"], ["image", "https://s3.amazonaws.com/swoletrain/Dumbbell+Sumo+Deadlift.JPG"], ["name", "Dumbbell Sumo Deadlift"], ["reps", 8], ["rest", 60], ["sets", 3], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 18  [["workout_id", 8], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:04:00 UTC +00:00], ["description", "Stand with your torso upright holding two dumbbells in your hands by your sides. Step forward with your right leg around 2 feet or so from the foot being left stationary behind and lower your upper body down, while keeping the torso upright and maintaining balance. Do not allow your knee to go forward beyond your toes as you come down, as this will put undue stress on the knee joint. Make sure that you keep your front shin perpendicular to the ground.\nUsing mainly the heel of your foot, push up and go back to the starting position."], ["image", "https://s3.amazonaws.com/swoletrain/Dumbbell+Front+Lunge.JPG"], ["name", "Dumbbell Front Lunge"], ["reps", 12], ["rest", 30], ["sets", 4], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 19  [["workout_id", 8], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:04:00 UTC +00:00], ["description", "Stand lunge length in front of a bench, holding a dumbbell in each hand. Rest the top of one foot on the bench behind you. Lower your body until your rear knee nearly touches the floor, then drive your heel into the floor to come back up. Complete all your reps on that side and then switch legs and repeat."], ["image", "https://s3.amazonaws.com/swoletrain/Bulgarian+Split+Squat.JPG"], ["name", "Bulgarian Split Squat"], ["reps", 10], ["rest", 60], ["sets", 3], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 20  [["workout_id", 8], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:04:00 UTC +00:00], ["description", "Hold Dumbbells at shoulder level and stand with feet shoulder width. Bend your hips back and squat down as low as you can without losing the arch in your lower back. Drive through your heels to come up."], ["image", "https://s3.amazonaws.com/swoletrain/Dumbbell+Front+Squat.JPG"], ["name", "Dumbbell Front Squat"], ["reps", 20], ["rest", 30], ["sets", 4], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 21  [["workout_id", 8], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:04:00 UTC +00:00], ["description", "Lie on your back on the floor with your knees bent and your feet flat on the floor. Extend your arms out to your sides and place them on the floor at a 45-degree angle. Raise your hips so your body forms a straight line from you shoulders to your knees, squeeze your glutes tightly."], ["image", "https://s3.amazonaws.com/swoletrain/Hip+Raises.JPG"], ["name", "Hip Raises"], ["reps", 15], ["rest", 15], ["sets", 3], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 22  [["workout_id", 8], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:04:00 UTC +00:00], ["description", "Lie on your back on the floor with your knees bent and your feet flat on the floor. Extend one leg and suspend at a 45 degree angle. Slowly and gently lift your head first, followed by shoulder blades and reach to touch the toe of your suspended leg."], ["image", "https://s3.amazonaws.com/swoletrain/Raised+Leg+Sit+Up.JPG"], ["name", "Raised Leg Sit Up"], ["reps", 12], ["rest", 0], ["sets", 1], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 23  [["workout_id", 8], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:04:00 UTC +00:00], ["description", "Lie on your side with your forearm on the floor under your shoulder to prop you up, and your feet stacked. Contract your core and press your forearm against the floor to raise your hips until your body is straight from ankles to shoulders, pause when ankles, hips and shoulders are aligned."], ["image", "https://s3.amazonaws.com/swoletrain/Side+Bridge.JPG"], ["name", "Side Bridge"], ["reps", 12], ["rest", 30], ["sets", 4], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 24  [["workout_id", 8], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exercises" ("created_at", "description", "image", "name", "reps", "rest", "sets", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Thu, 15 May 2014 05:04:00 UTC +00:00], ["description", "Get into pushup position and then bend your elbows to rest your forearms on the floor. Brace your abs."], ["image", "https://s3.amazonaws.com/swoletrain/Plank.JPG"], ["name", "Plank"], ["reps", 1], ["rest", 30], ["sets", 3], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "exercises" SET "workout_id" = $1, "updated_at" = $2 WHERE "exercises"."id" = 25  [["workout_id", 8], ["updated_at", Thu, 15 May 2014 05:04:00 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[36mExercise Load (2.3ms)[0m  [1mSELECT "exercises".* FROM "exercises"[0m
+  [1m[35mExercise Load (1.3ms)[0m  SELECT "exercises".* FROM "exercises" ORDER BY "exercises"."id" DESC LIMIT 20
+  [1m[36mExercise Load (2.3ms)[0m  [1mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout" = 2[0m
+PG::UndefinedColumn: ERROR:  column exercises.workout does not exist
+LINE 1: SELECT "exercises".* FROM "exercises"  WHERE "exercises"."wo...
+                                                     ^
+: SELECT "exercises".* FROM "exercises"  WHERE "exercises"."workout" = 2
+  [1m[35mExercise Load (0.5ms)[0m  SELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id_idid" = 2
+PG::UndefinedColumn: ERROR:  column exercises.workout_id_idid does not exist
+LINE 1: SELECT "exercises".* FROM "exercises"  WHERE "exercises"."wo...
+                                                     ^
+: SELECT "exercises".* FROM "exercises"  WHERE "exercises"."workout_id_idid" = 2
+  [1m[36mExercise Load (2.2ms)[0m  [1mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = 2[0m

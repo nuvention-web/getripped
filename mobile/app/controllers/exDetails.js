@@ -8,7 +8,8 @@ $.exDetailsWin.setLeftNavButton(bkBtn);
 //$.loginWin.setTitleAttributes(color:'blue',font: {fontFamily:'Snell Roundhand', fontSize:36},shadow:{color:'gray', offset:{width:1,height:1}});
 
 bkBtn.addEventListener("click", function(e){
-		 var workoutsWin = Alloy.createController("exercise",{}).getView();
+		var args = 1;
+		 var workoutsWin = Alloy.createController("exercise",args).getView();
          workoutsWin.open();
 	});
 	

@@ -9,7 +9,7 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
-var url = "https://getripped.herokuapp.com/exercise";
+var url = "http://localhost:3000/workout/1/exercise";
 var jsonObj;
 var exerciseName;
 var exerciseDescription;
@@ -22,28 +22,14 @@ Alloy.Globals.exCount = 0;
 Alloy.Globals.userId = 0;
 var xhr = Ti.Network.createHTTPClient({
     onload: function(e) {
-    	//alert(e);
-		// this function is called when data is returned from the server and available for use
-        // this.responseText holds the raw text return of the message (used for text/JSON)
-        // this.responseXML holds any returned XML (including SOAP)
-        // this.responseData holds any returned binary data
-        //Ti.API.debug(this.responseText);
         jsonObj = JSON.parse(this.responseText);
-       // var nm = json[0].name;
        for (var i = 0; i < jsonObj.length; i++) { 
- 		// exerciseName = jsonObj[i].name;
- 	//	 exerciseDescription = jsonObj[i].description;
  		 Alloy.Globals.reps = jsonObj[i].reps;
  		 Alloy.Globals.sets = jsonObj[i].sets;
- 		 //alert(jsonObj[i].name);
  		 Alloy.Globals.eName[i] = jsonObj[i].name;
  		 Alloy.Globals.images[i] = 'images/' + jsonObj[i].image;
- 		// var path = "images" + Alloy.Globals.images[i];
- 		 Alloy.Globals.eDescription[i] = jsonObj[i].description;//alert(Alloy.Globals.eName[i]);
+ 		 Alloy.Globals.eDescription[i] = jsonObj[i].description;
 		}
-        //alert(jsonObj.);
-        
-        //alert(eName);
         //alert('success');
     },
     onerror: function(e) {

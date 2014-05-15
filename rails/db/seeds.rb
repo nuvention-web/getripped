@@ -16,8 +16,8 @@ lower_body = Workout.create(name: "Lower Body")
 
 CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |row|
 		if row[:workout] == "Upper Body"
-			exercise.update_attributes(workout_id: upper_body.id)
-			exercise.update_attributes(:image => "https://s3.amazonaws.com/swoletrain/#{row[:name].gsub(/ /,'+')}"+".JPG")
+			Exercise.find_by_name(row[:name]).update_attributes(workout_id: upper_body.id)
+			Exercise.find_by_name(row[:name]).update_attributes(:image => "https://s3.amazonaws.com/swoletrain/#{row[:name].gsub(/ /,'+')}"+".JPG")
 		else
 			exercise = Exercise.create(
 				:name => row[:name],
@@ -31,24 +31,12 @@ CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |
 end
 
 
-
-# CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |row|
-# 		Exercise.create(
-# 			:name => row[:name],
-# 			:reps => row[:reps],
-# 			:sets => row[:sets],
-# 			:rest => row[:rest],
-# 			:description => row[:description],
-# 			:image => images.slice!(0)
-# 		)
+# 10.times do 
+# 	Attempt.create(
+# 		user: User.find(2),
+# 		exercise: Exercise.all.sample,
+# 		weight: weights.sample,
+# 		reps1: rand(8) + 1,
+# 		reps2: rand(8) + 1,
+# 		reps3: rand(8) + 1)
 # end
-
-10.times do 
-	Attempt.create(
-		user: User.first,
-		exercise: Exercise.all.sample,
-		weight: weights.sample,
-		reps1: rand(8) + 1,
-		reps2: rand(8) + 1,
-		reps3: rand(8) + 1)
-end

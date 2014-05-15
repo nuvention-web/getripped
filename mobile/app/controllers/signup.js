@@ -9,12 +9,7 @@ $.signupWin.setLeftNavButton(bkBtn);
 
 bkBtn.addEventListener("click", function(e){
 		 var workoutsWin = Alloy.createController("index",{}).getView();
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(workoutsWin);
-    }
-    if (OS_ANDROID) {
-        workouts.open();
-    }
+         workoutsWin.open();
 	});
 
 function signupUser(){
@@ -44,7 +39,7 @@ function signupUser(){
 	
 	var loginReq = Titanium.Network.createHTTPClient();	
         loginReq.withCredentials = true;	
-        loginReq.open("POST","http://getripped.herokuapp.com/user");
+        loginReq.open("POST","http://localhost:3000/user");
         var user = { 
         	first_name: fname,
         	last_name: lname,     	 		
@@ -63,7 +58,7 @@ function signupUser(){
     	if(response.message == "succeeded") {
     		var loginRequest = Titanium.Network.createHTTPClient();
         	loginRequest.withCredentials = true;	
-        	loginRequest.open("POST","http://getripped.herokuapp.com/session");
+        	loginRequest.open("POST","http://localhost:3000/session");
         	var userLogin = {
             	password: $.txtPassword.value,
             	email: $.txtEmail.value

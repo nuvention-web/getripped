@@ -22,7 +22,7 @@ function Controller() {
         }
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
-        loginReq.open("POST", "http://getripped.herokuapp.com/user");
+        loginReq.open("POST", "http://localhost:3000/user");
         var user = {
             first_name: fname,
             last_name: lname,
@@ -37,7 +37,7 @@ function Controller() {
             if ("succeeded" == response.message) {
                 var loginRequest = Titanium.Network.createHTTPClient();
                 loginRequest.withCredentials = true;
-                loginRequest.open("POST", "http://getripped.herokuapp.com/session");
+                loginRequest.open("POST", "http://localhost:3000/session");
                 var userLogin = {
                     password: $.txtPassword.value,
                     email: $.txtEmail.value
@@ -148,60 +148,6 @@ function Controller() {
         hintText: "Password"
     });
     $.__views.view1.add($.__views.txtPassword);
-    $.__views.view2 = Ti.UI.createView({
-        id: "view2",
-        layout: "horizontal",
-        height: "SIZE",
-        top: "10"
-    });
-    $.__views.mainView.add($.__views.view2);
-    $.__views.txtAge = Ti.UI.createTextField({
-        color: "#336699",
-        width: "135dp",
-        height: "35dp",
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "txtAge",
-        left: "20",
-        hintText: "Age"
-    });
-    $.__views.view2.add($.__views.txtAge);
-    $.__views.txtGender = Ti.UI.createTextField({
-        color: "#336699",
-        width: "135dp",
-        height: "35dp",
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "txtGender",
-        left: "10",
-        hintText: "Gender(M/F)"
-    });
-    $.__views.view2.add($.__views.txtGender);
-    $.__views.view3 = Ti.UI.createView({
-        id: "view3",
-        layout: "horizontal",
-        height: "SIZE",
-        top: "10"
-    });
-    $.__views.mainView.add($.__views.view3);
-    $.__views.txtHeight = Ti.UI.createTextField({
-        color: "#336699",
-        width: "135dp",
-        height: "35dp",
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "txtHeight",
-        left: "20",
-        hintText: "Height(Eg:5'10)"
-    });
-    $.__views.view3.add($.__views.txtHeight);
-    $.__views.txtWeight = Ti.UI.createTextField({
-        color: "#336699",
-        width: "135dp",
-        height: "35dp",
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "txtWeight",
-        left: "10",
-        hintText: "Weight(In lbs)"
-    });
-    $.__views.view3.add($.__views.txtWeight);
     $.__views.view4 = Ti.UI.createView({
         id: "view4",
         height: "SIZE",
@@ -220,6 +166,14 @@ function Controller() {
     });
     $.__views.view4.add($.__views.btnSubmit);
     signupUser ? $.__views.btnSubmit.addEventListener("click", signupUser) : __defers["$.__views.btnSubmit!click!signupUser"] = true;
+    $.__views.__alloyId30 = Ti.UI.createImageView({
+        image: "SwoleTrainLogo.png",
+        top: "5",
+        width: "50%",
+        height: "55%",
+        id: "__alloyId30"
+    });
+    $.__views.view4.add($.__views.__alloyId30);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.signupWin,
         id: "navGroupWin"
@@ -239,7 +193,7 @@ function Controller() {
     $.signupWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {
         var workoutsWin = Alloy.createController("index", {}).getView();
-        $.navGroupWin.openWindow(workoutsWin);
+        workoutsWin.open();
     });
     $.navGroupWin.open();
     __defers["$.__views.btnSubmit!click!signupUser"] && $.__views.btnSubmit.addEventListener("click", signupUser);

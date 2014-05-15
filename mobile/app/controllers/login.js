@@ -9,12 +9,7 @@ $.loginWin.setLeftNavButton(bkBtn);
 
 bkBtn.addEventListener("click", function(e){
 		 var workoutsWin = Alloy.createController("index",{}).getView();
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(workoutsWin);
-    }
-    if (OS_ANDROID) {
-        workouts.open();
-    }
+         workoutsWin.open();
 	});
 
 function showWorkout(){
@@ -30,7 +25,7 @@ function showWorkout(){
 	}
 	var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;	
-        loginReq.open("POST","http://getripped.herokuapp.com/session");
+        loginReq.open("POST","http://localhost:3000/session");
         var user = {
             password: pass,
             email: uname

@@ -1,6 +1,6 @@
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
-var url = "https://getripped.herokuapp.com/exercise";
+var url = "http://localhost:3000/workout/1/exercise";
 
 var jsonObj;
 
