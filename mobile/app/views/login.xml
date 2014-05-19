@@ -3,8 +3,8 @@
 	<Window id="loginWin" backgroundImage="texture.jpg" title="SwoleTrain">
 		<View id="view1" layout="vertical" height="SIZE" top="10">
 		<Label text="Sign in to continue" id="loginLabel"></Label>
-		<TextField id="txtUsername" class="txtFieldLogin" top="20"  hintText="Email" autocapitalization="false"></TextField>
-		<TextField id="txtPassword" class="txtFieldLogin" top="10"  passwordMask="true"  hintText="Password"></TextField>
+		<TextField id="txtUsername" class="txtFieldLogin" top="20"  hintText="Email" autocapitalization="false" value="lee@gmail.com"></TextField>
+		<TextField id="txtPassword" class="txtFieldLogin" top="10"  passwordMask="true"  hintText="Password" value="1234"></TextField>
 	
 		<Button id="btnSubmit" class="loginBtn" title="Login" top="20" onClick="showWorkout"></Button>
 		<ImageView image="SwoleTrainLogo.png" top="20" width="50%" height="35%"></ImageView>

@@ -57,10 +57,6 @@ class Attempt < ActiveRecord::Base
 		if (Attempt.where(:user_id => uid, :exercise_id => exId).count == 1 || Attempt.last_two_not_equal?(uid,exId))
 			last_attempt_avg = Attempt.avg_pct_reps_completed(uid,exId,1)
 			if last_attempt_avg < 0.5
-				p last_attempt_avg
-				p last_attempt_avg
-				p last_attempt_avg
-				p last_attempt_avg
 				Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used - 5)
 			else
 				Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used)	
@@ -77,6 +73,11 @@ class Attempt < ActiveRecord::Base
 		end
 	end
 
+	def self.test(uid)
+		p uid
+		p uid
+		p uid
+	end
 end
 
 #add column to exercise for rec_reps in db

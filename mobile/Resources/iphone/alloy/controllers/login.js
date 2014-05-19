@@ -71,7 +71,8 @@ function Controller() {
         id: "txtUsername",
         top: "20",
         hintText: "Email",
-        autocapitalization: "false"
+        autocapitalization: "false",
+        value: "lee@gmail.com"
     });
     $.__views.view1.add($.__views.txtUsername);
     $.__views.txtPassword = Ti.UI.createTextField({
@@ -85,7 +86,8 @@ function Controller() {
         id: "txtPassword",
         top: "10",
         passwordMask: "true",
-        hintText: "Password"
+        hintText: "Password",
+        value: "1234"
     });
     $.__views.view1.add($.__views.txtPassword);
     $.__views.btnSubmit = Ti.UI.createButton({
@@ -105,14 +107,14 @@ function Controller() {
     });
     $.__views.view1.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
-    $.__views.__alloyId28 = Ti.UI.createImageView({
+    $.__views.__alloyId25 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
         top: "20",
         width: "50%",
         height: "35%",
-        id: "__alloyId28"
+        id: "__alloyId25"
     });
-    $.__views.view1.add($.__views.__alloyId28);
+    $.__views.view1.add($.__views.__alloyId25);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.loginWin,
         id: "navGroupWin"

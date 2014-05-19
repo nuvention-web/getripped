@@ -8,6 +8,8 @@ Getripped::Application.routes.draw do
   post 'exercise/:id/attempt' => 'attempt#create', as: :attempt
 
   resources :session, only: [:new, :create, :destroy]
+  resources :dashboard, only: [:index, :show]
+  get 'dashboard/:user_id' => 'dashboard#show', as: :show
 
   resources :user, only: [:create]
   post 'user/:user_id/exercise/:exercise_id/attempt/last' => 'attempt#last', as: :last  

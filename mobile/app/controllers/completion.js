@@ -1,4 +1,18 @@
 //var args = arguments[0] || {};
+var workoutTitles = [];
+workoutTitles = Alloy.Globals.workouts.name;
+//alert(workoutTitles);
+var data = [];
+for(var i = 0;  i < Alloy.Globals.workouts.length; i++) {
+	data.push(Alloy.createController('completedTable', {
+		exNum: i + 1 + ". ",
+		name: Alloy.Globals.workouts[i].name
+	}).getView());
+}
+//alert(data.name);
+$.workoutsTable.setData(data);
+
+
 function showDashboard(){
 	Alloy.Globals.exCount = 0;
 	var args = 1;

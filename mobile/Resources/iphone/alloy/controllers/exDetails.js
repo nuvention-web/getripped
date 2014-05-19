@@ -30,8 +30,8 @@ function Controller() {
     $.__views.exImage = Ti.UI.createImageView({
         id: "exImage",
         top: "10",
-        height: "60%",
-        width: "80%"
+        height: "500px",
+        width: "500px"
     });
     $.__views.mainView.add($.__views.exImage);
     $.__views.exDescription = Ti.UI.createLabel({
@@ -48,6 +48,7 @@ function Controller() {
     $.__views.navGroupWin && $.addTopLevelView($.__views.navGroupWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var args = arguments[0];
     var bkBtn = Titanium.UI.createButton({
         height: 25,
         font: {
@@ -59,16 +60,14 @@ function Controller() {
     });
     $.exDetailsWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {
-        var args = 1;
         var workoutsWin = Alloy.createController("exercise", args).getView();
         workoutsWin.open();
     });
-    var count = Alloy.Globals.exCount + 1;
-    var imageName = count + ".JPG";
-    var exName = Alloy.Globals.eName[Alloy.Globals.exCount];
-    var exDesc = Alloy.Globals.eDescription[Alloy.Globals.exCount];
+    Alloy.Globals.exCount + 1;
+    var exName = Alloy.Globals.workouts[args].name;
+    var exDesc = Alloy.Globals.workouts[args].description;
     $.eName.text = exName;
-    $.exImage.image = imageName;
+    $.exImage.image = Alloy.Globals.workouts[args].image;
     $.exDescription.text = "Instructions: " + exDesc;
     _.extend($, exports);
 }

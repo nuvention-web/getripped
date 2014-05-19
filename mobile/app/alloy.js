@@ -1,43 +1,67 @@
-// The contents of this file will be executed before any of
-// your view controllers are ever executed, including the index.
-// You have access to all functionality on the `Alloy` namespace.
-//
-// This is a great place to do any initialization for your app
-// or create any global variables/functions that you'd like to
-// make available throughout your app. You can easily make things
-// accessible globally by attaching them to the `Alloy.Globals`
-// object. For example:
-//
-// Alloy.Globals.someGlobalFunction = function(){};
-var url = "http://localhost:3000/workout/1/exercise";
+Alloy.Globals.workouts;
+Alloy.Globals.userId;
+Alloy.Globals.complete =[];
+Alloy.Globals.incomplete =[];
+Alloy.Globals.getSomeData = function() {
+	var someWorkoutId;
+	var workoutId;
+	var setOfWorkouts;
+	
+	return function(exerciseName) {
+		//if(someWorkoutId == undefined) {
+			someWorkoutId = MakeHTTPReqForWorkout();
+			for(var i=0; i < someWorkoutId.length ; i++)
+			{
+				if(someWorkoutId[i][1] == exerciseName)
+				{
+					workoutId=someWorkoutId[i][0];				
+					break;
+				}
+			}
+			//setOfWorkouts = Alloy.Globals.getWorkout(workoutId);
+		//}
+		return workoutId;
+	};
+}();
+
+function MakeHTTPReqForWorkout() {
+	var url = "http://localhost:3000/workout";
+	var response;
+	var xhr = Ti.Network.createHTTPClient();
+	xhr.open("GET", url);
+	xhr.onlaod = function() {
+        var jsonObj = JSON.parse(this.responseText);
+        Ti.App.Properties.setObject("user", jsonObj);      
+   };
+   
+	xhr.send();
+	 response = Ti.App.Properties.getObject("user");
+	 return response;
+}
+
+
+Alloy.Globals.getWorkout = function(wid,callback) {
+var res;
+var url = "http://localhost:3000/workout/"+wid+"/exercise";
 var jsonObj;
-var exerciseName;
-var exerciseDescription;
-Alloy.Globals.reps = [];
-Alloy.Globals.sets = [];
-Alloy.Globals.eName = [];
-Alloy.Globals.images = [];
-Alloy.Globals.eDescription = [];
-Alloy.Globals.exCount = 0;
-Alloy.Globals.userId = 0;
 var xhr = Ti.Network.createHTTPClient({
     onload: function(e) {
-        jsonObj = JSON.parse(this.responseText);
-       for (var i = 0; i < jsonObj.length; i++) { 
- 		 Alloy.Globals.reps = jsonObj[i].reps;
- 		 Alloy.Globals.sets = jsonObj[i].sets;
- 		 Alloy.Globals.eName[i] = jsonObj[i].name;
- 		 Alloy.Globals.images[i] = 'images/' + jsonObj[i].image;
- 		 Alloy.Globals.eDescription[i] = jsonObj[i].description;
-		}
-        //alert('success');
+        Alloy.Globals.workouts = JSON.parse(this.responseText);
+         //alert('success');
+         //Ti.App.Properties.setObject("user1", "success");
+        //alert("global:" + Alloy.Globals.workouts[0]);
+        callback();
+        //return Alloy.Globals.workouts;
     },
     onerror: function(e) {
-		// this function is called when an error occurs, including a timeout
         Ti.API.debug(e.error);
-        //alert('error');
+        alert('error');
     },
     timeout:5000  /* in milliseconds */
 });
 xhr.open("GET", url);
-xhr.send();  // request is actually sent with this statement
+xhr.send(); 
+//res = Ti.App.Properties.getObject("user1");
+//alert("res" + res);
+//return res;
+};
