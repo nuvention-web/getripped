@@ -12,6 +12,16 @@ bkBtn.addEventListener("click", function(e){
          workoutsWin.open();
 	});
 
+
+$.loginWin.addEventListener('click', function(e){
+    Titanium.App.Alloy.Globals.analytics.trackPageview('login'); // here 'all-listings/list-view' page url, you can use your custom url
+});
+
+$.btnSubmit.addEventListener('click', function (e) {
+    Titanium.App.Alloy.Globals.analytics.trackEvent('Button','testing','Login','');
+    //win.close();
+});
+
 function showWorkout(){
 	var pass = $.txtPassword.value;
 	var uname = $.txtUsername.value;

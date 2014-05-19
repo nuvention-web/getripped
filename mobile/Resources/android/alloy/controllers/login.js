@@ -105,14 +105,14 @@ function Controller() {
     });
     $.__views.view1.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
-    $.__views.__alloyId28 = Ti.UI.createImageView({
+    $.__views.__alloyId33 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
         top: "20",
         width: "50%",
         height: "35%",
-        id: "__alloyId28"
+        id: "__alloyId33"
     });
-    $.__views.view1.add($.__views.__alloyId28);
+    $.__views.view1.add($.__views.__alloyId33);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.loginWin,
         id: "navGroupWin"
@@ -131,16 +131,12 @@ function Controller() {
     });
     $.loginWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {
-        var workoutsWin = Alloy.createController("index", {}).getView();
-        workoutsWin.open();
+        {
+            Alloy.createController("index", {}).getView();
+        }
+        workouts.open();
     });
-    $.loginWin.addEventListener("click", function() {
-        Titanium.App.Alloy.Globals.analytics.trackPageview("login");
-    });
-    $.btnSubmit.addEventListener("click", function() {
-        Titanium.App.Alloy.Globals.analytics.trackEvent("Button", "testing", "Login", "");
-    });
-    $.navGroupWin.open();
+    $.index.open();
     __defers["$.__views.btnSubmit!click!showWorkout"] && $.__views.btnSubmit.addEventListener("click", showWorkout);
     _.extend($, exports);
 }
