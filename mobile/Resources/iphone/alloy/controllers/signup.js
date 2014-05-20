@@ -22,7 +22,7 @@ function Controller() {
         }
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
-        loginReq.open("POST", "http://getripped.herokuapp.com/user");
+        loginReq.open("POST", "http://localhost:3000/user");
         var user = {
             first_name: fname,
             last_name: lname,
@@ -37,7 +37,7 @@ function Controller() {
             if ("succeeded" == response.message) {
                 var loginRequest = Titanium.Network.createHTTPClient();
                 loginRequest.withCredentials = true;
-                loginRequest.open("POST", "http://getripped.herokuapp.com/session");
+                loginRequest.open("POST", "http://localhost:3000/session");
                 var userLogin = {
                     password: $.txtPassword.value,
                     email: $.txtEmail.value
@@ -166,14 +166,14 @@ function Controller() {
     });
     $.__views.view4.add($.__views.btnSubmit);
     signupUser ? $.__views.btnSubmit.addEventListener("click", signupUser) : __defers["$.__views.btnSubmit!click!signupUser"] = true;
-    $.__views.__alloyId30 = Ti.UI.createImageView({
+    $.__views.__alloyId31 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
         top: "5",
         width: "50%",
         height: "55%",
-        id: "__alloyId30"
+        id: "__alloyId31"
     });
-    $.__views.view4.add($.__views.__alloyId30);
+    $.__views.view4.add($.__views.__alloyId31);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.signupWin,
         id: "navGroupWin"
