@@ -47,8 +47,8 @@
 				<TextField id="txtSet3" class="txtClass" left="12%"></TextField>
 			</View>
 			<View id="buttonView" layout="horizontal" height="SIZE" top="12">
-				<Button id="btnSkip" class="bottomBtn" left="20"  title="Previous" onClick="showPrevious"></Button>
-				<Button id="btnNext" class="bottomBtn" left="70" title="Save & Next"  onClick="showNext"></Button>
+				<!--Button id="btnSkip" class="bottomBtn" left="20"  title="Previous" onClick="showPrevious"></Button-->
+				<Button id="btnNext" class="bottomBtn" left="90" title="Save & Next"  onClick="showNext"></Button>
 				<!--Button id="btnFinish" class="bottomBtn" left="10" title="Finish" onClick="showAckView" visible="false"></Button-->
 			</View>
 		</View>

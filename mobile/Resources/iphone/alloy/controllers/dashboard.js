@@ -47,27 +47,27 @@ function Controller() {
         id: "welcomeLabel"
     });
     $.__views.mainView.add($.__views.welcomeLabel);
-    $.__views.__alloyId3 = Ti.UI.createLabel({
+    $.__views.__alloyId7 = Ti.UI.createLabel({
         text: "SwoleTrain is ready to help you",
         top: "20",
-        id: "__alloyId3"
+        id: "__alloyId7"
     });
-    $.__views.mainView.add($.__views.__alloyId3);
-    $.__views.__alloyId4 = Ti.UI.createLabel({
+    $.__views.mainView.add($.__views.__alloyId7);
+    $.__views.__alloyId8 = Ti.UI.createLabel({
         text: "get swole.",
-        id: "__alloyId4"
+        id: "__alloyId8"
     });
-    $.__views.mainView.add($.__views.__alloyId4);
-    $.__views.__alloyId5 = Ti.UI.createLabel({
+    $.__views.mainView.add($.__views.__alloyId8);
+    $.__views.__alloyId9 = Ti.UI.createLabel({
         text: "Just enter what you can do",
-        id: "__alloyId5"
+        id: "__alloyId9"
     });
-    $.__views.mainView.add($.__views.__alloyId5);
-    $.__views.__alloyId6 = Ti.UI.createLabel({
+    $.__views.mainView.add($.__views.__alloyId9);
+    $.__views.__alloyId10 = Ti.UI.createLabel({
         text: "for each exercise.",
-        id: "__alloyId6"
+        id: "__alloyId10"
     });
-    $.__views.mainView.add($.__views.__alloyId6);
+    $.__views.mainView.add($.__views.__alloyId10);
     $.__views.btnWorkout = Ti.UI.createButton({
         width: 200,
         height: 30,
@@ -102,14 +102,14 @@ function Controller() {
     });
     $.__views.mainView.add($.__views.btnWorkout);
     showLowerBodyWorkout ? $.__views.btnWorkout.addEventListener("click", showLowerBodyWorkout) : __defers["$.__views.btnWorkout!click!showLowerBodyWorkout"] = true;
-    $.__views.__alloyId7 = Ti.UI.createImageView({
+    $.__views.__alloyId11 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
         top: "10",
         width: "40%",
         height: "30%",
-        id: "__alloyId7"
+        id: "__alloyId11"
     });
-    $.__views.mainView.add($.__views.__alloyId7);
+    $.__views.mainView.add($.__views.__alloyId11);
     $.__views.dashBoardNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.dashboardWin,
         id: "dashBoardNavWin"

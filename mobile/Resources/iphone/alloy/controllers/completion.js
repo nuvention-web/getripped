@@ -1,9 +1,17 @@
 function Controller() {
     function showDashboard() {
-        Alloy.Globals.exCount = 0;
-        var args = 1;
-        var compWin = Alloy.createController("exercise", args).getView();
-        compWin.open();
+        var isEmpty = true;
+        for (var i = 0; Alloy.Globals.incomplete.length > i; i++) if (null != Alloy.Globals.incomplete[i]) {
+            isEmpty = false;
+            break;
+        }
+        if (true != isEmpty) {
+            alert("Please complete all the exercises");
+            return;
+        }
+        alert("Great Job!!!");
+        var dashboardWin = Alloy.createController("dashboard", {}).getView();
+        dashboardWin.open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "completion";
@@ -35,6 +43,34 @@ function Controller() {
         backgroundColor: "transparent"
     });
     $.__views.mainView.add($.__views.workoutsTable);
+    $.__views.__alloyId3 = Ti.UI.createView({
+        layout: "horizontal",
+        top: "10",
+        height: "SIZE",
+        id: "__alloyId3"
+    });
+    $.__views.mainView.add($.__views.__alloyId3);
+    $.__views.__alloyId4 = Ti.UI.createLabel({
+        color: "green",
+        left: "10",
+        text: "Completed Exercises",
+        id: "__alloyId4"
+    });
+    $.__views.__alloyId3.add($.__views.__alloyId4);
+    $.__views.__alloyId5 = Ti.UI.createView({
+        layout: "horizontal",
+        top: "10",
+        height: "SIZE",
+        id: "__alloyId5"
+    });
+    $.__views.mainView.add($.__views.__alloyId5);
+    $.__views.__alloyId6 = Ti.UI.createLabel({
+        color: "red",
+        left: "10",
+        text: "Incomplete Exercises",
+        id: "__alloyId6"
+    });
+    $.__views.__alloyId5.add($.__views.__alloyId6);
     $.__views.btnDashboard = Ti.UI.createButton({
         width: 150,
         height: 30,
@@ -47,7 +83,7 @@ function Controller() {
             fontSize: 14
         },
         id: "btnDashboard",
-        top: "20",
+        top: "10",
         title: "Submit Workout"
     });
     $.__views.mainView.add($.__views.btnDashboard);

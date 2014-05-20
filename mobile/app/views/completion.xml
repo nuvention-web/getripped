@@ -12,7 +12,13 @@
 				<Label left="30">2. Stretch </Label-->
 				<TableView id="workoutsTable" class="workoutTable" height="SIZE" backgroundColor="transparent">		
 				</TableView>
-				<Button id="btnDashboard" top="20" title="Submit Workout" onClick="showDashboard"></Button>
+				<View layout="horizontal" top="10" height="SIZE">
+					<Label color="green"  left="10" text="Completed Exercises"></Label>
+				</View>
+				<View layout="horizontal" top="10" height="SIZE">
+					<Label color="red" left="10" text="Incomplete Exercises"></Label>
+				</View>
+				<Button id="btnDashboard" top="10" title="Submit Workout" onClick="showDashboard"></Button>
 			</View>		
 		</ScrollView>
 	</Window>

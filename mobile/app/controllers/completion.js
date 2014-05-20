@@ -14,10 +14,23 @@ $.workoutsTable.setData(data);
 
 
 function showDashboard(){
-	Alloy.Globals.exCount = 0;
-	var args = 1;
-	var compWin = Alloy.createController("exercise",args).getView();
-    compWin.open();
+	var isEmpty = true;
+	for(var i = 0; i < Alloy.Globals.incomplete.length; i++)
+	{
+		if(Alloy.Globals.incomplete[i] != null) {
+			isEmpty = false;
+			break;
+		}
+	}
+	if(isEmpty == true) {
+		alert("Great Job!!!");
+		var dashboardWin = Alloy.createController("dashboard",{}).getView();
+    	dashboardWin.open();
+	}
+	else{
+		alert("Please complete all the exercises");
+		return;
+	}
 }
 
 function logout() {

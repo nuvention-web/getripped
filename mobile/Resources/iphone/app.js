@@ -18,7 +18,7 @@ Alloy.Globals.workouts;
 
 Alloy.Globals.userId;
 
-Alloy.Globals.complete = [];
+Alloy.Globals.flag = 0;
 
 Alloy.Globals.incomplete = [];
 

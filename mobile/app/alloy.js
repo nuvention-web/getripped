@@ -1,7 +1,8 @@
 Alloy.Globals.workouts;
 Alloy.Globals.userId;
-Alloy.Globals.complete =[];
-Alloy.Globals.incomplete =[];
+Alloy.Globals.flag = 0;
+Alloy.Globals.incomplete=[];
+
 Alloy.Globals.getSomeData = function() {
 	var someWorkoutId;
 	var workoutId;

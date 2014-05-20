@@ -17,7 +17,7 @@ bkBtn.addEventListener("click", function(e){
 	var exNum = parseInt(args) + 1;
 	var imgName = Alloy.Globals.workouts[args].image;
 	$.exImage.image = imgName;
-	$.workoutTitle.text = "Upper Body workout " + exNum + " of " + Alloy.Globals.workouts.length;
+	$.workoutTitle.text = "Workout " + exNum + " of " + Alloy.Globals.workouts.length;
 	$.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 	$.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 	$.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
@@ -64,22 +64,13 @@ function isNumber(n) {
 }
 
 function showNext(){
-	var flag;
 	var exid;
 	if(exNum == Alloy.Globals.workouts.length) {
 		showAckView();
-		flag=1;
+		Alloy.Globals.flag = 1;
 	}
 	else {
-		if(flag==1)
-		{
-			exid = Alloy.Globals.workouts[Alloy.Globals.incomplete(args)].id;
-			
-		}
-		else 
-		{
-			exId = Alloy.Globals.workouts[args].id;
-		}
+	exId = Alloy.Globals.workouts[args].id;
 	var uId = Alloy.Globals.userId;
 	var weightText = $.txtWeight.value;
 	var set1Text = $.txtSet1.value;
@@ -93,26 +84,26 @@ function showNext(){
 	else if(weightText=="N/A"){
 		weightText = 0;
 	}
-	if(set1Text=="" && set2Text=="" && set3Text=="") {
+	if(set1Text=="") {
 		alert("Enter reps completed for Set 1");
+		return;
+	}
+	if(set2Text==""){
+		alert("Enter reps completed for Set 2");
+		return;
+	}
+	if(set3Text==""){
+		alert("Enter reps completed for Set 3");
 		return;
 	}
 	
 	var rep1Input = -1;
 	var rep2Input = -1;
 	var rep3Input = -1;
-	rep1Input  = isNumber(set1Text);
-	if(set2Text != ""){
-		rep2Input = isNumber(set2Text);
-	}
-	if(set3Text != ""){
-		rep3Input = isNumber(set3Text);
-	}
-	
-	if((set2Text == "" || set3Text == "") && (Alloy.Globals.incomplete.indexOf(args)==-1)) {
-		Alloy.Globals.incomplete.push(args);
-	}
-	
+	rep1Input = isNumber(set1Text);
+	rep2Input = isNumber(set2Text);
+	rep3Input = isNumber(set3Text);
+		
 	if(rep1Input == 0) {
 		alert("Enter only numbers for Set 1 reps");
 		return;
@@ -135,19 +126,42 @@ function showNext(){
 			reps2: set2Text,
 			reps3: set3Text 
          };
-         //alert(userEx);
         exAttempt.send(userEx);
         
      exAttempt.onload = function()
 	{
     	var json = this.responseText;
     	var response = JSON.parse(json);
-    	//alert(response);
 	};
+	var tempArg;
 	if(Alloy.Globals.incomplete.indexOf(args) != -1){
-		Alloy.Globals.incomplete.splice(args,1);
+		tempArg = Alloy.Globals.incomplete.indexOf(args) + 1;
+		delete Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args)];
+		//alert(Alloy.Globals.incomplete);
+		
+		var isEmpty = true;
+		for(var i = 0; i < Alloy.Globals.incomplete.length; i++)
+		{
+			if(Alloy.Globals.incomplete[i] != null) {
+				isEmpty = false;
+				break;
+			}
+		}
+		if(isEmpty == true || (tempArg-1) == (Alloy.Globals.incomplete.length-1) ) {
+			if(isEmpty == true)
+				{
+					Alloy.Globals.flag = 0;
+				}
+			showAckView();
+			return;
+		}
 	}
+	if(Alloy.Globals.flag == 1) {
+		args = 	Alloy.Globals.incomplete[tempArg];
+	}
+	else {
 	args = args + 1;
+	}
 	var workoutsWin = Alloy.createController("exercise",args).getView();
     workoutsWin.open();
    }
@@ -159,6 +173,7 @@ function skipExercise() {
 	}
 	if(exNum == Alloy.Globals.workouts.length) {
 		showAckView();
+		Alloy.Globals.flag = 1;
 	}
 	else {	
 		args = args + 1;
