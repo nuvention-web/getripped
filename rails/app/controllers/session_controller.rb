@@ -15,7 +15,6 @@ skip_before_filter :verify_authenticity_token
         message: "succeeded",
         user_id: user.id
       }
-      Attempt.test(user.id)
       render json: success_response 
       # redirect_to :controller => "exercise_controller", :action =>"show", :id => 1
     else

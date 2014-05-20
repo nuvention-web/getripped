@@ -3,6 +3,10 @@ function Controller() {
         var wid = Alloy.Globals.getSomeData("Upper Body");
         getworkout(wid);
     }
+    function showLowerBodyWorkout() {
+        var wid = Alloy.Globals.getSomeData("Lower Body");
+        getworkout(wid);
+    }
     function getworkout(wid) {
         Alloy.Globals.getWorkout(wid, function() {
             var index = 0;
@@ -52,23 +56,22 @@ function Controller() {
         backgroundColor: "transparent"
     });
     $.__views.__alloyId0.add($.__views.workoutsTable);
-    $.__views.btnWorkout = Ti.UI.createButton({
-        width: 200,
-        height: 30,
-        borderRadius: 1,
-        backgroundColor: "#3B74F5",
-        color: "white",
-        font: {
-            fontFamily: "Arial",
-            fontWeight: "bold",
-            fontSize: 14
-        },
-        id: "btnWorkout",
+    $.__views.btnUpperWorkout = Ti.UI.createButton({
+        id: "btnUpperWorkout",
         top: "10",
-        title: "Start Upper Body Workout"
+        title: "Start Upper Body Workout",
+        visible: "false"
     });
-    $.__views.__alloyId0.add($.__views.btnWorkout);
-    showUpperBodyWorkout ? $.__views.btnWorkout.addEventListener("click", showUpperBodyWorkout) : __defers["$.__views.btnWorkout!click!showUpperBodyWorkout"] = true;
+    $.__views.__alloyId0.add($.__views.btnUpperWorkout);
+    showUpperBodyWorkout ? $.__views.btnUpperWorkout.addEventListener("click", showUpperBodyWorkout) : __defers["$.__views.btnUpperWorkout!click!showUpperBodyWorkout"] = true;
+    $.__views.btnLowerWorkout = Ti.UI.createButton({
+        id: "btnLowerWorkout",
+        top: "10",
+        title: "Start Lower Body Workout",
+        visible: "false"
+    });
+    $.__views.__alloyId0.add($.__views.btnLowerWorkout);
+    showLowerBodyWorkout ? $.__views.btnLowerWorkout.addEventListener("click", showLowerBodyWorkout) : __defers["$.__views.btnLowerWorkout!click!showLowerBodyWorkout"] = true;
     $.__views.exNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.workoutWinId,
         id: "exNavWin"
@@ -76,6 +79,8 @@ function Controller() {
     $.__views.exNavWin && $.addTopLevelView($.__views.exNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var args = arguments[0];
+    alert(args);
     var workoutTitles = [];
     workoutTitles = Alloy.Globals.workouts.name;
     var data = [];
@@ -84,7 +89,9 @@ function Controller() {
         name: Alloy.Globals.workouts[i].name
     }).getView());
     $.workoutsTable.setData(data);
-    __defers["$.__views.btnWorkout!click!showUpperBodyWorkout"] && $.__views.btnWorkout.addEventListener("click", showUpperBodyWorkout);
+    "Upper" == args ? $.btnUpperWorkout.visible = true : $.btnLowerWorkout.visible = true;
+    __defers["$.__views.btnUpperWorkout!click!showUpperBodyWorkout"] && $.__views.btnUpperWorkout.addEventListener("click", showUpperBodyWorkout);
+    __defers["$.__views.btnLowerWorkout!click!showLowerBodyWorkout"] && $.__views.btnLowerWorkout.addEventListener("click", showLowerBodyWorkout);
     _.extend($, exports);
 }
 

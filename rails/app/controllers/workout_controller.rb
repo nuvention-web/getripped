@@ -15,7 +15,6 @@ class WorkoutController < ApplicationController
 	def show_exercise
 		exercises = Exercise.where(workout_id: params[:workout_id])
 		#upper body id is 1, lower body exercise_id is 2 
-		p exercises
 		render json: exercises
 
 	end

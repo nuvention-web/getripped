@@ -1,3 +1,5 @@
+var args = arguments[0];
+alert(args);
 var workoutTitles = [];
 workoutTitles = Alloy.Globals.workouts.name;
 //alert(workoutTitles);
@@ -10,6 +12,13 @@ for(var i = 0;  i < Alloy.Globals.workouts.length; i++) {
 }
 //alert(data.name);
 $.workoutsTable.setData(data);
+
+if(args == "Upper") {
+	$.btnUpperWorkout.visible = true;
+}
+else {
+	$.btnLowerWorkout.visible = true;
+}
 
 function showUpperBodyWorkout(){
 	var wid = Alloy.Globals.getSomeData("Upper Body");

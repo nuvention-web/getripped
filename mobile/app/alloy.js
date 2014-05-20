@@ -49,10 +49,7 @@ var xhr = Ti.Network.createHTTPClient({
     onload: function(e) {
         Alloy.Globals.workouts = JSON.parse(this.responseText);
          //alert('success');
-         //Ti.App.Properties.setObject("user1", "success");
-        //alert("global:" + Alloy.Globals.workouts[0]);
         callback();
-        //return Alloy.Globals.workouts;
     },
     onerror: function(e) {
         Ti.API.debug(e.error);

@@ -8,7 +8,7 @@
 				<Label top="20">SwoleTrain is ready to help you</Label>
 				<Label>get swole.</Label>
 				<Label>Just enter what you can do</Label>
-				<Label>for each exercise.</Label>
+				<Label id="upperFirstWeight"></Label>
 				<!--ProgressBar id="pb" top="10" width="250" height="auto" min="0" max="10" value="5" color="#fff" message="Downloading 0 of 10" /-->
 				<Button id="btnWorkout" top="20" title="Upper Body" onClick="showUpperBodyWorkout"></Button>
 				<Button id="btnWorkout" top="10" title="Lower Body & Core" onClick="showLowerBodyWorkout"></Button>

@@ -3,84 +3,84 @@ function Controller() {
         return !isNaN(parseInt(n)) && isFinite(n) && -1 == n.toString().indexOf(".");
     }
     function showNext() {
+        exNum == Alloy.Globals.workouts.length && (Alloy.Globals.flag = 1);
+        exId = Alloy.Globals.workouts[args].id;
+        var uId = Alloy.Globals.userId;
+        var weightText = $.txtWeight.value;
+        var set1Text = $.txtSet1.value;
+        var set2Text = $.txtSet2.value;
+        var set3Text = $.txtSet3.value;
+        if ("" == weightText) {
+            alert("Enter weight used");
+            return;
+        }
+        "N/A" == weightText && (weightText = 0);
+        if ("" == set1Text) {
+            alert("Enter reps completed for Set 1");
+            return;
+        }
+        if ("" == set2Text) {
+            alert("Enter reps completed for Set 2");
+            return;
+        }
+        if ("" == set3Text) {
+            alert("Enter reps completed for Set 3");
+            return;
+        }
+        var rep1Input = -1;
+        var rep2Input = -1;
+        var rep3Input = -1;
+        rep1Input = isNumber(set1Text);
+        rep2Input = isNumber(set2Text);
+        rep3Input = isNumber(set3Text);
+        if (0 == rep1Input) {
+            alert("Enter only numbers for Set 1 reps");
+            return;
+        }
+        if (0 == rep2Input) {
+            alert("Enter only numbers for Set 2 reps");
+            return;
+        }
+        if (0 == rep3Input) {
+            alert("Enter only numbers for Set 3 reps");
+            return;
+        }
+        var exAttempt = Titanium.Network.createHTTPClient();
+        exAttempt.open("POST", "http://localhost:3000/exercise/" + exId + "/attempt");
+        var userEx = {
+            user_id: uId,
+            weight: weightText,
+            reps1: set1Text,
+            reps2: set2Text,
+            reps3: set3Text
+        };
+        exAttempt.send(userEx);
+        exAttempt.onload = function() {
+            var json = this.responseText;
+            JSON.parse(json);
+        };
+        var tempArg;
+        if (-1 != Alloy.Globals.incomplete.indexOf(args)) {
+            tempArg = Alloy.Globals.incomplete.indexOf(args) + 1;
+            delete Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args)];
+            var isEmpty = true;
+            for (var i = 0; Alloy.Globals.incomplete.length > i; i++) if (null != Alloy.Globals.incomplete[i]) {
+                isEmpty = false;
+                break;
+            }
+            if (true == isEmpty || tempArg - 1 == Alloy.Globals.incomplete.length - 1) {
+                true == isEmpty && (Alloy.Globals.flag = 0);
+                showAckView();
+                return;
+            }
+        }
         if (exNum == Alloy.Globals.workouts.length) {
             showAckView();
-            Alloy.Globals.flag = 1;
-        } else {
-            exId = Alloy.Globals.workouts[args].id;
-            var uId = Alloy.Globals.userId;
-            var weightText = $.txtWeight.value;
-            var set1Text = $.txtSet1.value;
-            var set2Text = $.txtSet2.value;
-            var set3Text = $.txtSet3.value;
-            if ("" == weightText) {
-                alert("Enter weight used");
-                return;
-            }
-            "N/A" == weightText && (weightText = 0);
-            if ("" == set1Text) {
-                alert("Enter reps completed for Set 1");
-                return;
-            }
-            if ("" == set2Text) {
-                alert("Enter reps completed for Set 2");
-                return;
-            }
-            if ("" == set3Text) {
-                alert("Enter reps completed for Set 3");
-                return;
-            }
-            var rep1Input = -1;
-            var rep2Input = -1;
-            var rep3Input = -1;
-            rep1Input = isNumber(set1Text);
-            rep2Input = isNumber(set2Text);
-            rep3Input = isNumber(set3Text);
-            if (0 == rep1Input) {
-                alert("Enter only numbers for Set 1 reps");
-                return;
-            }
-            if (0 == rep2Input) {
-                alert("Enter only numbers for Set 2 reps");
-                return;
-            }
-            if (0 == rep3Input) {
-                alert("Enter only numbers for Set 3 reps");
-                return;
-            }
-            var exAttempt = Titanium.Network.createHTTPClient();
-            exAttempt.open("POST", "http://localhost:3000/exercise/" + exId + "/attempt");
-            var userEx = {
-                user_id: uId,
-                weight: weightText,
-                reps1: set1Text,
-                reps2: set2Text,
-                reps3: set3Text
-            };
-            exAttempt.send(userEx);
-            exAttempt.onload = function() {
-                var json = this.responseText;
-                JSON.parse(json);
-            };
-            var tempArg;
-            if (-1 != Alloy.Globals.incomplete.indexOf(args)) {
-                tempArg = Alloy.Globals.incomplete.indexOf(args) + 1;
-                delete Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args)];
-                var isEmpty = true;
-                for (var i = 0; Alloy.Globals.incomplete.length > i; i++) if (null != Alloy.Globals.incomplete[i]) {
-                    isEmpty = false;
-                    break;
-                }
-                if (true == isEmpty || tempArg - 1 == Alloy.Globals.incomplete.length - 1) {
-                    true == isEmpty && (Alloy.Globals.flag = 0);
-                    showAckView();
-                    return;
-                }
-            }
-            1 == Alloy.Globals.flag ? args = Alloy.Globals.incomplete[tempArg] : args += 1;
-            var workoutsWin = Alloy.createController("exercise", args).getView();
-            workoutsWin.open();
+            return;
         }
+        1 == Alloy.Globals.flag ? args = Alloy.Globals.incomplete[tempArg] : args += 1;
+        var workoutsWin = Alloy.createController("exercise", args).getView();
+        workoutsWin.open();
     }
     function skipExercise() {
         -1 == Alloy.Globals.incomplete.indexOf(args) && Alloy.Globals.incomplete.push(args);
@@ -226,48 +226,48 @@ function Controller() {
         top: "10"
     });
     $.__views.mainView.add($.__views.viewId3);
-    $.__views.__alloyId12 = Ti.UI.createLabel({
+    $.__views.__alloyId11 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Recommended",
         left: "30%",
-        id: "__alloyId12"
+        id: "__alloyId11"
     });
-    $.__views.viewId3.add($.__views.__alloyId12);
-    $.__views.__alloyId13 = Ti.UI.createLabel({
+    $.__views.viewId3.add($.__views.__alloyId11);
+    $.__views.__alloyId12 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Reps",
         left: "10%",
-        id: "__alloyId13"
+        id: "__alloyId12"
     });
-    $.__views.viewId3.add($.__views.__alloyId13);
+    $.__views.viewId3.add($.__views.__alloyId12);
     $.__views.viewId4 = Ti.UI.createView({
         id: "viewId4",
         layout: "horizontal",
         height: "SIZE"
     });
     $.__views.mainView.add($.__views.viewId4);
-    $.__views.__alloyId14 = Ti.UI.createLabel({
+    $.__views.__alloyId13 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Reps",
         left: "40%",
-        id: "__alloyId14"
+        id: "__alloyId13"
     });
-    $.__views.viewId4.add($.__views.__alloyId14);
-    $.__views.__alloyId15 = Ti.UI.createLabel({
+    $.__views.viewId4.add($.__views.__alloyId13);
+    $.__views.__alloyId14 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         text: "Completed",
         left: "12%",
-        id: "__alloyId15"
+        id: "__alloyId14"
     });
-    $.__views.viewId4.add($.__views.__alloyId15);
+    $.__views.viewId4.add($.__views.__alloyId14);
     $.__views.viewId5 = Ti.UI.createView({
         id: "viewId5",
         layout: "horizontal",
@@ -275,17 +275,17 @@ function Controller() {
         top: "2"
     });
     $.__views.mainView.add($.__views.viewId5);
-    $.__views.__alloyId16 = Ti.UI.createLabel({
+    $.__views.__alloyId15 = Ti.UI.createLabel({
         font: {
             fontSize: 14,
             fontWeight: "bold"
         },
         text: "Set 1",
         left: "30",
-        id: "__alloyId16"
+        id: "__alloyId15"
     });
-    $.__views.viewId5.add($.__views.__alloyId16);
-    $.__views.__alloyId17 = Ti.UI.createLabel({
+    $.__views.viewId5.add($.__views.__alloyId15);
+    $.__views.__alloyId16 = Ti.UI.createLabel({
         width: 50,
         height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -297,9 +297,9 @@ function Controller() {
         color: "red",
         left: "14%",
         text: "12",
-        id: "__alloyId17"
+        id: "__alloyId16"
     });
-    $.__views.viewId5.add($.__views.__alloyId17);
+    $.__views.viewId5.add($.__views.__alloyId16);
     $.__views.txtSet1 = Ti.UI.createTextField({
         width: 50,
         height: 25,
@@ -321,17 +321,17 @@ function Controller() {
         top: "3"
     });
     $.__views.mainView.add($.__views.viewId6);
-    $.__views.__alloyId18 = Ti.UI.createLabel({
+    $.__views.__alloyId17 = Ti.UI.createLabel({
         font: {
             fontSize: 14,
             fontWeight: "bold"
         },
         text: "Set 2",
         left: "30",
-        id: "__alloyId18"
+        id: "__alloyId17"
     });
-    $.__views.viewId6.add($.__views.__alloyId18);
-    $.__views.__alloyId19 = Ti.UI.createLabel({
+    $.__views.viewId6.add($.__views.__alloyId17);
+    $.__views.__alloyId18 = Ti.UI.createLabel({
         width: 50,
         height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -343,9 +343,9 @@ function Controller() {
         color: "red",
         left: "14%",
         text: "12",
-        id: "__alloyId19"
+        id: "__alloyId18"
     });
-    $.__views.viewId6.add($.__views.__alloyId19);
+    $.__views.viewId6.add($.__views.__alloyId18);
     $.__views.txtSet2 = Ti.UI.createTextField({
         width: 50,
         height: 25,
@@ -367,17 +367,17 @@ function Controller() {
         top: "3"
     });
     $.__views.mainView.add($.__views.viewId7);
-    $.__views.__alloyId20 = Ti.UI.createLabel({
+    $.__views.__alloyId19 = Ti.UI.createLabel({
         font: {
             fontSize: 14,
             fontWeight: "bold"
         },
         text: "Set 3",
         left: "30",
-        id: "__alloyId20"
+        id: "__alloyId19"
     });
-    $.__views.viewId7.add($.__views.__alloyId20);
-    $.__views.__alloyId21 = Ti.UI.createLabel({
+    $.__views.viewId7.add($.__views.__alloyId19);
+    $.__views.__alloyId20 = Ti.UI.createLabel({
         width: 50,
         height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -389,9 +389,9 @@ function Controller() {
         color: "red",
         left: "14%",
         text: "12",
-        id: "__alloyId21"
+        id: "__alloyId20"
     });
-    $.__views.viewId7.add($.__views.__alloyId21);
+    $.__views.viewId7.add($.__views.__alloyId20);
     $.__views.txtSet3 = Ti.UI.createTextField({
         width: 50,
         height: 25,

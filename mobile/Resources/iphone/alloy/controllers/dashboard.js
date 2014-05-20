@@ -1,15 +1,15 @@
 function Controller() {
     function showUpperBodyWorkout() {
         var wid = Alloy.Globals.getSomeData("Upper Body");
-        getworkout(wid);
+        getworkout(wid, "Upper");
     }
     function showLowerBodyWorkout() {
         var wid = Alloy.Globals.getSomeData("Lower Body");
-        getworkout(wid);
+        getworkout(wid, "Lower");
     }
-    function getworkout(wid) {
+    function getworkout(wid, wName) {
         Alloy.Globals.getWorkout(wid, function() {
-            var workouts = Alloy.createController("Workouts", {}).getView();
+            var workouts = Alloy.createController("Workouts", wName).getView();
             workouts.open();
         });
     }
@@ -63,11 +63,10 @@ function Controller() {
         id: "__alloyId9"
     });
     $.__views.mainView.add($.__views.__alloyId9);
-    $.__views.__alloyId10 = Ti.UI.createLabel({
-        text: "for each exercise.",
-        id: "__alloyId10"
+    $.__views.upperFirstWeight = Ti.UI.createLabel({
+        id: "upperFirstWeight"
     });
-    $.__views.mainView.add($.__views.__alloyId10);
+    $.__views.mainView.add($.__views.upperFirstWeight);
     $.__views.btnWorkout = Ti.UI.createButton({
         width: 200,
         height: 30,
@@ -102,14 +101,14 @@ function Controller() {
     });
     $.__views.mainView.add($.__views.btnWorkout);
     showLowerBodyWorkout ? $.__views.btnWorkout.addEventListener("click", showLowerBodyWorkout) : __defers["$.__views.btnWorkout!click!showLowerBodyWorkout"] = true;
-    $.__views.__alloyId11 = Ti.UI.createImageView({
+    $.__views.__alloyId10 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
         top: "10",
         width: "40%",
         height: "30%",
-        id: "__alloyId11"
+        id: "__alloyId10"
     });
-    $.__views.mainView.add($.__views.__alloyId11);
+    $.__views.mainView.add($.__views.__alloyId10);
     $.__views.dashBoardNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.dashboardWin,
         id: "dashBoardNavWin"
@@ -117,6 +116,21 @@ function Controller() {
     $.__views.dashBoardNavWin && $.addTopLevelView($.__views.dashBoardNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var url = "http://localhost:3000/dashboard/" + Alloy.Globals.userId;
+    var jsonObj;
+    var xhr = Ti.Network.createHTTPClient({
+        onload: function() {
+            jsonObj = JSON.parse(this.responseText);
+            $.upperFirstWeight.text = jsonObj[0];
+        },
+        onerror: function(e) {
+            Ti.API.debug(e.error);
+            alert("error");
+        },
+        timeout: 5e3
+    });
+    xhr.open("GET", url);
+    xhr.send();
     __defers["$.__views.btnWorkout!click!showUpperBodyWorkout"] && $.__views.btnWorkout.addEventListener("click", showUpperBodyWorkout);
     __defers["$.__views.btnWorkout!click!showLowerBodyWorkout"] && $.__views.btnWorkout.addEventListener("click", showLowerBodyWorkout);
     _.extend($, exports);

@@ -66,10 +66,10 @@ function isNumber(n) {
 function showNext(){
 	var exid;
 	if(exNum == Alloy.Globals.workouts.length) {
-		showAckView();
+		//showAckView();
 		Alloy.Globals.flag = 1;
 	}
-	else {
+	//else {
 	exId = Alloy.Globals.workouts[args].id;
 	var uId = Alloy.Globals.userId;
 	var weightText = $.txtWeight.value;
@@ -156,6 +156,11 @@ function showNext(){
 			return;
 		}
 	}
+	
+	if(exNum == Alloy.Globals.workouts.length) {
+		showAckView();
+		return;
+	}
 	if(Alloy.Globals.flag == 1) {
 		args = 	Alloy.Globals.incomplete[tempArg];
 	}
@@ -164,7 +169,7 @@ function showNext(){
 	}
 	var workoutsWin = Alloy.createController("exercise",args).getView();
     workoutsWin.open();
-   }
+   //}
 }
 
 function skipExercise() {

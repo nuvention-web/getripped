@@ -67,6 +67,8 @@ class Attempt < ActiveRecord::Base
 				Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used + 5)
 			elsif avg_total_reps < 0.5
 				Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used - 5) 
+			else
+				Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used) 
 			end
 		else
 			Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used)	
@@ -74,9 +76,27 @@ class Attempt < ActiveRecord::Base
 	end
 
 	def self.test(uid)
-		p uid
-		p uid
-		p uid
+		workouts = Workout.all
+		
+		total_first_weight_avg = []
+		index = 0
+		workouts.each do |w|
+			exercises = Exercise.where(:workout_id => w.id).order(:id)
+			total_first_weight = 0		
+ 			noweight = 0
+ 			exercises.each do |e|	
+				a = Attempt.where(:user_id => uid, :exercise_id => e.id).order(:created_at).select('weight').first
+				if a.weight == 0
+					noweight = noweight + 1
+				end
+				total_first_weight += a.weight
+			end
+			total_first_weight_avg[index] = total_first_weight/ (exercises.length - noweight)
+			index = index + 1
+		end
+		return total_first_weight_avg
+		
+
 	end
 end
 
