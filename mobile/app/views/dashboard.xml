@@ -1,0 +1,18 @@
+<Alloy>
+	<NavigationWindow id="dashBoardNavWin">
+	<Window id="dashboardWin" backgroundImage="texture.jpg" title="SwoleTrain">
+		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
+		<View id="mainView" layout="vertical">
+				<!--Button id="btnLogout" left="70%" top="10" title="Logout" onClick="logout"></Button-->
+				<Label top="20" id="welcomeLabel">Welcome! </Label>
+				<Label top="20">SwoleTrain is ready to help you</Label>
+				<Label>get swole.</Label>
+				<Label>Just enter what you can do</Label>
+				<Label>for each exercise.</Label>
+				<Button id="btnWorkout" top="20" title="Start a new workout" onClick="showWorkout"></Button>
+				<ImageView image="SwoleTrainLogo.png" top="5" width="40%" height="40%"></ImageView>
+			</View>		
+		</ScrollView>
+	</Window>
+	</NavigationWindow>
+</Alloy>

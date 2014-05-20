@@ -1,0 +1,45 @@
+".container": {
+	title : "Swole Trainer",
+	fullScreen: false,
+	exitOnClose: true,
+	navBarHidden: true,
+	tabBarHidden: true,
+	font: {
+		fontsize: "32dp",
+		fontWeight: "bold"
+	}
+},
+
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000"
+}, 
+
+".txtFieldLogin": {
+	color:'#336699',
+    left:10,
+    width:300,
+    height:40,
+    keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+    returnKeyType:Titanium.UI.RETURNKEY_DEFAULT,
+    borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+}
+
+".loginBtn": {
+	top:110,
+    width:90,
+    height:35,
+    borderRadius:1,
+    backgroundColor: "#3B74F5",
+	color: "white",
+    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+}
+
+"#loginLabel": {
+	font: {
+		fontSize: 20,
+		fontWeight:"bold"
+	}
+}
+
