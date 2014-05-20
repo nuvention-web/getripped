@@ -1,46 +1,55 @@
+function MakeHTTPReqForWorkout() {
+    var url = "http://localhost:3000/workout";
+    var response;
+    var xhr = Ti.Network.createHTTPClient();
+    xhr.open("GET", url);
+    xhr.onlaod = function() {
+        var jsonObj = JSON.parse(this.responseText);
+        Ti.App.Properties.setObject("user", jsonObj);
+    };
+    xhr.send();
+    response = Ti.App.Properties.getObject("user");
+    return response;
+}
+
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
-var url = "https://getripped.herokuapp.com/exercise";
+Alloy.Globals.workouts;
 
-var jsonObj;
+Alloy.Globals.userId;
 
-var exerciseName;
+Alloy.Globals.flag = 0;
 
-var exerciseDescription;
+Alloy.Globals.incomplete = [];
 
-Alloy.Globals.reps = [];
-
-Alloy.Globals.sets = [];
-
-Alloy.Globals.eName = [];
-
-Alloy.Globals.images = [];
-
-Alloy.Globals.eDescription = [];
-
-Alloy.Globals.exCount = 0;
-
-Alloy.Globals.userId = 0;
-
-var xhr = Ti.Network.createHTTPClient({
-    onload: function() {
-        jsonObj = JSON.parse(this.responseText);
-        for (var i = 0; jsonObj.length > i; i++) {
-            Alloy.Globals.reps = jsonObj[i].reps;
-            Alloy.Globals.sets = jsonObj[i].sets;
-            Alloy.Globals.eName[i] = jsonObj[i].name;
-            Alloy.Globals.images[i] = "images/" + jsonObj[i].image;
-            Alloy.Globals.eDescription[i] = jsonObj[i].description;
+Alloy.Globals.getSomeData = function() {
+    var someWorkoutId;
+    var workoutId;
+    return function(exerciseName) {
+        someWorkoutId = MakeHTTPReqForWorkout();
+        for (var i = 0; someWorkoutId.length > i; i++) if (someWorkoutId[i][1] == exerciseName) {
+            workoutId = someWorkoutId[i][0];
+            break;
         }
-    },
-    onerror: function(e) {
-        Ti.API.debug(e.error);
-    },
-    timeout: 5e3
-});
+        return workoutId;
+    };
+}();
 
-xhr.open("GET", url);
-
-xhr.send();
+Alloy.Globals.getWorkout = function(wid, callback) {
+    var url = "http://localhost:3000/workout/" + wid + "/exercise";
+    var xhr = Ti.Network.createHTTPClient({
+        onload: function() {
+            Alloy.Globals.workouts = JSON.parse(this.responseText);
+            callback();
+        },
+        onerror: function(e) {
+            Ti.API.debug(e.error);
+            alert("error");
+        },
+        timeout: 5e3
+    });
+    xhr.open("GET", url);
+    xhr.send();
+};
 
 Alloy.createController("index");
