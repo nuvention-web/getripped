@@ -5,7 +5,10 @@ var xhr = Ti.Network.createHTTPClient({
 	
     onload: function(e) {
         jsonObj = JSON.parse(this.responseText);
-         $.upperFirstWeight.text = jsonObj[0];
+         $.upperFirstWeight.text = "Initial Average Weight Lifted: "+ jsonObj.weight1 + " lbs";
+         $.upperLastWeight.text = "Current Average Weight Lifted: "+ jsonObj.weight3 + " lbs";
+         $.lowerFirstWeight.text = "Initial Average Weight Lifted: "+ jsonObj.weight2 + " lbs";
+         $.lowerLastWeight.text = "Current Average Weight Lifted: 45 lbs";
          //Ti.App.Properties.setObject("avgWeight", jsonObj);
     },
     onerror: function(e) {

@@ -52,8 +52,9 @@ class Attempt < ActiveRecord::Base
 
 	def self.calculate_weight(uid,exId)
 		last_weight_used = Attempt.where(:user_id => uid, :exercise_id => exId).last.weight
-
-
+		if(last_weight_used==0)
+			Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used)
+		else
 		if (Attempt.where(:user_id => uid, :exercise_id => exId).count == 1 || Attempt.last_two_not_equal?(uid,exId))
 			last_attempt_avg = Attempt.avg_pct_reps_completed(uid,exId,1)
 			if last_attempt_avg < 0.5
@@ -74,8 +75,9 @@ class Attempt < ActiveRecord::Base
 			Attempt.where(:user_id => uid, :exercise_id => exId).last.update_attributes(:next_weight => last_weight_used)	
 		end
 	end
+	end
 
-	def self.test(uid)
+	def self.getFirst(uid)
 		workouts = Workout.all
 		
 		total_first_weight_avg = []
@@ -95,8 +97,28 @@ class Attempt < ActiveRecord::Base
 			index = index + 1
 		end
 		return total_first_weight_avg
-		
+	end
 
+	def self.getLast(uid)
+		workouts = Workout.all
+		
+		total_last_weight_avg = []
+		index = 0
+		workouts.each do |w|
+			exercises = Exercise.where(:workout_id => w.id).order(:id)
+			total_last_weight = 0		
+ 			noweight = 0
+ 			exercises.each do |e|	
+				a = Attempt.where(:user_id => uid, :exercise_id => e.id).order(:created_at).select('weight').last
+				if a.weight == 0
+					noweight = noweight + 1
+				end
+				total_last_weight += a.weight
+			end
+			total_last_weight_avg[index] = total_last_weight/ (exercises.length - noweight)
+			index = index + 1
+		end
+		return total_last_weight_avg	
 	end
 end
 

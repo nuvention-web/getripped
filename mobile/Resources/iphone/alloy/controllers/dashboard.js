@@ -39,34 +39,83 @@ function Controller() {
     $.__views.scrollviewId.add($.__views.mainView);
     $.__views.welcomeLabel = Ti.UI.createLabel({
         font: {
-            fontSize: 30,
+            fontSize: 20,
             fontWeight: "bold"
         },
-        text: "Welcome!",
+        text: "DASHBOARD",
         top: "20",
         id: "welcomeLabel"
     });
     $.__views.mainView.add($.__views.welcomeLabel);
+    $.__views.welcomeLabel = Ti.UI.createLabel({
+        font: {
+            fontSize: 20,
+            fontWeight: "bold"
+        },
+        text: "Welcome!",
+        top: "5",
+        id: "welcomeLabel"
+    });
+    $.__views.mainView.add($.__views.welcomeLabel);
     $.__views.__alloyId7 = Ti.UI.createLabel({
-        text: "SwoleTrain is ready to help you",
-        top: "20",
+        text: "PROGRESS",
+        top: "10",
+        left: "10",
         id: "__alloyId7"
     });
     $.__views.mainView.add($.__views.__alloyId7);
     $.__views.__alloyId8 = Ti.UI.createLabel({
-        text: "get swole.",
+        text: "Upper Body:",
+        top: "10",
+        left: "10",
         id: "__alloyId8"
     });
     $.__views.mainView.add($.__views.__alloyId8);
-    $.__views.__alloyId9 = Ti.UI.createLabel({
-        text: "Just enter what you can do",
-        id: "__alloyId9"
-    });
-    $.__views.mainView.add($.__views.__alloyId9);
     $.__views.upperFirstWeight = Ti.UI.createLabel({
+        top: "5",
+        left: "10",
         id: "upperFirstWeight"
     });
     $.__views.mainView.add($.__views.upperFirstWeight);
+    $.__views.upperLastWeight = Ti.UI.createLabel({
+        top: "5",
+        left: "10",
+        id: "upperLastWeight"
+    });
+    $.__views.mainView.add($.__views.upperLastWeight);
+    $.__views.__alloyId9 = Ti.UI.createImageView({
+        top: "5",
+        left: "10",
+        image: "Progress.png",
+        id: "__alloyId9"
+    });
+    $.__views.mainView.add($.__views.__alloyId9);
+    $.__views.__alloyId10 = Ti.UI.createLabel({
+        text: "Lower Body:",
+        top: "10",
+        left: "10",
+        id: "__alloyId10"
+    });
+    $.__views.mainView.add($.__views.__alloyId10);
+    $.__views.lowerFirstWeight = Ti.UI.createLabel({
+        top: "5",
+        left: "10",
+        id: "lowerFirstWeight"
+    });
+    $.__views.mainView.add($.__views.lowerFirstWeight);
+    $.__views.lowerLastWeight = Ti.UI.createLabel({
+        top: "5",
+        left: "10",
+        id: "lowerLastWeight"
+    });
+    $.__views.mainView.add($.__views.lowerLastWeight);
+    $.__views.__alloyId11 = Ti.UI.createImageView({
+        top: "5",
+        left: "10",
+        image: "Progress.png",
+        id: "__alloyId11"
+    });
+    $.__views.mainView.add($.__views.__alloyId11);
     $.__views.btnWorkout = Ti.UI.createButton({
         width: 200,
         height: 30,
@@ -101,14 +150,6 @@ function Controller() {
     });
     $.__views.mainView.add($.__views.btnWorkout);
     showLowerBodyWorkout ? $.__views.btnWorkout.addEventListener("click", showLowerBodyWorkout) : __defers["$.__views.btnWorkout!click!showLowerBodyWorkout"] = true;
-    $.__views.__alloyId10 = Ti.UI.createImageView({
-        image: "SwoleTrainLogo.png",
-        top: "10",
-        width: "40%",
-        height: "30%",
-        id: "__alloyId10"
-    });
-    $.__views.mainView.add($.__views.__alloyId10);
     $.__views.dashBoardNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.dashboardWin,
         id: "dashBoardNavWin"
@@ -121,7 +162,10 @@ function Controller() {
     var xhr = Ti.Network.createHTTPClient({
         onload: function() {
             jsonObj = JSON.parse(this.responseText);
-            $.upperFirstWeight.text = jsonObj[0];
+            $.upperFirstWeight.text = "Initial Average Weight Lifted: " + jsonObj.weight1 + " lbs";
+            $.upperLastWeight.text = "Current Average Weight Lifted: " + jsonObj.weight3 + " lbs";
+            $.lowerFirstWeight.text = "Initial Average Weight Lifted: " + jsonObj.weight2 + " lbs";
+            $.lowerLastWeight.text = "Current Average Weight Lifted: 45 lbs";
         },
         onerror: function(e) {
             Ti.API.debug(e.error);

@@ -18,7 +18,7 @@
 	color: "white"
 },
 
-"#btnWorkout": {
+".btnWorkout": {
 	width:200,
     height:30,
     borderRadius:1,

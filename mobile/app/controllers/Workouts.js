@@ -1,5 +1,5 @@
 var args = arguments[0];
-alert(args);
+//alert(args);
 var workoutTitles = [];
 workoutTitles = Alloy.Globals.workouts.name;
 //alert(workoutTitles);
