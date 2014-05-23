@@ -9,18 +9,18 @@ require 'csv'
 
 # images = ["dumbellpress.jpg"]
 
-weights = [20, 30, 40, 50, 60]
+# weights = [20, 30, 40, 50, 60]
 
 upper_body = Workout.create(name: "Upper Body")
 lower_body = Workout.create(name: "Lower Body")
 
 CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |row|
 		Exercise.all.each do |exercise|
-			:image => "https://s3.amazonaws.com/swoletrain/#{row[:name].gsub(/ /,'+')}"+".JPG")
+			exercise.update_attributes(image: "https://s3.amazonaws.com/swoletrain/#{row[:name].gsub(/ /,'+')}"+".JPG")	
 			if row[:workout] == "Upper Body"
 				exercise.update_attributes(workout_id: upper_body.id)
 			elsif row[:workout] == "Lower Body"
-				exercise.update_attributes(workout_id: upper_body.id)
+				exercise.update_attributes(workout_id: lower_body.id)
 			end
 		end
 end	
