@@ -1,15 +1,13 @@
-function MakeHTTPReqForWorkout() {
+function MakeHTTPReqForWorkout(callback) {
     var url = "http://localhost:3000/workout";
-    var response;
     var xhr = Ti.Network.createHTTPClient();
     xhr.open("GET", url);
-    xhr.onlaod = function() {
+    xhr.onload = function() {
         var jsonObj = JSON.parse(this.responseText);
-        Ti.App.Properties.setObject("user", jsonObj);
+        alert(jsonObj);
+        callback(jsonObj);
     };
     xhr.send();
-    response = Ti.App.Properties.getObject("user");
-    return response;
 }
 
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
@@ -23,14 +21,15 @@ Alloy.Globals.flag = 0;
 Alloy.Globals.incomplete = [];
 
 Alloy.Globals.getSomeData = function() {
-    var someWorkoutId;
     var workoutId;
     return function(exerciseName) {
-        someWorkoutId = MakeHTTPReqForWorkout();
-        for (var i = 0; someWorkoutId.length > i; i++) if (someWorkoutId[i][1] == exerciseName) {
-            workoutId = someWorkoutId[i][0];
-            break;
+        function callback(workoutData) {
+            for (var i = 0; workoutData.length > i; i++) if (workoutData[i][1] == exerciseName) {
+                workoutId = workoutData[i][0];
+                break;
+            }
         }
+        MakeHTTPReqForWorkout(callback);
         return workoutId;
     };
 }();
