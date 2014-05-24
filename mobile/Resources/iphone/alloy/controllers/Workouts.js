@@ -57,6 +57,16 @@ function Controller() {
     });
     $.__views.__alloyId0.add($.__views.workoutsTable);
     $.__views.btnUpperWorkout = Ti.UI.createButton({
+        width: 200,
+        height: 30,
+        borderRadius: 1,
+        backgroundColor: "#3B74F5",
+        color: "white",
+        font: {
+            fontFamily: "Arial",
+            fontWeight: "bold",
+            fontSize: 14
+        },
         id: "btnUpperWorkout",
         top: "10",
         title: "Start Upper Body Workout",
@@ -65,6 +75,16 @@ function Controller() {
     $.__views.__alloyId0.add($.__views.btnUpperWorkout);
     showUpperBodyWorkout ? $.__views.btnUpperWorkout.addEventListener("click", showUpperBodyWorkout) : __defers["$.__views.btnUpperWorkout!click!showUpperBodyWorkout"] = true;
     $.__views.btnLowerWorkout = Ti.UI.createButton({
+        width: 200,
+        height: 30,
+        borderRadius: 1,
+        backgroundColor: "#3B74F5",
+        color: "white",
+        font: {
+            fontFamily: "Arial",
+            fontWeight: "bold",
+            fontSize: 14
+        },
         id: "btnLowerWorkout",
         top: "10",
         title: "Start Lower Body Workout",
@@ -80,7 +100,6 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0];
-    alert(args);
     var workoutTitles = [];
     workoutTitles = Alloy.Globals.workouts.name;
     var data = [];
