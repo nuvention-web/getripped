@@ -3,12 +3,16 @@ class DashboardController < ApplicationController
 	end
 
 	def show
-		avgWeight = []
-		avgWeight = Attempt.test(params[:id])
+		avgFirstWeight = []
+		avgLasttWeight = []
+		avgFirstWeight = Attempt.getFirst(params[:id])
+		avgLastWeight = Attempt.getLast(params[:id])
 		response = {
-					weight1: avgWeight[0],
-					weight2: avgWeight[1]
+					weight1: avgFirstWeight[0],
+					weight2: avgFirstWeight[1],
+					weight3: avgLastWeight[0],
+					weight4: avgLastWeight[1],	
 				   }
-		render json: avgWeight 
+		render json: response 
 	end
 end

@@ -166,14 +166,14 @@ function Controller() {
     });
     $.__views.view4.add($.__views.btnSubmit);
     signupUser ? $.__views.btnSubmit.addEventListener("click", signupUser) : __defers["$.__views.btnSubmit!click!signupUser"] = true;
-    $.__views.__alloyId31 = Ti.UI.createImageView({
+    $.__views.__alloyId32 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
         top: "5",
         width: "50%",
         height: "55%",
-        id: "__alloyId31"
+        id: "__alloyId32"
     });
-    $.__views.view4.add($.__views.__alloyId31);
+    $.__views.view4.add($.__views.__alloyId32);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.signupWin,
         id: "navGroupWin"

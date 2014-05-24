@@ -1,6 +1,6 @@
 "#welcomeLabel": {
 	font: {
-		fontSize: 30,
+		fontSize: 20,
 		fontWeight:"bold"
 	}
 }

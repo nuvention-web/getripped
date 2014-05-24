@@ -10,34 +10,42 @@ Alloy.Globals.getSomeData = function() {
 	
 	return function(exerciseName) {
 		//if(someWorkoutId == undefined) {
-			someWorkoutId = MakeHTTPReqForWorkout();
-			for(var i=0; i < someWorkoutId.length ; i++)
-			{
-				if(someWorkoutId[i][1] == exerciseName)
+			MakeHTTPReqForWorkout(callback);
+			function callback(workoutData) {
+				for(var i=0; i < workoutData.length ; i++)
 				{
-					workoutId=someWorkoutId[i][0];				
-					break;
+					if(workoutData[i][1] == exerciseName)
+					{
+						workoutId=workoutData[i][0];				
+						break;
+					}
 				}
 			}
+			
+			
+			
 			//setOfWorkouts = Alloy.Globals.getWorkout(workoutId);
 		//}
 		return workoutId;
 	};
 }();
 
-function MakeHTTPReqForWorkout() {
+function MakeHTTPReqForWorkout(callback) {
 	var url = "http://localhost:3000/workout";
 	var response;
 	var xhr = Ti.Network.createHTTPClient();
 	xhr.open("GET", url);
-	xhr.onlaod = function() {
+	xhr.onload = function() {
         var jsonObj = JSON.parse(this.responseText);
-        Ti.App.Properties.setObject("user", jsonObj);      
-   };
-   
+        alert(jsonObj);
+        callback(jsonObj);
+       // Ti.App.Properties.setObject("user2", jsonObj);
+        
+   }; 
 	xhr.send();
-	 response = Ti.App.Properties.getObject("user");
-	 return response;
+	 //response = Ti.App.Properties.getObject("user2");
+	 //alert("res" + response);
+	 //return response;
 }
 
 
