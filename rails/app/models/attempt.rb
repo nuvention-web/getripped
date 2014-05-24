@@ -88,6 +88,9 @@ class Attempt < ActiveRecord::Base
  			noweight = 0
  			exercises.each do |e|	
 				a = Attempt.where(:user_id => uid, :exercise_id => e.id).order(:created_at).select('weight').first
+				if a == nil
+					break
+				end
 				if a.weight == 0
 					noweight = noweight + 1
 				end
@@ -110,6 +113,9 @@ class Attempt < ActiveRecord::Base
  			noweight = 0
  			exercises.each do |e|	
 				a = Attempt.where(:user_id => uid, :exercise_id => e.id).order(:created_at).select('weight').last
+				if a == nil
+					break
+				end
 				if a.weight == 0
 					noweight = noweight + 1
 				end

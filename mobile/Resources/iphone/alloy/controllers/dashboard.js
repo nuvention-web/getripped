@@ -165,7 +165,7 @@ function Controller() {
             $.upperFirstWeight.text = "Initial Average Weight Lifted: " + jsonObj.weight1 + " lbs";
             $.upperLastWeight.text = "Current Average Weight Lifted: " + jsonObj.weight3 + " lbs";
             $.lowerFirstWeight.text = "Initial Average Weight Lifted: " + jsonObj.weight2 + " lbs";
-            $.lowerLastWeight.text = "Current Average Weight Lifted: 45 lbs";
+            $.lowerLastWeight.text = "Current Average Weight Lifted: " + jsonObj.weight4 + " lbs";
         },
         onerror: function(e) {
             Ti.API.debug(e.error);
