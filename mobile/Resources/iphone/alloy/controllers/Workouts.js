@@ -100,6 +100,21 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0];
+    var bkBtn = Titanium.UI.createButton({
+        height: 25,
+        font: {
+            size: 9,
+            fontWeight: "bold"
+        },
+        width: 60,
+        backgroundColor: "transparent",
+        backgroundImage: "backBtn.png"
+    });
+    bkBtn.addEventListener("click", function() {
+        var workoutsWin = Alloy.createController("dashboard", {}).getView();
+        workoutsWin.open();
+    });
+    $.workoutWinId.setLeftNavButton(bkBtn);
     var workoutTitles = [];
     workoutTitles = Alloy.Globals.workouts.name;
     var data = [];
@@ -108,7 +123,8 @@ function Controller() {
         name: Alloy.Globals.workouts[i].name
     }).getView());
     $.workoutsTable.setData(data);
-    "Upper" == args ? $.btnUpperWorkout.visible = true : $.btnLowerWorkout.visible = true;
+    alert(args);
+    "Upper Body" == args ? $.btnUpperWorkout.visible = true : $.btnLowerWorkout.visible = true;
     __defers["$.__views.btnUpperWorkout!click!showUpperBodyWorkout"] && $.__views.btnUpperWorkout.addEventListener("click", showUpperBodyWorkout);
     __defers["$.__views.btnLowerWorkout!click!showLowerBodyWorkout"] && $.__views.btnLowerWorkout.addEventListener("click", showLowerBodyWorkout);
     _.extend($, exports);

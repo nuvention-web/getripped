@@ -1,14 +1,15 @@
 //var args = arguments[0] || {};
+$.dashBoardNavWin.titleImage = "titleBackground.png";
 var url = "http://localhost:3000/dashboard/"+Alloy.Globals.userId;
 var jsonObj;
 var xhr = Ti.Network.createHTTPClient({
 	
     onload: function(e) {
         jsonObj = JSON.parse(this.responseText);
-         $.upperFirstWeight.text = "Initial Average Weight Lifted: "+ jsonObj.weight1 + " lbs";
-         $.upperLastWeight.text = "Current Average Weight Lifted: "+ jsonObj.weight3 + " lbs";
-         $.lowerFirstWeight.text = "Initial Average Weight Lifted: "+ jsonObj.weight2 + " lbs";
-         $.lowerLastWeight.text = "Current Average Weight Lifted: "+ jsonObj.weight4 + " lbs";
+         // $.upperFirstWeight.text = "Initial Average Weight Lifted: "+ jsonObj.weight1 + " lbs";
+         // $.upperLastWeight.text = "Current Average Weight Lifted: "+ jsonObj.weight3 + " lbs";
+         // $.lowerFirstWeight.text = "Initial Average Weight Lifted: "+ jsonObj.weight2 + " lbs";
+         // $.lowerLastWeight.text = "Current Average Weight Lifted: "+ jsonObj.weight4 + " lbs";
          //Ti.App.Properties.setObject("avgWeight", jsonObj);
     },
     onerror: function(e) {
@@ -21,21 +22,19 @@ xhr.open("GET", url);
 xhr.send();
 
 function showUpperBodyWorkout(){
-	var wid = Alloy.Globals.getSomeData("Upper Body");
-	getworkout(wid, "Upper");	 
+	 Alloy.Globals.startWorkout("Upper Body");
 }
 
 function showLowerBodyWorkout(){
-	var wid = Alloy.Globals.getSomeData("Lower Body");
-	getworkout(wid, "Lower");
+	Alloy.Globals.startWorkout("Lower Body");
 }
 
-function getworkout(wid, wName) {
-	Alloy.Globals.getWorkout(wid, function navigateTo(){
-	 	var index = 0;
-    	var workouts = Alloy.createController("Workouts",wName).getView();
-    	workouts.open();
-	});
+function showUpperBodyExercises(){
+	Alloy.Globals.showExercises("Upper Body");
+}
+
+function showLowerBodyExercises(){
+	Alloy.Globals.showExercises("Lower Body");
 }
 
 function logout() {

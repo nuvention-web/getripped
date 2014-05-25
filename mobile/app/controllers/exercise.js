@@ -17,7 +17,7 @@ bkBtn.addEventListener("click", function(e){
 	var exNum = parseInt(args) + 1;
 	var imgName = Alloy.Globals.workouts[args].image;
 	$.exImage.image = imgName;
-	$.workoutTitle.text = "Workout " + exNum + " of " + Alloy.Globals.workouts.length;
+	$.workoutTitle.text = exNum + " of " + Alloy.Globals.workouts.length;
 	$.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 	$.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 	$.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
