@@ -19,8 +19,7 @@ Alloy.Globals.flag = 0;
 
 Alloy.Globals.incomplete = [];
 
-Alloy.Globals.startWorkout = function(exerciseName) {
-    alert(exerciseName);
+Alloy.Globals.startWorkout = function() {
     var workoutId;
     return function(exerciseName) {
         function callback(workoutData, cback) {

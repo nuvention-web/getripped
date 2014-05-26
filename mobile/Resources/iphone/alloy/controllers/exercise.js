@@ -61,7 +61,36 @@ function Controller() {
         };
         var tempArg;
         if (-1 != Alloy.Globals.incomplete.indexOf(args)) {
-            tempArg = Alloy.Globals.incomplete.indexOf(args) + 1;
+            if (1 == Alloy.Globals.flag) {
+                var tempFlag = 0;
+                for (var i = Alloy.Globals.incomplete.indexOf(args), j = 1; Alloy.Globals.incomplete.length > i; i++, 
+                j++) if (null != Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j] && "undefined" != typeof Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j]) {
+                    tempArg = Alloy.Globals.incomplete.indexOf(args) + j;
+                    tempFlag = 1;
+                    break;
+                }
+                if (0 == tempFlag) {
+                    delete Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args)];
+                    var isEmptyTemp = true;
+                    for (var i = 0; Alloy.Globals.incomplete.length > i; i++) {
+                        alert("i:" + Alloy.Globals.incomplete[i]);
+                        if (null != Alloy.Globals.incomplete[i] || "undefined" != typeof Alloy.Globals.incomplete[i]) {
+                            alert("not poss");
+                            isEmptyTemp = false;
+                            break;
+                        }
+                    }
+                    if (true == isEmptyTemp) {
+                        alert("incomplete is isempty from abovee");
+                        Alloy.Globals.flag = 0;
+                        Alloy.Globals.incomplete = [];
+                    }
+                    alert("Flag from above:" + Alloy.Globals.flag);
+                    alert("Incomplete from above:" + Alloy.Globals.incomplete);
+                    showAckView();
+                    return;
+                }
+            }
             delete Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args)];
             var isEmpty = true;
             for (var i = 0; Alloy.Globals.incomplete.length > i; i++) if (null != Alloy.Globals.incomplete[i]) {
@@ -69,7 +98,13 @@ function Controller() {
                 break;
             }
             if (true == isEmpty || tempArg - 1 == Alloy.Globals.incomplete.length - 1) {
-                true == isEmpty && (Alloy.Globals.flag = 0);
+                if (true == isEmpty) {
+                    alert("incomplete is isempty");
+                    Alloy.Globals.flag = 0;
+                    Alloy.Globals.incomplete = [];
+                }
+                alert("Flag:" + Alloy.Globals.flag);
+                alert("Incomplete:" + Alloy.Globals.incomplete);
                 showAckView();
                 return;
             }
@@ -88,7 +123,21 @@ function Controller() {
             showAckView();
             Alloy.Globals.flag = 1;
         } else {
-            args += 1;
+            if (1 == Alloy.Globals.flag) {
+                var tempFlag = 0;
+                for (var i = Alloy.Globals.incomplete.indexOf(args), j = 1; Alloy.Globals.incomplete.length > i; i++, 
+                j++) if (null != Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j] && "undefined" != typeof Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j]) {
+                    tempArg = Alloy.Globals.incomplete.indexOf(args) + j;
+                    tempFlag = 1;
+                    break;
+                }
+                if (0 == tempFlag) {
+                    alert("tempflag = 0");
+                    showAckView();
+                    return;
+                }
+                args = Alloy.Globals.incomplete[tempArg];
+            } else args += 1;
             var workoutsWin = Alloy.createController("exercise", args).getView();
             workoutsWin.open();
         }
