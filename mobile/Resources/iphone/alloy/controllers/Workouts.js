@@ -123,7 +123,6 @@ function Controller() {
         name: Alloy.Globals.workouts[i].name
     }).getView());
     $.workoutsTable.setData(data);
-    alert(args);
     "Upper Body" == args ? $.btnUpperWorkout.visible = true : $.btnLowerWorkout.visible = true;
     __defers["$.__views.btnUpperWorkout!click!showUpperBodyWorkout"] && $.__views.btnUpperWorkout.addEventListener("click", showUpperBodyWorkout);
     __defers["$.__views.btnLowerWorkout!click!showLowerBodyWorkout"] && $.__views.btnLowerWorkout.addEventListener("click", showLowerBodyWorkout);

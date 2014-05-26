@@ -20,6 +20,11 @@ function Controller() {
             alert("Enter Password");
             return;
         }
+        var isValidEmail = validateEmail(email_id);
+        if (false == isValidEmail) {
+            alert("Not a valid e-mail address");
+            return;
+        }
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
         loginReq.open("POST", "http://localhost:3000/user");
@@ -54,6 +59,11 @@ function Controller() {
                 };
             } else "failed" == response.message ? alert("Username already exists!!!") : alert("Unexpected error. Please try again.");
         };
+    }
+    function validateEmail(email) {
+        var atpos = email.indexOf("@");
+        var dotpos = email.lastIndexOf(".");
+        return 1 > atpos || atpos + 2 > dotpos || dotpos + 2 >= email.length ? false : true;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "signup";
