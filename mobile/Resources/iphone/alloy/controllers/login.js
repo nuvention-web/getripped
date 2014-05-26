@@ -38,28 +38,49 @@ function Controller() {
     var __defers = {};
     $.__views.loginWin = Ti.UI.createWindow({
         id: "loginWin",
-        backgroundImage: "texture.jpg",
+        backgroundColor: "#F1F1F1",
         title: "SwoleTrain"
     });
+    $.__views.mainView = Ti.UI.createScrollView({
+        id: "mainView",
+        layout: "vertical",
+        scrollingEnabled: "true",
+        showVerticalScrollIndicator: "true"
+    });
+    $.__views.loginWin.add($.__views.mainView);
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         layout: "vertical",
-        height: "SIZE",
-        top: "10"
+        top: "22%"
     });
-    $.__views.loginWin.add($.__views.view1);
+    $.__views.mainView.add($.__views.view1);
+    $.__views.topView = Ti.UI.createView({
+        id: "topView",
+        layout: "vertical",
+        height: "SIZE",
+        backgroundColor: "#DE1B1B"
+    });
+    $.__views.view1.add($.__views.topView);
     $.__views.loginLabel = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
         font: {
             fontSize: 20,
             fontWeight: "bold"
         },
+        color: "#F6F6F6",
         text: "Sign in to continue",
-        id: "loginLabel"
+        id: "loginLabel",
+        top: "10",
+        bottom: "10",
+        height: "SIZE"
     });
-    $.__views.view1.add($.__views.loginLabel);
+    $.__views.topView.add($.__views.loginLabel);
+    $.__views.middleView = Ti.UI.createView({
+        id: "middleView",
+        layout: "vertical",
+        height: "SIZE",
+        backgroundColor: "#2B2B2B"
+    });
+    $.__views.view1.add($.__views.middleView);
     $.__views.txtUsername = Ti.UI.createTextField({
         color: "#336699",
         left: 10,
@@ -69,12 +90,12 @@ function Controller() {
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtUsername",
-        top: "20",
+        top: "30",
         hintText: "Email",
         autocapitalization: "false",
         value: "lee@gmail.com"
     });
-    $.__views.view1.add($.__views.txtUsername);
+    $.__views.middleView.add($.__views.txtUsername);
     $.__views.txtPassword = Ti.UI.createTextField({
         color: "#336699",
         left: 10,
@@ -85,11 +106,19 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtPassword",
         top: "10",
+        bottom: "30",
         passwordMask: "true",
         hintText: "Password",
         value: "1234"
     });
-    $.__views.view1.add($.__views.txtPassword);
+    $.__views.middleView.add($.__views.txtPassword);
+    $.__views.bottomView = Ti.UI.createView({
+        id: "bottomView",
+        layout: "vertical",
+        top: "30",
+        backgroundColor: "#F1F1F1"
+    });
+    $.__views.view1.add($.__views.bottomView);
     $.__views.btnSubmit = Ti.UI.createButton({
         top: "20",
         width: 90,
@@ -105,16 +134,8 @@ function Controller() {
         id: "btnSubmit",
         title: "Login"
     });
-    $.__views.view1.add($.__views.btnSubmit);
+    $.__views.bottomView.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
-    $.__views.__alloyId41 = Ti.UI.createImageView({
-        image: "SwoleTrainLogo.png",
-        top: "20",
-        width: "50%",
-        height: "35%",
-        id: "__alloyId41"
-    });
-    $.__views.view1.add($.__views.__alloyId41);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.loginWin,
         id: "navGroupWin"

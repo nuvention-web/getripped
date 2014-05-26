@@ -1,5 +1,5 @@
 "#exWin": {
-	title : "Workout",
+	title : "SwoleTrain",
 	//color: "#FFFFFF",
 	fullScreen: false,
 	exitOnClose: true,
@@ -7,7 +7,7 @@
 	//navBarHidden: true,
 	tabBarHidden: true,
 	font: {
-		fontsize: "32dp",
+		fontSize: "32dp",
 		fontWeight: "bold"
 	}
 }

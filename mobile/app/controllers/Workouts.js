@@ -28,28 +28,4 @@ for(var i = 0;  i < Alloy.Globals.workouts.length; i++) {
 //alert(data.name);
 $.workoutsTable.setData(data);
 
-//alert(args);
-if(args == "Upper Body") {
-	$.btnUpperWorkout.visible = true;
-}
-else {
-	$.btnLowerWorkout.visible = true;
-}
 
-function showUpperBodyWorkout(){
-	var wid = Alloy.Globals.getSomeData("Upper Body");
-	getworkout(wid);	 
-}
-
-function showLowerBodyWorkout(){
-	var wid = Alloy.Globals.getSomeData("Lower Body");
-	getworkout(wid);
-}
-
-function getworkout(wid) {
-	Alloy.Globals.getWorkout(wid, function navigateTo(){
-	 	var index = 0;
-		var dashboardWin = Alloy.createController("exercise",index).getView();
-    	dashboardWin.open();
-	});
-}

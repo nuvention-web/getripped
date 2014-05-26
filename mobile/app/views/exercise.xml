@@ -1,27 +1,15 @@
 <Alloy>
 	<NavigationWindow id="exNavWin">
 	<Window id="exWin" backgroundColor="#F6F6F6">
-		<!--Toolbar platform="ios" top="15" borderTop="true" borderBottom="true">
-
-        </Toolbar-->
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 			
 		<View id="mainView" layout="vertical">
-		<!--View id="toolbarView" layout="horizontal"  height="SIZE">
-			<Label id="windowTitle" left="40%">Workout</Label>
-		</View-->
-		
 			<View id="viewId" layout="vertical" height="SIZE" bottom="10">
-				<!--View id="viewId12" layout="horizontal" height="SIZE" top="10">
-				<Label id="workoutTitle" class="showExCount" left="10"> </Label>
-				<Button id="btnSkip" class="bottomBtn" left="25" width = "110" title="Jump to Next" onClick="skipExercise"></Button>
-				</View-->
 				<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#DE1B1B">
 				<Label id="workoutTitle" class="showExCount" color="#ffffff"> </Label>
 				<Label id="eName" top="5" height="SIZE" color="#F6F6F6"></Label>
 				</View>
 				<ImageView id="exImage"  top="10" height="260px" width="260px" onClick="openExDetails"></ImageView>
-				<!--Button id="detailsBtn" class="clickBtn" title="Click here to see full sized image and instructions" onClick="openExDetails" ></Button-->
 			
 			</View>
 			

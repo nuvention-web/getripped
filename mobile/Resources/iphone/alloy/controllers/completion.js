@@ -43,34 +43,34 @@ function Controller() {
         backgroundColor: "transparent"
     });
     $.__views.mainView.add($.__views.workoutsTable);
-    $.__views.__alloyId3 = Ti.UI.createView({
+    $.__views.__alloyId2 = Ti.UI.createView({
         layout: "horizontal",
         top: "10",
         height: "SIZE",
-        id: "__alloyId3"
+        id: "__alloyId2"
     });
-    $.__views.mainView.add($.__views.__alloyId3);
-    $.__views.__alloyId4 = Ti.UI.createLabel({
+    $.__views.mainView.add($.__views.__alloyId2);
+    $.__views.__alloyId3 = Ti.UI.createLabel({
         color: "green",
         left: "10",
         text: "Completed Exercises",
-        id: "__alloyId4"
+        id: "__alloyId3"
     });
-    $.__views.__alloyId3.add($.__views.__alloyId4);
-    $.__views.__alloyId5 = Ti.UI.createView({
+    $.__views.__alloyId2.add($.__views.__alloyId3);
+    $.__views.__alloyId4 = Ti.UI.createView({
         layout: "horizontal",
         top: "10",
         height: "SIZE",
-        id: "__alloyId5"
+        id: "__alloyId4"
     });
-    $.__views.mainView.add($.__views.__alloyId5);
-    $.__views.__alloyId6 = Ti.UI.createLabel({
+    $.__views.mainView.add($.__views.__alloyId4);
+    $.__views.__alloyId5 = Ti.UI.createLabel({
         color: "red",
         left: "10",
         text: "Incomplete Exercises",
-        id: "__alloyId6"
+        id: "__alloyId5"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId6);
+    $.__views.__alloyId4.add($.__views.__alloyId5);
     $.__views.btnDashboard = Ti.UI.createButton({
         width: 150,
         height: 30,
