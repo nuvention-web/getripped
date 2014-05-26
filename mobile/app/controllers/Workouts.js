@@ -28,7 +28,7 @@ for(var i = 0;  i < Alloy.Globals.workouts.length; i++) {
 //alert(data.name);
 $.workoutsTable.setData(data);
 
-alert(args);
+//alert(args);
 if(args == "Upper Body") {
 	$.btnUpperWorkout.visible = true;
 }

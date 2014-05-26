@@ -82,6 +82,12 @@ function signupUser(){
     			}
 			};
     	}
+    	else if(response.message == "failed"){
+    		alert("Username already exists!!!");
+    	}
+    	else {
+    		alert("Unexpected error. Please try again.");
+    	}
 	}; 
 }
 

@@ -75,18 +75,14 @@ function Controller() {
                     for (var i = 0; Alloy.Globals.incomplete.length > i; i++) {
                         alert("i:" + Alloy.Globals.incomplete[i]);
                         if (null != Alloy.Globals.incomplete[i] || "undefined" != typeof Alloy.Globals.incomplete[i]) {
-                            alert("not poss");
                             isEmptyTemp = false;
                             break;
                         }
                     }
                     if (true == isEmptyTemp) {
-                        alert("incomplete is isempty from abovee");
                         Alloy.Globals.flag = 0;
                         Alloy.Globals.incomplete = [];
                     }
-                    alert("Flag from above:" + Alloy.Globals.flag);
-                    alert("Incomplete from above:" + Alloy.Globals.incomplete);
                     showAckView();
                     return;
                 }
@@ -99,12 +95,9 @@ function Controller() {
             }
             if (true == isEmpty || tempArg - 1 == Alloy.Globals.incomplete.length - 1) {
                 if (true == isEmpty) {
-                    alert("incomplete is isempty");
                     Alloy.Globals.flag = 0;
                     Alloy.Globals.incomplete = [];
                 }
-                alert("Flag:" + Alloy.Globals.flag);
-                alert("Incomplete:" + Alloy.Globals.incomplete);
                 showAckView();
                 return;
             }
@@ -132,7 +125,6 @@ function Controller() {
                     break;
                 }
                 if (0 == tempFlag) {
-                    alert("tempflag = 0");
                     showAckView();
                     return;
                 }

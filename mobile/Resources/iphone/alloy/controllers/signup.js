@@ -52,7 +52,7 @@ function Controller() {
                         workoutsWin.open();
                     }
                 };
-            }
+            } else "failed" == response.message ? alert("Username already exists!!!") : alert("Unexpected error. Please try again.");
         };
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
