@@ -260,62 +260,62 @@ function Controller() {
         top: "10"
     });
     $.__views.bottomView.add($.__views.viewId3);
-    $.__views.__alloyId18 = Ti.UI.createLabel({
+    $.__views.__alloyId23 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#F6F6F6",
         text: "Set",
         left: "40",
-        id: "__alloyId18"
+        id: "__alloyId23"
     });
-    $.__views.viewId3.add($.__views.__alloyId18);
-    $.__views.__alloyId19 = Ti.UI.createLabel({
+    $.__views.viewId3.add($.__views.__alloyId23);
+    $.__views.__alloyId24 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#F6F6F6",
         text: "Recommended",
         left: "8%",
-        id: "__alloyId19"
+        id: "__alloyId24"
     });
-    $.__views.viewId3.add($.__views.__alloyId19);
-    $.__views.__alloyId20 = Ti.UI.createLabel({
+    $.__views.viewId3.add($.__views.__alloyId24);
+    $.__views.__alloyId25 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#F6F6F6",
         text: "Reps",
         left: "12%",
-        id: "__alloyId20"
+        id: "__alloyId25"
     });
-    $.__views.viewId3.add($.__views.__alloyId20);
+    $.__views.viewId3.add($.__views.__alloyId25);
     $.__views.viewId4 = Ti.UI.createView({
         id: "viewId4",
         layout: "horizontal",
         height: "SIZE"
     });
     $.__views.bottomView.add($.__views.viewId4);
-    $.__views.__alloyId21 = Ti.UI.createLabel({
+    $.__views.__alloyId26 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#F6F6F6",
         text: "Reps",
         left: "35%",
-        id: "__alloyId21"
+        id: "__alloyId26"
     });
-    $.__views.viewId4.add($.__views.__alloyId21);
-    $.__views.__alloyId22 = Ti.UI.createLabel({
+    $.__views.viewId4.add($.__views.__alloyId26);
+    $.__views.__alloyId27 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#F6F6F6",
         text: "Completed",
         left: "16%",
-        id: "__alloyId22"
+        id: "__alloyId27"
     });
-    $.__views.viewId4.add($.__views.__alloyId22);
+    $.__views.viewId4.add($.__views.__alloyId27);
     $.__views.viewId5 = Ti.UI.createView({
         id: "viewId5",
         layout: "horizontal",
@@ -323,7 +323,7 @@ function Controller() {
         top: "2"
     });
     $.__views.bottomView.add($.__views.viewId5);
-    $.__views.__alloyId23 = Ti.UI.createLabel({
+    $.__views.__alloyId28 = Ti.UI.createLabel({
         font: {
             fontSize: 14,
             fontWeight: "bold"
@@ -331,10 +331,10 @@ function Controller() {
         text: "1",
         left: "45",
         color: "#ffffff",
-        id: "__alloyId23"
+        id: "__alloyId28"
     });
-    $.__views.viewId5.add($.__views.__alloyId23);
-    $.__views.__alloyId24 = Ti.UI.createLabel({
+    $.__views.viewId5.add($.__views.__alloyId28);
+    $.__views.__alloyId29 = Ti.UI.createLabel({
         width: 50,
         height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -346,9 +346,9 @@ function Controller() {
         color: "#E9E581",
         left: "14%",
         text: "12",
-        id: "__alloyId24"
+        id: "__alloyId29"
     });
-    $.__views.viewId5.add($.__views.__alloyId24);
+    $.__views.viewId5.add($.__views.__alloyId29);
     $.__views.txtSet1 = Ti.UI.createTextField({
         width: 50,
         height: 25,
@@ -370,7 +370,7 @@ function Controller() {
         top: "3"
     });
     $.__views.bottomView.add($.__views.viewId6);
-    $.__views.__alloyId25 = Ti.UI.createLabel({
+    $.__views.__alloyId30 = Ti.UI.createLabel({
         font: {
             fontSize: 14,
             fontWeight: "bold"
@@ -378,10 +378,10 @@ function Controller() {
         text: "2",
         left: "45",
         color: "#ffffff",
-        id: "__alloyId25"
+        id: "__alloyId30"
     });
-    $.__views.viewId6.add($.__views.__alloyId25);
-    $.__views.__alloyId26 = Ti.UI.createLabel({
+    $.__views.viewId6.add($.__views.__alloyId30);
+    $.__views.__alloyId31 = Ti.UI.createLabel({
         width: 50,
         height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -393,9 +393,9 @@ function Controller() {
         color: "#E9E581",
         left: "14%",
         text: "12",
-        id: "__alloyId26"
+        id: "__alloyId31"
     });
-    $.__views.viewId6.add($.__views.__alloyId26);
+    $.__views.viewId6.add($.__views.__alloyId31);
     $.__views.txtSet2 = Ti.UI.createTextField({
         width: 50,
         height: 25,
@@ -417,7 +417,7 @@ function Controller() {
         top: "3"
     });
     $.__views.bottomView.add($.__views.viewId7);
-    $.__views.__alloyId27 = Ti.UI.createLabel({
+    $.__views.__alloyId32 = Ti.UI.createLabel({
         font: {
             fontSize: 14,
             fontWeight: "bold"
@@ -425,10 +425,10 @@ function Controller() {
         text: "3",
         left: "45",
         color: "#ffffff",
-        id: "__alloyId27"
+        id: "__alloyId32"
     });
-    $.__views.viewId7.add($.__views.__alloyId27);
-    $.__views.__alloyId28 = Ti.UI.createLabel({
+    $.__views.viewId7.add($.__views.__alloyId32);
+    $.__views.__alloyId33 = Ti.UI.createLabel({
         width: 50,
         height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -440,9 +440,9 @@ function Controller() {
         color: "#E9E581",
         left: "14%",
         text: "12",
-        id: "__alloyId28"
+        id: "__alloyId33"
     });
-    $.__views.viewId7.add($.__views.__alloyId28);
+    $.__views.viewId7.add($.__views.__alloyId33);
     $.__views.txtSet3 = Ti.UI.createTextField({
         width: 50,
         height: 25,

@@ -24,7 +24,7 @@ function Controller() {
             if ("succeeded" != response.message) alert("Invalid email/password"); else {
                 Alloy.Globals.userId = response.user_id;
                 var workoutsWin = Alloy.createController("dashboard", {}).getView();
-                $.navGroupWin.openWindow(workoutsWin);
+                workoutsWin.open();
             }
         };
     }
@@ -107,14 +107,14 @@ function Controller() {
     });
     $.__views.view1.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
-    $.__views.__alloyId36 = Ti.UI.createImageView({
+    $.__views.__alloyId41 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
         top: "20",
         width: "50%",
         height: "35%",
-        id: "__alloyId36"
+        id: "__alloyId41"
     });
-    $.__views.view1.add($.__views.__alloyId36);
+    $.__views.view1.add($.__views.__alloyId41);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.loginWin,
         id: "navGroupWin"

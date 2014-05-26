@@ -45,7 +45,7 @@ function showWorkout(){
     		//alert(response.user_id);
     		Alloy.Globals.userId = response.user_id;
     		var workoutsWin = Alloy.createController("dashboard",{}).getView();
-    		$.navGroupWin.openWindow(workoutsWin);
+    		workoutsWin.open();
     	}
 	}; 
     

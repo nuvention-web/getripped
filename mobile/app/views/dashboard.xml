@@ -7,6 +7,13 @@
 				<View top = "0" layout="vertical"  height="SIZE" backgroundColor="#DE1B1B" borderWidth="3" borderColor="#F6F6F6">
 					<Label top="5" bottom="5" id="welcomeLabel" color="#F6F6F6" height="SIZE">Welcome! </Label>
 				</View>
+				<View id="warmUpView" layout="vertical" height="SIZE" top="0" class="workoutVkiew" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
+					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Warm-Up:</Label>
+					<!--Label top="5" left = "10" id="upperFirstWeight"></Label>
+					<Label top="5" left = "10" id="upperLastWeight"></Label-->
+					<Label top = "5" left = "10" class="weightLiftedText" color="F6F6F6" height="SIZE"> 1. Stretch</Label>
+					<Label top = "5" left = "10" bottom="10" class="weightLiftedText" color="F6F6F6" height="SIZE"> 2. 1 mile run on Treadmill</Label>
+				</View>
 				<View id="upperBodyView" layout="vertical" height="SIZE" top="0" class="workoutVkiew" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
 					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Upper Body:</Label>
 					<!--Label top="5" left = "10" id="upperFirstWeight"></Label>
@@ -29,6 +36,10 @@
 						<Button top="5" left="10"  title="Start Workout" onClick="showLowerBodyWorkout"></Button>
 						<Button top="5" left="20"  title="See all Exercises" onClick="showLowerBodyExercises"></Button>
 					</View>
+				</View>
+				<View id="bottomLinks" layout="horizontal" height="SIZE" top="5">
+						<Button top="5" left="10"  title="Change Password" onClick="showLowerBodyWorkout"></Button>
+						<Button top="5" left="90"  title="Logout" onClick="showLowerBodyExercises"></Button>
 				</View>
 			</View>		
 		</ScrollView>
