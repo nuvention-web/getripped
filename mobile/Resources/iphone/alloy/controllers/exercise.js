@@ -27,22 +27,48 @@ function Controller() {
             alert("Enter reps completed for Set 3");
             return;
         }
+        var weightInput = -1;
         var rep1Input = -1;
         var rep2Input = -1;
         var rep3Input = -1;
+        weightInput = isNumber(weightText);
         rep1Input = isNumber(set1Text);
         rep2Input = isNumber(set2Text);
         rep3Input = isNumber(set3Text);
+        if (0 == weightInput) {
+            alert("Enter only numbers for weight used");
+            return;
+        }
+        if (0 > weightText) {
+            alert("Weight used cannot be less than zero");
+            return;
+        }
         if (0 == rep1Input) {
             alert("Enter only numbers for Set 1 reps");
+            return;
+        }
+        if (0 > set1Text) {
+            alert("Set 1 reps cannot be less than zero");
             return;
         }
         if (0 == rep2Input) {
             alert("Enter only numbers for Set 2 reps");
             return;
         }
+        if (0 > set2Text) {
+            alert("Set 2 reps cannot be less than zero");
+            return;
+        }
         if (0 == rep3Input) {
             alert("Enter only numbers for Set 3 reps");
+            return;
+        }
+        if (0 > set3Text) {
+            alert("Set 3 reps cannot be less than zero");
+            return;
+        }
+        if (set1Text > 12 || set2Text > 12 || set3Text > 12) {
+            alert("Reps Completed cannot be greater than Recommended Reps");
             return;
         }
         var exAttempt = Titanium.Network.createHTTPClient();
@@ -61,7 +87,29 @@ function Controller() {
         };
         var tempArg;
         if (-1 != Alloy.Globals.incomplete.indexOf(args)) {
-            tempArg = Alloy.Globals.incomplete.indexOf(args) + 1;
+            if (1 == Alloy.Globals.flag) {
+                var tempFlag = 0;
+                for (var i = Alloy.Globals.incomplete.indexOf(args), j = 1; Alloy.Globals.incomplete.length > i; i++, 
+                j++) if (null != Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j] && "undefined" != typeof Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j]) {
+                    tempArg = Alloy.Globals.incomplete.indexOf(args) + j;
+                    tempFlag = 1;
+                    break;
+                }
+                if (0 == tempFlag) {
+                    delete Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args)];
+                    var isEmptyTemp = true;
+                    for (var i = 0; Alloy.Globals.incomplete.length > i; i++) if (null != Alloy.Globals.incomplete[i] || "undefined" != typeof Alloy.Globals.incomplete[i]) {
+                        isEmptyTemp = false;
+                        break;
+                    }
+                    if (true == isEmptyTemp) {
+                        Alloy.Globals.flag = 0;
+                        Alloy.Globals.incomplete = [];
+                    }
+                    showAckView();
+                    return;
+                }
+            }
             delete Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args)];
             var isEmpty = true;
             for (var i = 0; Alloy.Globals.incomplete.length > i; i++) if (null != Alloy.Globals.incomplete[i]) {
@@ -69,12 +117,16 @@ function Controller() {
                 break;
             }
             if (true == isEmpty || tempArg - 1 == Alloy.Globals.incomplete.length - 1) {
-                true == isEmpty && (Alloy.Globals.flag = 0);
+                if (true == isEmpty) {
+                    Alloy.Globals.flag = 0;
+                    Alloy.Globals.incomplete = [];
+                }
                 showAckView();
                 return;
             }
         }
         if (exNum == Alloy.Globals.workouts.length) {
+            0 == Alloy.Globals.incomplete.length && (Alloy.Globals.flag = 0);
             showAckView();
             return;
         }
@@ -88,7 +140,20 @@ function Controller() {
             showAckView();
             Alloy.Globals.flag = 1;
         } else {
-            args += 1;
+            if (1 == Alloy.Globals.flag) {
+                var tempFlag = 0;
+                for (var i = Alloy.Globals.incomplete.indexOf(args), j = 1; Alloy.Globals.incomplete.length > i; i++, 
+                j++) if (null != Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j] && "undefined" != typeof Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j]) {
+                    tempArg = Alloy.Globals.incomplete.indexOf(args) + j;
+                    tempFlag = 1;
+                    break;
+                }
+                if (0 == tempFlag) {
+                    showAckView();
+                    return;
+                }
+                args = Alloy.Globals.incomplete[tempArg];
+            } else args += 1;
             var workoutsWin = Alloy.createController("exercise", args).getView();
             workoutsWin.open();
         }
@@ -110,16 +175,16 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.exWin = Ti.UI.createWindow({
-        title: "Workout",
+        title: "SwoleTrain",
         fullScreen: false,
         exitOnClose: true,
         tabBarHidden: true,
         font: {
-            fontsize: "32dp",
+            fontSize: "32dp",
             fontWeight: "bold"
         },
         id: "exWin",
-        backgroundImage: "texture.jpg"
+        backgroundColor: "#F6F6F6"
     });
     $.__views.scrollviewId = Ti.UI.createScrollView({
         id: "scrollviewId",
@@ -135,26 +200,37 @@ function Controller() {
     $.__views.viewId = Ti.UI.createView({
         id: "viewId",
         layout: "vertical",
-        height: "SIZE"
+        height: "SIZE",
+        bottom: "10"
     });
     $.__views.mainView.add($.__views.viewId);
+    $.__views.topView = Ti.UI.createView({
+        id: "topView",
+        layout: "vertical",
+        height: "SIZE",
+        backgroundColor: "#DE1B1B"
+    });
+    $.__views.viewId.add($.__views.topView);
     $.__views.workoutTitle = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
+        color: "#ffffff",
         text: "",
         id: "workoutTitle"
     });
-    $.__views.viewId.add($.__views.workoutTitle);
+    $.__views.topView.add($.__views.workoutTitle);
     $.__views.eName = Ti.UI.createLabel({
         font: {
             fontSize: 20,
             fontWeight: "bold"
         },
         id: "eName",
-        top: "5"
+        top: "5",
+        height: "SIZE",
+        color: "#F6F6F6"
     });
-    $.__views.viewId.add($.__views.eName);
+    $.__views.topView.add($.__views.eName);
     $.__views.exImage = Ti.UI.createImageView({
         id: "exImage",
         top: "10",
@@ -163,20 +239,27 @@ function Controller() {
     });
     $.__views.viewId.add($.__views.exImage);
     openExDetails ? $.__views.exImage.addEventListener("click", openExDetails) : __defers["$.__views.exImage!click!openExDetails"] = true;
+    $.__views.bottomView = Ti.UI.createView({
+        id: "bottomView",
+        layout: "vertical",
+        backgroundColor: "#2B2B2B"
+    });
+    $.__views.mainView.add($.__views.bottomView);
     $.__views.viewId2 = Ti.UI.createView({
         id: "viewId2",
         layout: "horizontal",
         height: "SIZE",
         top: "10"
     });
-    $.__views.mainView.add($.__views.viewId2);
+    $.__views.bottomView.add($.__views.viewId2);
     $.__views.weightLabel = Ti.UI.createLabel({
         font: {
             fontSize: 14,
             fontWeight: "bold"
         },
         id: "weightLabel",
-        left: "10%"
+        left: "10%",
+        color: "#ffffff"
     });
     $.__views.viewId2.add($.__views.weightLabel);
     $.__views.txtWeight = Ti.UI.createTextField({
@@ -191,7 +274,8 @@ function Controller() {
         color: "red",
         id: "txtWeight",
         left: "10%",
-        visible: "false"
+        visible: "false",
+        maxLength: "3"
     });
     $.__views.viewId2.add($.__views.txtWeight);
     $.__views.viewId3 = Ti.UI.createView({
@@ -200,67 +284,82 @@ function Controller() {
         height: "SIZE",
         top: "10"
     });
-    $.__views.mainView.add($.__views.viewId3);
-    $.__views.__alloyId12 = Ti.UI.createLabel({
+    $.__views.bottomView.add($.__views.viewId3);
+    $.__views.__alloyId17 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
+        color: "#F6F6F6",
+        text: "Set",
+        left: "40",
+        id: "__alloyId17"
+    });
+    $.__views.viewId3.add($.__views.__alloyId17);
+    $.__views.__alloyId18 = Ti.UI.createLabel({
+        font: {
+            fontSize: 12
+        },
+        color: "#F6F6F6",
         text: "Recommended",
-        left: "30%",
-        id: "__alloyId12"
+        left: "8%",
+        id: "__alloyId18"
     });
-    $.__views.viewId3.add($.__views.__alloyId12);
-    $.__views.__alloyId13 = Ti.UI.createLabel({
+    $.__views.viewId3.add($.__views.__alloyId18);
+    $.__views.__alloyId19 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
+        color: "#F6F6F6",
         text: "Reps",
-        left: "10%",
-        id: "__alloyId13"
+        left: "12%",
+        id: "__alloyId19"
     });
-    $.__views.viewId3.add($.__views.__alloyId13);
+    $.__views.viewId3.add($.__views.__alloyId19);
     $.__views.viewId4 = Ti.UI.createView({
         id: "viewId4",
         layout: "horizontal",
         height: "SIZE"
     });
-    $.__views.mainView.add($.__views.viewId4);
-    $.__views.__alloyId14 = Ti.UI.createLabel({
+    $.__views.bottomView.add($.__views.viewId4);
+    $.__views.__alloyId20 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
+        color: "#F6F6F6",
         text: "Reps",
-        left: "40%",
-        id: "__alloyId14"
+        left: "35%",
+        id: "__alloyId20"
     });
-    $.__views.viewId4.add($.__views.__alloyId14);
-    $.__views.__alloyId15 = Ti.UI.createLabel({
+    $.__views.viewId4.add($.__views.__alloyId20);
+    $.__views.__alloyId21 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
+        color: "#F6F6F6",
         text: "Completed",
-        left: "12%",
-        id: "__alloyId15"
+        left: "16%",
+        id: "__alloyId21"
     });
-    $.__views.viewId4.add($.__views.__alloyId15);
+    $.__views.viewId4.add($.__views.__alloyId21);
     $.__views.viewId5 = Ti.UI.createView({
         id: "viewId5",
         layout: "horizontal",
         height: "SIZE",
         top: "2"
     });
-    $.__views.mainView.add($.__views.viewId5);
-    $.__views.__alloyId16 = Ti.UI.createLabel({
+    $.__views.bottomView.add($.__views.viewId5);
+    $.__views.__alloyId22 = Ti.UI.createLabel({
         font: {
             fontSize: 14,
             fontWeight: "bold"
         },
-        text: "Set 1",
-        left: "30",
-        id: "__alloyId16"
+        text: "1",
+        left: "45",
+        color: "#ffffff",
+        id: "__alloyId22"
     });
-    $.__views.viewId5.add($.__views.__alloyId16);
-    $.__views.__alloyId17 = Ti.UI.createLabel({
+    $.__views.viewId5.add($.__views.__alloyId22);
+    $.__views.__alloyId23 = Ti.UI.createLabel({
         width: 50,
         height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -269,12 +368,12 @@ function Controller() {
             fontWeight: "bold"
         },
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        color: "red",
+        color: "#E9E581",
         left: "14%",
         text: "12",
-        id: "__alloyId17"
+        id: "__alloyId23"
     });
-    $.__views.viewId5.add($.__views.__alloyId17);
+    $.__views.viewId5.add($.__views.__alloyId23);
     $.__views.txtSet1 = Ti.UI.createTextField({
         width: 50,
         height: 25,
@@ -286,7 +385,8 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "red",
         id: "txtSet1",
-        left: "12%"
+        left: "15%",
+        maxLength: "2"
     });
     $.__views.viewId5.add($.__views.txtSet1);
     $.__views.viewId6 = Ti.UI.createView({
@@ -295,18 +395,19 @@ function Controller() {
         height: "SIZE",
         top: "3"
     });
-    $.__views.mainView.add($.__views.viewId6);
-    $.__views.__alloyId18 = Ti.UI.createLabel({
+    $.__views.bottomView.add($.__views.viewId6);
+    $.__views.__alloyId24 = Ti.UI.createLabel({
         font: {
             fontSize: 14,
             fontWeight: "bold"
         },
-        text: "Set 2",
-        left: "30",
-        id: "__alloyId18"
+        text: "2",
+        left: "45",
+        color: "#ffffff",
+        id: "__alloyId24"
     });
-    $.__views.viewId6.add($.__views.__alloyId18);
-    $.__views.__alloyId19 = Ti.UI.createLabel({
+    $.__views.viewId6.add($.__views.__alloyId24);
+    $.__views.__alloyId25 = Ti.UI.createLabel({
         width: 50,
         height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -315,12 +416,12 @@ function Controller() {
             fontWeight: "bold"
         },
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        color: "red",
+        color: "#E9E581",
         left: "14%",
         text: "12",
-        id: "__alloyId19"
+        id: "__alloyId25"
     });
-    $.__views.viewId6.add($.__views.__alloyId19);
+    $.__views.viewId6.add($.__views.__alloyId25);
     $.__views.txtSet2 = Ti.UI.createTextField({
         width: 50,
         height: 25,
@@ -332,7 +433,8 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "red",
         id: "txtSet2",
-        left: "12%"
+        left: "15%",
+        maxLength: "2"
     });
     $.__views.viewId6.add($.__views.txtSet2);
     $.__views.viewId7 = Ti.UI.createView({
@@ -341,18 +443,19 @@ function Controller() {
         height: "SIZE",
         top: "3"
     });
-    $.__views.mainView.add($.__views.viewId7);
-    $.__views.__alloyId20 = Ti.UI.createLabel({
+    $.__views.bottomView.add($.__views.viewId7);
+    $.__views.__alloyId26 = Ti.UI.createLabel({
         font: {
             fontSize: 14,
             fontWeight: "bold"
         },
-        text: "Set 3",
-        left: "30",
-        id: "__alloyId20"
+        text: "3",
+        left: "45",
+        color: "#ffffff",
+        id: "__alloyId26"
     });
-    $.__views.viewId7.add($.__views.__alloyId20);
-    $.__views.__alloyId21 = Ti.UI.createLabel({
+    $.__views.viewId7.add($.__views.__alloyId26);
+    $.__views.__alloyId27 = Ti.UI.createLabel({
         width: 50,
         height: 25,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -361,12 +464,12 @@ function Controller() {
             fontWeight: "bold"
         },
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        color: "red",
+        color: "#E9E581",
         left: "14%",
         text: "12",
-        id: "__alloyId21"
+        id: "__alloyId27"
     });
-    $.__views.viewId7.add($.__views.__alloyId21);
+    $.__views.viewId7.add($.__views.__alloyId27);
     $.__views.txtSet3 = Ti.UI.createTextField({
         width: 50,
         height: 25,
@@ -378,7 +481,8 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "red",
         id: "txtSet3",
-        left: "12%"
+        left: "15%",
+        maxLength: "2"
     });
     $.__views.viewId7.add($.__views.txtSet3);
     $.__views.buttonView = Ti.UI.createView({
@@ -387,35 +491,16 @@ function Controller() {
         height: "SIZE",
         top: "12"
     });
-    $.__views.mainView.add($.__views.buttonView);
+    $.__views.bottomView.add($.__views.buttonView);
     $.__views.btnSkip = Ti.UI.createButton({
-        width: "110",
-        height: 30,
-        borderRadius: 1,
-        backgroundColor: "#3B74F5",
-        color: "white",
-        font: {
-            fontFamily: "Arial",
-            fontWeight: "bold",
-            fontSize: 14
-        },
         id: "btnSkip",
         left: "30",
+        width: "110",
         title: "Jump to Next"
     });
     $.__views.buttonView.add($.__views.btnSkip);
     skipExercise ? $.__views.btnSkip.addEventListener("click", skipExercise) : __defers["$.__views.btnSkip!click!skipExercise"] = true;
     $.__views.btnNext = Ti.UI.createButton({
-        width: 100,
-        height: 30,
-        borderRadius: 1,
-        backgroundColor: "#3B74F5",
-        color: "white",
-        font: {
-            fontFamily: "Arial",
-            fontWeight: "bold",
-            fontSize: 14
-        },
         id: "btnNext",
         left: "40",
         title: "Save & Next"
@@ -456,13 +541,13 @@ function Controller() {
     var exNum = parseInt(args) + 1;
     var imgName = Alloy.Globals.workouts[args].image;
     $.exImage.image = imgName;
-    $.workoutTitle.text = "Workout " + exNum + " of " + Alloy.Globals.workouts.length;
+    $.workoutTitle.text = exNum + " of " + Alloy.Globals.workouts.length;
     $.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
     $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
     $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
     $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-    1 == exNum && $.exWin.setLeftNavButton(bkBtn);
-    if ("1 mile run on treadmill" == Alloy.Globals.workouts[args].name || "Chinup" == Alloy.Globals.workouts[args].name) {
+    1 != exNum || 0 != Alloy.Globals.flag && Alloy.Globals.incomplete.length != Alloy.Globals.workouts.length || $.exWin.setLeftNavButton(bkBtn);
+    if ("Hip Raises" == Alloy.Globals.workouts[args].name || "Raised Leg Sit Up" == Alloy.Globals.workouts[args].name || "Side Bridge" == Alloy.Globals.workouts[args].name || "Plank" == Alloy.Globals.workouts[args].name || "Dips" == Alloy.Globals.workouts[args].name || "Chinup" == Alloy.Globals.workouts[args].name) {
         $.txtWeight.value = "N/A";
         $.txtWeight.editable = "false";
     }

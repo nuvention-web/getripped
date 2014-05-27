@@ -1,7 +1,7 @@
 <Alloy>
 	<TableViewRow id="row">
 		<View layout="horizontal" height="30">
-			<Label id="exNum" left="10"></Label>
+			<ImageView id="exImg" left="10"></ImageView>
 			<Label id="name" left="20" width="80%"></Label>
 		</View>
 	</TableViewRow> 

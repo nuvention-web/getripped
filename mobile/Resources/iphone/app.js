@@ -4,7 +4,6 @@ function MakeHTTPReqForWorkout(callback) {
     xhr.open("GET", url);
     xhr.onload = function() {
         var jsonObj = JSON.parse(this.responseText);
-        alert(jsonObj);
         callback(jsonObj);
     };
     xhr.send();
@@ -20,17 +19,45 @@ Alloy.Globals.flag = 0;
 
 Alloy.Globals.incomplete = [];
 
-Alloy.Globals.getSomeData = function() {
+Alloy.Globals.startWorkout = function() {
     var workoutId;
     return function(exerciseName) {
-        function callback(workoutData) {
+        function callback(workoutData, cback) {
+            function cback(workoutId) {
+                Alloy.Globals.getWorkout(workoutId, function() {
+                    var index = 0;
+                    var workouts = Alloy.createController("exercise", index).getView();
+                    workouts.open();
+                });
+            }
             for (var i = 0; workoutData.length > i; i++) if (workoutData[i][1] == exerciseName) {
                 workoutId = workoutData[i][0];
+                cback(workoutId);
                 break;
             }
         }
         MakeHTTPReqForWorkout(callback);
-        return workoutId;
+    };
+}();
+
+Alloy.Globals.showExercises = function() {
+    var workoutId;
+    return function(workoutName) {
+        function callback(workoutData) {
+            function cback(workoutId, workoutName) {
+                Alloy.Globals.getWorkout(workoutId, function() {
+                    var workouts = Alloy.createController("Workouts", workoutName).getView();
+                    workouts.open();
+                });
+            }
+            for (var i = 0; workoutData.length > i; i++) if (workoutData[i][1] == workoutName) {
+                workoutId = workoutData[i][0];
+                workoutName = workoutData[i][1];
+                cback(workoutId, workoutName);
+                break;
+            }
+        }
+        MakeHTTPReqForWorkout(callback);
     };
 }();
 

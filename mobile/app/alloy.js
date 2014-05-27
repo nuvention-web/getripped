@@ -3,7 +3,7 @@ Alloy.Globals.userId;
 Alloy.Globals.flag = 0;
 Alloy.Globals.incomplete=[];
 
-Alloy.Globals.getSomeData = function() {
+Alloy.Globals.startWorkout = function(exerciseName) {
 	var someWorkoutId;
 	var workoutId;
 	var setOfWorkouts;
@@ -11,24 +11,58 @@ Alloy.Globals.getSomeData = function() {
 	return function(exerciseName) {
 		//if(someWorkoutId == undefined) {
 			MakeHTTPReqForWorkout(callback);
-			function callback(workoutData) {
+			function callback(workoutData,cback) {
 				for(var i=0; i < workoutData.length ; i++)
 				{
 					if(workoutData[i][1] == exerciseName)
 					{
-						workoutId=workoutData[i][0];				
+						workoutId=workoutData[i][0];	
+						cback(workoutId);			
 						break;
 					}
+					
+					function cback(workoutId){
+						Alloy.Globals.getWorkout(workoutId, function navigateTo(){
+					 	var index = 0;
+    					var workouts = Alloy.createController("exercise",index).getView();
+    					workouts.open();
+					});
+					}
+				}	
+					
 				}
-			}
-			
-			
-			
-			//setOfWorkouts = Alloy.Globals.getWorkout(workoutId);
-		//}
-		return workoutId;
 	};
 }();
+
+
+Alloy.Globals.showExercises = function(workoutName){
+	
+	var workoutId;
+	var workoutName;
+	return function(workoutName) {
+		MakeHTTPReqForWorkout(callback);
+		function callback(workoutData){
+			for(var i=0; i < workoutData.length ; i++)
+				{
+					if(workoutData[i][1] == workoutName)
+					{
+						workoutId=workoutData[i][0];
+						workoutName = workoutData[i][1];	
+						cback(workoutId,workoutName);			
+						break;
+					}
+					
+					function cback(workoutId,workoutName){
+						Alloy.Globals.getWorkout(workoutId, function navigateTo(){
+    					var workouts = Alloy.createController("Workouts",workoutName).getView();
+    					workouts.open();
+					});
+					}
+				}
+		}
+	};
+}();
+
 
 function MakeHTTPReqForWorkout(callback) {
 	var url = "http://localhost:3000/workout";
@@ -37,15 +71,10 @@ function MakeHTTPReqForWorkout(callback) {
 	xhr.open("GET", url);
 	xhr.onload = function() {
         var jsonObj = JSON.parse(this.responseText);
-        alert(jsonObj);
-        callback(jsonObj);
-       // Ti.App.Properties.setObject("user2", jsonObj);
-        
+       // alert(jsonObj);
+        callback(jsonObj);       
    }; 
 	xhr.send();
-	 //response = Ti.App.Properties.getObject("user2");
-	 //alert("res" + response);
-	 //return response;
 }
 
 
@@ -67,7 +96,4 @@ var xhr = Ti.Network.createHTTPClient({
 });
 xhr.open("GET", url);
 xhr.send(); 
-//res = Ti.App.Properties.getObject("user1");
-//alert("res" + res);
-//return res;
 };

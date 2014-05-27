@@ -1,21 +1,3 @@
-".container": {
-	title : "Swole Trainer",
-	fullScreen: false,
-	exitOnClose: true,
-	navBarHidden: true,
-	tabBarHidden: true,
-	font: {
-		fontsize: "32dp",
-		fontWeight: "bold"
-	}
-},
-
-"Label": {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
-}, 
-
 ".txtFieldLogin": {
 	color:'#336699',
     left:10,
@@ -36,10 +18,11 @@
     font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
 }
 
-"#loginLabel": {
+"#loginLabel":{
 	font: {
 		fontSize: 20,
 		fontWeight:"bold"
-	}
+	},
+	color: "#F6F6F6"
 }
 
