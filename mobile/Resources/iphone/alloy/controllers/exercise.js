@@ -121,14 +121,12 @@ function Controller() {
                     Alloy.Globals.flag = 0;
                     Alloy.Globals.incomplete = [];
                 }
-                alert("there");
                 showAckView();
                 return;
             }
         }
         if (exNum == Alloy.Globals.workouts.length) {
             0 == Alloy.Globals.incomplete.length && (Alloy.Globals.flag = 0);
-            alert("here");
             showAckView();
             return;
         }

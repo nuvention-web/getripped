@@ -63,7 +63,6 @@ function Controller() {
             fontSize: 20,
             fontWeight: "bold"
         },
-        text: "Welcome!",
         top: "5",
         bottom: "5",
         id: "welcomeLabel",
@@ -307,6 +306,7 @@ function Controller() {
             $.pb1.min = jsonObj.weight2;
             $.pb1.value = jsonObj.weight4;
             $.pb.text = $.pb.min;
+            $.welcomeLabel.text = "Welcome " + jsonObj.username + "!";
             $.minUpper.text = "Initial: " + $.pb.min;
             $.currentUpper.text = "Current: " + $.pb.value;
             $.pb1.text = $.pb1.min;

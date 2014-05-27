@@ -16,6 +16,7 @@ var xhr = Ti.Network.createHTTPClient({
          $.pb1.min = jsonObj.weight2;
          $.pb1.value = jsonObj.weight4;
          $.pb.text = $.pb.min;
+         $.welcomeLabel.text = "Welcome " + jsonObj.username + "!";
 		 $.minUpper.text ="Initial: " + $.pb.min;
 		 $.currentUpper.text ="Current: " + $.pb.value;
 

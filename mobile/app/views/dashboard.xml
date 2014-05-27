@@ -4,7 +4,7 @@
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<View id="mainView" layout="vertical">
 				<View top = "0" layout="vertical"  height="SIZE" backgroundColor="#DE1B1B" borderWidth="3" borderColor="#F6F6F6">
-					<Label top="5" bottom="5" id="welcomeLabel" color="#F6F6F6" height="SIZE">Welcome! </Label>
+					<Label top="5" bottom="5" id="welcomeLabel" color="#F6F6F6" height="SIZE"></Label>
 				</View>
 				<!--View id="warmUpView" layout="vertical" height="SIZE" top="0" class="workoutVkiew" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
 					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Warm-Up:</Label>
