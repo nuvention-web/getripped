@@ -19,10 +19,6 @@ Alloy.Globals.flag = 0;
 
 Alloy.Globals.incomplete = [];
 
-alert("g:" + Alloy.Globals.incomplete);
-
-"" == Alloy.Globals.incomplete ? alert("false") : alert("true");
-
 Alloy.Globals.startWorkout = function() {
     var workoutId;
     return function(exerciseName) {

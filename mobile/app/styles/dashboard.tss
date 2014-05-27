@@ -1,17 +1,6 @@
-"#dashBoardNavWin": {
-   // titleImage:'titleBackground.png',
-   /* backgroundColor: '#013a0f',
-    includeOpaqueBars: true,
-    translucent: false,
-    tintColor: "#013a0f",
-    navTintColor: "#013a0f",
-    extendEdges:[Ti.UI.EXTEND_NONE] */
-   //title: 'SwoleTrain'
-},
-
 "#dashboardWin": {
    // titleImage:'SwoleTrainLogo.png',
-    backgroundColor: '#c6c6c6',
+    //backgroundColor: '#c6c6c6',
     //statusBarStyle: Titanium.UI.iPhone.StatusBar.GRAY,
     title: 'SwoleTrain',
     // modal:true,
@@ -25,23 +14,13 @@
 	}
 }
 
-"#btnWorkout": {
-	width:200,
-    height:30,
-    borderRadius:1,
-    backgroundColor: "#3B74F5",
-	color: "white",
-    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
-},
-
-"#btnLogout": {
-	width:60,
-    height:30,
-    borderRadius:1,
-    backgroundColor: "#3B74F5",
-	color: "white",
-    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+".activityLabel": {
+	font: {
+		fontSize: 16,
+		fontWeight:"bold"
+	}
 }
+
 
 ".workoutName": {
 	font:{fontWeight:'bold',fontSize:18},
@@ -53,11 +32,4 @@
 	color: "#3B3738"
 }
 
-".workoutView": {
-	    backgroundGradient: {
-        type: 'linear',
-        startPoint: { x: '0%', y: '50%' },
-        endPoint: { x: '100%', y: '50%' },
-        colors: [ { color: 'red', offset: 0.0}, { color: 'blue', offset: 0.25 }, { color: 'red', offset: 1.0 } ],
-    }
-}
+

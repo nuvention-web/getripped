@@ -28,18 +28,18 @@ function Controller() {
         backgroundImage: "texture.jpg",
         title: "SwoleTrain"
     });
-    $.__views.__alloyId29 = Ti.UI.createView({
+    $.__views.__alloyId28 = Ti.UI.createView({
         layout: "vertical",
-        id: "__alloyId29"
+        id: "__alloyId28"
     });
-    $.__views.indexWin.add($.__views.__alloyId29);
-    $.__views.__alloyId30 = Ti.UI.createView({
+    $.__views.indexWin.add($.__views.__alloyId28);
+    $.__views.__alloyId29 = Ti.UI.createView({
         layout: "vertical",
         height: "SIZE",
         backgroundColor: "#DE1B1B",
-        id: "__alloyId30"
+        id: "__alloyId29"
     });
-    $.__views.__alloyId29.add($.__views.__alloyId30);
+    $.__views.__alloyId28.add($.__views.__alloyId29);
     $.__views.topText = Ti.UI.createLabel({
         font: {
             fontSize: 18,
@@ -51,7 +51,7 @@ function Controller() {
         color: "#F6F6F6",
         top: "10"
     });
-    $.__views.__alloyId30.add($.__views.topText);
+    $.__views.__alloyId29.add($.__views.topText);
     $.__views.topText = Ti.UI.createLabel({
         font: {
             fontSize: 18,
@@ -62,7 +62,7 @@ function Controller() {
         left: "10",
         color: "#F6F6F6"
     });
-    $.__views.__alloyId30.add($.__views.topText);
+    $.__views.__alloyId29.add($.__views.topText);
     $.__views.topText = Ti.UI.createLabel({
         font: {
             fontSize: 18,
@@ -73,7 +73,7 @@ function Controller() {
         left: "10",
         color: "#F6F6F6"
     });
-    $.__views.__alloyId30.add($.__views.topText);
+    $.__views.__alloyId29.add($.__views.topText);
     $.__views.topText = Ti.UI.createLabel({
         font: {
             fontSize: 18,
@@ -85,27 +85,27 @@ function Controller() {
         color: "#F6F6F6",
         bottom: "10"
     });
-    $.__views.__alloyId30.add($.__views.topText);
-    $.__views.__alloyId31 = Ti.UI.createView({
+    $.__views.__alloyId29.add($.__views.topText);
+    $.__views.__alloyId30 = Ti.UI.createView({
         layout: "vertical",
         height: "SIZE",
         backgroundColor: "#F6F6F6",
-        id: "__alloyId31"
+        id: "__alloyId30"
     });
-    $.__views.__alloyId29.add($.__views.__alloyId31);
-    $.__views.__alloyId32 = Ti.UI.createImageView({
+    $.__views.__alloyId28.add($.__views.__alloyId30);
+    $.__views.__alloyId31 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
         top: "10",
         width: "80%",
-        id: "__alloyId32"
+        id: "__alloyId31"
     });
-    $.__views.__alloyId31.add($.__views.__alloyId32);
+    $.__views.__alloyId30.add($.__views.__alloyId31);
     $.__views.view4 = Ti.UI.createView({
         id: "view4",
         layout: "vertical",
         backgroundColor: "#2B2B2B"
     });
-    $.__views.__alloyId29.add($.__views.view4);
+    $.__views.__alloyId28.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
         width: "150dp",
         height: "35dp",

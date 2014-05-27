@@ -11,6 +11,18 @@ var xhr = Ti.Network.createHTTPClient({
          // $.lowerFirstWeight.text = "Initial Average Weight Lifted: "+ jsonObj.weight2 + " lbs";
          // $.lowerLastWeight.text = "Current Average Weight Lifted: "+ jsonObj.weight4 + " lbs";
          //Ti.App.Properties.setObject("avgWeight", jsonObj);
+         $.pb.min = jsonObj.weight1;
+         $.pb.value = jsonObj.weight3;
+         $.pb1.min = jsonObj.weight2;
+         $.pb1.value = jsonObj.weight4;
+         $.pb.text = $.pb.min;
+		 $.minUpper.text ="Initial: " + $.pb.min;
+		 $.currentUpper.text ="Current: " + $.pb.value;
+
+		$.pb1.text = $.pb1.min;
+		$.minLower.text ="Initial: " + $.pb1.min;
+		$.currentLower.text ="Current: " + $.pb1.value;
+         
     },
     onerror: function(e) {
         Ti.API.debug(e.error);
@@ -20,6 +32,11 @@ var xhr = Ti.Network.createHTTPClient({
 });
 xhr.open("GET", url);
 xhr.send();
+
+
+$.pb.show();
+$.pb1.show();
+
 
 function showUpperBodyWorkout(){
 	 Alloy.Globals.startWorkout("Upper Body");

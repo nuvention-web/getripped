@@ -95,7 +95,6 @@ function Controller() {
     $.__views.compNavWin && $.addTopLevelView($.__views.compNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    alert(Alloy.Globals.incomplete);
     $.topLabel.text = "" == Alloy.Globals.incomplete ? "Great Job!!!" : "Please complete all the exercises";
     var workoutTitles = [];
     workoutTitles = Alloy.Globals.workouts.name;
