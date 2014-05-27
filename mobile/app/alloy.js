@@ -65,7 +65,7 @@ Alloy.Globals.showExercises = function(workoutName){
 
 
 function MakeHTTPReqForWorkout(callback) {
-	var url = "http://localhost:3000/workout";
+	var url = "http://swoletrain.herokuapp.com/workout";
 	var response;
 	var xhr = Ti.Network.createHTTPClient();
 	xhr.open("GET", url);
@@ -80,7 +80,7 @@ function MakeHTTPReqForWorkout(callback) {
 
 Alloy.Globals.getWorkout = function(wid,callback) {
 var res;
-var url = "http://localhost:3000/workout/"+wid+"/exercise";
+var url = "http://swoletrain.herokuapp.com/workout/"+wid+"/exercise";
 var jsonObj;
 var xhr = Ti.Network.createHTTPClient({
     onload: function(e) {
