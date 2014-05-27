@@ -12,10 +12,13 @@
 		</View-->
 		
 			<View id="viewId" layout="vertical" height="SIZE">
-				
-				<Label id="workoutTitle" class="showExCount" top="10"> </Label>
-				<Label id="eName" top="10"></Label>
-				<ImageView id="exImage"  top="10" height="120" width="50%" onClick="openExDetails"></ImageView>
+				<!--View id="viewId12" layout="horizontal" height="SIZE" top="10">
+				<Label id="workoutTitle" class="showExCount" left="10"> </Label>
+				<Button id="btnSkip" class="bottomBtn" left="25" width = "110" title="Jump to Next" onClick="skipExercise"></Button>
+				</View-->
+				<Label id="workoutTitle" class="showExCount"> </Label>
+				<Label id="eName" top="5"></Label>
+				<ImageView id="exImage"  top="10" height="260px" width="260px" onClick="openExDetails"></ImageView>
 				<!--Button id="detailsBtn" class="clickBtn" title="Click here to see full sized image and instructions" onClick="openExDetails" ></Button-->
 			
 			</View>
@@ -45,8 +48,9 @@
 				<TextField id="txtSet3" class="txtClass" left="12%"></TextField>
 			</View>
 			<View id="buttonView" layout="horizontal" height="SIZE" top="12">
-				<Button id="btnSkip" class="bottomBtn" left="20"  title="Skip" onClick="skipExercise"></Button>
-				<Button id="btnNext" class="bottomBtn" left="140" title="Next"  onClick="showNext"></Button>
+				<!--Button id="btnSkip" class="bottomBtn" left="20"  title="Previous" onClick="showPrevious"></Button-->
+				<Button id="btnSkip" class="bottomBtn" left="30" width = "110" title="Jump to Next" onClick="skipExercise"></Button>
+				<Button id="btnNext" class="bottomBtn" left="40" title="Save & Next"  onClick="showNext"></Button>
 				<!--Button id="btnFinish" class="bottomBtn" left="10" title="Finish" onClick="showAckView" visible="false"></Button-->
 			</View>
 		</View>

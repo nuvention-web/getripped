@@ -4,3 +4,5 @@ build
 npm-debug.log
 tmp
 .map
+rails/log/development.log
+.project

@@ -1,9 +1,13 @@
 <Alloy>
-	<Window class="container">
-	<View>
-		<TableView id="workoutsTable" class="workoutTable">
-			
+	<NavigationWindow id="exNavWin">
+	<Window id="workoutWinId" class="container" height="100%" backgroundImage="texture.jpg">
+	<View layout="vertical">
+		<Label bottom="20" top="5" color="black">Exercises to make you Swole today</Label>
+		<TableView id="workoutsTable" class="workoutTable" height="SIZE" backgroundColor="transparent">		
 		</TableView>
+		<Button id="btnUpperWorkout" class="btnWorkout" top="10" title="Start Upper Body Workout" onClick="showUpperBodyWorkout" visible="false"></Button>
+		<Button id="btnLowerWorkout" class="btnWorkout" top="10" title="Start Lower Body Workout" onClick="showLowerBodyWorkout" visible="false"></Button>
 	</View>
 	</Window>
+	</NavigationWindow>
 </Alloy>

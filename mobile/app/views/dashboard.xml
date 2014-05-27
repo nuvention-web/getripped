@@ -4,13 +4,21 @@
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<View id="mainView" layout="vertical">
 				<!--Button id="btnLogout" left="70%" top="10" title="Logout" onClick="logout"></Button-->
-				<Label top="20" id="welcomeLabel">Welcome! </Label>
-				<Label top="20">SwoleTrain is ready to help you</Label>
-				<Label>get swole.</Label>
-				<Label>Just enter what you can do</Label>
-				<Label>for each exercise.</Label>
-				<Button id="btnWorkout" top="20" title="Start a new workout" onClick="showWorkout"></Button>
-				<ImageView image="SwoleTrainLogo.png" top="5" width="40%" height="40%"></ImageView>
+				<Label top="20" id="welcomeLabel">DASHBOARD </Label>
+				<Label top="5" id="welcomeLabel">Welcome! </Label>
+				<Label top="10" left = "10">PROGRESS</Label>
+				<Label top="10" left = "10">Upper Body:</Label>
+				<Label top="5" left = "10" id="upperFirstWeight"></Label>
+				<Label top="5" left = "10" id="upperLastWeight"></Label>
+				<ImageView top="5" left = "10" image="Progress.png"></ImageView>
+				<Label top="10" left = "10">Lower Body:</Label>
+				<Label top="5" left = "10" id="lowerFirstWeight"></Label>
+				<Label top="5" left = "10" id="lowerLastWeight"></Label>
+				<ImageView top="5" left = "10" image="Progress.png"></ImageView>
+				<!--ProgressBar id="pb" top="10" width="250" height="auto" min="0" max="10" value="5" color="#fff" message="Downloading 0 of 10" /-->
+				<Button id="btnWorkout" top="20" title="Upper Body" onClick="showUpperBodyWorkout"></Button>
+				<Button id="btnWorkout" top="10" title="Lower Body & Core" onClick="showLowerBodyWorkout"></Button>
+				<!--ImageView image="SwoleTrainLogo.png" top="10" width="40%" height="30%"></ImageView-->
 			</View>		
 		</ScrollView>
 	</Window>

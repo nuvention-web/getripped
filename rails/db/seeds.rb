@@ -7,51 +7,50 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'csv'
 
-images = ["dumbellpress.jpg"]
-
-weights = [20, 30, 40, 50, 60]
-
 upper_body = Workout.create(name: "Upper Body")
 lower_body = Workout.create(name: "Lower Body")
 
 CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |row|
-		exercise = Exercise.create(
-			:name => row[:name],
-			:reps => row[:reps],
-			:sets => row[:sets],
-			:rest => row[:rest],
-			:description => row[:description],
-			:image => "/assets/images/#{row[:name].gsub(/ /,'_')}"+".png")
-
-		# exercise_update = Exercise.find(exercise.id)
-		# p exercise_update
-		# p exercise_update.workout
+	exercise = Exercise.find_by_name(row[:name])
+		exercise.update_attributes(image: "https://s3.amazonaws.com/swoletrain/#{row[:name].gsub(/ /,'+')}"+".JPG")	
 		if row[:workout] == "Upper Body"
-			exercise.update_attributes(workout_id: upper_body.id)
+			exercise.update_attributes!(workout_id: upper_body.id)
 		elsif row[:workout] == "Lower Body"
-			exercise.update_attributes(workout_id: lower_body.id)
+			exercise.update_attributes!(workout_id: lower_body.id)
 		end
-end
-
-
+end	
 
 # CSV.foreach("workout.csv", :headers => true, :header_converters => :symbol) do |row|
-# 		Exercise.create(
-# 			:name => row[:name],
-# 			:reps => row[:reps],
-# 			:sets => row[:sets],
-# 			:rest => row[:rest],
-# 			:description => row[:description],
-# 			:image => images.slice!(0)
-# 		)
+# 		if row[:workout] == "Upper Body"
+# 			exercise = Exercise.create(
+# 				:name => row[:name],
+# 				:reps => row[:reps],
+# 				:sets => row[:sets],
+# 				:rest => row[:rest],
+# 				:description => row[:description],
+# 				:image => "https://s3.amazonaws.com/swoletrain/#{row[:name].gsub(/ /,'+')}"+".JPG")
+# 			exercise.update_attributes(workout_id: upper_body.id)
+# 			# Exercise.find_by_name(row[:name]).update_attributes(workout_id: upper_body.id)
+# 			# Exercise.find_by_name(row[:name]).update_attributes(:image => "https://s3.amazonaws.com/swoletrain/#{row[:name].gsub(/ /,'+')}"+".JPG")
+# 		else
+# 			exercise = Exercise.create(
+# 				:name => row[:name],
+# 				:reps => row[:reps],
+# 				:sets => row[:sets],
+# 				:rest => row[:rest],
+# 				:description => row[:description],
+# 				:image => "https://s3.amazonaws.com/swoletrain/#{row[:name].gsub(/ /,'+')}"+".JPG")
+# 			exercise.update_attributes(workout_id: lower_body.id)
+# 		end
 # end
 
-10.times do 
-	Attempt.create(
-		user: User.first,
-		exercise: Exercise.all.sample,
-		weight: weights.sample,
-		reps1: rand(8) + 1,
-		reps2: rand(8) + 1,
-		reps3: rand(8) + 1)
-end
+
+# 10.times do 
+# 	Attempt.create(
+# 		user: User.first,
+# 		exercise: Exercise.all.sample,
+# 		weight: weights.sample,
+# 		reps1: rand(8) + 1,
+# 		reps2: rand(8) + 1,
+# 		reps3: rand(8) + 1)
+# end

@@ -22,16 +22,16 @@ function Controller() {
         title: "SwoleTrain"
     });
     $.__views.indexWin && $.addTopLevelView($.__views.indexWin);
-    $.__views.__alloyId21 = Ti.UI.createView({
+    $.__views.__alloyId22 = Ti.UI.createView({
         layout: "vertical",
-        id: "__alloyId21"
+        id: "__alloyId22"
     });
-    $.__views.indexWin.add($.__views.__alloyId21);
-    var __alloyId24 = [];
-    $.__views.__alloyId25 = Ti.UI.createButton({
+    $.__views.indexWin.add($.__views.__alloyId22);
+    var __alloyId25 = [];
+    $.__views.__alloyId26 = Ti.UI.createButton({
         systemButton: Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE
     });
-    __alloyId24.push($.__views.__alloyId25);
+    __alloyId25.push($.__views.__alloyId26);
     $.__views.titleLabel = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -40,37 +40,37 @@ function Controller() {
         id: "titleLabel",
         verticalAlign: "center"
     });
-    __alloyId24.push($.__views.titleLabel);
-    $.__views.__alloyId26 = Ti.UI.createButton({
+    __alloyId25.push($.__views.titleLabel);
+    $.__views.__alloyId27 = Ti.UI.createButton({
         systemButton: Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE
     });
-    __alloyId24.push($.__views.__alloyId26);
-    $.__views.__alloyId22 = Ti.UI.iOS.createToolbar({
-        items: __alloyId24,
+    __alloyId25.push($.__views.__alloyId27);
+    $.__views.__alloyId23 = Ti.UI.iOS.createToolbar({
+        items: __alloyId25,
         top: "15",
         borderTop: "true",
         borderBottom: "true",
-        id: "__alloyId22"
+        id: "__alloyId23"
     });
-    $.__views.__alloyId21.add($.__views.__alloyId22);
+    $.__views.__alloyId22.add($.__views.__alloyId23);
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         height: "70%",
         width: "100%",
         top: "10"
     });
-    $.__views.__alloyId21.add($.__views.view1);
-    $.__views.__alloyId27 = Ti.UI.createImageView({
+    $.__views.__alloyId22.add($.__views.view1);
+    $.__views.__alloyId28 = Ti.UI.createImageView({
         image: "img1.png",
-        id: "__alloyId27"
+        id: "__alloyId28"
     });
-    $.__views.view1.add($.__views.__alloyId27);
+    $.__views.view1.add($.__views.__alloyId28);
     $.__views.view4 = Ti.UI.createView({
         id: "view4",
         height: "SIZE",
         top: "5"
     });
-    $.__views.__alloyId21.add($.__views.view4);
+    $.__views.__alloyId22.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
         width: "150dp",
         height: "35dp",
@@ -86,7 +86,7 @@ function Controller() {
         id: "view5",
         height: "SIZE"
     });
-    $.__views.__alloyId21.add($.__views.view5);
+    $.__views.__alloyId22.add($.__views.view5);
     $.__views.btnUser = Ti.UI.createButton({
         id: "btnUser",
         title: "Already a user? Sign in here."

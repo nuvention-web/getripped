@@ -1,57 +1,73 @@
-// The contents of this file will be executed before any of
-// your view controllers are ever executed, including the index.
-// You have access to all functionality on the `Alloy` namespace.
-//
-// This is a great place to do any initialization for your app
-// or create any global variables/functions that you'd like to
-// make available throughout your app. You can easily make things
-// accessible globally by attaching them to the `Alloy.Globals`
-// object. For example:
-//
-// Alloy.Globals.someGlobalFunction = function(){};
-var url = "https://getripped.herokuapp.com/exercise";
+Alloy.Globals.workouts;
+Alloy.Globals.userId;
+Alloy.Globals.flag = 0;
+Alloy.Globals.incomplete=[];
+
+Alloy.Globals.getSomeData = function() {
+	var someWorkoutId;
+	var workoutId;
+	var setOfWorkouts;
+	
+	return function(exerciseName) {
+		//if(someWorkoutId == undefined) {
+			MakeHTTPReqForWorkout(callback);
+			function callback(workoutData) {
+				for(var i=0; i < workoutData.length ; i++)
+				{
+					if(workoutData[i][1] == exerciseName)
+					{
+						workoutId=workoutData[i][0];				
+						break;
+					}
+				}
+			}
+			
+			
+			
+			//setOfWorkouts = Alloy.Globals.getWorkout(workoutId);
+		//}
+		return workoutId;
+	};
+}();
+
+function MakeHTTPReqForWorkout(callback) {
+	var url = "http://localhost:3000/workout";
+	var response;
+	var xhr = Ti.Network.createHTTPClient();
+	xhr.open("GET", url);
+	xhr.onload = function() {
+        var jsonObj = JSON.parse(this.responseText);
+        alert(jsonObj);
+        callback(jsonObj);
+       // Ti.App.Properties.setObject("user2", jsonObj);
+        
+   }; 
+	xhr.send();
+	 //response = Ti.App.Properties.getObject("user2");
+	 //alert("res" + response);
+	 //return response;
+}
+
+
+Alloy.Globals.getWorkout = function(wid,callback) {
+var res;
+var url = "http://localhost:3000/workout/"+wid+"/exercise";
 var jsonObj;
-var exerciseName;
-var exerciseDescription;
-Alloy.Globals.reps = [];
-Alloy.Globals.sets = [];
-Alloy.Globals.eName = [];
-Alloy.Globals.images = [];
-Alloy.Globals.eDescription = [];
-Alloy.Globals.exCount = 0;
-Alloy.Globals.userId = 0;
 var xhr = Ti.Network.createHTTPClient({
     onload: function(e) {
-    	//alert(e);
-		// this function is called when data is returned from the server and available for use
-        // this.responseText holds the raw text return of the message (used for text/JSON)
-        // this.responseXML holds any returned XML (including SOAP)
-        // this.responseData holds any returned binary data
-        //Ti.API.debug(this.responseText);
-        jsonObj = JSON.parse(this.responseText);
-       // var nm = json[0].name;
-       for (var i = 0; i < jsonObj.length; i++) { 
- 		// exerciseName = jsonObj[i].name;
- 	//	 exerciseDescription = jsonObj[i].description;
- 		 Alloy.Globals.reps = jsonObj[i].reps;
- 		 Alloy.Globals.sets = jsonObj[i].sets;
- 		 //alert(jsonObj[i].name);
- 		 Alloy.Globals.eName[i] = jsonObj[i].name;
- 		 Alloy.Globals.images[i] = 'images/' + jsonObj[i].image;
- 		// var path = "images" + Alloy.Globals.images[i];
- 		 Alloy.Globals.eDescription[i] = jsonObj[i].description;//alert(Alloy.Globals.eName[i]);
-		}
-        //alert(jsonObj.);
-        
-        //alert(eName);
-        //alert('success');
+        Alloy.Globals.workouts = JSON.parse(this.responseText);
+         //alert('success');
+        callback();
     },
     onerror: function(e) {
-		// this function is called when an error occurs, including a timeout
         Ti.API.debug(e.error);
-        //alert('error');
+        alert('error');
     },
     timeout:5000  /* in milliseconds */
 });
 xhr.open("GET", url);
-xhr.send();  // request is actually sent with this statement
+xhr.send(); 
+//res = Ti.App.Properties.getObject("user1");
+//alert("res" + res);
+//return res;
+};
