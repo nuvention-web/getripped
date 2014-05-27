@@ -4,7 +4,7 @@ function Controller() {
         var uname = $.txtUsername.value;
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
-        loginReq.open("POST", "http://getripped.herokuapp.com/session");
+        loginReq.open("POST", "http://swoletrain.herokuapp.com/session");
         var user = {
             password: pass,
             email: uname

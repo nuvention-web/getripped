@@ -1,6 +1,6 @@
 //var args = arguments[0] || {};
 
-var url = "http://localhost:3000/dashboard/"+Alloy.Globals.userId;
+var url = "http://swoletrain.herokuapp.com/dashboard/"+Alloy.Globals.userId;
 var jsonObj;
 var xhr = Ti.Network.createHTTPClient({
 	

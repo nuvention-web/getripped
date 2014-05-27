@@ -72,7 +72,7 @@ function Controller() {
             return;
         }
         var exAttempt = Titanium.Network.createHTTPClient();
-        exAttempt.open("POST", "http://localhost:3000/exercise/" + exId + "/attempt");
+        exAttempt.open("POST", "http://swoletrain.herokuapp.com/exercise/" + exId + "/attempt");
         var userEx = {
             user_id: uId,
             weight: weightText,
@@ -553,7 +553,7 @@ function Controller() {
     }
     var uId = Alloy.Globals.userId;
     var exAttempt = Titanium.Network.createHTTPClient();
-    exAttempt.open("POST", "http://localhost:3000/user/" + uId + "/exercise/" + Alloy.Globals.workouts[args].id + "/attempt/last");
+    exAttempt.open("POST", "http://swoletrain.herokuapp.com//user/" + uId + "/exercise/" + Alloy.Globals.workouts[args].id + "/attempt/last");
     var userEx = {
         password: "gotraingo"
     };

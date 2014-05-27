@@ -22,7 +22,7 @@ if(pass != confirmPass) {
 	return;
 }
 var changeReq = Titanium.Network.createHTTPClient();	
-        changeReq.open("POST","http://localhost:3000/user/changePassword/" + Alloy.Globals.userId);
+        changeReq.open("POST","http://swoletrain.herokuapp.com/user/changePassword/" + Alloy.Globals.userId);
         var user = {
             password: pass,
             password_confirmation: pass

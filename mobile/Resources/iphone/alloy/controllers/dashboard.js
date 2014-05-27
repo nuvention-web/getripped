@@ -295,7 +295,7 @@ function Controller() {
     $.__views.dashBoardNavWin && $.addTopLevelView($.__views.dashBoardNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var url = "http://localhost:3000/dashboard/" + Alloy.Globals.userId;
+    var url = "http://swoletrain.herokuapp.com/dashboard/" + Alloy.Globals.userId;
     var jsonObj;
     var xhr = Ti.Network.createHTTPClient({
         onload: function() {
