@@ -54,9 +54,16 @@ function showLowerBodyExercises(){
 	Alloy.Globals.showExercises("Lower Body");
 }
 
+function showChangePassword(){
+	var changePasswordWin = Alloy.createController("changePassword",{}).getView();
+    changePasswordWin.open();
+}
+
 function logout() {
 	Alloy.Globals.userId = 0;
-	Alloy.Globals.exCount = 0;
+	Alloy.Globals.flag = 0;
+	Alloy.Globals.incomplete=[];
+	Alloy.Globals.workouts=[];
 	var dashboardWin = Alloy.createController("login",{}).getView();
     dashboardWin.open();
 }

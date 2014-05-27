@@ -11,6 +11,18 @@ function Controller() {
     function showLowerBodyExercises() {
         Alloy.Globals.showExercises("Lower Body");
     }
+    function showChangePassword() {
+        var changePasswordWin = Alloy.createController("changePassword", {}).getView();
+        changePasswordWin.open();
+    }
+    function logout() {
+        Alloy.Globals.userId = 0;
+        Alloy.Globals.flag = 0;
+        Alloy.Globals.incomplete = [];
+        Alloy.Globals.workouts = [];
+        var dashboardWin = Alloy.createController("login", {}).getView();
+        dashboardWin.open();
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "dashboard";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -265,19 +277,18 @@ function Controller() {
         id: "__alloyId14"
     });
     $.__views.links.add($.__views.__alloyId14);
-    showLowerBodyWorkout ? $.__views.__alloyId14.addEventListener("click", showLowerBodyWorkout) : __defers["$.__views.__alloyId14!click!showLowerBodyWorkout"] = true;
+    showChangePassword ? $.__views.__alloyId14.addEventListener("click", showChangePassword) : __defers["$.__views.__alloyId14!click!showChangePassword"] = true;
     $.__views.__alloyId15 = Ti.UI.createButton({
         title: "  |  ",
         id: "__alloyId15"
     });
     $.__views.links.add($.__views.__alloyId15);
-    showLowerBodyExercises ? $.__views.__alloyId15.addEventListener("click", showLowerBodyExercises) : __defers["$.__views.__alloyId15!click!showLowerBodyExercises"] = true;
     $.__views.__alloyId16 = Ti.UI.createButton({
         title: "Logout",
         id: "__alloyId16"
     });
     $.__views.links.add($.__views.__alloyId16);
-    showLowerBodyExercises ? $.__views.__alloyId16.addEventListener("click", showLowerBodyExercises) : __defers["$.__views.__alloyId16!click!showLowerBodyExercises"] = true;
+    logout ? $.__views.__alloyId16.addEventListener("click", logout) : __defers["$.__views.__alloyId16!click!logout"] = true;
     $.__views.dashBoardNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.dashboardWin,
         id: "dashBoardNavWin"
@@ -316,9 +327,8 @@ function Controller() {
     __defers["$.__views.__alloyId7!click!showUpperBodyExercises"] && $.__views.__alloyId7.addEventListener("click", showUpperBodyExercises);
     __defers["$.__views.__alloyId11!click!showLowerBodyWorkout"] && $.__views.__alloyId11.addEventListener("click", showLowerBodyWorkout);
     __defers["$.__views.__alloyId12!click!showLowerBodyExercises"] && $.__views.__alloyId12.addEventListener("click", showLowerBodyExercises);
-    __defers["$.__views.__alloyId14!click!showLowerBodyWorkout"] && $.__views.__alloyId14.addEventListener("click", showLowerBodyWorkout);
-    __defers["$.__views.__alloyId15!click!showLowerBodyExercises"] && $.__views.__alloyId15.addEventListener("click", showLowerBodyExercises);
-    __defers["$.__views.__alloyId16!click!showLowerBodyExercises"] && $.__views.__alloyId16.addEventListener("click", showLowerBodyExercises);
+    __defers["$.__views.__alloyId14!click!showChangePassword"] && $.__views.__alloyId14.addEventListener("click", showChangePassword);
+    __defers["$.__views.__alloyId16!click!logout"] && $.__views.__alloyId16.addEventListener("click", logout);
     _.extend($, exports);
 }
 
