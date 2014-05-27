@@ -20,6 +20,11 @@ function Controller() {
             alert("Enter Password");
             return;
         }
+        var isValidEmail = validateEmail(email_id);
+        if (false == isValidEmail) {
+            alert("Not a valid e-mail address");
+            return;
+        }
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
         loginReq.open("POST", "http://localhost:3000/user");
@@ -52,8 +57,13 @@ function Controller() {
                         workoutsWin.open();
                     }
                 };
-            }
+            } else "failed" == response.message ? alert("Username already exists!!!") : alert("Unexpected error. Please try again.");
         };
+    }
+    function validateEmail(email) {
+        var atpos = email.indexOf("@");
+        var dotpos = email.lastIndexOf(".");
+        return 1 > atpos || atpos + 2 > dotpos || dotpos + 2 >= email.length ? false : true;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "signup";
@@ -65,7 +75,7 @@ function Controller() {
     var __defers = {};
     $.__views.signupWin = Ti.UI.createWindow({
         id: "signupWin",
-        backgroundImage: "texture.jpg",
+        backgroundColor: "#F6F6F6",
         title: "SwoleTrain"
     });
     $.__views.mainView = Ti.UI.createScrollView({
@@ -75,23 +85,44 @@ function Controller() {
         showVerticalScrollIndicator: "true"
     });
     $.__views.signupWin.add($.__views.mainView);
+    $.__views.topView = Ti.UI.createView({
+        id: "topView",
+        layout: "vertical",
+        height: "SIZE",
+        backgroundColor: "#DE1B1B"
+    });
+    $.__views.mainView.add($.__views.topView);
     $.__views.label = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        top: "10",
+        height: "SIZE",
+        color: "#F6F6F6",
         font: {
-            fontsize: 18,
+            fontSize: 20,
             fontWeight: "bold"
         },
-        text: "Ready to get swole? Give us some info.",
-        id: "label"
+        text: "Ready to get swole?",
+        id: "label",
+        top: "10"
     });
-    $.__views.mainView.add($.__views.label);
+    $.__views.topView.add($.__views.label);
+    $.__views.__alloyId34 = Ti.UI.createLabel({
+        width: Ti.UI.SIZE,
+        height: "SIZE",
+        color: "#F6F6F6",
+        font: {
+            fontSize: 20,
+            fontWeight: "bold"
+        },
+        text: "Give us some info.",
+        bottom: "10",
+        id: "__alloyId34"
+    });
+    $.__views.topView.add($.__views.__alloyId34);
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         layout: "vertical",
-        height: "SIZE"
+        height: "SIZE",
+        top: "20"
     });
     $.__views.mainView.add($.__views.view1);
     $.__views.txtFirstName = Ti.UI.createTextField({
@@ -150,9 +181,9 @@ function Controller() {
     $.__views.view1.add($.__views.txtPassword);
     $.__views.view4 = Ti.UI.createView({
         id: "view4",
-        height: "SIZE",
         top: "20",
-        layout: "vertical"
+        layout: "vertical",
+        backgroundColor: "#2B2B2B"
     });
     $.__views.mainView.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
@@ -161,19 +192,12 @@ function Controller() {
         backgroundColor: "#3B74F5",
         color: "white",
         id: "btnSubmit",
+        top: "30",
         verticalAlign: "center",
         title: "Get Swole"
     });
     $.__views.view4.add($.__views.btnSubmit);
     signupUser ? $.__views.btnSubmit.addEventListener("click", signupUser) : __defers["$.__views.btnSubmit!click!signupUser"] = true;
-    $.__views.__alloyId32 = Ti.UI.createImageView({
-        image: "SwoleTrainLogo.png",
-        top: "5",
-        width: "50%",
-        height: "55%",
-        id: "__alloyId32"
-    });
-    $.__views.view4.add($.__views.__alloyId32);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.signupWin,
         id: "navGroupWin"

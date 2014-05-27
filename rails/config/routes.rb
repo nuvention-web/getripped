@@ -12,6 +12,7 @@ Getripped::Application.routes.draw do
   #get 'dashboard/:user_id' => 'dashboard', as: :index
 
   resources :user, only: [:create]
+  post 'user/changePassword/:user_id' => 'user#changePassword', as: :changePassword
   post 'user/:user_id/exercise/:exercise_id/attempt/last' => 'attempt#last', as: :last  
 
   get 'session/signout' => 'session#signout', as: :signout

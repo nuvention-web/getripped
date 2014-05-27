@@ -1,24 +1,51 @@
 <Alloy>
-	<NavigationWindow id="dashBoardNavWin">
-	<Window id="dashboardWin" backgroundImage="texture.jpg" title="SwoleTrain">
+	<NavigationWindow id="dashBoardNavWin" >
+	<Window id="dashboardWin" backgroundColor="#F1F1F1">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<View id="mainView" layout="vertical">
-				<!--Button id="btnLogout" left="70%" top="10" title="Logout" onClick="logout"></Button-->
-				<Label top="20" id="welcomeLabel">DASHBOARD </Label>
-				<Label top="5" id="welcomeLabel">Welcome! </Label>
-				<Label top="10" left = "10">PROGRESS</Label>
-				<Label top="10" left = "10">Upper Body:</Label>
-				<Label top="5" left = "10" id="upperFirstWeight"></Label>
-				<Label top="5" left = "10" id="upperLastWeight"></Label>
-				<ImageView top="5" left = "10" image="Progress.png"></ImageView>
-				<Label top="10" left = "10">Lower Body:</Label>
-				<Label top="5" left = "10" id="lowerFirstWeight"></Label>
-				<Label top="5" left = "10" id="lowerLastWeight"></Label>
-				<ImageView top="5" left = "10" image="Progress.png"></ImageView>
-				<!--ProgressBar id="pb" top="10" width="250" height="auto" min="0" max="10" value="5" color="#fff" message="Downloading 0 of 10" /-->
-				<Button id="btnWorkout" top="20" title="Upper Body" onClick="showUpperBodyWorkout"></Button>
-				<Button id="btnWorkout" top="10" title="Lower Body & Core" onClick="showLowerBodyWorkout"></Button>
-				<!--ImageView image="SwoleTrainLogo.png" top="10" width="40%" height="30%"></ImageView-->
+				<View top = "0" layout="vertical"  height="SIZE" backgroundColor="#DE1B1B" borderWidth="3" borderColor="#F6F6F6">
+					<Label top="5" bottom="5" id="welcomeLabel" color="#F6F6F6" height="SIZE"></Label>
+				</View>
+				<!--View id="warmUpView" layout="vertical" height="SIZE" top="0" class="workoutVkiew" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
+					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Warm-Up:</Label>
+					<Label top = "5" left = "10" class="weightLiftedText" color="F6F6F6" height="SIZE"> 1. Stretch</Label>
+					<Label top = "5" left = "10" bottom="10" class="weightLiftedText" color="F6F6F6" height="SIZE"> 2. 1 mile run on Treadmill</Label>
+				</View-->
+				<View id="upperBodyView" layout="vertical" height="35%" top="0" class="workoutVkiew" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
+					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Upper Body:</Label>
+					<Label top = "15" left = "10" class="weightLiftedText" color="F6F6F6"> Average Weight Lifted:</Label>
+					<ProgressBar id="pbUpper" top="5" width="250" height="auto" style="Titanium.UI.iPhone.ProgressBarStyle.PLAIN" max="100" color="#FFFFFF"></ProgressBar>
+					<View layout="horizontal" height="SIZE" top="2">
+					<Label id="minUpper" left="40" font="{fontSize: 12, fontWeight:bold}" color="#FFFFFF"></Label>
+					<Label id="currentUpper" left="10" font="{fontSize: 12, fontWeight:bold}"color="#FFFFFF"></Label>
+					</View>
+					<View id="upperBodyLinks" layout="horizontal" height="SIZE" top="0">
+						<Button top="5" left="10" title="Start Workout" onClick="showUpperBodyWorkout"></Button>
+						<Button top="5" left="20" title="See all Exercises" onClick="showUpperBodyExercises"></Button>
+					</View>
+				</View>
+				<View id="lowerBodyView" layout="vertical" height="35%" top="0" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
+					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Lower Body:</Label>
+					<Label top = "15" left = "10" class="weightLiftedText" color="F6F6F6"> Average Weight Lifted:</Label>
+					<ProgressBar id="pbLower" top="5" width="250" height="auto" style="Titanium.UI.iPhone.ProgressBarStyle.PLAIN"  max="100" color="#FFFFFF"></ProgressBar>
+					<View layout="horizontal" height="SIZE" top="2">
+					<Label id="minLower" left="40" font="{fontSize: 12, fontWeight:bold}" color="#FFFFFF"></Label>
+					<Label id="currentLower" left="10" font="{fontSize: 12, fontWeight:bold}"color="#FFFFFF"></Label>
+					</View>
+				
+					<View id="upperBodyLinks" layout="horizontal" height="SIZE" top="0">
+						<Button top="5" left="10"  title="Start Workout" onClick="showLowerBodyWorkout"></Button>
+						<Button top="5" left="20"  title="See all Exercises" onClick="showLowerBodyExercises"></Button>
+					</View>
+				</View>
+				<View id="bottomLinks" layout="vertical" height="SIZE" top="20">
+						<Label class="activityLabel" color="#2B2B2B" left="10">Activity:</Label>
+						<View id="links" layout="horizontal" height="SIZE">
+						<Button left="10"  title="Change Password" onClick="showChangePassword"></Button>
+						<Button title="  |  "></Button>
+						<Button title="Logout" onClick="logout"></Button>
+						</View>
+				</View>
 			</View>		
 		</ScrollView>
 	</Window>

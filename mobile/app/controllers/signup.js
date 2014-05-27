@@ -35,7 +35,11 @@ function signupUser(){
 		alert("Enter Password");
 		return;
 	}
-	
+	var isValidEmail = validateEmail(email_id);
+	if(isValidEmail == false){
+		alert("Not a valid e-mail address");
+		return;
+	}
 	
 	var loginReq = Titanium.Network.createHTTPClient();	
         loginReq.withCredentials = true;	
@@ -82,6 +86,12 @@ function signupUser(){
     			}
 			};
     	}
+    	else if(response.message == "failed"){
+    		alert("Username already exists!!!");
+    	}
+    	else {
+    		alert("Unexpected error. Please try again.");
+    	}
 	}; 
 }
 
@@ -93,6 +103,20 @@ function openLogin() {
     if (OS_ANDROID) {
         loginWin.open();
     }
+}
+
+
+function validateEmail(email)
+{
+var atpos=email.indexOf("@");
+var dotpos=email.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length)
+  {
+  	return false;
+  }
+ else{
+ 	return true;
+ }
 }
 
 if(OS_IOS) { 

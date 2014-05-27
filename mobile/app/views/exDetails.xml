@@ -1,11 +1,19 @@
 <Alloy>
 	<NavigationWindow id="navGroupWin">
-	<Window id="exDetailsWin" backgroundImage="texture.jpg" title="Exercise Details">
+	<Window id="exDetailsWin" backgroundColor="#F1F1F1" title="SwoleTrain">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
-		<View id="mainView" layout="vertical" >
-				<Label id="eName" top="10"></Label>
+		<View id="mainView" layout="vertical">
+				<View id = "topView" layout="vertical" height="SIZE"  backgroundColor="#DE1B1B">
+					<Label id="eName" top="10" color="#F1F1F1"></Label>
+				</View>
+				<View id = "imageView" layout="vertical" height="SIZE">
 				<ImageView id="exImage" top="10" height="500px" width="500px"></ImageView>
-				<Label id="exDescription" top="20" font="30" width="90%"></Label>	
+				</View>
+				<ScrollView id="scrollviewId2" scrollingEnabled="true" showVerticalScrollIndicator="true">
+				<View id="bottomView" layout="vertical" backgroundColor="#2B2B2B">
+				<Label id="exDescription" textAlign="EXT_ALIGNMENT_CENTER" height="SIZE" color="#F1F1F1" top="20" font="30" width="90%"></Label>
+				</View>
+				</ScrollView>	
 			</View>		
 		</ScrollView>
 	</Window>
