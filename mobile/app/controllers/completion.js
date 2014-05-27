@@ -1,4 +1,11 @@
 //var args = arguments[0] || {};
+if(Alloy.Globals.incomplete=="") {
+	$.topLabel.text = "Great Job!!!";
+}
+else {
+	$.topLabel.text = "Please complete all the exercises";
+}
+
 var workoutTitles = [];
 workoutTitles = Alloy.Globals.workouts.name;
 //alert(workoutTitles);
@@ -23,7 +30,6 @@ function showDashboard(){
 		}
 	}
 	if(isEmpty == true) {
-		alert("Great Job!!!");
 		var dashboardWin = Alloy.createController("dashboard",{}).getView();
     	dashboardWin.open();
 	}

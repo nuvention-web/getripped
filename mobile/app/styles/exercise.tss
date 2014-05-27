@@ -1,5 +1,5 @@
 "#exWin": {
-	title : "Workout",
+	title : "SwoleTrain",
 	//color: "#FFFFFF",
 	fullScreen: false,
 	exitOnClose: true,
@@ -7,7 +7,7 @@
 	//navBarHidden: true,
 	tabBarHidden: true,
 	font: {
-		fontsize: "32dp",
+		fontSize: "32dp",
 		fontWeight: "bold"
 	}
 }
@@ -15,7 +15,8 @@
 ".showExCount": {
 	font: {
 		fontSize:12
-	}
+	},
+	color: "#F6F6F6"
 }
 
 ".clickBtn": {
@@ -49,12 +50,12 @@
 		fontWeight: "bold",
 	},
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-    color:'red'
+    color:'#E9E581'
     
 }
 
 ".bottomBtn": {
-    width:100,
+   width:100,
     height:30,
     borderRadius:1,
     backgroundColor: "#3B74F5",

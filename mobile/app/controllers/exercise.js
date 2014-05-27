@@ -17,16 +17,18 @@ bkBtn.addEventListener("click", function(e){
 	var exNum = parseInt(args) + 1;
 	var imgName = Alloy.Globals.workouts[args].image;
 	$.exImage.image = imgName;
-	$.workoutTitle.text = "Workout " + exNum + " of " + Alloy.Globals.workouts.length;
+	$.workoutTitle.text = exNum + " of " + Alloy.Globals.workouts.length;
 	$.txtWeight.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 	$.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 	$.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 	$.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 	
-	if(exNum == 1){
+	if((exNum == 1) && (Alloy.Globals.flag == 0 || Alloy.Globals.incomplete.length == Alloy.Globals.workouts.length)){
 		$.exWin.setLeftNavButton(bkBtn);
 	}
-	if(Alloy.Globals.workouts[args].name == "1 mile run on treadmill" || Alloy.Globals.workouts[args].name == "Chinup"){
+	if(Alloy.Globals.workouts[args].name == "Hip Raises" || Alloy.Globals.workouts[args].name == "Raised Leg Sit Up" ||
+		 Alloy.Globals.workouts[args].name == "Side Bridge" || Alloy.Globals.workouts[args].name == "Plank" ||
+		Alloy.Globals.workouts[args].name == "Dips" ||  Alloy.Globals.workouts[args].name == "Chinup"){
 		$.txtWeight.value = "N/A";
 		$.txtWeight.editable = "false";
 	}
@@ -97,25 +99,56 @@ function showNext(){
 		return;
 	}
 	
+	var weightInput = -1;
 	var rep1Input = -1;
 	var rep2Input = -1;
 	var rep3Input = -1;
+	weightInput = isNumber(weightText);
 	rep1Input = isNumber(set1Text);
 	rep2Input = isNumber(set2Text);
 	rep3Input = isNumber(set3Text);
+	
+	if(weightInput == 0) {
+		alert("Enter only numbers for weight used");
+		return;
+	}
+	else if(weightText < 0) {
+		alert("Weight used cannot be less than zero");
+		return;
+	}
 		
 	if(rep1Input == 0) {
 		alert("Enter only numbers for Set 1 reps");
 		return;
 	}
+	else if(set1Text < 0) {
+		alert("Set 1 reps cannot be less than zero");
+		return;
+	}
+	
 	if(rep2Input == 0) {
 		alert("Enter only numbers for Set 2 reps");
 		return;
 	}
+	else if(set2Text < 0) {
+		alert("Set 2 reps cannot be less than zero");
+		return;
+	}
+	
 	if(rep3Input == 0) {
 		alert("Enter only numbers for Set 3 reps");
 		return;
 	}
+	else if(set3Text < 0) {
+		alert("Set 3 reps cannot be less than zero");
+		return;
+	}
+	
+	if(set1Text > 12 || set2Text > 12 || set3Text > 12){
+		alert("Reps Completed cannot be greater than Recommended Reps");
+		return;
+	}
+	
 	
 	var exAttempt = Titanium.Network.createHTTPClient();		
         exAttempt.open("POST","http://localhost:3000/exercise/"+exId+"/attempt");
@@ -135,9 +168,38 @@ function showNext(){
 	};
 	var tempArg;
 	if(Alloy.Globals.incomplete.indexOf(args) != -1){
-		tempArg = Alloy.Globals.incomplete.indexOf(args) + 1;
+		
+		if(Alloy.Globals.flag == 1) {
+			var tempFlag = 0;
+			for(var i = Alloy.Globals.incomplete.indexOf(args), j = 1; i < Alloy.Globals.incomplete.length; i++, j++)
+			{
+				if((Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j] != null) && (typeof Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j] != 'undefined')){
+					tempArg = Alloy.Globals.incomplete.indexOf(args) + j;
+					tempFlag = 1;
+					break;		
+				} 
+			}
+			if(tempFlag == 0){
+				delete Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args)];
+				var isEmptyTemp = true;
+				for(var i = 0; i < Alloy.Globals.incomplete.length; i++)
+				{
+					if((Alloy.Globals.incomplete[i] != null) || (typeof Alloy.Globals.incomplete[i]  != 'undefined')) {
+						isEmptyTemp = false;
+						break;
+					}
+				}
+				if(isEmptyTemp == true)
+				{
+					Alloy.Globals.flag = 0;
+					Alloy.Globals.incomplete = [];
+				}
+				showAckView();
+				return;
+			}
+		}
+		
 		delete Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args)];
-		//alert(Alloy.Globals.incomplete);
 		
 		var isEmpty = true;
 		for(var i = 0; i < Alloy.Globals.incomplete.length; i++)
@@ -151,6 +213,7 @@ function showNext(){
 			if(isEmpty == true)
 				{
 					Alloy.Globals.flag = 0;
+					Alloy.Globals.incomplete = [];
 				}
 			showAckView();
 			return;
@@ -158,6 +221,9 @@ function showNext(){
 	}
 	
 	if(exNum == Alloy.Globals.workouts.length) {
+		if(Alloy.Globals.incomplete.length == 0){
+			Alloy.Globals.flag = 0;
+		}
 		showAckView();
 		return;
 	}
@@ -173,6 +239,7 @@ function showNext(){
 }
 
 function skipExercise() {
+	//alert(Alloy.Globals.incomplete);
 	if(Alloy.Globals.incomplete.indexOf(args) == -1){
 		Alloy.Globals.incomplete.push(args);
 	}
@@ -181,7 +248,27 @@ function skipExercise() {
 		Alloy.Globals.flag = 1;
 	}
 	else {	
-		args = args + 1;
+		if(Alloy.Globals.flag == 1) {
+			var tempFlag = 0;
+			for(var i = Alloy.Globals.incomplete.indexOf(args), j = 1; i < Alloy.Globals.incomplete.length; i++, j++)
+			{
+				if((Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j] != null) && (typeof Alloy.Globals.incomplete[Alloy.Globals.incomplete.indexOf(args) + j] != 'undefined')){
+					tempArg = Alloy.Globals.incomplete.indexOf(args) + j;
+					tempFlag = 1;
+					break;		
+				}
+			}
+			if(tempFlag == 0){
+				showAckView();
+				return;
+			}
+			else {
+				args = 	Alloy.Globals.incomplete[tempArg];
+			}
+		}
+		else {
+			args = args + 1;
+		}
 		var workoutsWin = Alloy.createController("exercise",args).getView();
    		workoutsWin.open();
    }

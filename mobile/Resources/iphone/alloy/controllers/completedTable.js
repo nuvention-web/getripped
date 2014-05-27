@@ -10,34 +10,33 @@ function Controller() {
         id: "row"
     });
     $.__views.row && $.addTopLevelView($.__views.row);
-    $.__views.__alloyId2 = Ti.UI.createView({
+    $.__views.__alloyId1 = Ti.UI.createView({
         layout: "horizontal",
         height: "30",
-        id: "__alloyId2"
+        id: "__alloyId1"
     });
-    $.__views.row.add($.__views.__alloyId2);
-    $.__views.exNum = Ti.UI.createLabel({
-        id: "exNum",
+    $.__views.row.add($.__views.__alloyId1);
+    $.__views.exImg = Ti.UI.createImageView({
+        id: "exImg",
         left: "10"
     });
-    $.__views.__alloyId2.add($.__views.exNum);
+    $.__views.__alloyId1.add($.__views.exImg);
     $.__views.name = Ti.UI.createLabel({
         id: "name",
         left: "20",
         width: "80%"
     });
-    $.__views.__alloyId2.add($.__views.name);
+    $.__views.__alloyId1.add($.__views.name);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0];
-    if (-1 == Alloy.Globals.incomplete.indexOf(args.exNum - 1)) $.row.backgroundColor = "green"; else {
-        $.row.backgroundColor = "red";
+    if (-1 == Alloy.Globals.incomplete.indexOf(args.exNum - 1)) $.exImg.image = "tick.png"; else {
+        $.exImg.image = "cross.png";
         $.row.addEventListener("click", function() {
             var exWin = Alloy.createController("exercise", args.exNum - 1).getView();
             exWin.open();
         });
     }
-    $.exNum.text = args.exNum;
     $.name.text = args.name;
     _.extend($, exports);
 }

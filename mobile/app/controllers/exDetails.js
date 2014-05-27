@@ -19,5 +19,5 @@ var exName = Alloy.Globals.workouts[args].name;
 var exDesc = Alloy.Globals.workouts[args].description;
 $.eName.text = exName;
 $.exImage.image = Alloy.Globals.workouts[args].image;
-$.exDescription.text = "Instructions: " + exDesc;
+$.exDescription.text = exDesc;
 //alert(exDesc);

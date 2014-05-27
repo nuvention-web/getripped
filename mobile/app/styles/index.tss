@@ -1,8 +1,23 @@
-"Label": {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
-}, 
+"#indexWin": {
+	//color: "#FFFFFF",
+	fullScreen: false,
+	exitOnClose: true,
+	//backgroundImage: "titleBackground.png",
+	//navBarHidden: true,
+	tabBarHidden: true,
+	font: {
+		fontSize: "32",
+		fontWeight: "bold"
+	}
+}
+
+"#topText": {
+	font: {
+		fontSize: 18,
+		fontWeight:"bold"
+	}
+}
+ 
 
 ".txtFieldLogin": {
 	color:'#336699',

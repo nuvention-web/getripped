@@ -27,14 +27,12 @@
 },
 
 ".getRippedText": {
-	color: "#000",
-		//height: "30dp",
-		//width: "auto",
-		top: "10",
 		font: {
-			fontsize: 18,
+			fontSize: 20,
 			fontWeight: "bold"
-		}
+		},
+		color: "#F6F6F6",
+		height: "SIZE"
 },
 
 ".demographicText": {
