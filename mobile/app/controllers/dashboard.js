@@ -1,5 +1,5 @@
 //var args = arguments[0] || {};
-$.dashBoardNavWin.titleImage = "titleBackground.png";
+
 var url = "http://localhost:3000/dashboard/"+Alloy.Globals.userId;
 var jsonObj;
 var xhr = Ti.Network.createHTTPClient({
@@ -11,18 +11,34 @@ var xhr = Ti.Network.createHTTPClient({
          // $.lowerFirstWeight.text = "Initial Average Weight Lifted: "+ jsonObj.weight2 + " lbs";
          // $.lowerLastWeight.text = "Current Average Weight Lifted: "+ jsonObj.weight4 + " lbs";
          //Ti.App.Properties.setObject("avgWeight", jsonObj);
-         $.pb.min = jsonObj.weight1;
-         $.pb.value = jsonObj.weight3;
-         $.pb1.min = jsonObj.weight2;
-         $.pb1.value = jsonObj.weight4;
-         $.pb.text = $.pb.min;
+         $.pbUpper.min = jsonObj.weight1;
+         $.pbUpper.value = jsonObj.weight3;
+         $.pbLower.min = jsonObj.weight2;
+         $.pbLower.value = jsonObj.weight4;
+         
+         var percentIncreaseUpper;
+         var percentIncreaseLower;
+         if(jsonObj.weight1 == 0) {
+         	percentIncreaseUpper = 0;
+         }
+         else {         	
+         	percentIncreaseUpper = ((jsonObj.weight3 - jsonObj.weight1)/jsonObj.weight1) * 100;
+         }
+         if(jsonObj.weight2 == 0) {
+         	percentIncreaseLower = 0;
+         }
+         else {
+         	percentIncreaseLower = ((jsonObj.weight4 - jsonObj.weight2)/jsonObj.weight2) * 100;
+         }
+         
+         $.pbUpper.text = $.pbUpper.min;
          $.welcomeLabel.text = "Welcome " + jsonObj.username + "!";
-		 $.minUpper.text ="Initial: " + $.pb.min;
-		 $.currentUpper.text ="Current: " + $.pb.value;
+		 $.minUpper.text ="Initial: " + $.pbUpper.min;
+		 $.currentUpper.text ="Current: " + $.pbUpper.value + "  (" + String.format("%d",percentIncreaseUpper) + "%)";
 
-		$.pb1.text = $.pb1.min;
-		$.minLower.text ="Initial: " + $.pb1.min;
-		$.currentLower.text ="Current: " + $.pb1.value;
+		$.pbLower.text = $.pbLower.min;
+		$.minLower.text ="Initial: " + $.pbLower.min;
+		$.currentLower.text ="Current: " + $.pbLower.value + "  (" + String.format("%d",percentIncreaseLower) + "%)";
          
     },
     onerror: function(e) {
@@ -35,8 +51,8 @@ xhr.open("GET", url);
 xhr.send();
 
 
-$.pb.show();
-$.pb1.show();
+$.pbUpper.show();
+$.pbLower.show();
 
 
 function showUpperBodyWorkout(){

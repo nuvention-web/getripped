@@ -104,8 +104,8 @@ function Controller() {
         id: "__alloyId4"
     });
     $.__views.upperBodyView.add($.__views.__alloyId4);
-    $.__views.pb = Ti.UI.createProgressBar({
-        id: "pb",
+    $.__views.pbUpper = Ti.UI.createProgressBar({
+        id: "pbUpper",
         top: "5",
         width: "250",
         height: "auto",
@@ -113,7 +113,7 @@ function Controller() {
         max: "100",
         color: "#FFFFFF"
     });
-    $.__views.upperBodyView.add($.__views.pb);
+    $.__views.upperBodyView.add($.__views.pbUpper);
     $.__views.__alloyId5 = Ti.UI.createView({
         layout: "horizontal",
         height: "SIZE",
@@ -192,8 +192,8 @@ function Controller() {
         id: "__alloyId9"
     });
     $.__views.lowerBodyView.add($.__views.__alloyId9);
-    $.__views.pb1 = Ti.UI.createProgressBar({
-        id: "pb1",
+    $.__views.pbLower = Ti.UI.createProgressBar({
+        id: "pbLower",
         top: "5",
         width: "250",
         height: "auto",
@@ -201,7 +201,7 @@ function Controller() {
         max: "100",
         color: "#FFFFFF"
     });
-    $.__views.lowerBodyView.add($.__views.pb1);
+    $.__views.lowerBodyView.add($.__views.pbLower);
     $.__views.__alloyId10 = Ti.UI.createView({
         layout: "horizontal",
         height: "SIZE",
@@ -295,23 +295,26 @@ function Controller() {
     $.__views.dashBoardNavWin && $.addTopLevelView($.__views.dashBoardNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.dashBoardNavWin.titleImage = "titleBackground.png";
     var url = "http://localhost:3000/dashboard/" + Alloy.Globals.userId;
     var jsonObj;
     var xhr = Ti.Network.createHTTPClient({
         onload: function() {
             jsonObj = JSON.parse(this.responseText);
-            $.pb.min = jsonObj.weight1;
-            $.pb.value = jsonObj.weight3;
-            $.pb1.min = jsonObj.weight2;
-            $.pb1.value = jsonObj.weight4;
-            $.pb.text = $.pb.min;
+            $.pbUpper.min = jsonObj.weight1;
+            $.pbUpper.value = jsonObj.weight3;
+            $.pbLower.min = jsonObj.weight2;
+            $.pbLower.value = jsonObj.weight4;
+            var percentIncreaseUpper;
+            var percentIncreaseLower;
+            percentIncreaseUpper = 0 == jsonObj.weight1 ? 0 : 100 * ((jsonObj.weight3 - jsonObj.weight1) / jsonObj.weight1);
+            percentIncreaseLower = 0 == jsonObj.weight2 ? 0 : 100 * ((jsonObj.weight4 - jsonObj.weight2) / jsonObj.weight2);
+            $.pbUpper.text = $.pbUpper.min;
             $.welcomeLabel.text = "Welcome " + jsonObj.username + "!";
-            $.minUpper.text = "Initial: " + $.pb.min;
-            $.currentUpper.text = "Current: " + $.pb.value;
-            $.pb1.text = $.pb1.min;
-            $.minLower.text = "Initial: " + $.pb1.min;
-            $.currentLower.text = "Current: " + $.pb1.value;
+            $.minUpper.text = "Initial: " + $.pbUpper.min;
+            $.currentUpper.text = "Current: " + $.pbUpper.value + "  (" + String.format("%d", percentIncreaseUpper) + "%)";
+            $.pbLower.text = $.pbLower.min;
+            $.minLower.text = "Initial: " + $.pbLower.min;
+            $.currentLower.text = "Current: " + $.pbLower.value + "  (" + String.format("%d", percentIncreaseLower) + "%)";
         },
         onerror: function(e) {
             Ti.API.debug(e.error);
@@ -321,8 +324,8 @@ function Controller() {
     });
     xhr.open("GET", url);
     xhr.send();
-    $.pb.show();
-    $.pb1.show();
+    $.pbUpper.show();
+    $.pbLower.show();
     __defers["$.__views.__alloyId6!click!showUpperBodyWorkout"] && $.__views.__alloyId6.addEventListener("click", showUpperBodyWorkout);
     __defers["$.__views.__alloyId7!click!showUpperBodyExercises"] && $.__views.__alloyId7.addEventListener("click", showUpperBodyExercises);
     __defers["$.__views.__alloyId11!click!showLowerBodyWorkout"] && $.__views.__alloyId11.addEventListener("click", showLowerBodyWorkout);

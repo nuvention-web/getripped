@@ -25,7 +25,6 @@ function Controller() {
         },
         id: "indexWin",
         backgroundColor: "#F6F6F6",
-        backgroundImage: "texture.jpg",
         title: "SwoleTrain"
     });
     $.__views.__alloyId28 = Ti.UI.createView({

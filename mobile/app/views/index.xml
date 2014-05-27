@@ -1,6 +1,6 @@
 <Alloy>
 	<NavigationWindow id="navGroupWin" platform="ios">
-	<Window id="indexWin" backgroundColor="#F6F6F6"  backgroundImage="texture.jpg" title="SwoleTrain">
+	<Window id="indexWin" backgroundColor="#F6F6F6" title="SwoleTrain">
 		<View layout="vertical">
 		<View layout="vertical" height="SIZE" backgroundColor="#DE1B1B">
 			<Label id="topText" left="10" color="#F6F6F6" top="10">Customized weight training routines</Label>

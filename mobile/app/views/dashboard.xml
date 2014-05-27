@@ -14,7 +14,7 @@
 				<View id="upperBodyView" layout="vertical" height="35%" top="0" class="workoutVkiew" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
 					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Upper Body:</Label>
 					<Label top = "15" left = "10" class="weightLiftedText" color="F6F6F6"> Average Weight Lifted:</Label>
-					<ProgressBar id="pb" top="5" width="250" height="auto" style="Titanium.UI.iPhone.ProgressBarStyle.PLAIN" max="100" color="#FFFFFF"></ProgressBar>
+					<ProgressBar id="pbUpper" top="5" width="250" height="auto" style="Titanium.UI.iPhone.ProgressBarStyle.PLAIN" max="100" color="#FFFFFF"></ProgressBar>
 					<View layout="horizontal" height="SIZE" top="2">
 					<Label id="minUpper" left="40" font="{fontSize: 12, fontWeight:bold}" color="#FFFFFF"></Label>
 					<Label id="currentUpper" left="10" font="{fontSize: 12, fontWeight:bold}"color="#FFFFFF"></Label>
@@ -27,7 +27,7 @@
 				<View id="lowerBodyView" layout="vertical" height="35%" top="0" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
 					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Lower Body:</Label>
 					<Label top = "15" left = "10" class="weightLiftedText" color="F6F6F6"> Average Weight Lifted:</Label>
-					<ProgressBar id="pb1" top="5" width="250" height="auto" style="Titanium.UI.iPhone.ProgressBarStyle.PLAIN"  max="100" color="#FFFFFF"></ProgressBar>
+					<ProgressBar id="pbLower" top="5" width="250" height="auto" style="Titanium.UI.iPhone.ProgressBarStyle.PLAIN"  max="100" color="#FFFFFF"></ProgressBar>
 					<View layout="horizontal" height="SIZE" top="2">
 					<Label id="minLower" left="40" font="{fontSize: 12, fontWeight:bold}" color="#FFFFFF"></Label>
 					<Label id="currentLower" left="10" font="{fontSize: 12, fontWeight:bold}"color="#FFFFFF"></Label>

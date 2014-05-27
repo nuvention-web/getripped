@@ -51,14 +51,16 @@ function Controller() {
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         layout: "vertical",
-        top: "22%"
+        top: "20%"
     });
     $.__views.mainView.add($.__views.view1);
     $.__views.topView = Ti.UI.createView({
         id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#DE1B1B"
+        backgroundColor: "#DE1B1B",
+        borderWidth: "2",
+        borderColor: "#F6F6F6"
     });
     $.__views.view1.add($.__views.topView);
     $.__views.loginLabel = Ti.UI.createLabel({
@@ -78,7 +80,9 @@ function Controller() {
         id: "middleView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#2B2B2B"
+        backgroundColor: "#2B2B2B",
+        borderWidth: "2",
+        borderColor: "#F6F6F6"
     });
     $.__views.view1.add($.__views.middleView);
     $.__views.txtUsername = Ti.UI.createTextField({
