@@ -9,15 +9,12 @@
 				<Label id="workoutTitle" class="showExCount" color="#ffffff"> </Label>
 				<Label id="eName" top="5" height="SIZE" color="#F6F6F6"></Label>
 				</View>
-				<ImageView id="exImage"  top="10" height="260px" width="260px" onClick="openExDetails"></ImageView>
-			
-			</View>
-			
-			
+				<ImageView id="exImage"  top="10" height="260px" width="260px" onClick="openExDetails"></ImageView>		
+			</View>			
 			<View id="bottomView" layout="vertical" backgroundColor="#2B2B2B">
 			<View id="viewId2" layout="horizontal" height="SIZE" top="10">
 				<Label id="weightLabel" class="staticLabel" left="10%" color = "#ffffff"></Label>
-				<TextField id="txtWeight" class="txtClass" left="10%" color="red" visible="false"></TextField>
+				<TextField id="txtWeight" class="txtClass" left="10%" color="red" visible="false" maxLength="3"></TextField>
 			</View>
 			<View id="viewId3" layout="horizontal" height="SIZE" top="10">
 				<Label left="40" class="showExCount">Set</Label><Label left="8%" class="showExCount">Recommended</Label><Label class="showExCount" left="12%">Reps</Label>
@@ -28,23 +25,21 @@
 			<View id="viewId5" layout="horizontal" height="SIZE" top="2">
 				<Label left="45" class="staticLabel" color= "#ffffff">1</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
-				<TextField id="txtSet1" class="txtClass" left="15%"></TextField>
+				<TextField id="txtSet1" class="txtClass" left="15%" color="red" maxLength="2"></TextField>
 			</View>
 			<View id="viewId6" layout="horizontal" height="SIZE" top="3">
 				<Label left="45" class="staticLabel" color= "#ffffff">2</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
-				<TextField  id="txtSet2" class="txtClass" left="15%" ></TextField>
+				<TextField  id="txtSet2" class="txtClass" left="15%" color="red" maxLength="2"></TextField>
 			</View>
 			<View id="viewId7" layout="horizontal" height="SIZE" top="3">
 				<Label left="45" class="staticLabel" color= "#ffffff">3</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
-				<TextField id="txtSet3" class="txtClass" left="15%"></TextField>
+				<TextField id="txtSet3" class="txtClass" left="15%" color="red" maxLength="2"></TextField>
 			</View>
 			<View id="buttonView" layout="horizontal" height="SIZE" top="12">
-				<!--Button id="btnSkip" class="bottomBtn" left="20"  title="Previous" onClick="showPrevious"></Button-->
 				<Button id="btnSkip" left="30" width = "110" title="Jump to Next" onClick="skipExercise"></Button>
 				<Button id="btnNext" left="40" title="Save & Next"  onClick="showNext"></Button>
-				<!--Button id="btnFinish" class="bottomBtn" left="10" title="Finish" onClick="showAckView" visible="false"></Button-->
 			</View>
 			</View>
 		</View>

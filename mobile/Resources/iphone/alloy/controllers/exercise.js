@@ -27,22 +27,48 @@ function Controller() {
             alert("Enter reps completed for Set 3");
             return;
         }
+        var weightInput = -1;
         var rep1Input = -1;
         var rep2Input = -1;
         var rep3Input = -1;
+        weightInput = isNumber(weightText);
         rep1Input = isNumber(set1Text);
         rep2Input = isNumber(set2Text);
         rep3Input = isNumber(set3Text);
+        if (0 == weightInput) {
+            alert("Enter only numbers for weight used");
+            return;
+        }
+        if (0 > weightText) {
+            alert("Weight used cannot be less than zero");
+            return;
+        }
         if (0 == rep1Input) {
             alert("Enter only numbers for Set 1 reps");
+            return;
+        }
+        if (0 > set1Text) {
+            alert("Set 1 reps cannot be less than zero");
             return;
         }
         if (0 == rep2Input) {
             alert("Enter only numbers for Set 2 reps");
             return;
         }
+        if (0 > set2Text) {
+            alert("Set 2 reps cannot be less than zero");
+            return;
+        }
         if (0 == rep3Input) {
             alert("Enter only numbers for Set 3 reps");
+            return;
+        }
+        if (0 > set3Text) {
+            alert("Set 3 reps cannot be less than zero");
+            return;
+        }
+        if (set1Text > 12 || set2Text > 12 || set3Text > 12) {
+            alert("Reps Completed cannot be greater than Recommended Reps");
             return;
         }
         var exAttempt = Titanium.Network.createHTTPClient();
@@ -95,11 +121,14 @@ function Controller() {
                     Alloy.Globals.flag = 0;
                     Alloy.Globals.incomplete = [];
                 }
+                alert("there");
                 showAckView();
                 return;
             }
         }
         if (exNum == Alloy.Globals.workouts.length) {
+            0 == Alloy.Globals.incomplete.length && (Alloy.Globals.flag = 0);
+            alert("here");
             showAckView();
             return;
         }
@@ -247,7 +276,8 @@ function Controller() {
         color: "red",
         id: "txtWeight",
         left: "10%",
-        visible: "false"
+        visible: "false",
+        maxLength: "3"
     });
     $.__views.viewId2.add($.__views.txtWeight);
     $.__views.viewId3 = Ti.UI.createView({
@@ -355,9 +385,10 @@ function Controller() {
             fontWeight: "bold"
         },
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        color: "#E9E581",
+        color: "red",
         id: "txtSet1",
-        left: "15%"
+        left: "15%",
+        maxLength: "2"
     });
     $.__views.viewId5.add($.__views.txtSet1);
     $.__views.viewId6 = Ti.UI.createView({
@@ -402,9 +433,10 @@ function Controller() {
             fontWeight: "bold"
         },
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        color: "#E9E581",
+        color: "red",
         id: "txtSet2",
-        left: "15%"
+        left: "15%",
+        maxLength: "2"
     });
     $.__views.viewId6.add($.__views.txtSet2);
     $.__views.viewId7 = Ti.UI.createView({
@@ -449,9 +481,10 @@ function Controller() {
             fontWeight: "bold"
         },
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        color: "#E9E581",
+        color: "red",
         id: "txtSet3",
-        left: "15%"
+        left: "15%",
+        maxLength: "2"
     });
     $.__views.viewId7.add($.__views.txtSet3);
     $.__views.buttonView = Ti.UI.createView({
@@ -515,8 +548,8 @@ function Controller() {
     $.txtSet1.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
     $.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
     $.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
-    1 == exNum && $.exWin.setLeftNavButton(bkBtn);
-    if ("1 mile run on treadmill" == Alloy.Globals.workouts[args].name || "Chinup" == Alloy.Globals.workouts[args].name) {
+    1 != exNum || 0 != Alloy.Globals.flag && Alloy.Globals.incomplete.length != Alloy.Globals.workouts.length || $.exWin.setLeftNavButton(bkBtn);
+    if ("Hip Raises" == Alloy.Globals.workouts[args].name || "Raised Leg Sit Up" == Alloy.Globals.workouts[args].name || "Side Bridge" == Alloy.Globals.workouts[args].name || "Plank" == Alloy.Globals.workouts[args].name || "Dips" == Alloy.Globals.workouts[args].name || "Chinup" == Alloy.Globals.workouts[args].name) {
         $.txtWeight.value = "N/A";
         $.txtWeight.editable = "false";
     }

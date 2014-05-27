@@ -23,10 +23,12 @@ bkBtn.addEventListener("click", function(e){
 	$.txtSet2.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 	$.txtSet3.keyboardType = Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION;
 	
-	if(exNum == 1){
+	if((exNum == 1) && (Alloy.Globals.flag == 0 || Alloy.Globals.incomplete.length == Alloy.Globals.workouts.length)){
 		$.exWin.setLeftNavButton(bkBtn);
 	}
-	if(Alloy.Globals.workouts[args].name == "1 mile run on treadmill" || Alloy.Globals.workouts[args].name == "Chinup"){
+	if(Alloy.Globals.workouts[args].name == "Hip Raises" || Alloy.Globals.workouts[args].name == "Raised Leg Sit Up" ||
+		 Alloy.Globals.workouts[args].name == "Side Bridge" || Alloy.Globals.workouts[args].name == "Plank" ||
+		Alloy.Globals.workouts[args].name == "Dips" ||  Alloy.Globals.workouts[args].name == "Chinup"){
 		$.txtWeight.value = "N/A";
 		$.txtWeight.editable = "false";
 	}
@@ -97,25 +99,56 @@ function showNext(){
 		return;
 	}
 	
+	var weightInput = -1;
 	var rep1Input = -1;
 	var rep2Input = -1;
 	var rep3Input = -1;
+	weightInput = isNumber(weightText);
 	rep1Input = isNumber(set1Text);
 	rep2Input = isNumber(set2Text);
 	rep3Input = isNumber(set3Text);
+	
+	if(weightInput == 0) {
+		alert("Enter only numbers for weight used");
+		return;
+	}
+	else if(weightText < 0) {
+		alert("Weight used cannot be less than zero");
+		return;
+	}
 		
 	if(rep1Input == 0) {
 		alert("Enter only numbers for Set 1 reps");
 		return;
 	}
+	else if(set1Text < 0) {
+		alert("Set 1 reps cannot be less than zero");
+		return;
+	}
+	
 	if(rep2Input == 0) {
 		alert("Enter only numbers for Set 2 reps");
 		return;
 	}
+	else if(set2Text < 0) {
+		alert("Set 2 reps cannot be less than zero");
+		return;
+	}
+	
 	if(rep3Input == 0) {
 		alert("Enter only numbers for Set 3 reps");
 		return;
 	}
+	else if(set3Text < 0) {
+		alert("Set 3 reps cannot be less than zero");
+		return;
+	}
+	
+	if(set1Text > 12 || set2Text > 12 || set3Text > 12){
+		alert("Reps Completed cannot be greater than Recommended Reps");
+		return;
+	}
+	
 	
 	var exAttempt = Titanium.Network.createHTTPClient();		
         exAttempt.open("POST","http://localhost:3000/exercise/"+exId+"/attempt");
@@ -188,6 +221,9 @@ function showNext(){
 	}
 	
 	if(exNum == Alloy.Globals.workouts.length) {
+		if(Alloy.Globals.incomplete.length == 0){
+			Alloy.Globals.flag = 0;
+		}
 		showAckView();
 		return;
 	}
@@ -197,7 +233,6 @@ function showNext(){
 	else {
 	args = args + 1;
 	}
-	//alert("args:" + args);
 	var workoutsWin = Alloy.createController("exercise",args).getView();
     workoutsWin.open();
    //}
