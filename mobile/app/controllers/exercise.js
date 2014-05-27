@@ -151,7 +151,6 @@ function showNext(){
 				var isEmptyTemp = true;
 				for(var i = 0; i < Alloy.Globals.incomplete.length; i++)
 				{
-					alert("i:" + Alloy.Globals.incomplete[i]);
 					if((Alloy.Globals.incomplete[i] != null) || (typeof Alloy.Globals.incomplete[i]  != 'undefined')) {
 						isEmptyTemp = false;
 						break;

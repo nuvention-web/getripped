@@ -16,11 +16,11 @@ function Controller() {
         id: "__alloyId1"
     });
     $.__views.row.add($.__views.__alloyId1);
-    $.__views.exNum = Ti.UI.createLabel({
-        id: "exNum",
+    $.__views.exImg = Ti.UI.createImageView({
+        id: "exImg",
         left: "10"
     });
-    $.__views.__alloyId1.add($.__views.exNum);
+    $.__views.__alloyId1.add($.__views.exImg);
     $.__views.name = Ti.UI.createLabel({
         id: "name",
         left: "20",
@@ -30,14 +30,13 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0];
-    if (-1 == Alloy.Globals.incomplete.indexOf(args.exNum - 1)) $.row.backgroundColor = "green"; else {
-        $.row.backgroundColor = "red";
+    if (-1 == Alloy.Globals.incomplete.indexOf(args.exNum - 1)) $.exImg.image = "tick.png"; else {
+        $.exImg.image = "cross.png";
         $.row.addEventListener("click", function() {
             var exWin = Alloy.createController("exercise", args.exNum - 1).getView();
             exWin.open();
         });
     }
-    $.exNum.text = args.exNum;
     $.name.text = args.name;
     _.extend($, exports);
 }
