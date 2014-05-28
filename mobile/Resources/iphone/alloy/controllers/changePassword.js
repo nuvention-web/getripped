@@ -55,7 +55,7 @@ function Controller() {
         id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#DE1B1B",
+        backgroundColor: "#3B74F5",
         borderWidth: "2",
         borderColor: "#F6F6F6"
     });
@@ -148,7 +148,7 @@ function Controller() {
             size: 9,
             fontWeight: "bold"
         },
-        width: 50,
+        width: 60,
         backgroundImage: "backBtn.png"
     });
     $.changePasswordWin.setLeftNavButton(bkBtn);

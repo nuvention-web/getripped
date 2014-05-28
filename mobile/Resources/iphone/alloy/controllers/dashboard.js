@@ -52,7 +52,7 @@ function Controller() {
         top: "0",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#DE1B1B",
+        backgroundColor: "#3B74F5",
         borderWidth: "3",
         borderColor: "#F6F6F6",
         id: "__alloyId2"

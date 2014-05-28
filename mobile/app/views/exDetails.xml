@@ -3,7 +3,7 @@
 	<Window id="exDetailsWin" backgroundColor="#F1F1F1" title="SwoleTrain">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<View id="mainView" layout="vertical">
-				<View id = "topView" layout="vertical" height="SIZE"  backgroundColor="#DE1B1B">
+				<View id = "topView" layout="vertical" height="SIZE"  backgroundColor="#3B74F5">
 					<Label id="eName" top="10" color="#F1F1F1"></Label>
 				</View>
 				<View id = "imageView" layout="vertical" height="SIZE">

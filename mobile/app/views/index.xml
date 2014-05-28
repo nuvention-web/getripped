@@ -2,7 +2,7 @@
 	<NavigationWindow id="navGroupWin" platform="ios">
 	<Window id="indexWin" backgroundColor="#F6F6F6" title="SwoleTrain">
 		<View layout="vertical">
-		<View layout="vertical" height="SIZE" backgroundColor="#DE1B1B">
+		<View layout="vertical" height="SIZE" backgroundColor="#3B74F5">
 			<Label id="topText" left="10" color="#F6F6F6" top="10">Customized weight training routines</Label>
 			<Label id="topText" left="10" color="#F6F6F6">Build your muscle</Label>
 			<Label id="topText" left="10" color="#F6F6F6">See your progress</Label>

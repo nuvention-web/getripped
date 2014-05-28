@@ -2,7 +2,7 @@
 	<NavigationWindow id="exNavWin">
 	<Window id="workoutWinId" class="container" height="100%" backgroundColor="#F1F1F1">
 	<View layout="vertical">
-		<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#DE1B1B">
+		<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#3B74F5">
 				<Label id="label" class="getRippedText" bottom="10" height="SIZE" color="#F6F6F6" top="10">Exercises to make you Swole today</Label>
 		</View>
 		<View id="view1" layout="vertical" height="SIZE" top="20" bottom="20">

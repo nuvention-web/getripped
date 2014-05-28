@@ -28,7 +28,7 @@ function Controller() {
         id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#DE1B1B"
+        backgroundColor: "#3B74F5"
     });
     $.__views.__alloyId0.add($.__views.topView);
     $.__views.label = Ti.UI.createLabel({

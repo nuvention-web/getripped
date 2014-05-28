@@ -5,7 +5,7 @@
 			
 		<View id="mainView" layout="vertical">
 			<View id="viewId" layout="vertical" height="SIZE" bottom="10">
-				<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#DE1B1B">
+				<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#3B74F5">
 				<Label id="workoutTitle" class="showExCount" color="#ffffff"> </Label>
 				<Label id="eName" top="5" height="SIZE" color="#F6F6F6"></Label>
 				</View>
