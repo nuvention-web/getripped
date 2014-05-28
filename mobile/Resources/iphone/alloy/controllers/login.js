@@ -154,7 +154,7 @@ function Controller() {
             fontWeight: "bold"
         },
         width: 50,
-        backgroundImage: "back.png"
+        backgroundImage: "backBtn.png"
     });
     $.loginWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {

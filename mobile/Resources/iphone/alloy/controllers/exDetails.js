@@ -89,7 +89,7 @@ function Controller() {
             fontWeight: "bold"
         },
         width: 50,
-        backgroundImage: "back.png"
+        backgroundImage: "backBtn.png"
     });
     $.exDetailsWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {

@@ -530,7 +530,6 @@ function Controller() {
             fontWeight: "bold"
         },
         width: 60,
-        backgroundColor: "transparent",
         backgroundImage: "backBtn.png"
     });
     bkBtn.addEventListener("click", function() {

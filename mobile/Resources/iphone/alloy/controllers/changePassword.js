@@ -149,7 +149,7 @@ function Controller() {
             fontWeight: "bold"
         },
         width: 50,
-        backgroundImage: "back.png"
+        backgroundImage: "backBtn.png"
     });
     $.changePasswordWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {

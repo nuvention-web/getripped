@@ -212,7 +212,7 @@ function Controller() {
             fontWeight: "bold"
         },
         width: 50,
-        backgroundImage: "back.png"
+        backgroundImage: "backBtn.png"
     });
     $.signupWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {
