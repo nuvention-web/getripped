@@ -75,7 +75,7 @@ function Controller() {
     var __defers = {};
     $.__views.signupWin = Ti.UI.createWindow({
         id: "signupWin",
-        backgroundColor: "#F6F6F6",
+        backgroundColor: "#F1F1F1",
         title: "SwoleTrain"
     });
     $.__views.mainView = Ti.UI.createScrollView({
@@ -89,7 +89,9 @@ function Controller() {
         id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#3B74F5"
+        backgroundColor: "#3B74F5",
+        borderWidth: "2",
+        borderColor: "#F6F6F6"
     });
     $.__views.mainView.add($.__views.topView);
     $.__views.label = Ti.UI.createLabel({
@@ -122,7 +124,9 @@ function Controller() {
         id: "view1",
         layout: "vertical",
         height: "SIZE",
-        top: "20"
+        top: "20",
+        borderWidth: "2",
+        borderColor: "#F1F1F1"
     });
     $.__views.mainView.add($.__views.view1);
     $.__views.txtFirstName = Ti.UI.createTextField({
@@ -134,7 +138,6 @@ function Controller() {
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtFirstName",
-        top: "10",
         hintText: "First Name"
     });
     $.__views.view1.add($.__views.txtFirstName);
@@ -183,7 +186,9 @@ function Controller() {
         id: "view4",
         top: "20",
         layout: "vertical",
-        backgroundColor: "#2B2B2B"
+        backgroundColor: "#2B2B2B",
+        borderWidth: "2",
+        borderColor: "#F6F6F6"
     });
     $.__views.mainView.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
