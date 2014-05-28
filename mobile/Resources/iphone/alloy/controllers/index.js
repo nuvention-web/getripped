@@ -24,7 +24,7 @@ function Controller() {
             fontWeight: "bold"
         },
         id: "indexWin",
-        backgroundColor: "#F6F6F6",
+        backgroundColor: "#F1F1F1",
         title: "SwoleTrain"
     });
     $.__views.__alloyId28 = Ti.UI.createView({
@@ -44,57 +44,24 @@ function Controller() {
             fontSize: 18,
             fontWeight: "bold"
         },
-        text: "Customized weight training routines",
+        text: "SwoleTrain helps you lift more",
         id: "topText",
-        left: "10",
         color: "#F6F6F6",
-        top: "10"
-    });
-    $.__views.__alloyId29.add($.__views.topText);
-    $.__views.topText = Ti.UI.createLabel({
-        font: {
-            fontSize: 18,
-            fontWeight: "bold"
-        },
-        text: "Build your muscle",
-        id: "topText",
-        left: "10",
-        color: "#F6F6F6"
-    });
-    $.__views.__alloyId29.add($.__views.topText);
-    $.__views.topText = Ti.UI.createLabel({
-        font: {
-            fontSize: 18,
-            fontWeight: "bold"
-        },
-        text: "See your progress",
-        id: "topText",
-        left: "10",
-        color: "#F6F6F6"
-    });
-    $.__views.__alloyId29.add($.__views.topText);
-    $.__views.topText = Ti.UI.createLabel({
-        font: {
-            fontSize: 18,
-            fontWeight: "bold"
-        },
-        text: "Get SWOLE",
-        id: "topText",
-        left: "10",
-        color: "#F6F6F6",
-        bottom: "10"
+        top: "10",
+        bottom: "10",
+        height: "SIZE"
     });
     $.__views.__alloyId29.add($.__views.topText);
     $.__views.__alloyId30 = Ti.UI.createView({
         layout: "vertical",
-        height: "SIZE",
+        height: "60%",
         backgroundColor: "#F6F6F6",
         id: "__alloyId30"
     });
     $.__views.__alloyId28.add($.__views.__alloyId30);
     $.__views.__alloyId31 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
-        top: "10",
+        top: "40",
         width: "80%",
         id: "__alloyId31"
     });
