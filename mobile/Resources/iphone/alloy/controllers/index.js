@@ -24,87 +24,61 @@ function Controller() {
             fontWeight: "bold"
         },
         id: "indexWin",
-        backgroundColor: "#F6F6F6",
+        backgroundColor: "#F1F1F1",
         title: "SwoleTrain"
     });
-    $.__views.__alloyId28 = Ti.UI.createView({
+    $.__views.__alloyId26 = Ti.UI.createView({
         layout: "vertical",
-        id: "__alloyId28"
+        id: "__alloyId26"
     });
-    $.__views.indexWin.add($.__views.__alloyId28);
-    $.__views.__alloyId29 = Ti.UI.createView({
+    $.__views.indexWin.add($.__views.__alloyId26);
+    $.__views.__alloyId27 = Ti.UI.createView({
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#DE1B1B",
+        backgroundColor: "#3B74F5",
+        borderWidth: "2",
+        borderColor: "#F6F6F6",
+        id: "__alloyId27"
+    });
+    $.__views.__alloyId26.add($.__views.__alloyId27);
+    $.__views.topText = Ti.UI.createLabel({
+        font: {
+            fontSize: 18,
+            fontWeight: "bold"
+        },
+        text: "SwoleTrain helps you lift more",
+        id: "topText",
+        color: "#F6F6F6",
+        top: "10",
+        bottom: "10",
+        height: "SIZE"
+    });
+    $.__views.__alloyId27.add($.__views.topText);
+    $.__views.__alloyId28 = Ti.UI.createView({
+        layout: "vertical",
+        height: "60%",
+        backgroundColor: "#F6F6F6",
+        borderWidth: "2",
+        borderColor: "#F6F6F6",
+        id: "__alloyId28"
+    });
+    $.__views.__alloyId26.add($.__views.__alloyId28);
+    $.__views.__alloyId29 = Ti.UI.createImageView({
+        image: "SwoleTrainLogo.png",
+        top: "40",
+        width: "80%",
+        left: "5",
         id: "__alloyId29"
     });
     $.__views.__alloyId28.add($.__views.__alloyId29);
-    $.__views.topText = Ti.UI.createLabel({
-        font: {
-            fontSize: 18,
-            fontWeight: "bold"
-        },
-        text: "Customized weight training routines",
-        id: "topText",
-        left: "10",
-        color: "#F6F6F6",
-        top: "10"
-    });
-    $.__views.__alloyId29.add($.__views.topText);
-    $.__views.topText = Ti.UI.createLabel({
-        font: {
-            fontSize: 18,
-            fontWeight: "bold"
-        },
-        text: "Build your muscle",
-        id: "topText",
-        left: "10",
-        color: "#F6F6F6"
-    });
-    $.__views.__alloyId29.add($.__views.topText);
-    $.__views.topText = Ti.UI.createLabel({
-        font: {
-            fontSize: 18,
-            fontWeight: "bold"
-        },
-        text: "See your progress",
-        id: "topText",
-        left: "10",
-        color: "#F6F6F6"
-    });
-    $.__views.__alloyId29.add($.__views.topText);
-    $.__views.topText = Ti.UI.createLabel({
-        font: {
-            fontSize: 18,
-            fontWeight: "bold"
-        },
-        text: "Get SWOLE",
-        id: "topText",
-        left: "10",
-        color: "#F6F6F6",
-        bottom: "10"
-    });
-    $.__views.__alloyId29.add($.__views.topText);
-    $.__views.__alloyId30 = Ti.UI.createView({
-        layout: "vertical",
-        height: "SIZE",
-        backgroundColor: "#F6F6F6",
-        id: "__alloyId30"
-    });
-    $.__views.__alloyId28.add($.__views.__alloyId30);
-    $.__views.__alloyId31 = Ti.UI.createImageView({
-        image: "SwoleTrainLogo.png",
-        top: "10",
-        width: "80%",
-        id: "__alloyId31"
-    });
-    $.__views.__alloyId30.add($.__views.__alloyId31);
     $.__views.view4 = Ti.UI.createView({
         id: "view4",
         layout: "vertical",
-        backgroundColor: "#2B2B2B"
+        backgroundColor: "#2B2B2B",
+        borderWidth: "2",
+        borderColor: "#F6F6F6"
     });
-    $.__views.__alloyId28.add($.__views.view4);
+    $.__views.__alloyId26.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
         width: "150dp",
         height: "35dp",

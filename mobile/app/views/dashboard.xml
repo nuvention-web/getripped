@@ -3,7 +3,7 @@
 	<Window id="dashboardWin" backgroundColor="#F1F1F1">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<View id="mainView" layout="vertical">
-				<View top = "0" layout="vertical"  height="SIZE" backgroundColor="#DE1B1B" borderWidth="3" borderColor="#F6F6F6">
+				<View top = "0" layout="vertical"  height="SIZE" backgroundColor="#3B74F5" borderWidth="3" borderColor="#F6F6F6">
 					<Label top="5" bottom="5" id="welcomeLabel" color="#F6F6F6" height="SIZE"></Label>
 				</View>
 				<!--View id="warmUpView" layout="vertical" height="SIZE" top="0" class="workoutVkiew" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
@@ -39,12 +39,12 @@
 					</View>
 				</View>
 				<View id="bottomLinks" layout="vertical" height="SIZE" top="20">
-						<Label class="activityLabel" color="#2B2B2B" left="10">Activity:</Label>
+						<!--Label class="activityLabel" color="#2B2B2B" left="10">Activity:</Label>
 						<View id="links" layout="horizontal" height="SIZE">
 						<Button left="10"  title="Change Password" onClick="showChangePassword"></Button>
-						<Button title="  |  "></Button>
-						<Button title="Logout" onClick="logout"></Button>
-						</View>
+						<Button title="  |  "></Button-->
+						<Button title="Logout" class="logoutBtn" onClick="logout"></Button>
+						<!--/View-->
 				</View>
 			</View>		
 		</ScrollView>

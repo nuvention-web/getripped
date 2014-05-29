@@ -1,11 +1,11 @@
 var bkBtn = Titanium.UI.createButton({
 height: 25,
 font:{size:9, fontWeight:'bold'},
-width: 50,
-backgroundImage: 'back.png',
+width: 60,
+backgroundImage: 'backBtn.png',
 });
 $.signupWin.setLeftNavButton(bkBtn);
-//$.loginWin.setTitleAttributes(color:'blue',font: {fontFamily:'Snell Roundhand', fontSize:36},shadow:{color:'gray', offset:{width:1,height:1}});
+
 
 bkBtn.addEventListener("click", function(e){
 		 var workoutsWin = Alloy.createController("index",{}).getView();
@@ -56,6 +56,7 @@ function signupUser(){
         
      loginReq.onload = function()
 	{
+		$.maskImg.visible = "true";
     	var json = this.responseText;
     	var response = JSON.parse(json);
     	//alert(response.message);
@@ -92,6 +93,7 @@ function signupUser(){
     	else {
     		alert("Unexpected error. Please try again.");
     	}
+    	$.maskImg.visible = "false";
 	}; 
 }
 
