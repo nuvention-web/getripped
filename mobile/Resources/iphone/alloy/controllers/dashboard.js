@@ -44,16 +44,16 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.scrollviewId.add($.__views.mainView);
-    $.__views.__alloyId2 = Ti.UI.createView({
+    $.__views.__alloyId3 = Ti.UI.createView({
         top: "0",
         layout: "vertical",
         height: "SIZE",
         backgroundColor: "#3B74F5",
         borderWidth: "3",
         borderColor: "#F6F6F6",
-        id: "__alloyId2"
+        id: "__alloyId3"
     });
-    $.__views.mainView.add($.__views.__alloyId2);
+    $.__views.mainView.add($.__views.__alloyId3);
     $.__views.welcomeLabel = Ti.UI.createLabel({
         font: {
             fontSize: 20,
@@ -65,7 +65,7 @@ function Controller() {
         color: "#F6F6F6",
         height: "SIZE"
     });
-    $.__views.__alloyId2.add($.__views.welcomeLabel);
+    $.__views.__alloyId3.add($.__views.welcomeLabel);
     $.__views.upperBodyView = Ti.UI.createView({
         id: "upperBodyView",
         layout: "vertical",
@@ -76,7 +76,7 @@ function Controller() {
         borderColor: "#F6F6F6"
     });
     $.__views.mainView.add($.__views.upperBodyView);
-    $.__views.__alloyId3 = Ti.UI.createLabel({
+    $.__views.__alloyId4 = Ti.UI.createLabel({
         font: {
             fontWeight: "bold",
             fontSize: 18
@@ -85,10 +85,10 @@ function Controller() {
         text: "Upper Body:",
         top: "10",
         left: "10",
-        id: "__alloyId3"
+        id: "__alloyId4"
     });
-    $.__views.upperBodyView.add($.__views.__alloyId3);
-    $.__views.__alloyId4 = Ti.UI.createLabel({
+    $.__views.upperBodyView.add($.__views.__alloyId4);
+    $.__views.__alloyId5 = Ti.UI.createLabel({
         font: {
             fontWeight: "bold",
             fontSize: 14
@@ -97,9 +97,9 @@ function Controller() {
         text: "Average Weight Lifted:",
         top: "15",
         left: "10",
-        id: "__alloyId4"
+        id: "__alloyId5"
     });
-    $.__views.upperBodyView.add($.__views.__alloyId4);
+    $.__views.upperBodyView.add($.__views.__alloyId5);
     $.__views.pbUpper = Ti.UI.createProgressBar({
         id: "pbUpper",
         top: "5",
@@ -110,27 +110,27 @@ function Controller() {
         color: "#FFFFFF"
     });
     $.__views.upperBodyView.add($.__views.pbUpper);
-    $.__views.__alloyId5 = Ti.UI.createView({
+    $.__views.__alloyId6 = Ti.UI.createView({
         layout: "horizontal",
         height: "SIZE",
         top: "2",
-        id: "__alloyId5"
+        id: "__alloyId6"
     });
-    $.__views.upperBodyView.add($.__views.__alloyId5);
+    $.__views.upperBodyView.add($.__views.__alloyId6);
     $.__views.minUpper = Ti.UI.createLabel({
         id: "minUpper",
         left: "40",
         font: "{fontSize: 12, fontWeight:bold}",
         color: "#FFFFFF"
     });
-    $.__views.__alloyId5.add($.__views.minUpper);
+    $.__views.__alloyId6.add($.__views.minUpper);
     $.__views.currentUpper = Ti.UI.createLabel({
         id: "currentUpper",
         left: "10",
         font: "{fontSize: 12, fontWeight:bold}",
         color: "#FFFFFF"
     });
-    $.__views.__alloyId5.add($.__views.currentUpper);
+    $.__views.__alloyId6.add($.__views.currentUpper);
     $.__views.upperBodyLinks = Ti.UI.createView({
         id: "upperBodyLinks",
         layout: "horizontal",
@@ -138,22 +138,22 @@ function Controller() {
         top: "0"
     });
     $.__views.upperBodyView.add($.__views.upperBodyLinks);
-    $.__views.__alloyId6 = Ti.UI.createButton({
+    $.__views.__alloyId7 = Ti.UI.createButton({
         top: "5",
         left: "10",
         title: "Start Workout",
-        id: "__alloyId6"
-    });
-    $.__views.upperBodyLinks.add($.__views.__alloyId6);
-    showUpperBodyWorkout ? $.__views.__alloyId6.addEventListener("click", showUpperBodyWorkout) : __defers["$.__views.__alloyId6!click!showUpperBodyWorkout"] = true;
-    $.__views.__alloyId7 = Ti.UI.createButton({
-        top: "5",
-        left: "20",
-        title: "See all Exercises",
         id: "__alloyId7"
     });
     $.__views.upperBodyLinks.add($.__views.__alloyId7);
-    showUpperBodyExercises ? $.__views.__alloyId7.addEventListener("click", showUpperBodyExercises) : __defers["$.__views.__alloyId7!click!showUpperBodyExercises"] = true;
+    showUpperBodyWorkout ? $.__views.__alloyId7.addEventListener("click", showUpperBodyWorkout) : __defers["$.__views.__alloyId7!click!showUpperBodyWorkout"] = true;
+    $.__views.__alloyId8 = Ti.UI.createButton({
+        top: "5",
+        left: "20",
+        title: "See all Exercises",
+        id: "__alloyId8"
+    });
+    $.__views.upperBodyLinks.add($.__views.__alloyId8);
+    showUpperBodyExercises ? $.__views.__alloyId8.addEventListener("click", showUpperBodyExercises) : __defers["$.__views.__alloyId8!click!showUpperBodyExercises"] = true;
     $.__views.lowerBodyView = Ti.UI.createView({
         id: "lowerBodyView",
         layout: "vertical",
@@ -164,7 +164,7 @@ function Controller() {
         borderColor: "#F6F6F6"
     });
     $.__views.mainView.add($.__views.lowerBodyView);
-    $.__views.__alloyId8 = Ti.UI.createLabel({
+    $.__views.__alloyId9 = Ti.UI.createLabel({
         font: {
             fontWeight: "bold",
             fontSize: 18
@@ -173,10 +173,10 @@ function Controller() {
         text: "Lower Body:",
         top: "10",
         left: "10",
-        id: "__alloyId8"
+        id: "__alloyId9"
     });
-    $.__views.lowerBodyView.add($.__views.__alloyId8);
-    $.__views.__alloyId9 = Ti.UI.createLabel({
+    $.__views.lowerBodyView.add($.__views.__alloyId9);
+    $.__views.__alloyId10 = Ti.UI.createLabel({
         font: {
             fontWeight: "bold",
             fontSize: 14
@@ -185,9 +185,9 @@ function Controller() {
         text: "Average Weight Lifted:",
         top: "15",
         left: "10",
-        id: "__alloyId9"
+        id: "__alloyId10"
     });
-    $.__views.lowerBodyView.add($.__views.__alloyId9);
+    $.__views.lowerBodyView.add($.__views.__alloyId10);
     $.__views.pbLower = Ti.UI.createProgressBar({
         id: "pbLower",
         top: "5",
@@ -198,27 +198,27 @@ function Controller() {
         color: "#FFFFFF"
     });
     $.__views.lowerBodyView.add($.__views.pbLower);
-    $.__views.__alloyId10 = Ti.UI.createView({
+    $.__views.__alloyId11 = Ti.UI.createView({
         layout: "horizontal",
         height: "SIZE",
         top: "2",
-        id: "__alloyId10"
+        id: "__alloyId11"
     });
-    $.__views.lowerBodyView.add($.__views.__alloyId10);
+    $.__views.lowerBodyView.add($.__views.__alloyId11);
     $.__views.minLower = Ti.UI.createLabel({
         id: "minLower",
         left: "40",
         font: "{fontSize: 12, fontWeight:bold}",
         color: "#FFFFFF"
     });
-    $.__views.__alloyId10.add($.__views.minLower);
+    $.__views.__alloyId11.add($.__views.minLower);
     $.__views.currentLower = Ti.UI.createLabel({
         id: "currentLower",
         left: "10",
         font: "{fontSize: 12, fontWeight:bold}",
         color: "#FFFFFF"
     });
-    $.__views.__alloyId10.add($.__views.currentLower);
+    $.__views.__alloyId11.add($.__views.currentLower);
     $.__views.upperBodyLinks = Ti.UI.createView({
         id: "upperBodyLinks",
         layout: "horizontal",
@@ -226,22 +226,22 @@ function Controller() {
         top: "0"
     });
     $.__views.lowerBodyView.add($.__views.upperBodyLinks);
-    $.__views.__alloyId11 = Ti.UI.createButton({
+    $.__views.__alloyId12 = Ti.UI.createButton({
         top: "5",
         left: "10",
         title: "Start Workout",
-        id: "__alloyId11"
-    });
-    $.__views.upperBodyLinks.add($.__views.__alloyId11);
-    showLowerBodyWorkout ? $.__views.__alloyId11.addEventListener("click", showLowerBodyWorkout) : __defers["$.__views.__alloyId11!click!showLowerBodyWorkout"] = true;
-    $.__views.__alloyId12 = Ti.UI.createButton({
-        top: "5",
-        left: "20",
-        title: "See all Exercises",
         id: "__alloyId12"
     });
     $.__views.upperBodyLinks.add($.__views.__alloyId12);
-    showLowerBodyExercises ? $.__views.__alloyId12.addEventListener("click", showLowerBodyExercises) : __defers["$.__views.__alloyId12!click!showLowerBodyExercises"] = true;
+    showLowerBodyWorkout ? $.__views.__alloyId12.addEventListener("click", showLowerBodyWorkout) : __defers["$.__views.__alloyId12!click!showLowerBodyWorkout"] = true;
+    $.__views.__alloyId13 = Ti.UI.createButton({
+        top: "5",
+        left: "20",
+        title: "See all Exercises",
+        id: "__alloyId13"
+    });
+    $.__views.upperBodyLinks.add($.__views.__alloyId13);
+    showLowerBodyExercises ? $.__views.__alloyId13.addEventListener("click", showLowerBodyExercises) : __defers["$.__views.__alloyId13!click!showLowerBodyExercises"] = true;
     $.__views.bottomLinks = Ti.UI.createView({
         id: "bottomLinks",
         layout: "vertical",
@@ -249,7 +249,7 @@ function Controller() {
         top: "20"
     });
     $.__views.mainView.add($.__views.bottomLinks);
-    $.__views.__alloyId13 = Ti.UI.createButton({
+    $.__views.__alloyId14 = Ti.UI.createButton({
         top: 20,
         width: 100,
         height: 35,
@@ -262,10 +262,10 @@ function Controller() {
             fontSize: 14
         },
         title: "Logout",
-        id: "__alloyId13"
+        id: "__alloyId14"
     });
-    $.__views.bottomLinks.add($.__views.__alloyId13);
-    logout ? $.__views.__alloyId13.addEventListener("click", logout) : __defers["$.__views.__alloyId13!click!logout"] = true;
+    $.__views.bottomLinks.add($.__views.__alloyId14);
+    logout ? $.__views.__alloyId14.addEventListener("click", logout) : __defers["$.__views.__alloyId14!click!logout"] = true;
     $.__views.dashBoardNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.dashboardWin,
         id: "dashBoardNavWin"
@@ -304,11 +304,11 @@ function Controller() {
     xhr.send();
     $.pbUpper.show();
     $.pbLower.show();
-    __defers["$.__views.__alloyId6!click!showUpperBodyWorkout"] && $.__views.__alloyId6.addEventListener("click", showUpperBodyWorkout);
-    __defers["$.__views.__alloyId7!click!showUpperBodyExercises"] && $.__views.__alloyId7.addEventListener("click", showUpperBodyExercises);
-    __defers["$.__views.__alloyId11!click!showLowerBodyWorkout"] && $.__views.__alloyId11.addEventListener("click", showLowerBodyWorkout);
-    __defers["$.__views.__alloyId12!click!showLowerBodyExercises"] && $.__views.__alloyId12.addEventListener("click", showLowerBodyExercises);
-    __defers["$.__views.__alloyId13!click!logout"] && $.__views.__alloyId13.addEventListener("click", logout);
+    __defers["$.__views.__alloyId7!click!showUpperBodyWorkout"] && $.__views.__alloyId7.addEventListener("click", showUpperBodyWorkout);
+    __defers["$.__views.__alloyId8!click!showUpperBodyExercises"] && $.__views.__alloyId8.addEventListener("click", showUpperBodyExercises);
+    __defers["$.__views.__alloyId12!click!showLowerBodyWorkout"] && $.__views.__alloyId12.addEventListener("click", showLowerBodyWorkout);
+    __defers["$.__views.__alloyId13!click!showLowerBodyExercises"] && $.__views.__alloyId13.addEventListener("click", showLowerBodyExercises);
+    __defers["$.__views.__alloyId14!click!logout"] && $.__views.__alloyId14.addEventListener("click", logout);
     _.extend($, exports);
 }
 

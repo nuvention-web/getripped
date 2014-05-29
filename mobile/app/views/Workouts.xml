@@ -6,10 +6,11 @@
 				<Label id="label" class="getRippedText" bottom="10" height="SIZE" color="#F6F6F6" top="10">Exercises to make you Swole today</Label>
 		</View>
 		<View id="view1" layout="vertical" height="SIZE" top="20" bottom="20">
-		<TableView id="workoutsTable" class="workoutTable" height="SIZE" backgroundColor="transparent">		
+		<TableView id="workoutsTable" class="workoutTable" height="SIZE" backgroundColor="transparent" onClick="alertMsg">		
 		</TableView>
 		</View>
 		<View id = "bottomView" layout="vertical" backgroundColor="#2B2B2B">
+			<Button title="Start Workout" top="20" class="btnWorkout" onClick="startWorkout"></Button>
 		</View>
 	</View>
 	</Window>

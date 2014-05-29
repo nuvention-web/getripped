@@ -56,6 +56,7 @@ function signupUser(){
         
      loginReq.onload = function()
 	{
+		$.maskImg.visible = "true";
     	var json = this.responseText;
     	var response = JSON.parse(json);
     	//alert(response.message);
@@ -92,6 +93,7 @@ function signupUser(){
     	else {
     		alert("Unexpected error. Please try again.");
     	}
+    	$.maskImg.visible = "false";
 	}; 
 }
 

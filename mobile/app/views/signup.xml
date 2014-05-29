@@ -15,6 +15,7 @@
 		<View id="view4" layout="vertical" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
 		<Button id="btnSubmit" top="20" class="getRippedBtn" verticalAlign="center" title="Get Swole" onClick="signupUser"></Button>
 		</View>
+		<MaskedImage id="maskImg" mask="loading-icon.png" height="30" width="30" visible="false"></MaskedImage>
 		</ScrollView>
 	</Window>
 	 </NavigationWindow>

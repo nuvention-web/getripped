@@ -37,6 +37,7 @@ function Controller() {
         };
         loginReq.send(user);
         loginReq.onload = function() {
+            $.maskImg.visible = "true";
             var json = this.responseText;
             var response = JSON.parse(json);
             if ("succeeded" == response.message) {
@@ -58,6 +59,7 @@ function Controller() {
                     }
                 };
             } else "failed" == response.message ? alert("Username already exists!!!") : alert("Unexpected error. Please try again.");
+            $.maskImg.visible = "false";
         };
     }
     function validateEmail(email) {
@@ -107,7 +109,7 @@ function Controller() {
         top: "10"
     });
     $.__views.topView.add($.__views.label);
-    $.__views.__alloyId31 = Ti.UI.createLabel({
+    $.__views.__alloyId32 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: "SIZE",
         color: "#F6F6F6",
@@ -117,9 +119,9 @@ function Controller() {
         },
         text: "Give us some info.",
         bottom: "10",
-        id: "__alloyId31"
+        id: "__alloyId32"
     });
-    $.__views.topView.add($.__views.__alloyId31);
+    $.__views.topView.add($.__views.__alloyId32);
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         layout: "vertical",
@@ -202,6 +204,14 @@ function Controller() {
     });
     $.__views.view4.add($.__views.btnSubmit);
     signupUser ? $.__views.btnSubmit.addEventListener("click", signupUser) : __defers["$.__views.btnSubmit!click!signupUser"] = true;
+    $.__views.maskImg = Ti.UI.createMaskedImage({
+        id: "maskImg",
+        mask: "loading-icon.png",
+        height: "30",
+        width: "30",
+        visible: "false"
+    });
+    $.__views.mainView.add($.__views.maskImg);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.signupWin,
         id: "navGroupWin"

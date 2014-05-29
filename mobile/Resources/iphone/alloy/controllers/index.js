@@ -27,20 +27,20 @@ function Controller() {
         backgroundColor: "#F1F1F1",
         title: "SwoleTrain"
     });
-    $.__views.__alloyId25 = Ti.UI.createView({
-        layout: "vertical",
-        id: "__alloyId25"
-    });
-    $.__views.indexWin.add($.__views.__alloyId25);
     $.__views.__alloyId26 = Ti.UI.createView({
+        layout: "vertical",
+        id: "__alloyId26"
+    });
+    $.__views.indexWin.add($.__views.__alloyId26);
+    $.__views.__alloyId27 = Ti.UI.createView({
         layout: "vertical",
         height: "SIZE",
         backgroundColor: "#3B74F5",
         borderWidth: "2",
         borderColor: "#F6F6F6",
-        id: "__alloyId26"
+        id: "__alloyId27"
     });
-    $.__views.__alloyId25.add($.__views.__alloyId26);
+    $.__views.__alloyId26.add($.__views.__alloyId27);
     $.__views.topText = Ti.UI.createLabel({
         font: {
             fontSize: 18,
@@ -53,24 +53,24 @@ function Controller() {
         bottom: "10",
         height: "SIZE"
     });
-    $.__views.__alloyId26.add($.__views.topText);
-    $.__views.__alloyId27 = Ti.UI.createView({
+    $.__views.__alloyId27.add($.__views.topText);
+    $.__views.__alloyId28 = Ti.UI.createView({
         layout: "vertical",
         height: "60%",
         backgroundColor: "#F6F6F6",
         borderWidth: "2",
         borderColor: "#F6F6F6",
-        id: "__alloyId27"
+        id: "__alloyId28"
     });
-    $.__views.__alloyId25.add($.__views.__alloyId27);
-    $.__views.__alloyId28 = Ti.UI.createImageView({
+    $.__views.__alloyId26.add($.__views.__alloyId28);
+    $.__views.__alloyId29 = Ti.UI.createImageView({
         image: "SwoleTrainLogo.png",
         top: "40",
         width: "80%",
         left: "5",
-        id: "__alloyId28"
+        id: "__alloyId29"
     });
-    $.__views.__alloyId27.add($.__views.__alloyId28);
+    $.__views.__alloyId28.add($.__views.__alloyId29);
     $.__views.view4 = Ti.UI.createView({
         id: "view4",
         layout: "vertical",
@@ -78,7 +78,7 @@ function Controller() {
         borderWidth: "2",
         borderColor: "#F6F6F6"
     });
-    $.__views.__alloyId25.add($.__views.view4);
+    $.__views.__alloyId26.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
         width: "150dp",
         height: "35dp",
