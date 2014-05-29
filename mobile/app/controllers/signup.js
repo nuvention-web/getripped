@@ -43,7 +43,7 @@ function signupUser(){
 	
 	var loginReq = Titanium.Network.createHTTPClient();	
         loginReq.withCredentials = true;	
-        loginReq.open("POST","http://localhost:3000/user");
+        loginReq.open("POST","http://swoletrain.herokuapp.com/user");
         var user = { 
         	first_name: fname,
         	last_name: lname,     	 		
@@ -62,7 +62,7 @@ function signupUser(){
     	if(response.message == "succeeded") {
     		var loginRequest = Titanium.Network.createHTTPClient();
         	loginRequest.withCredentials = true;	
-        	loginRequest.open("POST","http://localhost:3000/session");
+        	loginRequest.open("POST","http://swoletrain.herokuapp.com/session");
         	var userLogin = {
             	password: $.txtPassword.value,
             	email: $.txtEmail.value

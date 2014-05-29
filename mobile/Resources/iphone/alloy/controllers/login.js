@@ -12,7 +12,7 @@ function Controller() {
         }
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
-        loginReq.open("POST", "http://localhost:3000/session");
+        loginReq.open("POST", "http://swoletrain.herokuapp.com/session");
         var user = {
             password: pass,
             email: uname
