@@ -28,6 +28,9 @@ function Controller() {
             }
         };
     }
+    function forgotpassword() {
+        alert("Email us at getswoletrain@gmail.com. We will reset your password and notify you back.");
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "login";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -95,8 +98,7 @@ function Controller() {
         id: "txtUsername",
         top: "30",
         hintText: "Email",
-        autocapitalization: "false",
-        value: "lee@gmail.com"
+        autocapitalization: "false"
     });
     $.__views.middleView.add($.__views.txtUsername);
     $.__views.txtPassword = Ti.UI.createTextField({
@@ -109,12 +111,18 @@ function Controller() {
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtPassword",
         top: "10",
-        bottom: "30",
         passwordMask: "true",
-        hintText: "Password",
-        value: "1234"
+        hintText: "Password"
     });
     $.__views.middleView.add($.__views.txtPassword);
+    $.__views.btnSubmit = Ti.UI.createButton({
+        id: "btnSubmit",
+        left: "15",
+        top: "10",
+        title: "Forgot Password? We can help"
+    });
+    $.__views.middleView.add($.__views.btnSubmit);
+    forgotpassword ? $.__views.btnSubmit.addEventListener("click", forgotpassword) : __defers["$.__views.btnSubmit!click!forgotpassword"] = true;
     $.__views.bottomView = Ti.UI.createView({
         id: "bottomView",
         layout: "vertical",
@@ -162,6 +170,7 @@ function Controller() {
         workoutsWin.open();
     });
     $.navGroupWin.open();
+    __defers["$.__views.btnSubmit!click!forgotpassword"] && $.__views.btnSubmit.addEventListener("click", forgotpassword);
     __defers["$.__views.btnSubmit!click!showWorkout"] && $.__views.btnSubmit.addEventListener("click", showWorkout);
     _.extend($, exports);
 }

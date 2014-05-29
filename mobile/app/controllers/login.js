@@ -50,6 +50,10 @@ function showWorkout(){
     
 }
 
+function forgotpassword(){
+	alert("Email us at getswoletrain@gmail.com. We will reset your password and notify you back.");
+}
+
 if(OS_IOS) { 
    $.navGroupWin.open();
 } 

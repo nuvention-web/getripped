@@ -107,7 +107,7 @@ function Controller() {
         top: "10"
     });
     $.__views.topView.add($.__views.label);
-    $.__views.__alloyId34 = Ti.UI.createLabel({
+    $.__views.__alloyId31 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: "SIZE",
         color: "#F6F6F6",
@@ -117,13 +117,13 @@ function Controller() {
         },
         text: "Give us some info.",
         bottom: "10",
-        id: "__alloyId34"
+        id: "__alloyId31"
     });
-    $.__views.topView.add($.__views.__alloyId34);
+    $.__views.topView.add($.__views.__alloyId31);
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         layout: "vertical",
-        height: "SIZE",
+        height: "50%",
         top: "20",
         borderWidth: "2",
         borderColor: "#F1F1F1"
@@ -184,7 +184,6 @@ function Controller() {
     $.__views.view1.add($.__views.txtPassword);
     $.__views.view4 = Ti.UI.createView({
         id: "view4",
-        top: "20",
         layout: "vertical",
         backgroundColor: "#2B2B2B",
         borderWidth: "2",
@@ -197,7 +196,7 @@ function Controller() {
         backgroundColor: "#3B74F5",
         color: "white",
         id: "btnSubmit",
-        top: "30",
+        top: "20",
         verticalAlign: "center",
         title: "Get Swole"
     });

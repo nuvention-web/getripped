@@ -39,12 +39,12 @@
 					</View>
 				</View>
 				<View id="bottomLinks" layout="vertical" height="SIZE" top="20">
-						<Label class="activityLabel" color="#2B2B2B" left="10">Activity:</Label>
+						<!--Label class="activityLabel" color="#2B2B2B" left="10">Activity:</Label>
 						<View id="links" layout="horizontal" height="SIZE">
 						<Button left="10"  title="Change Password" onClick="showChangePassword"></Button>
-						<Button title="  |  "></Button>
-						<Button title="Logout" onClick="logout"></Button>
-						</View>
+						<Button title="  |  "></Button-->
+						<Button title="Logout" class="logoutBtn" onClick="logout"></Button>
+						<!--/View-->
 				</View>
 			</View>		
 		</ScrollView>
