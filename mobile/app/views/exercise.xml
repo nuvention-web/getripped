@@ -4,8 +4,8 @@
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 			
 		<View id="mainView" layout="vertical">
-			<View id="viewId" layout="vertical" height="SIZE" bottom="10">
-				<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#DE1B1B">
+			<View id="viewId" layout="vertical" height="45%" bottom="10">
+				<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#3B74F5">
 				<Label id="workoutTitle" class="showExCount" color="#ffffff"> </Label>
 				<Label id="eName" top="5" height="SIZE" color="#F6F6F6"></Label>
 				</View>
@@ -17,10 +17,10 @@
 				<TextField id="txtWeight" class="txtClass" left="10%" color="red" visible="false" maxLength="3"></TextField>
 			</View>
 			<View id="viewId3" layout="horizontal" height="SIZE" top="10">
-				<Label left="40" class="showExCount">Set</Label><Label left="8%" class="showExCount">Recommended</Label><Label class="showExCount" left="12%">Reps</Label>
+				<Label left="40" class="showExCount">Set</Label><Label left="20" class="showExCount">Recommended</Label><Label class="showExCount" left="40">Reps</Label>
 			</View>
 			<View id="viewId4" layout="horizontal" height="SIZE">
-				<Label left="35%" class="showExCount">Reps</Label><Label class="showExCount" left="16%">Completed</Label>
+				<Label left="35%" class="showExCount">Reps</Label><Label class="showExCount" left="50">Completed</Label>
 			</View>
 			<View id="viewId5" layout="horizontal" height="SIZE" top="2">
 				<Label left="45" class="staticLabel" color= "#ffffff">1</Label>

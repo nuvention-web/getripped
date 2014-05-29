@@ -1,17 +1,14 @@
 <Alloy>
 	<NavigationWindow id="navGroupWin" platform="ios">
-	<Window id="indexWin" backgroundColor="#F6F6F6" title="SwoleTrain">
+	<Window id="indexWin" backgroundColor="#F1F1F1" title="SwoleTrain">
 		<View layout="vertical">
-		<View layout="vertical" height="SIZE" backgroundColor="#DE1B1B">
-			<Label id="topText" left="10" color="#F6F6F6" top="10">Customized weight training routines</Label>
-			<Label id="topText" left="10" color="#F6F6F6">Build your muscle</Label>
-			<Label id="topText" left="10" color="#F6F6F6">See your progress</Label>
-			<Label id="topText" left="10" color="#F6F6F6" bottom="10">Get SWOLE</Label>
+		<View layout="vertical" height="SIZE" backgroundColor="#3B74F5" borderWidth="2" borderColor="#F6F6F6">
+			<Label id="topText" color="#F6F6F6" top="10" bottom="10" height="SIZE">SwoleTrain helps you lift more</Label>
 		</View>
-		<View layout="vertical" height="SIZE" backgroundColor="#F6F6F6">
-			<ImageView image="SwoleTrainLogo.png" top="10" width="80%"></ImageView>
+		<View layout="vertical" height="60%" backgroundColor="#F6F6F6" borderWidth="2" borderColor="#F6F6F6">
+			<ImageView image="SwoleTrainLogo.png" top="40" width="80%" left="5"></ImageView>
 		</View>
-		<View id="view4"  layout="vertical" backgroundColor="#2B2B2B">
+		<View id="view4"  layout="vertical" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
 		<Button id="btnSubmit" top="25" class="getRippedBtn" verticalAlign="center" title="Sign Up" onClick="signupUser"></Button>
 		<Button id="btnUser" top="10" title="Already a user? Sign in here." onClick="openLogin"></Button>
 		</View>	

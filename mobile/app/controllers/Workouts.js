@@ -1,5 +1,4 @@
 var args = arguments[0];
-//alert(args);
 var bkBtn = Titanium.UI.createButton({
 height: 25,
 font:{size:9, fontWeight:'bold'},
@@ -28,4 +27,17 @@ for(var i = 0;  i < Alloy.Globals.workouts.length; i++) {
 //alert(data.name);
 $.workoutsTable.setData(data);
 
+
+function startWorkout(){
+	if(args == "Upper Body") {
+	 Alloy.Globals.startWorkout("Upper Body");
+	}
+	else {
+		Alloy.Globals.startWorkout("Lower Body");
+	}
+}
+
+function alertMsg(){
+	alert("Please click Start Workout");
+}
 

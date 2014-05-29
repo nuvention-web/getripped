@@ -1,4 +1,10 @@
 function Controller() {
+    function startWorkout() {
+        "Upper Body" == args ? Alloy.Globals.startWorkout("Upper Body") : Alloy.Globals.startWorkout("Lower Body");
+    }
+    function alertMsg() {
+        alert("Please click Start Workout");
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "Workouts";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -6,6 +12,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.workoutWinId = Ti.UI.createWindow({
         title: "SwoleTrain",
         fullScreen: false,
@@ -28,7 +35,7 @@ function Controller() {
         id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#DE1B1B"
+        backgroundColor: "#3B74F5"
     });
     $.__views.__alloyId0.add($.__views.topView);
     $.__views.label = Ti.UI.createLabel({
@@ -55,12 +62,30 @@ function Controller() {
         backgroundColor: "transparent"
     });
     $.__views.view1.add($.__views.workoutsTable);
+    alertMsg ? $.__views.workoutsTable.addEventListener("click", alertMsg) : __defers["$.__views.workoutsTable!click!alertMsg"] = true;
     $.__views.bottomView = Ti.UI.createView({
         id: "bottomView",
         layout: "vertical",
         backgroundColor: "#2B2B2B"
     });
     $.__views.__alloyId0.add($.__views.bottomView);
+    $.__views.__alloyId1 = Ti.UI.createButton({
+        width: 150,
+        height: 30,
+        borderRadius: 1,
+        backgroundColor: "#3B74F5",
+        color: "white",
+        font: {
+            fontFamily: "Arial",
+            fontWeight: "bold",
+            fontSize: 14
+        },
+        title: "Start Workout",
+        top: "20",
+        id: "__alloyId1"
+    });
+    $.__views.bottomView.add($.__views.__alloyId1);
+    startWorkout ? $.__views.__alloyId1.addEventListener("click", startWorkout) : __defers["$.__views.__alloyId1!click!startWorkout"] = true;
     $.__views.exNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.workoutWinId,
         id: "exNavWin"
@@ -68,7 +93,7 @@ function Controller() {
     $.__views.exNavWin && $.addTopLevelView($.__views.exNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    arguments[0];
+    var args = arguments[0];
     var bkBtn = Titanium.UI.createButton({
         height: 25,
         font: {
@@ -92,6 +117,8 @@ function Controller() {
         name: Alloy.Globals.workouts[i].name
     }).getView());
     $.workoutsTable.setData(data);
+    __defers["$.__views.workoutsTable!click!alertMsg"] && $.__views.workoutsTable.addEventListener("click", alertMsg);
+    __defers["$.__views.__alloyId1!click!startWorkout"] && $.__views.__alloyId1.addEventListener("click", startWorkout);
     _.extend($, exports);
 }
 

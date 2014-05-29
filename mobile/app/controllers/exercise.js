@@ -4,7 +4,6 @@ var bkBtn = Titanium.UI.createButton({
 height: 25,
 font:{size:9, fontWeight:'bold'},
 width: 60,
-backgroundColor: 'transparent',
 backgroundImage: 'backBtn.png',
 });
 
@@ -36,7 +35,7 @@ bkBtn.addEventListener("click", function(e){
 	/* Code to check if user has attempted the workout previously*/
 	var uId = Alloy.Globals.userId;
 	var exAttempt = Titanium.Network.createHTTPClient();		
-	        exAttempt.open("POST","http://localhost:3000/user/"+uId+"/exercise/"+Alloy.Globals.workouts[args].id+"/attempt/last");
+	        exAttempt.open("POST","http://swoletrain.herokuapp.com//user/"+uId+"/exercise/"+Alloy.Globals.workouts[args].id+"/attempt/last");
 	        var userEx = { 
 				password: "gotraingo"
 	         };
@@ -151,7 +150,7 @@ function showNext(){
 	
 	
 	var exAttempt = Titanium.Network.createHTTPClient();		
-        exAttempt.open("POST","http://localhost:3000/exercise/"+exId+"/attempt");
+        exAttempt.open("POST","http://swoletrain.herokuapp.com/exercise/"+exId+"/attempt");
         var userEx = { 
         	user_id: uId,
 			weight: weightText,
