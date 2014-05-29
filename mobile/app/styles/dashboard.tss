@@ -32,4 +32,13 @@
 	color: "#3B3738"
 }
 
+".logoutBtn": {
+	top:20,
+    width:100,
+    height:35,
+    borderRadius:1,
+    backgroundColor: "#3B74F5",
+	color: "white",
+    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+}
 

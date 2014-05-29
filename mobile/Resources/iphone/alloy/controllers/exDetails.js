@@ -26,7 +26,7 @@ function Controller() {
         id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#DE1B1B"
+        backgroundColor: "#3B74F5"
     });
     $.__views.mainView.add($.__views.topView);
     $.__views.eName = Ti.UI.createLabel({
@@ -88,8 +88,8 @@ function Controller() {
             size: 9,
             fontWeight: "bold"
         },
-        width: 50,
-        backgroundImage: "back.png"
+        width: 60,
+        backgroundImage: "backBtn.png"
     });
     $.exDetailsWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {

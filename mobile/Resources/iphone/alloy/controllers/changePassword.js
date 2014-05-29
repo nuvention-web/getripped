@@ -47,15 +47,14 @@ function Controller() {
     $.__views.changePasswordWin.add($.__views.mainView);
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
-        layout: "vertical",
-        top: "20%"
+        layout: "vertical"
     });
     $.__views.mainView.add($.__views.view1);
     $.__views.topView = Ti.UI.createView({
         id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#DE1B1B",
+        backgroundColor: "#3B74F5",
         borderWidth: "2",
         borderColor: "#F6F6F6"
     });
@@ -76,8 +75,8 @@ function Controller() {
     $.__views.middleView = Ti.UI.createView({
         id: "middleView",
         layout: "vertical",
-        height: "SIZE",
-        backgroundColor: "#2B2B2B",
+        height: "60%",
+        backgroundColor: "#F1F1F1",
         borderWidth: "2",
         borderColor: "#F6F6F6"
     });
@@ -91,7 +90,7 @@ function Controller() {
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "newPassword",
-        top: "10",
+        top: "30",
         passwordMask: "true",
         hintText: "Enter New Password"
     });
@@ -114,8 +113,9 @@ function Controller() {
     $.__views.bottomView = Ti.UI.createView({
         id: "bottomView",
         layout: "vertical",
-        top: "30",
-        backgroundColor: "#F1F1F1"
+        backgroundColor: "#2B2B2B",
+        borderWidth: "2",
+        borderColor: "#F6F6F6"
     });
     $.__views.view1.add($.__views.bottomView);
     $.__views.btnSubmit = Ti.UI.createButton({
@@ -148,8 +148,8 @@ function Controller() {
             size: 9,
             fontWeight: "bold"
         },
-        width: 50,
-        backgroundImage: "back.png"
+        width: 60,
+        backgroundImage: "backBtn.png"
     });
     $.changePasswordWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {

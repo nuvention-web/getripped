@@ -37,6 +37,7 @@ function Controller() {
         };
         loginReq.send(user);
         loginReq.onload = function() {
+            $.maskImg.visible = "true";
             var json = this.responseText;
             var response = JSON.parse(json);
             if ("succeeded" == response.message) {
@@ -58,6 +59,7 @@ function Controller() {
                     }
                 };
             } else "failed" == response.message ? alert("Username already exists!!!") : alert("Unexpected error. Please try again.");
+            $.maskImg.visible = "false";
         };
     }
     function validateEmail(email) {
@@ -75,7 +77,7 @@ function Controller() {
     var __defers = {};
     $.__views.signupWin = Ti.UI.createWindow({
         id: "signupWin",
-        backgroundColor: "#F6F6F6",
+        backgroundColor: "#F1F1F1",
         title: "SwoleTrain"
     });
     $.__views.mainView = Ti.UI.createScrollView({
@@ -89,7 +91,9 @@ function Controller() {
         id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#DE1B1B"
+        backgroundColor: "#3B74F5",
+        borderWidth: "2",
+        borderColor: "#F6F6F6"
     });
     $.__views.mainView.add($.__views.topView);
     $.__views.label = Ti.UI.createLabel({
@@ -105,7 +109,7 @@ function Controller() {
         top: "10"
     });
     $.__views.topView.add($.__views.label);
-    $.__views.__alloyId34 = Ti.UI.createLabel({
+    $.__views.__alloyId32 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: "SIZE",
         color: "#F6F6F6",
@@ -115,14 +119,16 @@ function Controller() {
         },
         text: "Give us some info.",
         bottom: "10",
-        id: "__alloyId34"
+        id: "__alloyId32"
     });
-    $.__views.topView.add($.__views.__alloyId34);
+    $.__views.topView.add($.__views.__alloyId32);
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         layout: "vertical",
-        height: "SIZE",
-        top: "20"
+        height: "50%",
+        top: "20",
+        borderWidth: "2",
+        borderColor: "#F1F1F1"
     });
     $.__views.mainView.add($.__views.view1);
     $.__views.txtFirstName = Ti.UI.createTextField({
@@ -134,7 +140,6 @@ function Controller() {
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtFirstName",
-        top: "10",
         hintText: "First Name"
     });
     $.__views.view1.add($.__views.txtFirstName);
@@ -181,9 +186,10 @@ function Controller() {
     $.__views.view1.add($.__views.txtPassword);
     $.__views.view4 = Ti.UI.createView({
         id: "view4",
-        top: "20",
         layout: "vertical",
-        backgroundColor: "#2B2B2B"
+        backgroundColor: "#2B2B2B",
+        borderWidth: "2",
+        borderColor: "#F6F6F6"
     });
     $.__views.mainView.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
@@ -192,12 +198,20 @@ function Controller() {
         backgroundColor: "#3B74F5",
         color: "white",
         id: "btnSubmit",
-        top: "30",
+        top: "20",
         verticalAlign: "center",
         title: "Get Swole"
     });
     $.__views.view4.add($.__views.btnSubmit);
     signupUser ? $.__views.btnSubmit.addEventListener("click", signupUser) : __defers["$.__views.btnSubmit!click!signupUser"] = true;
+    $.__views.maskImg = Ti.UI.createMaskedImage({
+        id: "maskImg",
+        mask: "loading-icon.png",
+        height: "30",
+        width: "30",
+        visible: "false"
+    });
+    $.__views.mainView.add($.__views.maskImg);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.signupWin,
         id: "navGroupWin"
@@ -211,8 +225,8 @@ function Controller() {
             size: 9,
             fontWeight: "bold"
         },
-        width: 50,
-        backgroundImage: "back.png"
+        width: 60,
+        backgroundImage: "backBtn.png"
     });
     $.signupWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {

@@ -4,7 +4,6 @@ var bkBtn = Titanium.UI.createButton({
 height: 25,
 font:{size:9, fontWeight:'bold'},
 width: 60,
-backgroundColor: 'transparent',
 backgroundImage: 'backBtn.png',
 });
 

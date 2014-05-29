@@ -1,8 +1,8 @@
 var bkBtn = Titanium.UI.createButton({
 height: 25,
 font:{size:9, fontWeight:'bold'},
-width: 50,
-backgroundImage: 'back.png',
+width: 60,
+backgroundImage: 'backBtn.png',
 });
 $.loginWin.setLeftNavButton(bkBtn);
 
@@ -48,6 +48,10 @@ function showWorkout(){
     	}
 	}; 
     
+}
+
+function forgotpassword(){
+	alert("Email us at getswoletrain@gmail.com. We will reset your password and notify you back.");
 }
 
 if(OS_IOS) { 
