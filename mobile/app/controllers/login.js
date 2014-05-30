@@ -7,6 +7,11 @@ backgroundImage: 'back.png',
 $.loginWin.setLeftNavButton(bkBtn);
 //$.loginWin.setTitleAttributes(color:'blue',font: {fontFamily:'Snell Roundhand', fontSize:36},shadow:{color:'gray', offset:{width:1,height:1}});
 
+$.loginWin.addEventListener('focus', function(e){
+    Ti.App.Analytics.trackPageview('login'); // here 'all-listings/list-view' page url, you can use your custom url
+});
+
+
 bkBtn.addEventListener("click", function(e){
 		 var workoutsWin = Alloy.createController("index",{}).getView();
          workoutsWin.open();

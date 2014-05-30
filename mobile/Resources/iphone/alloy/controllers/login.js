@@ -72,7 +72,7 @@ function Controller() {
         top: "20",
         hintText: "Email",
         autocapitalization: "false",
-        value: "lee@gmail.com"
+        value: "i@gmail.com"
     });
     $.__views.view1.add($.__views.txtUsername);
     $.__views.txtPassword = Ti.UI.createTextField({
@@ -132,6 +132,9 @@ function Controller() {
         backgroundImage: "back.png"
     });
     $.loginWin.setLeftNavButton(bkBtn);
+    $.loginWin.addEventListener("focus", function() {
+        Ti.App.Analytics.trackPageview("login");
+    });
     bkBtn.addEventListener("click", function() {
         var workoutsWin = Alloy.createController("index", {}).getView();
         workoutsWin.open();
