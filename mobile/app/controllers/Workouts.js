@@ -16,7 +16,6 @@ $.workoutWinId.setLeftNavButton(bkBtn);
 
 var workoutTitles = [];
 workoutTitles = Alloy.Globals.workouts.name;
-//alert(workoutTitles);
 var data = [];
 for(var i = 0;  i < Alloy.Globals.workouts.length; i++) {
 	data.push(Alloy.createController('row', {
@@ -24,15 +23,16 @@ for(var i = 0;  i < Alloy.Globals.workouts.length; i++) {
 		name: Alloy.Globals.workouts[i].name
 	}).getView());
 }
-//alert(data.name);
 $.workoutsTable.setData(data);
 
 
 function startWorkout(){
 	if(args == "Upper Body") {
+	Ti.App.Analytics.trackEvent('StartUpperBody','UpperBody','Upper Body','');
 	 Alloy.Globals.startWorkout("Upper Body");
 	}
 	else {
+		Ti.App.Analytics.trackEvent('StartLowerBody','LowerBody','Lower Body','');
 		Alloy.Globals.startWorkout("Lower Body");
 	}
 }

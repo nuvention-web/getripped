@@ -25,6 +25,7 @@ function Controller() {
             alert("Not a valid e-mail address");
             return;
         }
+        Ti.App.Analytics.trackEvent("New User", "Signup", "Sign Up", "");
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
         loginReq.open("POST", "http://swoletrain.herokuapp.com/user");
@@ -37,7 +38,6 @@ function Controller() {
         };
         loginReq.send(user);
         loginReq.onload = function() {
-            $.maskImg.visible = "true";
             var json = this.responseText;
             var response = JSON.parse(json);
             if ("succeeded" == response.message) {
@@ -50,6 +50,7 @@ function Controller() {
                 };
                 loginRequest.send(userLogin);
                 loginRequest.onload = function() {
+                    $.maskImg.visible = "true";
                     var json = this.responseText;
                     var response = JSON.parse(json);
                     if ("succeeded" != response.message) alert("Invalid email/password"); else {
@@ -57,9 +58,9 @@ function Controller() {
                         var workoutsWin = Alloy.createController("dashboard", {}).getView();
                         workoutsWin.open();
                     }
+                    $.maskImg.visible = "false";
                 };
             } else "failed" == response.message ? alert("Username already exists!!!") : alert("Unexpected error. Please try again.");
-            $.maskImg.visible = "false";
         };
     }
     function validateEmail(email) {
@@ -109,7 +110,7 @@ function Controller() {
         top: "10"
     });
     $.__views.topView.add($.__views.label);
-    $.__views.__alloyId32 = Ti.UI.createLabel({
+    $.__views.__alloyId26 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: "SIZE",
         color: "#F6F6F6",
@@ -119,9 +120,9 @@ function Controller() {
         },
         text: "Give us some info.",
         bottom: "10",
-        id: "__alloyId32"
+        id: "__alloyId26"
     });
-    $.__views.topView.add($.__views.__alloyId32);
+    $.__views.topView.add($.__views.__alloyId26);
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         layout: "vertical",

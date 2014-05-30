@@ -1,4 +1,3 @@
-//alert("wk" + Alloy.Globals.workouts.name);
 var args = arguments[0];
 var bkBtn = Titanium.UI.createButton({
 height: 25,
@@ -6,6 +5,7 @@ font:{size:9, fontWeight:'bold'},
 width: 60,
 backgroundImage: 'backBtn.png',
 });
+
 
 bkBtn.addEventListener("click", function(e){
 		 var workoutsWin = Alloy.createController("dashboard",{}).getView();
@@ -46,7 +46,6 @@ bkBtn.addEventListener("click", function(e){
 			$.maskImg.visible = "true";
 	    	var json = this.responseText;
 	    	var response = JSON.parse(json);
-	    	//alert(response);
 	    	if(response.weight && response.weight!=0){
 	    		$.txtWeight.value = response.next_weight;
 	    		$.txtWeight.editable = "false";
@@ -67,10 +66,8 @@ function isNumber(n) {
 function showNext(){
 	var exid;
 	if(exNum == Alloy.Globals.workouts.length) {
-		//showAckView();
 		Alloy.Globals.flag = 1;
 	}
-	//else {
 	exId = Alloy.Globals.workouts[args].id;
 	var uId = Alloy.Globals.userId;
 	var weightText = $.txtWeight.value;
@@ -148,7 +145,7 @@ function showNext(){
 		return;
 	}
 	
-	
+	Ti.App.Analytics.trackEvent('NextExercise','SaveExercise',Alloy.Globals.workouts[args].name,'');
 	var exAttempt = Titanium.Network.createHTTPClient();		
         exAttempt.open("POST","http://swoletrain.herokuapp.com/exercise/"+exId+"/attempt");
         var userEx = { 
@@ -234,11 +231,10 @@ function showNext(){
 	}
 	var workoutsWin = Alloy.createController("exercise",args).getView();
     workoutsWin.open();
-   //}
 }
 
 function skipExercise() {
-	//alert(Alloy.Globals.incomplete);
+	Ti.App.Analytics.trackEvent('SkipExercise','Skip',Alloy.Globals.workouts[args].name,'');
 	if(Alloy.Globals.incomplete.indexOf(args) == -1){
 		Alloy.Globals.incomplete.push(args);
 	}

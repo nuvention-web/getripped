@@ -6,7 +6,6 @@ backgroundImage: 'backBtn.png',
 });
 $.signupWin.setLeftNavButton(bkBtn);
 
-
 bkBtn.addEventListener("click", function(e){
 		 var workoutsWin = Alloy.createController("index",{}).getView();
          workoutsWin.open();
@@ -40,7 +39,7 @@ function signupUser(){
 		alert("Not a valid e-mail address");
 		return;
 	}
-	
+	Ti.App.Analytics.trackEvent('New User','Signup','Sign Up','');
 	var loginReq = Titanium.Network.createHTTPClient();	
         loginReq.withCredentials = true;	
         loginReq.open("POST","http://swoletrain.herokuapp.com/user");
@@ -51,12 +50,10 @@ function signupUser(){
             password_confirmation: pass,
             email: email_id
          };
-         //alert(user);
         loginReq.send(user);
         
      loginReq.onload = function()
 	{
-		$.maskImg.visible = "true";
     	var json = this.responseText;
     	var response = JSON.parse(json);
     	//alert(response.message);
@@ -73,18 +70,18 @@ function signupUser(){
         
      		loginRequest.onload = function()
 	 		{
+	 			$.maskImg.visible = "true";
     			var json = this.responseText;
     			var response = JSON.parse(json);
-    			//alert(response.message);
     			if(response.message!= "succeeded"){
     				alert("Invalid email/password");
     			}
     			else{
-    				//alert(response.user_id);
     				Alloy.Globals.userId = response.user_id;
     				var workoutsWin = Alloy.createController("dashboard",{}).getView();
     				workoutsWin.open();
     			}
+    			$.maskImg.visible = "false";
 			};
     	}
     	else if(response.message == "failed"){
@@ -93,7 +90,6 @@ function signupUser(){
     	else {
     		alert("Unexpected error. Please try again.");
     	}
-    	$.maskImg.visible = "false";
 	}; 
 }
 

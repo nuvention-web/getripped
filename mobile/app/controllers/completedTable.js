@@ -1,5 +1,4 @@
 var args = arguments[0];
-//alert(args + " " + Alloy.Globals.incomplete.indexOf(args.exNum - 1));
 if(Alloy.Globals.incomplete.indexOf(args.exNum - 1) == -1){
 	$.exImg.image = "tick.png";
 }
