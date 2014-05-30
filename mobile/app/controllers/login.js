@@ -22,6 +22,7 @@ function showWorkout(){
 		alert("Enter Password");
 		return;
 	}
+	Ti.App.Analytics.trackEvent('ExistingUser','Login','Login','');
 	var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;	
         loginReq.open("POST","http://swoletrain.herokuapp.com/session");
@@ -34,18 +35,18 @@ function showWorkout(){
         
      loginReq.onload = function()
 	 {
+	 	$.maskImg.visible = "true";
     	var json = this.responseText;
     	var response = JSON.parse(json);
-    	//alert(response.message);
     	if(response.message!= "succeeded"){
     		alert("Invalid email/password");
     	}
     	else{
-    		//alert(response.user_id);
     		Alloy.Globals.userId = response.user_id;
     		var workoutsWin = Alloy.createController("dashboard",{}).getView();
     		workoutsWin.open();
     	}
+    	$.maskImg.visible = "false";
 	}; 
     
 }

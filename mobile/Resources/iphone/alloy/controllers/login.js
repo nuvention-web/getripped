@@ -10,6 +10,7 @@ function Controller() {
             alert("Enter Password");
             return;
         }
+        Ti.App.Analytics.trackEvent("ExistingUser", "Login", "Login", "");
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
         loginReq.open("POST", "http://swoletrain.herokuapp.com/session");
@@ -19,6 +20,7 @@ function Controller() {
         };
         loginReq.send(user);
         loginReq.onload = function() {
+            $.maskImg.visible = "true";
             var json = this.responseText;
             var response = JSON.parse(json);
             if ("succeeded" != response.message) alert("Invalid email/password"); else {
@@ -26,6 +28,7 @@ function Controller() {
                 var workoutsWin = Alloy.createController("dashboard", {}).getView();
                 workoutsWin.open();
             }
+            $.maskImg.visible = "false";
         };
     }
     function forgotpassword() {
@@ -148,6 +151,14 @@ function Controller() {
     });
     $.__views.bottomView.add($.__views.btnSubmit);
     showWorkout ? $.__views.btnSubmit.addEventListener("click", showWorkout) : __defers["$.__views.btnSubmit!click!showWorkout"] = true;
+    $.__views.maskImg = Ti.UI.createMaskedImage({
+        id: "maskImg",
+        mask: "loading-icon.png",
+        height: "30",
+        width: "30",
+        visible: "false"
+    });
+    $.__views.mainView.add($.__views.maskImg);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.loginWin,
         id: "navGroupWin"

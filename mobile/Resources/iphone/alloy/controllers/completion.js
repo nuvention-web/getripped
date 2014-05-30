@@ -9,6 +9,7 @@ function Controller() {
             alert("Please complete all the exercises");
             return;
         }
+        Ti.App.Analytics.trackEvent("Completed Workout", "Completed Workout", "Completed Workout", "");
         var dashboardWin = Alloy.createController("dashboard", {}).getView();
         dashboardWin.open();
     }
