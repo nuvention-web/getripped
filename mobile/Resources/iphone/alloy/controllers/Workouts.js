@@ -1,6 +1,12 @@
 function Controller() {
     function startWorkout() {
-        "Upper Body" == args ? Alloy.Globals.startWorkout("Upper Body") : Alloy.Globals.startWorkout("Lower Body");
+        if ("Upper Body" == args) {
+            Ti.App.Analytics.trackEvent("StartUpperBody", "UpperBody", "Upper Body", "");
+            Alloy.Globals.startWorkout("Upper Body");
+        } else {
+            Ti.App.Analytics.trackEvent("StartLowerBody", "LowerBody", "Lower Body", "");
+            Alloy.Globals.startWorkout("Lower Body");
+        }
     }
     function alertMsg() {
         alert("Please click Start Workout");
@@ -69,7 +75,7 @@ function Controller() {
         backgroundColor: "#2B2B2B"
     });
     $.__views.__alloyId0.add($.__views.bottomView);
-    $.__views.__alloyId1 = Ti.UI.createButton({
+    $.__views.startWorkout = Ti.UI.createButton({
         width: 150,
         height: 30,
         borderRadius: 1,
@@ -80,12 +86,12 @@ function Controller() {
             fontWeight: "bold",
             fontSize: 14
         },
+        id: "startWorkout",
         title: "Start Workout",
-        top: "20",
-        id: "__alloyId1"
+        top: "20"
     });
-    $.__views.bottomView.add($.__views.__alloyId1);
-    startWorkout ? $.__views.__alloyId1.addEventListener("click", startWorkout) : __defers["$.__views.__alloyId1!click!startWorkout"] = true;
+    $.__views.bottomView.add($.__views.startWorkout);
+    startWorkout ? $.__views.startWorkout.addEventListener("click", startWorkout) : __defers["$.__views.startWorkout!click!startWorkout"] = true;
     $.__views.exNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.workoutWinId,
         id: "exNavWin"
@@ -118,7 +124,7 @@ function Controller() {
     }).getView());
     $.workoutsTable.setData(data);
     __defers["$.__views.workoutsTable!click!alertMsg"] && $.__views.workoutsTable.addEventListener("click", alertMsg);
-    __defers["$.__views.__alloyId1!click!startWorkout"] && $.__views.__alloyId1.addEventListener("click", startWorkout);
+    __defers["$.__views.startWorkout!click!startWorkout"] && $.__views.startWorkout.addEventListener("click", startWorkout);
     _.extend($, exports);
 }
 

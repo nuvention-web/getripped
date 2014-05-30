@@ -2,15 +2,11 @@
 
 var url = "http://swoletrain.herokuapp.com/dashboard/"+Alloy.Globals.userId;
 var jsonObj;
+
 var xhr = Ti.Network.createHTTPClient({
 	
     onload: function(e) {
         jsonObj = JSON.parse(this.responseText);
-         // $.upperFirstWeight.text = "Initial Average Weight Lifted: "+ jsonObj.weight1 + " lbs";
-         // $.upperLastWeight.text = "Current Average Weight Lifted: "+ jsonObj.weight3 + " lbs";
-         // $.lowerFirstWeight.text = "Initial Average Weight Lifted: "+ jsonObj.weight2 + " lbs";
-         // $.lowerLastWeight.text = "Current Average Weight Lifted: "+ jsonObj.weight4 + " lbs";
-         //Ti.App.Properties.setObject("avgWeight", jsonObj);
          $.pbUpper.min = jsonObj.weight1;
          $.pbUpper.value = jsonObj.weight3;
          $.pbLower.min = jsonObj.weight2;
@@ -56,18 +52,22 @@ $.pbLower.show();
 
 
 function showUpperBodyWorkout(){
+	Ti.App.Analytics.trackEvent('StartWorkout','UpperBody','Upper Body','');
 	 Alloy.Globals.startWorkout("Upper Body");
 }
 
 function showLowerBodyWorkout(){
+	Ti.App.Analytics.trackEvent('StartWorkout','LowerBody','Lower Body','');
 	Alloy.Globals.startWorkout("Lower Body");
 }
 
 function showUpperBodyExercises(){
+	Ti.App.Analytics.trackEvent('ShowExercises','UpperBody','UpperBodyExercises','');
 	Alloy.Globals.showExercises("Upper Body");
 }
 
 function showLowerBodyExercises(){
+	Ti.App.Analytics.trackEvent('ShowExercises','LowerBody','LowerBodyExercises','');
 	Alloy.Globals.showExercises("Lower Body");
 }
 
@@ -81,6 +81,7 @@ function logout() {
 	Alloy.Globals.flag = 0;
 	Alloy.Globals.incomplete=[];
 	Alloy.Globals.workouts=[];
+	Ti.App.Analytics.trackEvent('Logout','Logout','Logout','');
 	var dashboardWin = Alloy.createController("login",{}).getView();
     dashboardWin.open();
 }

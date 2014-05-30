@@ -20,8 +20,8 @@
 					<Label id="currentUpper" left="10" font="{fontSize: 12, fontWeight:bold}"color="#FFFFFF"></Label>
 					</View>
 					<View id="upperBodyLinks" layout="horizontal" height="SIZE" top="0">
-						<Button top="5" left="10" title="Start Workout" onClick="showUpperBodyWorkout"></Button>
-						<Button top="5" left="20" title="See all Exercises" onClick="showUpperBodyExercises"></Button>
+						<Button id="upperWrkout" top="5" left="10" title="Start Workout" onClick="showUpperBodyWorkout"></Button>
+						<Button id="UpperBodyExercises" top="5" left="20" title="See all Exercises" onClick="showUpperBodyExercises"></Button>
 					</View>
 				</View>
 				<View id="lowerBodyView" layout="vertical" height="35%" top="0" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
@@ -34,8 +34,8 @@
 					</View>
 				
 					<View id="upperBodyLinks" layout="horizontal" height="SIZE" top="0">
-						<Button top="5" left="10"  title="Start Workout" onClick="showLowerBodyWorkout"></Button>
-						<Button top="5" left="20"  title="See all Exercises" onClick="showLowerBodyExercises"></Button>
+						<Button id="lowerWrkout" top="5" left="10"  title="Start Workout" onClick="showLowerBodyWorkout"></Button>
+						<Button id="lowerBodyExercises" top="5" left="20"  title="See all Exercises" onClick="showLowerBodyExercises"></Button>
 					</View>
 				</View>
 				<View id="bottomLinks" layout="vertical" height="SIZE" top="20">
@@ -43,7 +43,7 @@
 						<View id="links" layout="horizontal" height="SIZE">
 						<Button left="10"  title="Change Password" onClick="showChangePassword"></Button>
 						<Button title="  |  "></Button-->
-						<Button title="Logout" class="logoutBtn" onClick="logout"></Button>
+						<Button id ="logoutBtn" title="Logout" class="logoutBtn" onClick="logout"></Button>
 						<!--/View-->
 				</View>
 			</View>		
