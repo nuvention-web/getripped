@@ -10,7 +10,7 @@
 		</TableView>
 		</View>
 		<View id = "bottomView" layout="vertical" backgroundColor="#2B2B2B">
-			<Button title="Start Workout" top="20" class="btnWorkout" onClick="startWorkout"></Button>
+			<Button id="startWorkout" title="Start Workout" top="20" class="btnWorkout" onClick="startWorkout"></Button>
 		</View>
 	</View>
 	</Window>
