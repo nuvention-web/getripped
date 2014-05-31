@@ -7,7 +7,6 @@ Alloy.Globals.incomplete=[];
 var gaModule = require('analytics');
 Ti.include('analytics.js');
 var tracker = new Analytics("UA-51022220-1");
-tracker.reset();
 gaModule.debug=true;
 gaModule.trackUncaughtExceptions=true;
 
