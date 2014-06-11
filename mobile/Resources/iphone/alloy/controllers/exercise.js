@@ -207,10 +207,10 @@ function Controller() {
     });
     $.__views.mainView.add($.__views.viewId);
     $.__views.topView = Ti.UI.createView({
-        id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#3B74F5"
+        backgroundColor: "#3B74F5",
+        id: "topView"
     });
     $.__views.viewId.add($.__views.topView);
     $.__views.workoutTitle = Ti.UI.createLabel({
@@ -227,10 +227,10 @@ function Controller() {
             fontSize: 20,
             fontWeight: "bold"
         },
-        id: "eName",
         top: "5",
         height: "SIZE",
-        color: "#F6F6F6"
+        color: "#F6F6F6",
+        id: "eName"
     });
     $.__views.topView.add($.__views.eName);
     $.__views.exImage = Ti.UI.createImageView({
@@ -242,16 +242,16 @@ function Controller() {
     $.__views.viewId.add($.__views.exImage);
     openExDetails ? $.__views.exImage.addEventListener("click", openExDetails) : __defers["$.__views.exImage!click!openExDetails"] = true;
     $.__views.bottomView = Ti.UI.createView({
-        id: "bottomView",
         layout: "vertical",
-        backgroundColor: "#2B2B2B"
+        backgroundColor: "#2B2B2B",
+        id: "bottomView"
     });
     $.__views.mainView.add($.__views.bottomView);
     $.__views.viewId2 = Ti.UI.createView({
-        id: "viewId2",
         layout: "horizontal",
         height: "SIZE",
-        top: "10"
+        top: "10",
+        id: "viewId2"
     });
     $.__views.bottomView.add($.__views.viewId2);
     $.__views.weightLabel = Ti.UI.createLabel({
@@ -259,9 +259,9 @@ function Controller() {
             fontSize: 14,
             fontWeight: "bold"
         },
+        color: "#ffffff",
         id: "weightLabel",
-        left: "10%",
-        color: "#ffffff"
+        left: "10%"
     });
     $.__views.viewId2.add($.__views.weightLabel);
     $.__views.txtWeight = Ti.UI.createTextField({
@@ -281,9 +281,9 @@ function Controller() {
     });
     $.__views.viewId2.add($.__views.txtWeight);
     $.__views.viewId3 = Ti.UI.createView({
-        id: "viewId3",
         layout: "horizontal",
         height: "SIZE",
+        id: "viewId3",
         top: "10"
     });
     $.__views.bottomView.add($.__views.viewId3);
@@ -291,7 +291,7 @@ function Controller() {
         font: {
             fontSize: 12
         },
-        color: "#F6F6F6",
+        color: "#ffffff",
         text: "Set",
         left: "40",
         id: "__alloyId7"
@@ -301,7 +301,7 @@ function Controller() {
         font: {
             fontSize: 12
         },
-        color: "#F6F6F6",
+        color: "#ffffff",
         text: "Recommended",
         left: "20",
         id: "__alloyId8"
@@ -311,23 +311,23 @@ function Controller() {
         font: {
             fontSize: 12
         },
-        color: "#F6F6F6",
+        color: "#ffffff",
         text: "Reps",
         left: "40",
         id: "__alloyId9"
     });
     $.__views.viewId3.add($.__views.__alloyId9);
     $.__views.viewId4 = Ti.UI.createView({
-        id: "viewId4",
         layout: "horizontal",
-        height: "SIZE"
+        height: "SIZE",
+        id: "viewId4"
     });
     $.__views.bottomView.add($.__views.viewId4);
     $.__views.__alloyId10 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
-        color: "#F6F6F6",
+        color: "#ffffff",
         text: "Reps",
         left: "35%",
         id: "__alloyId10"
@@ -337,16 +337,16 @@ function Controller() {
         font: {
             fontSize: 12
         },
-        color: "#F6F6F6",
+        color: "#ffffff",
         text: "Completed",
         left: "50",
         id: "__alloyId11"
     });
     $.__views.viewId4.add($.__views.__alloyId11);
     $.__views.viewId5 = Ti.UI.createView({
-        id: "viewId5",
         layout: "horizontal",
         height: "SIZE",
+        id: "viewId5",
         top: "2"
     });
     $.__views.bottomView.add($.__views.viewId5);
@@ -355,9 +355,9 @@ function Controller() {
             fontSize: 14,
             fontWeight: "bold"
         },
+        color: "#ffffff",
         text: "1",
         left: "45",
-        color: "#ffffff",
         id: "__alloyId12"
     });
     $.__views.viewId5.add($.__views.__alloyId12);
@@ -392,9 +392,9 @@ function Controller() {
     });
     $.__views.viewId5.add($.__views.txtSet1);
     $.__views.viewId6 = Ti.UI.createView({
-        id: "viewId6",
         layout: "horizontal",
         height: "SIZE",
+        id: "viewId6",
         top: "3"
     });
     $.__views.bottomView.add($.__views.viewId6);
@@ -403,9 +403,9 @@ function Controller() {
             fontSize: 14,
             fontWeight: "bold"
         },
+        color: "#ffffff",
         text: "2",
         left: "45",
-        color: "#ffffff",
         id: "__alloyId14"
     });
     $.__views.viewId6.add($.__views.__alloyId14);
@@ -440,9 +440,9 @@ function Controller() {
     });
     $.__views.viewId6.add($.__views.txtSet2);
     $.__views.viewId7 = Ti.UI.createView({
-        id: "viewId7",
         layout: "horizontal",
         height: "SIZE",
+        id: "viewId7",
         top: "3"
     });
     $.__views.bottomView.add($.__views.viewId7);
@@ -451,9 +451,9 @@ function Controller() {
             fontSize: 14,
             fontWeight: "bold"
         },
+        color: "#ffffff",
         text: "3",
         left: "45",
-        color: "#ffffff",
         id: "__alloyId16"
     });
     $.__views.viewId7.add($.__views.__alloyId16);
@@ -488,9 +488,9 @@ function Controller() {
     });
     $.__views.viewId7.add($.__views.txtSet3);
     $.__views.buttonView = Ti.UI.createView({
-        id: "buttonView",
         layout: "horizontal",
         height: "SIZE",
+        id: "buttonView",
         top: "12"
     });
     $.__views.bottomView.add($.__views.buttonView);

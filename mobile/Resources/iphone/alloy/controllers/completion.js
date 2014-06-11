@@ -38,26 +38,26 @@ function Controller() {
     });
     $.__views.scrollviewId.add($.__views.mainView);
     $.__views.topView = Ti.UI.createView({
-        id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#3B74F5"
+        backgroundColor: "#3B74F5",
+        id: "topView"
     });
     $.__views.mainView.add($.__views.topView);
     $.__views.topLabel = Ti.UI.createLabel({
-        id: "topLabel",
         bottom: "10",
         height: "SIZE",
         color: "#F6F6F6",
-        top: "10"
+        top: "10",
+        id: "topLabel"
     });
     $.__views.topView.add($.__views.topLabel);
     $.__views.view1 = Ti.UI.createView({
-        id: "view1",
         layout: "vertical",
         height: "SIZE",
         top: "20",
-        bottom: "20"
+        bottom: "20",
+        id: "view1"
     });
     $.__views.mainView.add($.__views.view1);
     $.__views.workoutsTable = Ti.UI.createTableView({
@@ -67,9 +67,9 @@ function Controller() {
     });
     $.__views.view1.add($.__views.workoutsTable);
     $.__views.bottomView = Ti.UI.createView({
-        id: "bottomView",
         layout: "vertical",
-        backgroundColor: "#2B2B2B"
+        backgroundColor: "#2B2B2B",
+        id: "bottomView"
     });
     $.__views.mainView.add($.__views.bottomView);
     $.__views.btnDashboard = Ti.UI.createButton({

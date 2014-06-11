@@ -2,15 +2,15 @@
 	<NavigationWindow id="compNavWin">
 	<Window id="exWin" backgroundColor="#F6F6F6" title="SwoleTrain">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
-		<View id="mainView" layout="vertical" >
-			<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#3B74F5">
-				<Label id="topLabel" class="getRippedText" bottom="10" height="SIZE" color="#F6F6F6" top="10"></Label>
+		<View id="mainView" layout="vertical">
+			<View id = "topView">
+				<Label id="topLabel"></Label>
 			</View>
-			<View id="view1" layout="vertical" height="SIZE" top="20" bottom="20">
+			<View id="view1">
 				<TableView id="workoutsTable" class="workoutTable" height="SIZE" backgroundColor="transparent">		
 				</TableView>
 			</View>
-			<View id = "bottomView" layout="vertical" backgroundColor="#2B2B2B">
+			<View id = "bottomView">
 				<Button id="btnDashboard" top="20" title="Go to Dashboard" onClick="showDashboard"></Button>
 			</View>
 			</View>		

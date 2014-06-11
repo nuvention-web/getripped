@@ -5,39 +5,39 @@
 			
 		<View id="mainView" layout="vertical">
 			<View id="viewId" layout="vertical" height="45%" bottom="10">
-				<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#3B74F5">
-				<Label id="workoutTitle" class="showExCount" color="#ffffff"> </Label>
-				<Label id="eName" top="5" height="SIZE" color="#F6F6F6"></Label>
+				<View id = "topView">
+				<Label id="workoutTitle" class="showExCount"> </Label>
+				<Label id="eName"></Label>
 				</View>
 				<ImageView id="exImage"  top="10" height="260px" width="260px" onClick="openExDetails"></ImageView>		
 			</View>			
-			<View id="bottomView" layout="vertical" backgroundColor="#2B2B2B">
-			<View id="viewId2" layout="horizontal" height="SIZE" top="10">
-				<Label id="weightLabel" class="staticLabel" left="10%" color = "#ffffff"></Label>
+			<View id="bottomView">
+			<View id="viewId2">
+				<Label id="weightLabel" class="staticLabel" left="10%"></Label>
 				<TextField id="txtWeight" class="txtClass" left="10%" color="red" visible="false" maxLength="3"></TextField>
 			</View>
-			<View id="viewId3" layout="horizontal" height="SIZE" top="10">
+			<View id="viewId3" class="innerview" top="10">
 				<Label left="40" class="showExCount">Set</Label><Label left="20" class="showExCount">Recommended</Label><Label class="showExCount" left="40">Reps</Label>
 			</View>
-			<View id="viewId4" layout="horizontal" height="SIZE">
+			<View id="viewId4" class="innerview">
 				<Label left="35%" class="showExCount">Reps</Label><Label class="showExCount" left="50">Completed</Label>
 			</View>
-			<View id="viewId5" layout="horizontal" height="SIZE" top="2">
-				<Label left="45" class="staticLabel" color= "#ffffff">1</Label>
+			<View id="viewId5" class="innerview" top="2">
+				<Label left="45" class="staticLabel">1</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
 				<TextField id="txtSet1" class="txtClass" left="15%" color="red" maxLength="2"></TextField>
 			</View>
-			<View id="viewId6" layout="horizontal" height="SIZE" top="3">
-				<Label left="45" class="staticLabel" color= "#ffffff">2</Label>
+			<View id="viewId6" class="innerview" top="3">
+				<Label left="45" class="staticLabel">2</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
 				<TextField  id="txtSet2" class="txtClass" left="15%" color="red" maxLength="2"></TextField>
 			</View>
-			<View id="viewId7" layout="horizontal" height="SIZE" top="3">
-				<Label left="45" class="staticLabel" color= "#ffffff">3</Label>
+			<View id="viewId7" class="innerview" top="3">
+				<Label left="45" class="staticLabel">3</Label>
 				<Label class="txtClass" left="14%" text="12"></Label>
 				<TextField id="txtSet3" class="txtClass" left="15%" color="red" maxLength="2"></TextField>
 			</View>
-			<View id="buttonView" layout="horizontal" height="SIZE" top="12">
+			<View id="buttonView" class="innerview" top="12">
 				<Button id="btnSkip" left="30" width = "110" title="Jump to Next" onClick="skipExercise"></Button>
 				<Button id="btnNext" left="40" title="Save & Next"  onClick="showNext"></Button>
 			</View>
