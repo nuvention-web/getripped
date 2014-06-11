@@ -27,21 +27,12 @@
 },
 
 ".getRippedText": {
-	color: "#000",
-		//height: "30dp",
-		//width: "auto",
-		top: "10",
 		font: {
-			fontsize: 18,
+			fontSize: 20,
 			fontWeight: "bold"
-		}
-},
-
-".demographicText": {
-	color:'#336699',
-	width: "135dp",
-	height: "35dp",
-	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+		},
+		color: "#F6F6F6",
+		height: "SIZE"
 },
 
 ".getRippedBtn": {
@@ -49,4 +40,27 @@
 	height: "35dp",
 	backgroundColor: "#3B74F5",
 	color: "white",
+},
+
+"#topView": {
+	layout:"vertical",
+	height:"SIZE",
+	backgroundColor:"#3B74F5",
+	borderWidth:"2",
+	borderColor:"#F6F6F6"
+},
+
+"#view1": {
+	layout:"vertical",
+	height:"50%",
+	top:"20",
+	borderWidth:"2",
+	borderColor:"#F1F1F1"
+},
+
+"#view4": {
+	 layout:"vertical",
+	 backgroundColor:"#2B2B2B",
+	 borderWidth:"2",
+	 borderColor:"#F6F6F6"
 }

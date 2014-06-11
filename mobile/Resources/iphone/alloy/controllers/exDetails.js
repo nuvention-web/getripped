@@ -8,8 +8,8 @@ function Controller() {
     var exports = {};
     $.__views.exDetailsWin = Ti.UI.createWindow({
         id: "exDetailsWin",
-        backgroundImage: "texture.jpg",
-        title: "Exercise Details"
+        backgroundColor: "#F1F1F1",
+        title: "SwoleTrain"
     });
     $.__views.scrollviewId = Ti.UI.createScrollView({
         id: "scrollviewId",
@@ -22,25 +22,58 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.scrollviewId.add($.__views.mainView);
-    $.__views.eName = Ti.UI.createLabel({
-        id: "eName",
-        top: "10"
+    $.__views.topView = Ti.UI.createView({
+        id: "topView",
+        layout: "vertical",
+        height: "SIZE",
+        backgroundColor: "#3B74F5"
     });
-    $.__views.mainView.add($.__views.eName);
+    $.__views.mainView.add($.__views.topView);
+    $.__views.eName = Ti.UI.createLabel({
+        font: {
+            fontSize: 20,
+            fontWeight: "bold"
+        },
+        id: "eName",
+        top: "10",
+        color: "#F1F1F1"
+    });
+    $.__views.topView.add($.__views.eName);
+    $.__views.imageView = Ti.UI.createView({
+        id: "imageView",
+        layout: "vertical",
+        height: "SIZE"
+    });
+    $.__views.mainView.add($.__views.imageView);
     $.__views.exImage = Ti.UI.createImageView({
         id: "exImage",
         top: "10",
         height: "500px",
         width: "500px"
     });
-    $.__views.mainView.add($.__views.exImage);
+    $.__views.imageView.add($.__views.exImage);
+    $.__views.scrollviewId2 = Ti.UI.createScrollView({
+        id: "scrollviewId2",
+        scrollingEnabled: "true",
+        showVerticalScrollIndicator: "true"
+    });
+    $.__views.mainView.add($.__views.scrollviewId2);
+    $.__views.bottomView = Ti.UI.createView({
+        id: "bottomView",
+        layout: "vertical",
+        backgroundColor: "#2B2B2B"
+    });
+    $.__views.scrollviewId2.add($.__views.bottomView);
     $.__views.exDescription = Ti.UI.createLabel({
         id: "exDescription",
+        textAlign: "EXT_ALIGNMENT_CENTER",
+        height: "SIZE",
+        color: "#F1F1F1",
         top: "20",
         font: "30",
         width: "90%"
     });
-    $.__views.mainView.add($.__views.exDescription);
+    $.__views.bottomView.add($.__views.exDescription);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.exDetailsWin,
         id: "navGroupWin"
@@ -55,8 +88,8 @@ function Controller() {
             size: 9,
             fontWeight: "bold"
         },
-        width: 50,
-        backgroundImage: "back.png"
+        width: 60,
+        backgroundImage: "backBtn.png"
     });
     $.exDetailsWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {
@@ -68,7 +101,7 @@ function Controller() {
     var exDesc = Alloy.Globals.workouts[args].description;
     $.eName.text = exName;
     $.exImage.image = Alloy.Globals.workouts[args].image;
-    $.exDescription.text = "Instructions: " + exDesc;
+    $.exDescription.text = exDesc;
     _.extend($, exports);
 }
 

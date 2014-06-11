@@ -1,11 +1,10 @@
 var bkBtn = Titanium.UI.createButton({
 height: 25,
 font:{size:9, fontWeight:'bold'},
-width: 50,
-backgroundImage: 'back.png',
+width: 60,
+backgroundImage: 'backBtn.png',
 });
 $.loginWin.setLeftNavButton(bkBtn);
-//$.loginWin.setTitleAttributes(color:'blue',font: {fontFamily:'Snell Roundhand', fontSize:36},shadow:{color:'gray', offset:{width:1,height:1}});
 
 bkBtn.addEventListener("click", function(e){
 		 var workoutsWin = Alloy.createController("index",{}).getView();
@@ -23,9 +22,10 @@ function showWorkout(){
 		alert("Enter Password");
 		return;
 	}
+	Ti.App.Analytics.trackEvent('ExistingUser','Login','Login','');
 	var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;	
-        loginReq.open("POST","http://localhost:3000/session");
+        loginReq.open("POST","http://swoletrain.herokuapp.com/session");
         var user = {
             password: pass,
             email: uname
@@ -35,20 +35,24 @@ function showWorkout(){
         
      loginReq.onload = function()
 	 {
+	 	$.maskImg.visible = "true";
     	var json = this.responseText;
     	var response = JSON.parse(json);
-    	//alert(response.message);
     	if(response.message!= "succeeded"){
     		alert("Invalid email/password");
     	}
     	else{
-    		//alert(response.user_id);
     		Alloy.Globals.userId = response.user_id;
     		var workoutsWin = Alloy.createController("dashboard",{}).getView();
     		workoutsWin.open();
     	}
+    	$.maskImg.visible = "false";
 	}; 
     
+}
+
+function forgotpassword(){
+	alert("Email us at getswoletrain@gmail.com. We will reset your password and notify you back.");
 }
 
 if(OS_IOS) { 

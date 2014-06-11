@@ -1,24 +1,77 @@
+"#dashboardWin": {
+    title: 'SwoleTrain',
+   	 navBarHidden: false
+}
+
 "#welcomeLabel": {
 	font: {
 		fontSize: 20,
 		fontWeight:"bold"
-	}
+	},
+	 color:"#F6F6F6",
+	 height:"SIZE",
+	 top:"5",
+	 bottom:"5" 
 }
 
-"#btnWorkout": {
-	width:200,
-    height:30,
+".workoutName": {
+	font:{fontWeight:'bold',fontSize:18},
+	color:"F6F6F6",
+	top:"10",
+	left:"10" 
+	
+}
+
+".weightLiftedText": {
+	font:{fontWeight:'bold',fontSize:14},
+	color: "#3B3738"
+}
+
+".logoutBtn": {
+	top:20,
+    width:100,
+    height:35,
     borderRadius:1,
     backgroundColor: "#3B74F5",
 	color: "white",
     font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
 },
 
-"#btnLogout": {
-	width:60,
-    height:30,
-    borderRadius:1,
-    backgroundColor: "#3B74F5",
-	color: "white",
-    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+"#view1": {
+	top:"0",
+	layout:"vertical",
+	height:"SIZE",
+	backgroundColor:"#3B74F5",
+	borderWidth:"3",
+	borderColor:"#F6F6F6"
+},
+
+"#upperBodyView": {
+	 layout:"vertical",
+	 height:"35%",
+	 top:"0",
+	 backgroundColor:"#2B2B2B",
+	 borderWidth:"2",
+	 borderColor:"#F6F6F6"
+},
+
+"#view2": {
+	layout:"horizontal",
+	height:"SIZE",
+	top:"2"
+},
+
+".progressText": {
+	 font:"{fontSize:12, fontWeight:bold}",
+	 color:"#FFFFFF"
+},
+
+"#lowerBodyView": {
+	 layout:"vertical",
+	 height:"35%",
+	 top:"0",
+	 backgroundColor:"#2B2B2B",
+	 borderWidth:"2",
+	 borderColor:"#F6F6F6"
 }
+

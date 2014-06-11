@@ -20,9 +20,15 @@ function Controller() {
             alert("Enter Password");
             return;
         }
+        var isValidEmail = validateEmail(email_id);
+        if (false == isValidEmail) {
+            alert("Not a valid e-mail address");
+            return;
+        }
+        Ti.App.Analytics.trackEvent("New User", "Signup", "Sign Up", "");
         var loginReq = Titanium.Network.createHTTPClient();
         loginReq.withCredentials = true;
-        loginReq.open("POST", "http://localhost:3000/user");
+        loginReq.open("POST", "http://swoletrain.herokuapp.com/user");
         var user = {
             first_name: fname,
             last_name: lname,
@@ -37,13 +43,14 @@ function Controller() {
             if ("succeeded" == response.message) {
                 var loginRequest = Titanium.Network.createHTTPClient();
                 loginRequest.withCredentials = true;
-                loginRequest.open("POST", "http://localhost:3000/session");
+                loginRequest.open("POST", "http://swoletrain.herokuapp.com/session");
                 var userLogin = {
                     password: $.txtPassword.value,
                     email: $.txtEmail.value
                 };
                 loginRequest.send(userLogin);
                 loginRequest.onload = function() {
+                    $.maskImg.visible = "true";
                     var json = this.responseText;
                     var response = JSON.parse(json);
                     if ("succeeded" != response.message) alert("Invalid email/password"); else {
@@ -51,9 +58,15 @@ function Controller() {
                         var workoutsWin = Alloy.createController("dashboard", {}).getView();
                         workoutsWin.open();
                     }
+                    $.maskImg.visible = "false";
                 };
-            }
+            } else "failed" == response.message ? alert("Username already exists!!!") : alert("Unexpected error. Please try again.");
         };
+    }
+    function validateEmail(email) {
+        var atpos = email.indexOf("@");
+        var dotpos = email.lastIndexOf(".");
+        return 1 > atpos || atpos + 2 > dotpos || dotpos + 2 >= email.length ? false : true;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "signup";
@@ -65,7 +78,7 @@ function Controller() {
     var __defers = {};
     $.__views.signupWin = Ti.UI.createWindow({
         id: "signupWin",
-        backgroundImage: "texture.jpg",
+        backgroundColor: "#F1F1F1",
         title: "SwoleTrain"
     });
     $.__views.mainView = Ti.UI.createScrollView({
@@ -75,23 +88,48 @@ function Controller() {
         showVerticalScrollIndicator: "true"
     });
     $.__views.signupWin.add($.__views.mainView);
+    $.__views.topView = Ti.UI.createView({
+        layout: "vertical",
+        height: "SIZE",
+        backgroundColor: "#3B74F5",
+        borderWidth: "2",
+        borderColor: "#F6F6F6",
+        id: "topView"
+    });
+    $.__views.mainView.add($.__views.topView);
     $.__views.label = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        top: "10",
+        height: "SIZE",
+        color: "#F6F6F6",
         font: {
-            fontsize: 18,
+            fontSize: 20,
             fontWeight: "bold"
         },
-        text: "Ready to get swole? Give us some info.",
-        id: "label"
+        text: "Ready to get swole?",
+        id: "label",
+        top: "10"
     });
-    $.__views.mainView.add($.__views.label);
+    $.__views.topView.add($.__views.label);
+    $.__views.__alloyId22 = Ti.UI.createLabel({
+        width: Ti.UI.SIZE,
+        height: "SIZE",
+        color: "#F6F6F6",
+        font: {
+            fontSize: 20,
+            fontWeight: "bold"
+        },
+        text: "Give us some info.",
+        bottom: "10",
+        id: "__alloyId22"
+    });
+    $.__views.topView.add($.__views.__alloyId22);
     $.__views.view1 = Ti.UI.createView({
-        id: "view1",
         layout: "vertical",
-        height: "SIZE"
+        height: "50%",
+        top: "20",
+        borderWidth: "2",
+        borderColor: "#F1F1F1",
+        id: "view1"
     });
     $.__views.mainView.add($.__views.view1);
     $.__views.txtFirstName = Ti.UI.createTextField({
@@ -103,7 +141,6 @@ function Controller() {
         returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "txtFirstName",
-        top: "10",
         hintText: "First Name"
     });
     $.__views.view1.add($.__views.txtFirstName);
@@ -149,10 +186,11 @@ function Controller() {
     });
     $.__views.view1.add($.__views.txtPassword);
     $.__views.view4 = Ti.UI.createView({
-        id: "view4",
-        height: "SIZE",
-        top: "20",
-        layout: "vertical"
+        layout: "vertical",
+        backgroundColor: "#2B2B2B",
+        borderWidth: "2",
+        borderColor: "#F6F6F6",
+        id: "view4"
     });
     $.__views.mainView.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
@@ -161,19 +199,20 @@ function Controller() {
         backgroundColor: "#3B74F5",
         color: "white",
         id: "btnSubmit",
+        top: "20",
         verticalAlign: "center",
         title: "Get Swole"
     });
     $.__views.view4.add($.__views.btnSubmit);
     signupUser ? $.__views.btnSubmit.addEventListener("click", signupUser) : __defers["$.__views.btnSubmit!click!signupUser"] = true;
-    $.__views.__alloyId32 = Ti.UI.createImageView({
-        image: "SwoleTrainLogo.png",
-        top: "5",
-        width: "50%",
-        height: "55%",
-        id: "__alloyId32"
+    $.__views.maskImg = Ti.UI.createMaskedImage({
+        id: "maskImg",
+        mask: "loading-icon.png",
+        height: "30",
+        width: "30",
+        visible: "false"
     });
-    $.__views.view4.add($.__views.__alloyId32);
+    $.__views.mainView.add($.__views.maskImg);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.signupWin,
         id: "navGroupWin"
@@ -187,8 +226,8 @@ function Controller() {
             size: 9,
             fontWeight: "bold"
         },
-        width: 50,
-        backgroundImage: "back.png"
+        width: 60,
+        backgroundImage: "backBtn.png"
     });
     $.signupWin.setLeftNavButton(bkBtn);
     bkBtn.addEventListener("click", function() {

@@ -1,24 +1,41 @@
 <Alloy>
-	<NavigationWindow id="dashBoardNavWin">
-	<Window id="dashboardWin" backgroundImage="texture.jpg" title="SwoleTrain">
+	<NavigationWindow id="dashBoardNavWin" >
+	<Window id="dashboardWin" backgroundColor="#F1F1F1">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<View id="mainView" layout="vertical">
-				<!--Button id="btnLogout" left="70%" top="10" title="Logout" onClick="logout"></Button-->
-				<Label top="20" id="welcomeLabel">DASHBOARD </Label>
-				<Label top="5" id="welcomeLabel">Welcome! </Label>
-				<Label top="10" left = "10">PROGRESS</Label>
-				<Label top="10" left = "10">Upper Body:</Label>
-				<Label top="5" left = "10" id="upperFirstWeight"></Label>
-				<Label top="5" left = "10" id="upperLastWeight"></Label>
-				<ImageView top="5" left = "10" image="Progress.png"></ImageView>
-				<Label top="10" left = "10">Lower Body:</Label>
-				<Label top="5" left = "10" id="lowerFirstWeight"></Label>
-				<Label top="5" left = "10" id="lowerLastWeight"></Label>
-				<ImageView top="5" left = "10" image="Progress.png"></ImageView>
-				<!--ProgressBar id="pb" top="10" width="250" height="auto" min="0" max="10" value="5" color="#fff" message="Downloading 0 of 10" /-->
-				<Button id="btnWorkout" top="20" title="Upper Body" onClick="showUpperBodyWorkout"></Button>
-				<Button id="btnWorkout" top="10" title="Lower Body & Core" onClick="showLowerBodyWorkout"></Button>
-				<!--ImageView image="SwoleTrainLogo.png" top="10" width="40%" height="30%"></ImageView-->
+				<View id="view1">
+					<Label id="welcomeLabel"></Label>
+				</View>
+				<View id="upperBodyView">
+					<Label class="workoutName">Upper Body:</Label>
+					<Label top = "15" left = "10" class="weightLiftedText" color="F6F6F6"> Average Weight Lifted:</Label>
+					<ProgressBar id="pbUpper" top="5" width="250" height="auto" style="Titanium.UI.iPhone.ProgressBarStyle.PLAIN" max="100" color="#FFFFFF"></ProgressBar>
+					<View id = "view2">
+					<Label id="minUpper" class="progressText" left="40"></Label>
+					<Label id="currentUpper" class="progressText" left="10"></Label>
+					</View>
+					<View id="upperBodyLinks" layout="horizontal" height="SIZE" top="0">
+						<Button id="upperWrkout" top="5" left="10" title="Start Workout" onClick="showUpperBodyWorkout"></Button>
+						<Button id="UpperBodyExercises" top="5" left="20" title="See all Exercises" onClick="showUpperBodyExercises"></Button>
+					</View>
+				</View>
+				<View id="lowerBodyView">
+					<Label class="workoutName">Lower Body:</Label>
+					<Label top = "15" left = "10" class="weightLiftedText" color="F6F6F6"> Average Weight Lifted:</Label>
+					<ProgressBar id="pbLower" top="5" width="250" height="auto" style="Titanium.UI.iPhone.ProgressBarStyle.PLAIN"  max="100" color="#FFFFFF"></ProgressBar>
+					<View layout="horizontal" height="SIZE" top="2">
+					<Label id="minLower" class="progressText" left="40"></Label>
+					<Label id="currentLower" class="progressText" left="10"></Label>
+					</View>
+				
+					<View id="upperBodyLinks" layout="horizontal" height="SIZE" top="0">
+						<Button id="lowerWrkout" top="5" left="10"  title="Start Workout" onClick="showLowerBodyWorkout"></Button>
+						<Button id="lowerBodyExercises" top="5" left="20"  title="See all Exercises" onClick="showLowerBodyExercises"></Button>
+					</View>
+				</View>
+				<View id="bottomLinks" layout="vertical" height="SIZE" top="20">
+						<Button id ="logoutBtn" title="Logout" class="logoutBtn" onClick="logout"></Button>
+				</View>
 			</View>		
 		</ScrollView>
 	</Window>

@@ -1,12 +1,17 @@
 <Alloy>
 	<NavigationWindow id="exNavWin">
-	<Window id="workoutWinId" class="container" height="100%" backgroundImage="texture.jpg">
+	<Window id="workoutWinId" class="container" height="100%" backgroundColor="#F1F1F1">
 	<View layout="vertical">
-		<Label bottom="20" top="5" color="black">Exercises to make you Swole today</Label>
-		<TableView id="workoutsTable" class="workoutTable" height="SIZE" backgroundColor="transparent">		
+		<View id = "topView">
+				<Label id="label" class="getRippedText">Exercises to make you Swole today</Label>
+		</View>
+		<View id="view1">
+		<TableView id="workoutsTable" class="workoutTable" onClick="alertMsg">		
 		</TableView>
-		<Button id="btnUpperWorkout" class="btnWorkout" top="10" title="Start Upper Body Workout" onClick="showUpperBodyWorkout" visible="false"></Button>
-		<Button id="btnLowerWorkout" class="btnWorkout" top="10" title="Start Lower Body Workout" onClick="showLowerBodyWorkout" visible="false"></Button>
+		</View>
+		<View id = "bottomView" layout="vertical" backgroundColor="#2B2B2B">
+			<Button id="startWorkout" title="Start Workout" top="20" class="btnWorkout" onClick="startWorkout"></Button>
+		</View>
 	</View>
 	</Window>
 	</NavigationWindow>

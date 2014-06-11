@@ -1,8 +1,23 @@
-"Label": {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
-}, 
+"#indexWin": {
+	//color: "#FFFFFF",
+	fullScreen: false,
+	exitOnClose: true,
+	//backgroundImage: "titleBackground.png",
+	//navBarHidden: true,
+	tabBarHidden: true,
+	font: {
+		fontSize: "32",
+		fontWeight: "bold"
+	}
+},
+
+"#topText": {
+	font: {
+		fontSize: 18,
+		fontWeight:"bold"
+	}
+},
+ 
 
 ".txtFieldLogin": {
 	color:'#336699',
@@ -25,17 +40,49 @@
 		}
 },
 
-".demographicText": {
-	width: "120dp",
-	height: "35dp",
-	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-	backgroundColor: "white",
-	color: "black"
+"#view4":{
+	layout:"vertical",
+	backgroundColor:"#2B2B2B",
+	borderWidth:"2",
+	borderColor:"#F6F6F6"
 },
+
+".swoleImage": {
+	top:"40",
+	width:"80%",
+	left:"5"
+},
+
+"#topText": {
+	color:"#F6F6F6",
+	top:"10",
+	bottom:"10",
+	height:"SIZE"
+},
+
+"#middleView": {
+	layout:"vertical",
+	height:"60%",
+	backgroundColor:"#F6F6F6",
+	borderWidth:"2",
+	borderColor:"#F6F6F6"
+},
+
+"#topView": {
+	layout:"vertical",
+	height:"SIZE",
+	backgroundColor:"#3B74F5",
+	borderWidth:"2",
+	borderColor:"#F6F6F6"
+},
+
 
 ".getRippedBtn": {
 	width: "150dp",
 	height: "35dp",
 	backgroundColor: "#3B74F5",
 	color: "white",
+	verticalAlign:"center",
+	title: "Sign Up",
+	top:"25"
 }

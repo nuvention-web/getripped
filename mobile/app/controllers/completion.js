@@ -1,7 +1,13 @@
 //var args = arguments[0] || {};
+if(Alloy.Globals.incomplete=="") {
+	$.topLabel.text = "Great Job!!!";
+}
+else {
+	$.topLabel.text = "Please complete all the exercises";
+}
+
 var workoutTitles = [];
 workoutTitles = Alloy.Globals.workouts.name;
-//alert(workoutTitles);
 var data = [];
 for(var i = 0;  i < Alloy.Globals.workouts.length; i++) {
 	data.push(Alloy.createController('completedTable', {
@@ -9,7 +15,6 @@ for(var i = 0;  i < Alloy.Globals.workouts.length; i++) {
 		name: Alloy.Globals.workouts[i].name
 	}).getView());
 }
-//alert(data.name);
 $.workoutsTable.setData(data);
 
 
@@ -23,7 +28,7 @@ function showDashboard(){
 		}
 	}
 	if(isEmpty == true) {
-		alert("Great Job!!!");
+		Ti.App.Analytics.trackEvent('Completed Workout','Completed Workout','Completed Workout','');
 		var dashboardWin = Alloy.createController("dashboard",{}).getView();
     	dashboardWin.open();
 	}

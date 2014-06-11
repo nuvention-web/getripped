@@ -1,18 +1,15 @@
 function Controller() {
-    function showUpperBodyWorkout() {
-        var wid = Alloy.Globals.getSomeData("Upper Body");
-        getworkout(wid);
+    function startWorkout() {
+        if ("Upper Body" == args) {
+            Ti.App.Analytics.trackEvent("StartUpperBody", "UpperBody", "Upper Body", "");
+            Alloy.Globals.startWorkout("Upper Body");
+        } else {
+            Ti.App.Analytics.trackEvent("StartLowerBody", "LowerBody", "Lower Body", "");
+            Alloy.Globals.startWorkout("Lower Body");
+        }
     }
-    function showLowerBodyWorkout() {
-        var wid = Alloy.Globals.getSomeData("Lower Body");
-        getworkout(wid);
-    }
-    function getworkout(wid) {
-        Alloy.Globals.getWorkout(wid, function() {
-            var index = 0;
-            var dashboardWin = Alloy.createController("exercise", index).getView();
-            dashboardWin.open();
-        });
+    function alertMsg() {
+        alert("Please click Start Workout");
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "Workouts";
@@ -33,31 +30,53 @@ function Controller() {
         },
         id: "workoutWinId",
         height: "100%",
-        backgroundImage: "texture.jpg"
+        backgroundColor: "#F1F1F1"
     });
     $.__views.__alloyId0 = Ti.UI.createView({
         layout: "vertical",
         id: "__alloyId0"
     });
     $.__views.workoutWinId.add($.__views.__alloyId0);
-    $.__views.__alloyId1 = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "black",
-        text: "Exercises to make you Swole today",
-        bottom: "20",
-        top: "5",
-        id: "__alloyId1"
-    });
-    $.__views.__alloyId0.add($.__views.__alloyId1);
-    $.__views.workoutsTable = Ti.UI.createTableView({
-        id: "workoutsTable",
+    $.__views.topView = Ti.UI.createView({
+        layout: "vertical",
         height: "SIZE",
-        backgroundColor: "transparent"
+        backgroundColor: "#3B74F5",
+        id: "topView"
     });
-    $.__views.__alloyId0.add($.__views.workoutsTable);
-    $.__views.btnUpperWorkout = Ti.UI.createButton({
-        width: 200,
+    $.__views.__alloyId0.add($.__views.topView);
+    $.__views.label = Ti.UI.createLabel({
+        width: Ti.UI.SIZE,
+        height: "SIZE",
+        color: "#F6F6F6",
+        bottom: "10",
+        top: "10",
+        text: "Exercises to make you Swole today",
+        id: "label"
+    });
+    $.__views.topView.add($.__views.label);
+    $.__views.view1 = Ti.UI.createView({
+        layout: "vertical",
+        height: "SIZE",
+        top: "20",
+        bottom: "20",
+        id: "view1"
+    });
+    $.__views.__alloyId0.add($.__views.view1);
+    $.__views.workoutsTable = Ti.UI.createTableView({
+        height: "SIZE",
+        backgroundColor: "transparent",
+        id: "workoutsTable"
+    });
+    $.__views.view1.add($.__views.workoutsTable);
+    alertMsg ? $.__views.workoutsTable.addEventListener("click", alertMsg) : __defers["$.__views.workoutsTable!click!alertMsg"] = true;
+    $.__views.bottomView = Ti.UI.createView({
+        id: "bottomView",
+        layout: "vertical",
+        backgroundColor: "#2B2B2B"
+    });
+    $.__views.__alloyId0.add($.__views.bottomView);
+    $.__views.startWorkout = Ti.UI.createButton({
+        width: 150,
         height: 30,
         borderRadius: 1,
         backgroundColor: "#3B74F5",
@@ -67,31 +86,12 @@ function Controller() {
             fontWeight: "bold",
             fontSize: 14
         },
-        id: "btnUpperWorkout",
-        top: "10",
-        title: "Start Upper Body Workout",
-        visible: "false"
+        id: "startWorkout",
+        title: "Start Workout",
+        top: "20"
     });
-    $.__views.__alloyId0.add($.__views.btnUpperWorkout);
-    showUpperBodyWorkout ? $.__views.btnUpperWorkout.addEventListener("click", showUpperBodyWorkout) : __defers["$.__views.btnUpperWorkout!click!showUpperBodyWorkout"] = true;
-    $.__views.btnLowerWorkout = Ti.UI.createButton({
-        width: 200,
-        height: 30,
-        borderRadius: 1,
-        backgroundColor: "#3B74F5",
-        color: "white",
-        font: {
-            fontFamily: "Arial",
-            fontWeight: "bold",
-            fontSize: 14
-        },
-        id: "btnLowerWorkout",
-        top: "10",
-        title: "Start Lower Body Workout",
-        visible: "false"
-    });
-    $.__views.__alloyId0.add($.__views.btnLowerWorkout);
-    showLowerBodyWorkout ? $.__views.btnLowerWorkout.addEventListener("click", showLowerBodyWorkout) : __defers["$.__views.btnLowerWorkout!click!showLowerBodyWorkout"] = true;
+    $.__views.bottomView.add($.__views.startWorkout);
+    startWorkout ? $.__views.startWorkout.addEventListener("click", startWorkout) : __defers["$.__views.startWorkout!click!startWorkout"] = true;
     $.__views.exNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.workoutWinId,
         id: "exNavWin"
@@ -100,6 +100,21 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0];
+    var bkBtn = Titanium.UI.createButton({
+        height: 25,
+        font: {
+            size: 9,
+            fontWeight: "bold"
+        },
+        width: 60,
+        backgroundColor: "transparent",
+        backgroundImage: "backBtn.png"
+    });
+    bkBtn.addEventListener("click", function() {
+        var workoutsWin = Alloy.createController("dashboard", {}).getView();
+        workoutsWin.open();
+    });
+    $.workoutWinId.setLeftNavButton(bkBtn);
     var workoutTitles = [];
     workoutTitles = Alloy.Globals.workouts.name;
     var data = [];
@@ -108,9 +123,8 @@ function Controller() {
         name: Alloy.Globals.workouts[i].name
     }).getView());
     $.workoutsTable.setData(data);
-    "Upper" == args ? $.btnUpperWorkout.visible = true : $.btnLowerWorkout.visible = true;
-    __defers["$.__views.btnUpperWorkout!click!showUpperBodyWorkout"] && $.__views.btnUpperWorkout.addEventListener("click", showUpperBodyWorkout);
-    __defers["$.__views.btnLowerWorkout!click!showLowerBodyWorkout"] && $.__views.btnLowerWorkout.addEventListener("click", showLowerBodyWorkout);
+    __defers["$.__views.workoutsTable!click!alertMsg"] && $.__views.workoutsTable.addEventListener("click", alertMsg);
+    __defers["$.__views.startWorkout!click!startWorkout"] && $.__views.startWorkout.addEventListener("click", startWorkout);
     _.extend($, exports);
 }
 

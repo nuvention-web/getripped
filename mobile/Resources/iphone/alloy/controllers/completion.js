@@ -9,7 +9,7 @@ function Controller() {
             alert("Please complete all the exercises");
             return;
         }
-        alert("Great Job!!!");
+        Ti.App.Analytics.trackEvent("Completed Workout", "Completed Workout", "Completed Workout", "");
         var dashboardWin = Alloy.createController("dashboard", {}).getView();
         dashboardWin.open();
     }
@@ -23,8 +23,8 @@ function Controller() {
     var __defers = {};
     $.__views.exWin = Ti.UI.createWindow({
         id: "exWin",
-        backgroundImage: "texture.jpg",
-        title: "You are so Swole!"
+        backgroundColor: "#F6F6F6",
+        title: "SwoleTrain"
     });
     $.__views.scrollviewId = Ti.UI.createScrollView({
         id: "scrollviewId",
@@ -37,40 +37,41 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.scrollviewId.add($.__views.mainView);
+    $.__views.topView = Ti.UI.createView({
+        layout: "vertical",
+        height: "SIZE",
+        backgroundColor: "#3B74F5",
+        id: "topView"
+    });
+    $.__views.mainView.add($.__views.topView);
+    $.__views.topLabel = Ti.UI.createLabel({
+        bottom: "10",
+        height: "SIZE",
+        color: "#F6F6F6",
+        top: "10",
+        id: "topLabel"
+    });
+    $.__views.topView.add($.__views.topLabel);
+    $.__views.view1 = Ti.UI.createView({
+        layout: "vertical",
+        height: "SIZE",
+        top: "20",
+        bottom: "20",
+        id: "view1"
+    });
+    $.__views.mainView.add($.__views.view1);
     $.__views.workoutsTable = Ti.UI.createTableView({
         id: "workoutsTable",
         height: "SIZE",
         backgroundColor: "transparent"
     });
-    $.__views.mainView.add($.__views.workoutsTable);
-    $.__views.__alloyId3 = Ti.UI.createView({
-        layout: "horizontal",
-        top: "10",
-        height: "SIZE",
-        id: "__alloyId3"
+    $.__views.view1.add($.__views.workoutsTable);
+    $.__views.bottomView = Ti.UI.createView({
+        layout: "vertical",
+        backgroundColor: "#2B2B2B",
+        id: "bottomView"
     });
-    $.__views.mainView.add($.__views.__alloyId3);
-    $.__views.__alloyId4 = Ti.UI.createLabel({
-        color: "green",
-        left: "10",
-        text: "Completed Exercises",
-        id: "__alloyId4"
-    });
-    $.__views.__alloyId3.add($.__views.__alloyId4);
-    $.__views.__alloyId5 = Ti.UI.createView({
-        layout: "horizontal",
-        top: "10",
-        height: "SIZE",
-        id: "__alloyId5"
-    });
-    $.__views.mainView.add($.__views.__alloyId5);
-    $.__views.__alloyId6 = Ti.UI.createLabel({
-        color: "red",
-        left: "10",
-        text: "Incomplete Exercises",
-        id: "__alloyId6"
-    });
-    $.__views.__alloyId5.add($.__views.__alloyId6);
+    $.__views.mainView.add($.__views.bottomView);
     $.__views.btnDashboard = Ti.UI.createButton({
         width: 150,
         height: 30,
@@ -83,10 +84,10 @@ function Controller() {
             fontSize: 14
         },
         id: "btnDashboard",
-        top: "10",
-        title: "Submit Workout"
+        top: "20",
+        title: "Go to Dashboard"
     });
-    $.__views.mainView.add($.__views.btnDashboard);
+    $.__views.bottomView.add($.__views.btnDashboard);
     showDashboard ? $.__views.btnDashboard.addEventListener("click", showDashboard) : __defers["$.__views.btnDashboard!click!showDashboard"] = true;
     $.__views.compNavWin = Ti.UI.iOS.createNavigationWindow({
         window: $.__views.exWin,
@@ -95,6 +96,7 @@ function Controller() {
     $.__views.compNavWin && $.addTopLevelView($.__views.compNavWin);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    $.topLabel.text = "" == Alloy.Globals.incomplete ? "Great Job!!!" : "Please complete all the exercises";
     var workoutTitles = [];
     workoutTitles = Alloy.Globals.workouts.name;
     var data = [];
