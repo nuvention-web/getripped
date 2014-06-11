@@ -3,15 +3,15 @@
 	<Window id="loginWin" backgroundColor="#F1F1F1" title="SwoleTrain">
 	<ScrollView id="mainView" layout="vertical" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<View id="view1" layout="vertical">
-			<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#3B74F5"  borderWidth="2" borderColor="#F6F6F6">
-				<Label id="loginLabel" top="10" bottom="10" height="SIZE">Sign in to continue </Label>
+			<View id = "topView">
+				<Label id="loginLabel">Sign in to continue </Label>
 			</View>
-		<View id = "middleView" layout="vertical" height="60%" backgroundColor="#F1F1F1"  borderWidth="2" borderColor="#F6F6F6">
+		<View id = "middleView">
 		<TextField id="txtUsername" class="txtFieldLogin" top="30"  hintText="Email" autocapitalization="false"></TextField>
 		<TextField id="txtPassword" class="txtFieldLogin" top="10"  passwordMask="true"  hintText="Password"></TextField>
 		<Button id="btnSubmit" left="15" top="10" title="Forgot Password? We can help" onClick="forgotpassword"></Button>
 		</View>
-		<View id = "bottomView" layout="vertical" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
+		<View id = "bottomView">
 		<Button id="btnSubmit" class="loginBtn" title="Login" top="20" onClick="showWorkout"></Button>
 		</View>
 		</View>

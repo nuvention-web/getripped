@@ -23,6 +23,32 @@
 		fontSize: 20,
 		fontWeight:"bold"
 	},
-	color: "#F6F6F6"
+	color: "#F6F6F6",
+	top:"10",
+	bottom:"10",
+	height:"SIZE"
+},
+
+"#topView": {
+	layout:"vertical",
+	height:"SIZE",
+	backgroundColor:"#3B74F5",
+	borderWidth:"2",
+	borderColor:"#F6F6F6"
+},
+
+"#middleView": {
+	layout:"vertical",
+	height:"60%",
+	backgroundColor:"#F1F1F1",
+	borderWidth:"2",
+	borderColor:"#F6F6F6"
+},
+
+"#bottomView": {
+	layout:"vertical",
+	backgroundColor:"#2B2B2B",
+	borderWidth:"2",
+	borderColor:"#F6F6F6"
 }
 

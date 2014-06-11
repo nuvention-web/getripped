@@ -2,17 +2,17 @@
 	<NavigationWindow id="navGroupWin">
 	<Window id="signupWin" backgroundColor= "#F1F1F1" title="SwoleTrain">
 		<ScrollView id="mainView" layout="vertical" scrollingEnabled="true" showVerticalScrollIndicator="true">
-			<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#3B74F5" borderWidth="2" borderColor="#F6F6F6">
+			<View id = "topView">
 				<Label id="label" class="getRippedText" top="10">Ready to get swole? </Label>
 				<Label class="getRippedText" bottom="10">Give us some info.</Label>
 			</View>
-		<View id="view1" layout="vertical" height="50%" top="20" borderWidth="2" borderColor="#F1F1F1">
+		<View id="view1">
 			<TextField id="txtFirstName" class="txtFieldLogin"  hintText="First Name"></TextField>
 			<TextField id="txtLastName" class="txtFieldLogin" top="10" hintText="Last Name"></TextField>
 			<TextField id="txtEmail" class="txtFieldLogin" top="10" hintText="Email" autocapitalization="false"></TextField>
 			<TextField id="txtPassword" class="txtFieldLogin" top="10" passwordMask="true"  hintText="Password"></TextField>
 		</View>
-		<View id="view4" layout="vertical" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
+		<View id="view4">
 		<Button id="btnSubmit" top="20" class="getRippedBtn" verticalAlign="center" title="Get Swole" onClick="signupUser"></Button>
 		</View>
 		<MaskedImage id="maskImg" mask="loading-icon.png" height="30" width="30" visible="false"></MaskedImage>

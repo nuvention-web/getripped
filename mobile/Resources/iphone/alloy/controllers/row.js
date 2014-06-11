@@ -10,23 +10,23 @@ function Controller() {
         id: "row"
     });
     $.__views.row && $.addTopLevelView($.__views.row);
-    $.__views.__alloyId24 = Ti.UI.createView({
+    $.__views.__alloyId22 = Ti.UI.createView({
         layout: "horizontal",
         height: "30",
-        id: "__alloyId24"
+        id: "__alloyId22"
     });
-    $.__views.row.add($.__views.__alloyId24);
+    $.__views.row.add($.__views.__alloyId22);
     $.__views.exNum = Ti.UI.createLabel({
         id: "exNum",
         left: "10"
     });
-    $.__views.__alloyId24.add($.__views.exNum);
+    $.__views.__alloyId22.add($.__views.exNum);
     $.__views.name = Ti.UI.createLabel({
         id: "name",
         left: "20",
         width: "80%"
     });
-    $.__views.__alloyId24.add($.__views.name);
+    $.__views.__alloyId22.add($.__views.name);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

@@ -60,12 +60,12 @@ function Controller() {
     });
     $.__views.mainView.add($.__views.view1);
     $.__views.topView = Ti.UI.createView({
-        id: "topView",
         layout: "vertical",
         height: "SIZE",
         backgroundColor: "#3B74F5",
         borderWidth: "2",
-        borderColor: "#F6F6F6"
+        borderColor: "#F6F6F6",
+        id: "topView"
     });
     $.__views.view1.add($.__views.topView);
     $.__views.loginLabel = Ti.UI.createLabel({
@@ -74,20 +74,20 @@ function Controller() {
             fontWeight: "bold"
         },
         color: "#F6F6F6",
-        text: "Sign in to continue",
-        id: "loginLabel",
         top: "10",
         bottom: "10",
-        height: "SIZE"
+        height: "SIZE",
+        text: "Sign in to continue",
+        id: "loginLabel"
     });
     $.__views.topView.add($.__views.loginLabel);
     $.__views.middleView = Ti.UI.createView({
-        id: "middleView",
         layout: "vertical",
         height: "60%",
         backgroundColor: "#F1F1F1",
         borderWidth: "2",
-        borderColor: "#F6F6F6"
+        borderColor: "#F6F6F6",
+        id: "middleView"
     });
     $.__views.view1.add($.__views.middleView);
     $.__views.txtUsername = Ti.UI.createTextField({
@@ -127,11 +127,11 @@ function Controller() {
     $.__views.middleView.add($.__views.btnSubmit);
     forgotpassword ? $.__views.btnSubmit.addEventListener("click", forgotpassword) : __defers["$.__views.btnSubmit!click!forgotpassword"] = true;
     $.__views.bottomView = Ti.UI.createView({
-        id: "bottomView",
         layout: "vertical",
         backgroundColor: "#2B2B2B",
         borderWidth: "2",
-        borderColor: "#F6F6F6"
+        borderColor: "#F6F6F6",
+        id: "bottomView"
     });
     $.__views.view1.add($.__views.bottomView);
     $.__views.btnSubmit = Ti.UI.createButton({

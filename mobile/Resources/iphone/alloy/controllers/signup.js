@@ -89,12 +89,12 @@ function Controller() {
     });
     $.__views.signupWin.add($.__views.mainView);
     $.__views.topView = Ti.UI.createView({
-        id: "topView",
         layout: "vertical",
         height: "SIZE",
         backgroundColor: "#3B74F5",
         borderWidth: "2",
-        borderColor: "#F6F6F6"
+        borderColor: "#F6F6F6",
+        id: "topView"
     });
     $.__views.mainView.add($.__views.topView);
     $.__views.label = Ti.UI.createLabel({
@@ -110,7 +110,7 @@ function Controller() {
         top: "10"
     });
     $.__views.topView.add($.__views.label);
-    $.__views.__alloyId26 = Ti.UI.createLabel({
+    $.__views.__alloyId24 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: "SIZE",
         color: "#F6F6F6",
@@ -120,16 +120,16 @@ function Controller() {
         },
         text: "Give us some info.",
         bottom: "10",
-        id: "__alloyId26"
+        id: "__alloyId24"
     });
-    $.__views.topView.add($.__views.__alloyId26);
+    $.__views.topView.add($.__views.__alloyId24);
     $.__views.view1 = Ti.UI.createView({
-        id: "view1",
         layout: "vertical",
         height: "50%",
         top: "20",
         borderWidth: "2",
-        borderColor: "#F1F1F1"
+        borderColor: "#F1F1F1",
+        id: "view1"
     });
     $.__views.mainView.add($.__views.view1);
     $.__views.txtFirstName = Ti.UI.createTextField({
@@ -186,11 +186,11 @@ function Controller() {
     });
     $.__views.view1.add($.__views.txtPassword);
     $.__views.view4 = Ti.UI.createView({
-        id: "view4",
         layout: "vertical",
         backgroundColor: "#2B2B2B",
         borderWidth: "2",
-        borderColor: "#F6F6F6"
+        borderColor: "#F6F6F6",
+        id: "view4"
     });
     $.__views.mainView.add($.__views.view4);
     $.__views.btnSubmit = Ti.UI.createButton({
