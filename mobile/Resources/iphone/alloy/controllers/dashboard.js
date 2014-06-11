@@ -49,51 +49,51 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.scrollviewId.add($.__views.mainView);
-    $.__views.__alloyId2 = Ti.UI.createView({
+    $.__views.view1 = Ti.UI.createView({
         top: "0",
         layout: "vertical",
         height: "SIZE",
         backgroundColor: "#3B74F5",
         borderWidth: "3",
         borderColor: "#F6F6F6",
-        id: "__alloyId2"
+        id: "view1"
     });
-    $.__views.mainView.add($.__views.__alloyId2);
+    $.__views.mainView.add($.__views.view1);
     $.__views.welcomeLabel = Ti.UI.createLabel({
         font: {
             fontSize: 20,
             fontWeight: "bold"
         },
+        color: "#F6F6F6",
+        height: "SIZE",
         top: "5",
         bottom: "5",
-        id: "welcomeLabel",
-        color: "#F6F6F6",
-        height: "SIZE"
+        id: "welcomeLabel"
     });
-    $.__views.__alloyId2.add($.__views.welcomeLabel);
+    $.__views.view1.add($.__views.welcomeLabel);
     $.__views.upperBodyView = Ti.UI.createView({
-        id: "upperBodyView",
         layout: "vertical",
         height: "35%",
         top: "0",
         backgroundColor: "#2B2B2B",
         borderWidth: "2",
-        borderColor: "#F6F6F6"
+        borderColor: "#F6F6F6",
+        id: "upperBodyView"
     });
     $.__views.mainView.add($.__views.upperBodyView);
-    $.__views.__alloyId3 = Ti.UI.createLabel({
+    $.__views.__alloyId2 = Ti.UI.createLabel({
         font: {
             fontWeight: "bold",
             fontSize: 18
         },
         color: "F6F6F6",
-        text: "Upper Body:",
         top: "10",
         left: "10",
-        id: "__alloyId3"
+        text: "Upper Body:",
+        id: "__alloyId2"
     });
-    $.__views.upperBodyView.add($.__views.__alloyId3);
-    $.__views.__alloyId4 = Ti.UI.createLabel({
+    $.__views.upperBodyView.add($.__views.__alloyId2);
+    $.__views.__alloyId3 = Ti.UI.createLabel({
         font: {
             fontWeight: "bold",
             fontSize: 14
@@ -102,9 +102,9 @@ function Controller() {
         text: "Average Weight Lifted:",
         top: "15",
         left: "10",
-        id: "__alloyId4"
+        id: "__alloyId3"
     });
-    $.__views.upperBodyView.add($.__views.__alloyId4);
+    $.__views.upperBodyView.add($.__views.__alloyId3);
     $.__views.pbUpper = Ti.UI.createProgressBar({
         id: "pbUpper",
         top: "5",
@@ -115,27 +115,27 @@ function Controller() {
         color: "#FFFFFF"
     });
     $.__views.upperBodyView.add($.__views.pbUpper);
-    $.__views.__alloyId5 = Ti.UI.createView({
+    $.__views.view2 = Ti.UI.createView({
         layout: "horizontal",
         height: "SIZE",
         top: "2",
-        id: "__alloyId5"
+        id: "view2"
     });
-    $.__views.upperBodyView.add($.__views.__alloyId5);
+    $.__views.upperBodyView.add($.__views.view2);
     $.__views.minUpper = Ti.UI.createLabel({
+        font: "{fontSize:12, fontWeight:bold}",
+        color: "#FFFFFF",
         id: "minUpper",
-        left: "40",
-        font: "{fontSize: 12, fontWeight:bold}",
-        color: "#FFFFFF"
+        left: "40"
     });
-    $.__views.__alloyId5.add($.__views.minUpper);
+    $.__views.view2.add($.__views.minUpper);
     $.__views.currentUpper = Ti.UI.createLabel({
+        font: "{fontSize:12, fontWeight:bold}",
+        color: "#FFFFFF",
         id: "currentUpper",
-        left: "10",
-        font: "{fontSize: 12, fontWeight:bold}",
-        color: "#FFFFFF"
+        left: "10"
     });
-    $.__views.__alloyId5.add($.__views.currentUpper);
+    $.__views.view2.add($.__views.currentUpper);
     $.__views.upperBodyLinks = Ti.UI.createView({
         id: "upperBodyLinks",
         layout: "horizontal",
@@ -160,28 +160,28 @@ function Controller() {
     $.__views.upperBodyLinks.add($.__views.UpperBodyExercises);
     showUpperBodyExercises ? $.__views.UpperBodyExercises.addEventListener("click", showUpperBodyExercises) : __defers["$.__views.UpperBodyExercises!click!showUpperBodyExercises"] = true;
     $.__views.lowerBodyView = Ti.UI.createView({
-        id: "lowerBodyView",
         layout: "vertical",
         height: "35%",
         top: "0",
         backgroundColor: "#2B2B2B",
         borderWidth: "2",
-        borderColor: "#F6F6F6"
+        borderColor: "#F6F6F6",
+        id: "lowerBodyView"
     });
     $.__views.mainView.add($.__views.lowerBodyView);
-    $.__views.__alloyId6 = Ti.UI.createLabel({
+    $.__views.__alloyId4 = Ti.UI.createLabel({
         font: {
             fontWeight: "bold",
             fontSize: 18
         },
         color: "F6F6F6",
-        text: "Lower Body:",
         top: "10",
         left: "10",
-        id: "__alloyId6"
+        text: "Lower Body:",
+        id: "__alloyId4"
     });
-    $.__views.lowerBodyView.add($.__views.__alloyId6);
-    $.__views.__alloyId7 = Ti.UI.createLabel({
+    $.__views.lowerBodyView.add($.__views.__alloyId4);
+    $.__views.__alloyId5 = Ti.UI.createLabel({
         font: {
             fontWeight: "bold",
             fontSize: 14
@@ -190,9 +190,9 @@ function Controller() {
         text: "Average Weight Lifted:",
         top: "15",
         left: "10",
-        id: "__alloyId7"
+        id: "__alloyId5"
     });
-    $.__views.lowerBodyView.add($.__views.__alloyId7);
+    $.__views.lowerBodyView.add($.__views.__alloyId5);
     $.__views.pbLower = Ti.UI.createProgressBar({
         id: "pbLower",
         top: "5",
@@ -203,27 +203,27 @@ function Controller() {
         color: "#FFFFFF"
     });
     $.__views.lowerBodyView.add($.__views.pbLower);
-    $.__views.__alloyId8 = Ti.UI.createView({
+    $.__views.__alloyId6 = Ti.UI.createView({
         layout: "horizontal",
         height: "SIZE",
         top: "2",
-        id: "__alloyId8"
+        id: "__alloyId6"
     });
-    $.__views.lowerBodyView.add($.__views.__alloyId8);
+    $.__views.lowerBodyView.add($.__views.__alloyId6);
     $.__views.minLower = Ti.UI.createLabel({
+        font: "{fontSize:12, fontWeight:bold}",
+        color: "#FFFFFF",
         id: "minLower",
-        left: "40",
-        font: "{fontSize: 12, fontWeight:bold}",
-        color: "#FFFFFF"
+        left: "40"
     });
-    $.__views.__alloyId8.add($.__views.minLower);
+    $.__views.__alloyId6.add($.__views.minLower);
     $.__views.currentLower = Ti.UI.createLabel({
+        font: "{fontSize:12, fontWeight:bold}",
+        color: "#FFFFFF",
         id: "currentLower",
-        left: "10",
-        font: "{fontSize: 12, fontWeight:bold}",
-        color: "#FFFFFF"
+        left: "10"
     });
-    $.__views.__alloyId8.add($.__views.currentLower);
+    $.__views.__alloyId6.add($.__views.currentLower);
     $.__views.upperBodyLinks = Ti.UI.createView({
         id: "upperBodyLinks",
         layout: "horizontal",

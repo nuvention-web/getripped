@@ -3,34 +3,29 @@
 	<Window id="dashboardWin" backgroundColor="#F1F1F1">
 		<ScrollView id="scrollviewId" scrollingEnabled="true" showVerticalScrollIndicator="true">
 		<View id="mainView" layout="vertical">
-				<View top = "0" layout="vertical"  height="SIZE" backgroundColor="#3B74F5" borderWidth="3" borderColor="#F6F6F6">
-					<Label top="5" bottom="5" id="welcomeLabel" color="#F6F6F6" height="SIZE"></Label>
+				<View id="view1">
+					<Label id="welcomeLabel"></Label>
 				</View>
-				<!--View id="warmUpView" layout="vertical" height="SIZE" top="0" class="workoutVkiew" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
-					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Warm-Up:</Label>
-					<Label top = "5" left = "10" class="weightLiftedText" color="F6F6F6" height="SIZE"> 1. Stretch</Label>
-					<Label top = "5" left = "10" bottom="10" class="weightLiftedText" color="F6F6F6" height="SIZE"> 2. 1 mile run on Treadmill</Label>
-				</View-->
-				<View id="upperBodyView" layout="vertical" height="35%" top="0" class="workoutVkiew" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
-					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Upper Body:</Label>
+				<View id="upperBodyView">
+					<Label class="workoutName">Upper Body:</Label>
 					<Label top = "15" left = "10" class="weightLiftedText" color="F6F6F6"> Average Weight Lifted:</Label>
 					<ProgressBar id="pbUpper" top="5" width="250" height="auto" style="Titanium.UI.iPhone.ProgressBarStyle.PLAIN" max="100" color="#FFFFFF"></ProgressBar>
-					<View layout="horizontal" height="SIZE" top="2">
-					<Label id="minUpper" left="40" font="{fontSize: 12, fontWeight:bold}" color="#FFFFFF"></Label>
-					<Label id="currentUpper" left="10" font="{fontSize: 12, fontWeight:bold}"color="#FFFFFF"></Label>
+					<View id = "view2">
+					<Label id="minUpper" class="progressText" left="40"></Label>
+					<Label id="currentUpper" class="progressText" left="10"></Label>
 					</View>
 					<View id="upperBodyLinks" layout="horizontal" height="SIZE" top="0">
 						<Button id="upperWrkout" top="5" left="10" title="Start Workout" onClick="showUpperBodyWorkout"></Button>
 						<Button id="UpperBodyExercises" top="5" left="20" title="See all Exercises" onClick="showUpperBodyExercises"></Button>
 					</View>
 				</View>
-				<View id="lowerBodyView" layout="vertical" height="35%" top="0" backgroundColor="#2B2B2B" borderWidth="2" borderColor="#F6F6F6">
-					<Label top="10" left = "10" class="workoutName" color="F6F6F6">Lower Body:</Label>
+				<View id="lowerBodyView">
+					<Label class="workoutName">Lower Body:</Label>
 					<Label top = "15" left = "10" class="weightLiftedText" color="F6F6F6"> Average Weight Lifted:</Label>
 					<ProgressBar id="pbLower" top="5" width="250" height="auto" style="Titanium.UI.iPhone.ProgressBarStyle.PLAIN"  max="100" color="#FFFFFF"></ProgressBar>
 					<View layout="horizontal" height="SIZE" top="2">
-					<Label id="minLower" left="40" font="{fontSize: 12, fontWeight:bold}" color="#FFFFFF"></Label>
-					<Label id="currentLower" left="10" font="{fontSize: 12, fontWeight:bold}"color="#FFFFFF"></Label>
+					<Label id="minLower" class="progressText" left="40"></Label>
+					<Label id="currentLower" class="progressText" left="10"></Label>
 					</View>
 				
 					<View id="upperBodyLinks" layout="horizontal" height="SIZE" top="0">
@@ -39,12 +34,7 @@
 					</View>
 				</View>
 				<View id="bottomLinks" layout="vertical" height="SIZE" top="20">
-						<!--Label class="activityLabel" color="#2B2B2B" left="10">Activity:</Label>
-						<View id="links" layout="horizontal" height="SIZE">
-						<Button left="10"  title="Change Password" onClick="showChangePassword"></Button>
-						<Button title="  |  "></Button-->
 						<Button id ="logoutBtn" title="Logout" class="logoutBtn" onClick="logout"></Button>
-						<!--/View-->
 				</View>
 			</View>		
 		</ScrollView>

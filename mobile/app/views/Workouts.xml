@@ -2,11 +2,11 @@
 	<NavigationWindow id="exNavWin">
 	<Window id="workoutWinId" class="container" height="100%" backgroundColor="#F1F1F1">
 	<View layout="vertical">
-		<View id = "topView" layout="vertical" height="SIZE" backgroundColor="#3B74F5">
-				<Label id="label" class="getRippedText" bottom="10" height="SIZE" color="#F6F6F6" top="10">Exercises to make you Swole today</Label>
+		<View id = "topView">
+				<Label id="label" class="getRippedText">Exercises to make you Swole today</Label>
 		</View>
-		<View id="view1" layout="vertical" height="SIZE" top="20" bottom="20">
-		<TableView id="workoutsTable" class="workoutTable" height="SIZE" backgroundColor="transparent" onClick="alertMsg">		
+		<View id="view1">
+		<TableView id="workoutsTable" class="workoutTable" onClick="alertMsg">		
 		</TableView>
 		</View>
 		<View id = "bottomView" layout="vertical" backgroundColor="#2B2B2B">

@@ -1,9 +1,5 @@
 "#dashboardWin": {
-   // titleImage:'SwoleTrainLogo.png',
-    //backgroundColor: '#c6c6c6',
-    //statusBarStyle: Titanium.UI.iPhone.StatusBar.GRAY,
     title: 'SwoleTrain',
-    // modal:true,
    	 navBarHidden: false
 }
 
@@ -11,20 +7,19 @@
 	font: {
 		fontSize: 20,
 		fontWeight:"bold"
-	}
+	},
+	 color:"#F6F6F6",
+	 height:"SIZE",
+	 top:"5",
+	 bottom:"5" 
 }
-
-".activityLabel": {
-	font: {
-		fontSize: 16,
-		fontWeight:"bold"
-	}
-}
-
 
 ".workoutName": {
 	font:{fontWeight:'bold',fontSize:18},
-	color: "#3B3738"
+	color:"F6F6F6",
+	top:"10",
+	left:"10" 
+	
 }
 
 ".weightLiftedText": {
@@ -40,5 +35,43 @@
     backgroundColor: "#3B74F5",
 	color: "white",
     font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+},
+
+"#view1": {
+	top:"0",
+	layout:"vertical",
+	height:"SIZE",
+	backgroundColor:"#3B74F5",
+	borderWidth:"3",
+	borderColor:"#F6F6F6"
+},
+
+"#upperBodyView": {
+	 layout:"vertical",
+	 height:"35%",
+	 top:"0",
+	 backgroundColor:"#2B2B2B",
+	 borderWidth:"2",
+	 borderColor:"#F6F6F6"
+},
+
+"#view2": {
+	layout:"horizontal",
+	height:"SIZE",
+	top:"2"
+},
+
+".progressText": {
+	 font:"{fontSize:12, fontWeight:bold}",
+	 color:"#FFFFFF"
+},
+
+"#lowerBodyView": {
+	 layout:"vertical",
+	 height:"35%",
+	 top:"0",
+	 backgroundColor:"#2B2B2B",
+	 borderWidth:"2",
+	 borderColor:"#F6F6F6"
 }
 

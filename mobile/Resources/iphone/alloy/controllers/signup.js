@@ -110,7 +110,7 @@ function Controller() {
         top: "10"
     });
     $.__views.topView.add($.__views.label);
-    $.__views.__alloyId24 = Ti.UI.createLabel({
+    $.__views.__alloyId22 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: "SIZE",
         color: "#F6F6F6",
@@ -120,9 +120,9 @@ function Controller() {
         },
         text: "Give us some info.",
         bottom: "10",
-        id: "__alloyId24"
+        id: "__alloyId22"
     });
-    $.__views.topView.add($.__views.__alloyId24);
+    $.__views.topView.add($.__views.__alloyId22);
     $.__views.view1 = Ti.UI.createView({
         layout: "vertical",
         height: "50%",

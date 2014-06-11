@@ -38,34 +38,34 @@ function Controller() {
     });
     $.__views.workoutWinId.add($.__views.__alloyId0);
     $.__views.topView = Ti.UI.createView({
-        id: "topView",
         layout: "vertical",
         height: "SIZE",
-        backgroundColor: "#3B74F5"
+        backgroundColor: "#3B74F5",
+        id: "topView"
     });
     $.__views.__alloyId0.add($.__views.topView);
     $.__views.label = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: "SIZE",
         color: "#F6F6F6",
-        text: "Exercises to make you Swole today",
-        id: "label",
         bottom: "10",
-        top: "10"
+        top: "10",
+        text: "Exercises to make you Swole today",
+        id: "label"
     });
     $.__views.topView.add($.__views.label);
     $.__views.view1 = Ti.UI.createView({
-        id: "view1",
         layout: "vertical",
         height: "SIZE",
         top: "20",
-        bottom: "20"
+        bottom: "20",
+        id: "view1"
     });
     $.__views.__alloyId0.add($.__views.view1);
     $.__views.workoutsTable = Ti.UI.createTableView({
-        id: "workoutsTable",
         height: "SIZE",
-        backgroundColor: "transparent"
+        backgroundColor: "transparent",
+        id: "workoutsTable"
     });
     $.__views.view1.add($.__views.workoutsTable);
     alertMsg ? $.__views.workoutsTable.addEventListener("click", alertMsg) : __defers["$.__views.workoutsTable!click!alertMsg"] = true;

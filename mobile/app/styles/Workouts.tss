@@ -25,4 +25,29 @@
     backgroundColor: "#3B74F5",
 	color: "white",
     font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
+},
+
+".workoutTable": {
+	height:"SIZE",
+	backgroundColor:"transparent" 
+},
+
+"#view1": {
+	 layout:"vertical",
+	 height:"SIZE",
+	 top:"20",
+	 bottom:"20"
+},
+
+".getRippedText": {
+	bottom:"10",
+	height:"SIZE",
+	color:"#F6F6F6",
+	top:"10"
+},
+
+"#topView": {
+	 layout:"vertical",
+	 height:"SIZE",
+	 backgroundColor:"#3B74F5"
 }
